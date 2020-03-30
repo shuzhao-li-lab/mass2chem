@@ -12,6 +12,9 @@
 
 
 
+## Added basic formula based calculations
+
+Note: RE based formula parsing is still limited.
 
 
 ## Related
