@@ -4,6 +4,10 @@ Under development.
 Ultimately, adducts should be computed per compound based on chemical formula.
 The Azimuth DB will host the info and provide compiled releases.
 
+To also consider list in
+https://github.com/stanstrup/commonMZ
+
+
 '''
 
 import re

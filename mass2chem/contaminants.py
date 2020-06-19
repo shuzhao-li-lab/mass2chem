@@ -1,7 +1,7 @@
 '''
 Place holder
 
-
+List maintained elsewhere
 
 name	formula	exact_mass	std_inchi	std_inchi_key	id	type_of_contaminant	pubchem_cid	reference	ion_mode	mz	exact_adduct_mass	ion_form	instrument_type	instrument	chromatography	ion_source_type
 Acetic Acid	C2H4O2	60.02113	InChI=1S/C2H4O2/c1-2(3)4/h1H3,(H,3,4)	QTBSBXVTEAMEQO-UHFFFAOYSA-N	CON00001	Solvent	176	Tong, H., Bell, D., Tabei, K., & Siegel, M. M. (1999). Automated data massaging, interpretation, and E-mailing modules for high throughput open access mass spectrometry. Journal of the American Society for Mass Spectrometry, 10(11), 1174-1187, doi:10.1016/s1044-0305(99)00090-2.	NEG	59	59.0138536	[M-H]-	Ion trap	Micromass Platform II	LC	ESI
