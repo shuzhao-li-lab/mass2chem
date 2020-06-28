@@ -1,7 +1,16 @@
 '''
+
+Moving to chem as a stripped down version of Pychemy.
+
+
+
+
 # using pychemy module. It failed to install using pip because of `Open Babel` binding.
 # But the mass calcuation function is not depdendent on `Open Babel`, 
 # thus pychemy folder is copied here and it's usable as below
+
+
+
 
 from pychemy.molmass import Formula
 
@@ -23,7 +32,7 @@ print(len(massdict_cpds2include))
 print("unassigned, ", len(unassigned))
 '''
 
-from pychemy.molmass import Formula
+from .chem.molmass import Formula
 
 def formula2mass( x):
     return Formula( x ).isotope.mass

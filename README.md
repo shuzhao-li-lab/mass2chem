@@ -16,6 +16,12 @@
 
 Note: RE based formula parsing is still limited.
 
+Pychemy isn't good fit, as 
+1) high-resolution calculation needs update
+2) Open babel binding is not worthy the trouble
+
+Included as stripped version in "mass2chem.chem" for now.
+
 
 ## Related
 
