@@ -10,6 +10,7 @@
 
 * Reaction inference, including mass diff corresponding to common reactions
 
+* Annotation via in-house libraries and other means
 
 
 ## Added basic formula based calculations
