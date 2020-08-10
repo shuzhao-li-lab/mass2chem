@@ -1,4 +1,8 @@
-# mass2chem - to include
+# mass2chem - common utilities in interpreting mass spectrometry data
+
+Annotation and Inferrence
+
+## to include
 
 * Handling chemical formula via pychemy (which needs update to high res data)
 
