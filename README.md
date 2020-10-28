@@ -14,7 +14,9 @@ Annotation and Inferrence
 
 * Reaction inference, including mass diff corresponding to common reactions
 
-* Annotation via in-house libraries and other means
+* Annotation via in-house libraries 
+
+* hook/adaptor to other tools
 
 
 ## Added basic formula based calculations
