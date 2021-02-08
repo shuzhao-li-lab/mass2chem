@@ -34,7 +34,7 @@ Included as stripped version in "mass2chem.chem" for now.
 
 https://github.com/shuzhao-li/pychemy
 
-https://github.com/opencobra/cobrapy/blob/devel/cobra/core/formula.py
+https://github.com/opencobra/cobrapy/blob/devel/cobra/core/formula.py (they are using average molecular weight, not mass spec oriented)
 
 https://github.com/shuzhao-li/Azimuth (Private)
 

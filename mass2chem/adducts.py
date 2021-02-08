@@ -149,3 +149,136 @@ def compute_adducts(mw, cFormula):
 
     return mydict
 
+
+#
+# from mummichog
+#
+
+
+
+def adduct_function(mw, mode):
+    '''
+    return a list of derivatives/adducts according to operation mode.
+    The most frequent derivatives under positive mode are adopted from
+        Brown et al. Analyst, 2009, 134, 1322-1332.
+    'dpj_positive' is a customized version for DPJ lab.
+    Negative mode is an empirical compilation.
+    
+    Some derivatives are not possible for some compounds, 
+    subject to future upgrade.
+    
+    
+    Paul Benton sent a list used in XCMSonline.
+    
+    This is to be replaced by pre-computed tables based on chemical formula.
+    
+    '''
+    if mode == 'dpj_positive':
+        return [(mw, 'M[1+]'), 
+                (mw + PROTON, 'M+H[1+]'),
+                (mw/2 + PROTON, 'M+2H[2+]'),
+                (mw +1.0034 + PROTON, 'M(C13)+H[1+]'),
+                (mw/2 + 0.5017 + PROTON, 'M(C13)+2H[2+]'),
+                (mw +1.9958 + PROTON, 'M(S34)+H[1+]'),
+                (mw +1.9972 + PROTON, 'M(Cl37)+H[1+]'),
+                (mw + 21.9820 + PROTON, 'M+Na[1+]'), 
+                (mw/2 + 10.991 + PROTON, 'M+H+Na[2+]'),
+                (mw + 37.9555 + PROTON, 'M+K[1+]'), 
+                (mw + 67.9874 + PROTON, 'M+HCOONa[1+]'),
+                (mw + 83.9613 + PROTON, 'M+HCOOK[1+]'),
+                ]
+    
+    elif mode == 'generic_positive':
+        return [(mw, 'M[1+]'), 
+                (mw + PROTON, 'M+H[1+]'),
+                (mw/2 + PROTON, 'M+2H[2+]'),
+                (mw/3 + PROTON, 'M+3H[3+]'),
+                (mw +1.0034 + PROTON, 'M(C13)+H[1+]'),
+                (mw/2 + 0.5017 + PROTON, 'M(C13)+2H[2+]'),
+                (mw/3 + 0.3344 + PROTON, 'M(C13)+3H[3+]'),
+                (mw +1.9958 + PROTON, 'M(S34)+H[1+]'),
+                (mw +1.9972 + PROTON, 'M(Cl37)+H[1+]'),
+                #
+                (mw + 21.9820 + PROTON, 'M+Na[1+]'),    # Na = 21.9820 + PROTON = 22.9893
+                (mw/2 + 10.991 + PROTON, 'M+H+Na[2+]'),
+                (mw + 37.9555 + PROTON, 'M+K[1+]'),     # K = 37.9555 + PROTON = 38.9628
+                #
+                (mw + 18.0106 + PROTON, 'M+H2O+H[1+]'), 
+                (mw - 18.0106 + PROTON, 'M-H2O+H[1+]'), 
+                (mw - 36.0212 + PROTON, 'M-H4O2+H[1+]'),
+                (mw - 17.0265 + PROTON, 'M-NH3+H[1+]'),
+                (mw - 27.9950 + PROTON, 'M-CO+H[1+]'),
+                (mw - 43.9898 + PROTON, 'M-CO2+H[1+]'),
+                (mw - 46.0054 + PROTON, 'M-HCOOH+H[1+]'),
+                (mw + 67.9874 + PROTON, 'M+HCOONa[1+]'),
+                (mw - 67.9874 + PROTON, 'M-HCOONa+H[1+]'),
+                #
+                (mw + 57.9586 + PROTON, 'M+NaCl[1+]'), 
+                (mw - 72.0211 + PROTON, 'M-C3H4O2+H[1+]'),
+                (mw + 83.9613 + PROTON, 'M+HCOOK[1+]'),
+                (mw - 83.9613 + PROTON, 'M-HCOOK+H[1+]'),
+                ]
+    
+    elif mode == 'park':
+        return [(mw + PROTON, 'M+H[1+]'),
+                (mw + 21.9820 + PROTON, 'M+Na[1+]'), 
+                #(mw + 18.0106 + PROTON, 'M+H2O+H[1+]'), 
+                (mw - 18.0106 + PROTON, 'M-H2O+H[1+]'), 
+                (mw - 36.0212 + PROTON, 'M-H4O2+H[1+]'),
+                ]
+        
+    elif mode == 'negative':
+        return [(mw - PROTON, 'M-H[-]'),
+               (mw/2 - PROTON, 'M-2H[2-]'),
+               (mw + 1.0034 - PROTON, 'M(C13)-H[-]'),
+               (mw + 1.9958 - PROTON, 'M(S34)-H[-]'),
+               (mw + 1.9972 - PROTON, 'M(Cl37)-H[-]'),
+               #
+               (mw + 22.9893 - 2*PROTON, 'M+Na-2H[-]'),
+               (mw + 38.9628 - 2*PROTON, 'M+K-2H[-]'),
+               (mw - 18.0106 - PROTON, 'M-H2O-H[-]'),
+               #
+               (mw + 34.9689, 'M+Cl[-]'),
+               (mw + 36.9659, 'M+Cl37[-]'),
+               (mw + 78.9183, 'M+Br[-]'),
+               (mw + 80.9163, 'M+Br81[-]'),
+               (mw + 2*12 + 3*1.007825 + 14.00307 - PROTON, 'M+ACN-H[-]'),
+               (mw + 1.007825 + 12 + 2*15.99491, 'M+HCOO[-]'),
+               (mw + 3*1.007825 + 2*12 + 2*15.99491, 'M+CH3COO[-]'),
+               (mw - PROTON + 15.99491, 'M-H+O[-]'),
+               ]
+
+    elif mode == 'neutral':
+        print ("Neutral mode of instrumentation is not supported.")
+        return []
+    
+    else:
+        print ("Unrecognized mode of instrumentation.")
+        return []
+
+# not used
+# accuracy of the MS instrument
+def mz_tolerance(mz, instrument):
+    '''
+    instrument is ppm in the input parameter. 
+    Using flat ppm now.
+    Future experimental function to add instrument specific calibration, but no point right now.
+    '''
+    try:
+        instrument = int(instrument)
+        return 0.000001 * instrument * mz
+    
+    except ValueError:
+        if instrument == 'FTMS':
+            return max(0.00001*mz, 3*2**(1.98816*np.log2(mz) - 26.1945))
+        
+        elif instrument == 'ORBITRAP':
+            # needs further calibration
+            # return max(0.00001*mz, 2*2**(1.45325*np.log2(mz) - 20.8554))
+            return 0.000010*mz
+        
+        else:
+            return 0.000010*mz
+  
+
+
