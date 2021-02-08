@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
   name='mass2chem',
-  version='0.0.1',
+  version='0.0.2',
 
   author='Shuzhao Li',
   author_email='shuzhao.li@gmail.com',
@@ -34,7 +34,6 @@ setup(
   install_requires=[
     'numpy',
     'scipy',
-    'pychemy',
 
   ],
 
