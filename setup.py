@@ -2,6 +2,9 @@
 
 from setuptools import setup, find_packages
 
+with open("README.md", "r", encoding="utf-8") as fh:
+    long_description = fh.read()
+
 setup(
   name='mass2chem',
   version='0.0.2',
@@ -10,7 +13,7 @@ setup(
   author_email='shuzhao.li@gmail.com',
   description='Common utilities for interpreting mass spectrometry data',
   long_description_content_type="text/markdown",
-  long_description=open('README.md').read(),
+  long_description=long_description,
   url='https://github.com/shuzhao-li/mass2chem',
   license='BSD',
 
