@@ -7,7 +7,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
   name='mass2chem',
-  version='0.0.3',
+  version='0.0.4',
 
   author='Shuzhao Li',
   author_email='shuzhao.li@gmail.com',
@@ -32,8 +32,10 @@ setup(
   ],
 
   # changed from earlier setuptools
-  packages=find_packages(exclude=['datasets']),
-  
+  packages=find_packages(
+    include=['*', '']
+  ),
+  include_package_data=True,
   install_requires=[
     'numpy',
     'scipy',

@@ -1,4 +1,12 @@
 '''
+This needs to take step wise annotation.
+
+Input data: list of features
+
+
+
+
+
 PPM_tolerance = 0.000010
 RTime_tolerance = 150       # seconds in retention time, usually a small number
                             # more lenient for diff instruments
