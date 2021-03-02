@@ -12,6 +12,9 @@ https://github.com/stanstrup/commonMZ
 
 import re
 
+# Pychemy is incluced as `chem`, a stripped down version.
+from .chem.molmass import Formula
+
 PROTON = 1.00727646677
 
 # currency metabolites of ubiquitous presence
@@ -45,9 +48,10 @@ wanted_adduct_list = {
     }
 
 
-# computing adducts filtered by formula
-# if no formula is available, should use default adduct calculation
-# make sure mono mass is present
+
+
+def formula2mass( x):
+    return Formula( x ).isotope.mass
 
 
 

@@ -12,6 +12,10 @@ Acetic Acid	C2H4O2	60.02113	InChI=1S/C2H4O2/c1-2(3)4/h1H3,(H,3,4)	QTBSBXVTEAMEQO
 Acetonitrile (fragment)	CN	26.003074			CON00002			Keller, B. O., Suj, J., Young, A. B., & Whittal, R. M. (2008). Interferences and contaminants encountered in modern mass spectrometry. Analytica Chimica Acta, 627(1), 71-81, doi:10.1016/j.aca.2008.04.043.	NEG	26.003623	26.0036226	[M]-				
 Acetonitrile	CH3CN	41.026549	InChI=1S/C2H3N/c1-2-3/H1h3	WEVYAHXRMPXWCK-UHFFFAOYSA-N	CON00003	Solvent	6342	Waters - ESI+ Common Background Ions. http://www.waters.com/webassets/cms/support/docs/bkgrnd_ion_mstr_list.pdf.	POS	42	42.0338254	[M+H]+				
 
+
+To also consider list in
+https://www.maconda.bham.ac.uk
+
 '''
 
 
