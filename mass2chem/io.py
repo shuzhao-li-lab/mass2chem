@@ -1,37 +1,45 @@
 from metDataModel.core import Feature
 
-def textfile_to_features(infile):
-    return read_text_to_features(open(inputFile).read())
+MASS_RANGE = (50, 2500)
 
-def read_text_to_features(textValue, delimiter='\t'):
+
+def text_to_features(textValue, delimiter='\t'):
     '''
-    Column order is hard coded for now, as mz, retention_time, p_value, statistic, CompoundID_from_user
+    Parse text input to List of Feature instances.
+
+    Input
+    -----
+    Text string of feature table, Column order is hard coded for now, 
+    1st row as header = [mz, retention_time, p_value, statistic, CompoundID_from_user].
+    Each row is a unique feature. Redundant entries should be check prior to this function.
+
+    Return
+    -------
+    (List of metDataModel.Feature, list of excluded lines in input text)
     '''
-    #
-    lines = __check_redundant__( textValue.splitlines() )
-    self.header_fields = lines[0].rstrip().split(delimiter)
-    excluded_list = []
+    list_of_features, excluded_list = [], []
+    lines = textValue.splitlines()
+    header_fields = lines[0].rstrip().split(delimiter)
+
     for ii in range(len( lines )-1):
         y = lines[ii+1].split('\t')
-        
         CompoundID_from_user = ''
         if len(y) > 4: CompoundID_from_user = y[4]
         [mz, retention_time, p_value, statistic] = [float(x) for x in y[:4]]
         
-        # row_number, mz, retention_time, p_value, statistic, CompoundID_from_user
         if MASS_RANGE[0] < mz < MASS_RANGE[1]:
             # row # human-friendly, numbering from 1
-            self.ListOfMassFeatures.append( 
-                MassFeature('row'+str(ii+1), mz, retention_time, p_value, statistic, CompoundID_from_user) 
-                )
+            F = Feature(id='row'+str(ii+1))
+            [F.mz, F.rtime] = [mz, retention_time]
+            F.statistics['statistic_score'] = statistic
+            F.statistics['p_value'] = p_value
+            list_of_features.append( F )
         else:
-            excluded_list.append( (ii, mz, retention_time) )
-    
-    if excluded_list:
-        print( "Excluding %d features out of m/z range %s." %(len(excluded_list), str(MASS_RANGE)) )
+            excluded_list.append( lines[ii+1] )
 
-def __check_redundant__(L):
-    redundant = len(L) - len(set(L))
-    if redundant > 0:
-        print( "Your input file contains %d redundant features." %(redundant) )
-    return L
+    return (list_of_features, excluded_list)
+
+
+def textfile_to_features(infile):
+    return text_to_features(open(inputFile).read())
+
