@@ -1,4 +1,54 @@
+# Common contaminants, interfering ions, adducts etc. will need to be sync to Azimuth.
+#
+
 PROTON = 1.00727646677
+
+# atomic masses adopted from the National Institute of Standarts and Technology (NIST)
+#   (http://physics.nist.gov/PhysRefData/Compositions/index.html)
+atoms = {
+    'H': 
+}
+
+
+Carbon-12	C-12	12.000000
+Carbon-13	C-13	13.003355
+Hydrogen	H	1.007825
+Deuterium	D	2.014101
+Oxygen	O	15.994915
+Oxygen-18	O-18	17.999160
+Nitrogen-14	N-14	14.003074
+Nitrogen-15	N-15	15.000109
+Sulfur-32	S-32	31.972071
+Sulfur-34	S-34	33.967867
+Phosphorus	P	30.973762
+Silicium	Si	27.976927
+Sodium	Na	22.989769
+Potassium	K	38.963706
+Chlorine-35	Cl-35	34.968853
+Chlorine-37	Cl-37	36.965903
+Bromine-79	Br-79	78.918337
+Bromine 81	Br-81	80.916291
+Iodine	Iodine	126.904473
+Fluorine	F	18.998403
+Iron-54	Fe-54	53.939611
+Iron-56	Fe-56	55.934938
+Lithium-6	Li-6	6.015123
+Lithium-7	Li-7	7.016005
+Boron-10	B-10	10.012937
+Boron-11	B-11	11.009305
+Copper-63	Cu-63	62.929601
+Copper-65	Cu-65	64.927794
+Silver-107	Ag-107	106.905094
+Silver-109	Ag-109	108.904756
+Tin-120	Sn-120	119.902199
+Cesium	Cs-133	132.905450
+		
+Proton	H+	1.007276
+Electron	e-	0.000549
+
+
+
+
 
 isotope_shifts = {
     'C13': 1.0034,
@@ -17,6 +67,10 @@ adduct_shifts_neg = {
     'M+Cl[-]': 34.9689,
 
 }
+
+
+
+
 
 
 '''

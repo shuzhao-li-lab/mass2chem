@@ -14,13 +14,34 @@ from metDataModel.core import Feature, EmpiricalCompound
 
 from .io import *
 
+
+
+MASS_RANGE = (50, 2000)
+
+# fraction of total retention time, or of ranks of retention time
+# used to determine coelution of ions ad hoc
+RETENTION_TIME_TOLERANCE_FRAC = 0.02    
+
+# This will be cooridnated from common_mass?
+wanted_mz_delta_pos = {
+    'H+': 1.007276, 'C13': 1.0034, 'Na-H': 21.9820, '-H2O': 18.0106,
+}
+
+
+
+
 def group_features(list_of_features, algorithm='mummichog'):
     '''
+    Grouping features to empCpds.
+
+    This is mummichog algorithm, not using peak shapes, 
+    which are not available if input data are feature table.
+    Options can be added later when better connected with pre-processing.
+    Will add other algorithms (e.g. CAMERA) later.
+
     Input
     -----
     List of Feature instances, from the same Experiment
-
-    index features to integers, to save search time
 
     Return
     -------
@@ -68,20 +89,46 @@ def index_features(list_of_features):
     return indexed_features
 
 
-def look_mass_relatives(feature1, indexed_features, relationships):
+def look_mass_relatives(
+    feature0, 
+    indexed_features, 
+    mz_tolerance, 
+    rtime_tolerance, 
+    relationships):
     '''
-    Look up features in indexed_features that meet requirement of relationships to feature1.
+    Look up features in indexed_features that have defined mass differences to feature0,
+    and meet constraints of retention time.
 
     Input
     -----
-
+    feature0: 
+        feature of interest, metDataModel Feature instance.
+    indexed_features: 
+        Dictionary of list of Features, indexed to integer of m/z.
+    relationships: 
+        defined mass differences of interest, e.g. {'H+': 1.007276, 'C13': 1.0034, 'Na-H': 21.9820,}
+    mz_tolerance: 
+        m/z tolerance in matching.
+    rtime_tolerance: 
+        retention time tolerance in matching.
 
     Return
     -------
-    List of .
+    List of matched Features, e.g. [('H+', Feature), ...]
 
     '''
-    pass
+    matched = []
+    for r in relationships:
+        mass_to_look = feature0.mz + relationships[r]
+        # only need to look [floor-1, floor, floor+1]
+        floor = int(mass_to_look)
+        for F in indexed_features[floor-1] + indexed_features[floor] + indexed_features[floor+1]:
+            if __is_mz_match__(F, feature0):
+                if __is_coelution__(F, feature0):
+                    matched.append( (r,F) )
+
+    return matched
+    
 
 
 def grouping_mummichog(list_of_features, indexed_compounds):
@@ -118,6 +165,30 @@ def grouping_mummichog(list_of_features, indexed_compounds):
 
     # Group 2
     # extend to 
+
+
+
+
+
+
+        
+def __is_coelution__(self, massFeature1, massFeature2):
+    '''
+    True if retention times are within a tolerance window in time or ranks.
+    Not assuming massFeatures are sorted in this function.
+    '''
+    if abs(massFeature1.retention_time - massFeature2.retention_time) < self.rtime_tolerance or \
+        abs(massFeature1.retention_time_rank - massFeature2.retention_time_rank) < self.rtime_tolerance_rank:
+        return True
+    else:
+        return False
+
+
+def __is_mz_match__(mz1, mz2, mz_tolerance):
+    if abs(mz1 - mz2) < mz_tolerance:
+        return True
+    else:
+        return False
 
 
 

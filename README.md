@@ -27,7 +27,10 @@ Pychemy isn't good fit, as
 1) high-resolution calculation needs update
 2) Open babel binding is not worthy the trouble
 
-Included as stripped version in "mass2chem.chem" for now.
+E.g. in pychemy.adducts, it's wrong to use ('M+3H', 0.33,  1.0073),
+because the computing error in 0.33 (correct is 1/3) is far too large for mass precision.
+
+Pychemy is included as stripped version in "mass2chem.chem" for now, but only used for formula handling.
 
 
 ## Related
@@ -36,5 +39,5 @@ https://github.com/shuzhao-li/pychemy
 
 https://github.com/opencobra/cobrapy/blob/devel/cobra/core/formula.py (they are using average molecular weight, not mass spec oriented)
 
-https://github.com/shuzhao-li/Azimuth (Private)
+https://github.com/shuzhao-li/Azimuth 
 
