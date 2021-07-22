@@ -32,6 +32,8 @@ because the computing error in 0.33 (correct is 1/3) is far too large for mass p
 
 Pychemy is included as stripped version in "mass2chem.chem" for now, but only used for formula handling.
 
+For high-resolution measurements, electrons should be considered too.
+
 
 ## Related
 
