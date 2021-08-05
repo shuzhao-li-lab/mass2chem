@@ -204,21 +204,13 @@ def extend_annotate_anchorList(list_empCpds, unmatched_features, mode='pos',  MA
     updated_unmatched_features: Features not in matched_empCpds, unindexed
     '''
 
-    unmatched_features = __index_features__(unmatched_features)
+    unmatched_features = index_features(unmatched_features)
     return __extend_search__(list_empCpds, unmatched_features, mode,  MASS_RANGE, ppm)
 
 
 
 
-
-# -----------------------------------------------------------------------------
-#
-# Functions below are for internal use. Don't touch.
-#
-# -----------------------------------------------------------------------------
-
-
-def __read_features__(feature_table, 
+def read_features(feature_table, 
                         id_col=False, mz_col=1, rtime_col=2, 
                         intensity_cols=(4,10), delimiter="\t"):
     '''
@@ -267,7 +259,7 @@ def __read_features__(feature_table,
     return L
 
 
-def __index_features__(list_of_features, range_low=20, range_high=2000):
+def index_features(list_of_features, range_low=20, range_high=2000):
     '''
     Indexing a list of features to speed up search.
     A filter/Exception should be added for the mass range in production.
@@ -288,7 +280,7 @@ def __index_features__(list_of_features, range_low=20, range_high=2000):
     return L
 
 
-def __flag_contaminants__(indexed_features, contaminant_list, ppm=2):
+def flag_contaminants(indexed_features, contaminant_list, ppm=2):
     '''
     Flag features if they match to known contaminants;
     set F['potential_contaminants'] = [contaminants, ].
@@ -333,7 +325,7 @@ def __flag_contaminants__(indexed_features, contaminant_list, ppm=2):
     return indexed_features
 
 
-def __make_anchordict__(massDict_db, mode='pos', MASS_RANGE=MASS_RANGE):
+def make_anchordict(massDict_db, mode='pos', MASS_RANGE=MASS_RANGE):
     '''
     To build anchor mz list based on keys like 'C7H11N3O2_169.085127'.
     This core list is used to separate ions from a feature list to reduce search space.
@@ -366,6 +358,14 @@ def __make_anchordict__(massDict_db, mode='pos', MASS_RANGE=MASS_RANGE):
         kmass = float(k.split('_')[1])
         new[k] = [(x+kmass, y) for x,y in useList if MASS_RANGE[0] < x+kmass < MASS_RANGE[1]]
     return new
+
+
+
+# -----------------------------------------------------------------------------
+#
+# Functions below are for internal use. Don't touch.
+#
+# -----------------------------------------------------------------------------
 
 
 def __find_mz_indexed_features__(query_mz, indexed_features, limit_ppm=2):
