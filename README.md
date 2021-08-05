@@ -43,3 +43,7 @@ https://github.com/opencobra/cobrapy/blob/devel/cobra/core/formula.py (they are 
 
 https://github.com/shuzhao-li/Azimuth 
 
+## Dev note
+
+The organization of this repo will change, after compatibility check on application packages.
+ 

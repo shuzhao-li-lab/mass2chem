@@ -1,4 +1,7 @@
 '''
+
+This is currently used by mummichog3.
+
 Under development.
 
 Ultimately, adducts should be computed per compound based on chemical formula.
@@ -11,8 +14,13 @@ import re
 
 from .lib.common_mass import *
 
-# Pychemy is incluced as `chem`, a stripped down version.
+# Pychemy is incluced as `chem`, a stripped down version. 
+# # The mass calculation here isn't accurate enough. Should use PubChem data.
 from .chem.molmass import Formula
+
+def formula2mass( x):
+    # # The mass calculation here isn't accurate enough. Should use PubChem data.
+    return Formula( x ).isotope.mass
 
 
 
@@ -45,12 +53,6 @@ wanted_adduct_list = {
     # to add options
 
     }
-
-
-
-
-def formula2mass( x):
-    return Formula( x ).isotope.mass
 
 
 
@@ -96,6 +98,15 @@ def compute_adducts(mw, cFormula):
     print(model.dict_cpds_mass['C05587'])
 
     print (compute_adducts( model.dict_cpds_mass['C05587'], dict_formula['C05587'] ))
+
+
+
+
+
+    To-do:
+    Seprate pos and neg.
+    The isotopes, neutral losses and adducts need to be separated, and they have can multiplications.
+
 
     '''
     # PROTON = 1.00727646677
@@ -144,6 +155,9 @@ def compute_adducts(mw, cFormula):
         (mw - PROTON + 15.99491, 'M-H+O[-]', ''),
         ]
 
+
+    # to separate pos and neg; to add more rules
+
     dict_cFormula = parse_chemformula(cFormula)
     mydict = {}
     for x in addList:
@@ -151,4 +165,5 @@ def compute_adducts(mw, cFormula):
             mydict[x[1]] = x[0]
 
     return mydict
+
 
