@@ -89,14 +89,18 @@ mass_signatures = [
 (-16.019223533229997, 'M-NH3+H[1+]'),
 (-1.00727646677, '-H[-]'),
 (-0.0038764667699999755, 'M(C13)-H[-]'),
+(0.5017, 'double charged with C13'),
 (0.98402, 'OH <-> NH2, e.g. de-amidiation, CHNO compounds'),
 (0.98852353323, 'M(S34)-H[-]'),
 (0.98992353323, 'M(Cl37)-H[-]'),
+(1.0034, 'M(C13)'),
 (1.00727646677, '+H[1+]'),
 (1.34167646677, 'M(C13)+3H[3+]'),
 (1.50897646677, 'M(C13)+2H[2+]'),
 (1.97975, 'K+ <-> Cl-+2H2+, salt adduct'),
 (1.99566, 'F <-> OH, halogen exchange with hydroxy group (typically -F + OH)'),
+(1.9958, 'M(S34)'),
+(1.9972, 'M(Cl37)'),
 (2.01067646677, 'M(C13)+H[1+]'),
 (2.014552, '2H'),
 (2.01565, '± 2H, opening or forming of double bond'),
@@ -228,6 +232,4 @@ mass_signatures = [
 (484.17101, '+Tetraphenyl-tetramethyl-trisiloxane, (C28H32O2Si3), ( from silicon-based diffusion pump oil (DC7040, Dow corning)'),
 (546.18666, '+Pentaphenyl-trimethyl-trisiloxane, (C33H34O2Si3), ( from silicon-based diffusion pump oil (DC7050, Dow corning)')
 ]
-
-
 
