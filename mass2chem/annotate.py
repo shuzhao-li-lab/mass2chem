@@ -47,6 +47,12 @@ FEATURE_REGISTRY = {}
 EMPCPD_REGISTRY = {}
 
 
+def fake_mass_calibrate(list_features):
+    for F in list_features:
+        F['calibrated_mz'] = F['mz']
+    return list_features
+
+
 def mass_calibrate(list_features, calibration_mass_dict, limit_ppm=25):
     '''
     Use formula based reference mass list to calibrate m/z values in list_of_features.
@@ -329,7 +335,7 @@ def flag_contaminants(indexed_features, contaminant_list, ppm=2):
 
     for k,v in indexed_features.items():
         for F in v:
-            F['potential_contaminants'] = check_contaminant(F['mz'], contaminant_list, ppm)
+            F['potential_contaminants'] = check_contaminant(F['calibrated_mz'], contaminant_list, ppm)
 
     return indexed_features
 
@@ -379,7 +385,7 @@ def search_feature_pair(F1, F2, mass_signatures, ppm=2):
     '''
     _matched = []
     for msg in mass_signatures:
-        if abs( F2['mz'] - F1['mz'] - msg[0] ) / F2['mz'] < 0.000001*ppm:
+        if abs( F2['calibrated_mz'] - F1['calibrated_mz'] - msg[0] ) / F2['calibrated_mz'] < 0.000001*ppm:
             _matched.append( (F1['id'], F2['id'], msg[0], msg[1]) )
             
     return _matched
@@ -399,7 +405,7 @@ def __find_mz_indexed_features__(query_mz, indexed_features, limit_ppm=2):
     low_lim, high_lim = query_mz - _delta, query_mz + _delta
     for ii in range(int(low_lim), int(high_lim)+1):
         for F in indexed_features[ii]:
-            if low_lim < F['mz'] < high_lim:
+            if low_lim < F['calibrated_mz'] < high_lim:
                 matched.append(F)
 
     return matched
