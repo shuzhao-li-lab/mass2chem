@@ -15,7 +15,6 @@ To-do:
 
 # core data structures
 # from metDataModel import derived
-# from metDataModel.core import Feature, EmpiricalCompound
 "C05769": {"formula": "C36H34N4O8", "mw": 654.269, "name": "Coproporphyrin I", "adducts": {"M+2H[2+]": 328.14177646677, "M+Br81[-]": 735.1853, "M-H2O+H[1+]": 637.2656764667701, "M-C3H4O2+H[1+]": 583.25517646677, "M-HCOOH+H[1+]": 609.27087646677, "M-CO+H[1+]": 627.28127646677, "M+K[1+]": 693.23177646677, "M+Cl[-]": 689.2379, "M+Na-2H[-]": 674.23644706646, "M-CO2+H[1+]": 611.28647646677, "M+Na[1+]": 677.25827646677, "M-2H[2-]": 326.12722353323, "M+H[1+]": 655.27627646677, "M-H4O2+H[1+]": 619.25507646677, "M(C13)-H[-]": 654.26512353323, "M+HCOONa[1+]": 723.26367646677, "M(C13)+2H[2+]": 328.64347646677004, "M+HCOOK[1+]": 739.23757646677, "M+HCOO[-]": 699.266645, "M(C13)+3H[3+]": 219.43134313343666, "M-H[-]": 653.26172353323, "M+ACN-H[-]": 694.2882685332299, "M+Cl37[-]": 691.2349, "M-H2O-H[-]": 635.25112353323, "M+Br[-]": 733.1873, "M+3H[3+]": 219.09694313343667, "M+CH3COO[-]": 713.282295, "M(C13)+H[1+]": 656.2796764667701, "M[1+]": 654.269, "M-NH3+H[1+]": 638.2497764667701, "M+NaCl[1+]": 713.2348764667701, "M+H+Na[2+]": 339.13277646677, "M+H2O+H[1+]": 673.28687646677, "M-H+O[-]": 669.25663353323, "M+K-2H[-]": 690.20994706646}}, 
 "C05768": {"formula": "C36H44N4O8", "mw": 660.3159, "name": "Coproporphyrinogen I", "adducts": {"M+2H[2+]": 331.16522646677004, "M+Br81[-]": 741.2322, "M-H2O+H[1+]": 643.3125764667701, "M-C3H4O2+H[1+]": 589.30207646677, "M-HCOOH+H[1+]": 615.31777646677, "M-CO+H[1+]": 633.3281764667701, "M+K[1+]": 699.2786764667701, "M+Cl[-]": 695.2848, "M+Na-2H[-]": 680.28334706646, "M-CO2+H[1+]": 617.33337646677, "M+Na[1+]": 683.30517646677, "M-2H[2-]": 329.15067353323, "M+H[1+]": 661.3231764667701, "M-H4O2+H[1+]": 625.30197646677, "M(C13)-H[-]": 660.3120235332301, "M+HCOONa[1+]": 729.31057646677, "M(C13)+2H[2+]": 331.66692646677006, "M+HCOOK[1+]": 745.28447646677, "M+HCOO[-]": 705.3135450000001, "M(C13)+3H[3+]": 221.44697646677002, "M-H[-]": 659.30862353323, "M+ACN-H[-]": 700.33516853323, "M+Cl37[-]": 697.2818000000001, "M-H2O-H[-]": 641.2980235332301, "M+Br[-]": 739.2342000000001, "M+3H[3+]": 221.11257646677004, "M+CH3COO[-]": 719.329195, "M(C13)+H[1+]": 662.3265764667701, "M[1+]": 660.3159, "M-NH3+H[1+]": 644.2966764667701, "M+NaCl[1+]": 719.2817764667701, "M+H+Na[2+]": 342.15622646677, "M+H2O+H[1+]": 679.33377646677, "M-H+O[-]": 675.30353353323, "M+K-2H[-]": 696.2568470664601}}, 
 
@@ -25,6 +24,8 @@ To-do:
 import re
 import numpy as np
 from scipy.optimize import curve_fit
+
+# from metDataModel.core import import Feature, EmpiricalCompound
 
 # databases
 from .lib.common_mass import mass_signatures
@@ -41,10 +42,12 @@ calibration_mass_dict_pos = {'C4H9N3O2_131.069477': 132.07675346677001, 'C6H11NO
 MASS_RANGE = (50, 2000)
 # fraction of total retention time, or of ranks of retention time
 # used to determine coelution of ions ad hoc
-RETENTION_TIME_TOLERANCE_FRAC = 0.02    
+RETENTION_TIME_TOLERANCE_FRAC = 0.02
+FEATURE_REGISTRY = {}
+EMPCPD_REGISTRY = {}
 
 
-def mass_calibrate(indexed_features, calibration_mass_dict, limit_ppm=25):
+def mass_calibrate(list_features, calibration_mass_dict, limit_ppm=25):
     '''
     Use formula based reference mass list to calibrate m/z values in list_of_features.
     Assuming a large number of compounds in ref_mass_dict exist in the list_of_features,
@@ -56,7 +59,7 @@ def mass_calibrate(indexed_features, calibration_mass_dict, limit_ppm=25):
     
     Input
     -----
-    indexed_features: List of Feature instances, from the same Experiment.
+    list_features: List of Feature instances, from the same Experiment.
     calibration_mass_dict: list of known formulae and corresponding m/z values. 
                 E.g. in positive ESI {'C7H11N3O2_169.085127': 170.092403, 
                 'C3H10N2_74.084398': 75.091674, ...}
@@ -68,21 +71,27 @@ def mass_calibrate(indexed_features, calibration_mass_dict, limit_ppm=25):
     Return
     ------
     (a, b): coefficients in calibration model.
-    updated_indexed_features: {int_mz: [{'id': '', 'mz': 0, 'calibrated_mz': 0, 'rtime': 0, ...}, ...],
-                                ...}
+    updated_list_features: [{'id': '', 'mz': 0, 'calibrated_mz': 0, 'rtime': 0, ...}, ...]
     '''
     def _find_closest(query_mz, indexed_features, limit_ppm):
         # to find closest match of a theoretical m/z in indexed_features, under limit_ppm
-        relevant_features = indexed_features[int(query_mz)-1] + indexed_features[int(query_mz)] + indexed_features[int(query_mz)-1]
-        result = [(abs(query_mz-F['mz']), F['mz'], query_mz) for F in relevant_features]
+        # return (delta, feature_mz, query_mz) or None
+        _delta = query_mz * limit_ppm * 0.000001
+        _low_lim, _high_lim = query_mz - _delta, query_mz + _delta
+        result = []
+        for ii in range(int(_low_lim), int(_high_lim)+1):
+            for F in indexed_features[ii]:
+                result.append( (abs(query_mz-F['mz']), F['mz'], query_mz) )
+
         result.sort()
-        if result[0][0] < result[0][1] * limit_ppm * 0.000001:
+        if result[0][0] < _delta:
             return result[0]
         else:
             return None
 
     def _objective(x, a, b): return a * x + b
 
+    indexed_features = index_features(list_features)
     matched = []
     for m in calibration_mass_dict.values():
         best_pair = _find_closest(m, indexed_features, limit_ppm)
@@ -102,15 +111,17 @@ def mass_calibrate(indexed_features, calibration_mass_dict, limit_ppm=25):
         if abs(b) > 0.01 or abs(a-1) > 0.000025:
             print(" -- WARNING -- extreme parameters are usually bad, ", a, b)
 
-        updated_indexed_features = {}
-        for k,v in indexed_features.items():
-            updated_indexed_features[k] = []
-            for F in v:
-                F['calibrated_mz'] = a * F['mz'] + b
-                updated_indexed_features[k].append(F)
+        for F in list_features:
+            F['calibrated_mz'] = a * F['mz'] + b
 
-        return (a,b), updated_indexed_features
+        return (a,b), list_features
 
+
+def do_two_step_annotation(indexed_features, anchorDict, mode='pos',  MASS_RANGE=MASS_RANGE, ppm=2):
+    _empCpds, _unmatched_features = annotate_anchorList(indexed_features, anchorDict, ppm)
+    _empCpds, _unmatched_features = extend_annotate_anchorList( _empCpds, _unmatched_features, mode,  MASS_RANGE, ppm)
+    print("Got matched empCpds: ", len(_empCpds))
+    return _empCpds, _unmatched_features
 
 def annotate_anchorList(indexed_features, anchorList, ppm=2):
     '''
@@ -168,6 +179,7 @@ def annotate_anchorList(indexed_features, anchorList, ppm=2):
     # this example shows 504 empCpds are found in 4641 features.
     # The empCpds include 702 Features, of which 24 have multiple matches.
     '''
+
     matched_empCpds, unmatched_features, matched_features = [], [], []
     for anchor_compound in list(anchorList.items()):
         _m = __anchor_to_empCpd__(indexed_features, anchor_compound, ppm)
@@ -182,7 +194,6 @@ def annotate_anchorList(indexed_features, anchorList, ppm=2):
             if F['id'] not in matched_features:
                 unmatched_features.append(F)
 
-    print("Newly matched empCpds: ", len(matched_empCpds))
     print("Remaining unmatched featuress: ", len(unmatched_features))
     return matched_empCpds, unmatched_features
 
@@ -206,8 +217,6 @@ def extend_annotate_anchorList(list_empCpds, unmatched_features, mode='pos',  MA
 
     unmatched_features = index_features(unmatched_features)
     return __extend_search__(list_empCpds, unmatched_features, mode,  MASS_RANGE, ppm)
-
-
 
 
 def read_features(feature_table, 
@@ -359,6 +368,21 @@ def make_anchordict(massDict_db, mode='pos', MASS_RANGE=MASS_RANGE):
         new[k] = [(x+kmass, y) for x,y in useList if MASS_RANGE[0] < x+kmass < MASS_RANGE[1]]
     return new
 
+def search_feature_pair(F1, F2, mass_signatures, ppm=2):
+    '''
+    # unidirectional, F2-F1 only
+    # msg is like (1.00727646677, '+H[1+]'),
+
+    return
+    ------
+    list of matched: [('"FT1104"', '"FT1630"', 43.96389, '2Na-2H'), ...]
+    '''
+    _matched = []
+    for msg in mass_signatures:
+        if abs( F2['mz'] - F1['mz'] - msg[0] ) / F2['mz'] < 0.000001*ppm:
+            _matched.append( (F1['id'], F2['id'], msg[0], msg[1]) )
+            
+    return _matched
 
 
 # -----------------------------------------------------------------------------
@@ -424,7 +448,8 @@ def __anchor_to_empCpd__(indexed_features, anchor_compound, ppm):
 
 
 
-def __extend_search__(list_empCpds, indexed_unmatched_features, mode='pos',  MASS_RANGE=MASS_RANGE, ppm=2):
+def __extend_search__(list_empCpds, indexed_unmatched_features, 
+                            mode='pos',  MASS_RANGE=MASS_RANGE, ppm=2):
     '''
     Annotate indexed_features by extended adducts.
     
@@ -458,7 +483,6 @@ def __extend_search__(list_empCpds, indexed_unmatched_features, mode='pos',  MAS
             if F['id'] not in _tmp_matched:
                 updated_unmatched_features.append(F)
 
-    print("Newly matched empCpds: ", len(list_empCpds))
     print("Remaining unmatched featuress: ", len(updated_unmatched_features))
     return list_empCpds, updated_unmatched_features
 
