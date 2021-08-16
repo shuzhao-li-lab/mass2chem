@@ -21,7 +21,7 @@ To-do:
 
 '''
 
-import re
+# import re
 import numpy as np
 from scipy.optimize import curve_fit
 
@@ -33,6 +33,9 @@ from .lib.massDicts import massDict_hmdb_serum, massDict_hmdb
 from .lib.PubChemLite import PubChemLite
 
 from .lib.LCMS_contaminants import contaminants_pos, contaminants_neg
+
+from .formula import compute_adducts_formulae
+
 
 # ad hoc, will repalce with better lists for calibration, for each of pos and neg.
 calibration_mass_dict_pos = {'C4H9N3O2_131.069477': 132.07675346677001, 'C6H11NO2_129.078979': 130.08625546677, 'C5H9NO4_147.053158': 148.06043446677, 'C6H10O6_178.047738': 179.05501446677002, 'C9H11NO3_181.073893': 182.08116946677, 'C9H11NO2_165.078979': 166.08625546677, 'C9H8O3_164.047344': 165.05462046677002, 'C23H45NO4_399.334859': 400.34213546677, 'C2H7NO3S_125.014664': 126.02194046676999, 'C5H7NO3_129.042593': 130.04986946677002, 'C5H4N4O3_168.02834': 169.03561646677, 'C5H8O5_148.037173': 149.04444946677, 'C5H12O5_152.068473': 153.07574946677002, 'C9H8O2_148.052429': 149.05970546677, 'C5H10N2O3_146.069142': 147.07641846677, 'C17H33NO4_315.240959': 316.24823546677, 'C5H11NO2S_149.051049': 150.05832546677001, 'C5H10O2_102.06808': 103.07535646676999, 'C15H29NO4_287.209658': 288.21693446677, 'C8H17NO2_159.125929': 160.13320546677002, 'H2O4S_97.967379': 98.97465546676999, 'C6H13NO5_179.079373': 180.08664946677, 'C16H22O4_278.151809': 279.15908546677, 'C20H28O2_300.20893': 301.21620646677, 'C7H8N4O2_180.064726': 181.07200246677002, 'C7H6O2_122.036779': 123.04405546676999, 'C14H22N2O3_266.163043': 267.17031946677, 'C19H16O4_308.104859': 309.11213546677, 'C21H39NO4_369.287909': 370.29518546677, 'C8H6O4_166.026609': 167.03388546677002, 'C18H35NO_281.271865': 282.27914146677, 'C19H37NO4_343.272259': 344.27953546677, 'C26H52NO7P_521.34814': 522.35541646677, 'C7H8N2O2_152.058578': 153.06585446677002, 'C9H17NO2_171.125929': 172.13320546677002, 'C25H47NO4_425.350509': 426.35778546677, 'C8H10O3_154.062994': 155.07027046677, 'C25H45NO4_423.334859': 424.34213546677, 'C22H46NO7P_467.301189': 468.30846546677003, 'C23H48NO7P_481.316839': 482.32411546677, 'C24H48NO7P_493.316839': 494.32411546677, 'C26H54NO7P_523.36379': 524.37106646677, 'C26H48NO7P_517.316839': 518.32411546677, 'C28H52NO7P_545.34814': 546.35541646677, 'C28H50NO7P_543.332489': 544.33976546677, 'C24H50NO6P_479.337575': 480.34485146677, 'C25H52NO7P_509.34814': 510.35541646677, 'C21H38O4_354.27701': 355.28428646677, 'C17H31NO4_313.225308': 314.23258446677, 'C15H27NO4_285.194008': 286.20128446677, 'C19H35NO4_341.256609': 342.26388546677003, 'C22H37NO3_363.277344': 364.28462046677004, 'C19H22ClN5O_371.151288': 372.15856446677003, 'C24H30O6_414.204239': 415.21151546677, 'C21H25N_291.1987': 292.20597646677, 'C15H23NO2_249.172879': 250.18015546677, 
@@ -90,7 +93,7 @@ def mass_calibrate(list_features, calibration_mass_dict, limit_ppm=25):
                 result.append( (abs(query_mz-F['mz']), F['mz'], query_mz) )
 
         result.sort()
-        if result[0][0] < _delta:
+        if result and result[0][0] < _delta:
             return result[0]
         else:
             return None
@@ -123,11 +126,19 @@ def mass_calibrate(list_features, calibration_mass_dict, limit_ppm=25):
         return (a,b), list_features
 
 
-def do_two_step_annotation(indexed_features, anchorDict, mode='pos',  MASS_RANGE=MASS_RANGE, ppm=2):
-    _empCpds, _unmatched_features = annotate_anchorList(indexed_features, anchorDict, ppm)
-    _empCpds, _unmatched_features = extend_annotate_anchorList( _empCpds, _unmatched_features, mode,  MASS_RANGE, ppm)
+def do_two_step_annotation(indexed_features, anchorDict, mode='pos',  
+                                            MASS_RANGE=MASS_RANGE, ppm=2):
+    '''
+    Wrapper of annotate_anchorList and extend_annotate_anchorList.
+    '''
+    _empCpds, _unmatched_features = annotate_anchorList(
+                                            indexed_features, anchorDict, ppm)
+    _empCpds, _unmatched_features = extend_annotate_anchorList( 
+                                            _empCpds, _unmatched_features, mode,  MASS_RANGE, ppm)
     print("Got matched empCpds: ", len(_empCpds))
+
     return _empCpds, _unmatched_features
+
 
 def annotate_anchorList(indexed_features, anchorList, ppm=2):
     '''
@@ -475,12 +486,13 @@ def __extend_search__(list_empCpds, indexed_unmatched_features,
     '''
     _tmp_matched = []
     for E in list_empCpds:
-        for target_mz, ion in __compute_adducts__(E['neutral_base_mass'], E['neutral_formula'], mode) :
+        for target_mz, note, result_formula in compute_adducts_formulae(E['neutral_base_mass'], E['neutral_formula'], mode) :
             if MASS_RANGE[0] < target_mz < MASS_RANGE[1]:
                 found_features = __find_mz_indexed_features__(target_mz, indexed_unmatched_features, ppm)
                 for F in found_features: 
                     _tmp_matched.append(F['id'])
-                    F['ion'] = ion
+                    # format?
+                    F['ion'] = (result_formula, note)
                     E['list_of_features'].append(F)
 
     updated_unmatched_features = []
@@ -491,101 +503,4 @@ def __extend_search__(list_empCpds, indexed_unmatched_features,
 
     print("Remaining unmatched featuress: ", len(updated_unmatched_features))
     return list_empCpds, updated_unmatched_features
-
-
-
-def __compute_adducts__(mw, cFormula,  mode='pos'):
-    '''
-    Calculating isotopes and adducts.
-    C13, S34, Cl37 pos only applicable if the atom is in formula,
-    and others in `required subgroup`, as the last item in the tuples
-
-    The isotopes, neutral losses and adducts can have multiplications,
-    but the 3rd round search will take care of those.
-
-    Return
-    -------
-    List of adducts: e.g. [(58.53894096677, 'M+2H[2+]'), (39.36171946677, 'M+3H[3+]'), (117.07400546676999, 'M(C13)+H[1+]'),]
-
-    '''
-
-    def __parse_chemformula__(x):
-        '''This does not deal with nested groups in chemical formula.
-        Formula from HMDB 3.5 are compatible.
-        '''
-        p = re.findall(r'([A-Z][a-z]*)(\d*)', x)
-        d = {}
-        for pair in p: d[pair[0]] = int( pair[1] or 1 )
-        return d
-
-    def __check_sub__(Fm1, Fm2):
-        '''Check if Fm2 a subunit of Fm1; Dictionary representation of chem formula
-        '''
-        Fm2_in_Fm1 = True
-        Elements1 = Fm1.keys()
-        Elements2 = Fm2.keys()
-        if [x for x in Elements2 if x not in Elements1]:    #element not in Fm1
-            return False
-        else:
-            for e in Elements2:
-                if Fm2[e] > Fm1[e]: Fm2_in_Fm1 = False
-            return Fm2_in_Fm1
-
-    PROTON = 1.00727646677
-    if mode == 'pos': 
-        addList = [
-            #(mw, 'M[1+]', ''),                              # already in anchor empCpd
-            #(mw + PROTON, 'M+H[1+]', ''),
-            (mw/2 + PROTON, 'M+2H[2+]', ''),
-            (mw/3 + PROTON, 'M+3H[3+]', ''),
-            (mw +1.0034 + PROTON, 'M(C13)+H[1+]', 'C'),
-            (mw/2 + 0.5017 + PROTON, 'M(C13)+2H[2+]', 'C'),
-            (mw/3 + 0.3344 + PROTON, 'M(C13)+3H[3+]', 'C'),
-            (mw +1.9958 + PROTON, 'M(S34)+H[1+]', 'S'),
-            (mw +1.9972 + PROTON, 'M(Cl37)+H[1+]', 'Cl'),
-            #(mw + 21.9820 + PROTON, 'M+Na[1+]', ''),        # Na = 21.9820 + PROTON = 22.9893
-            (mw/2 + 10.991 + PROTON, 'M+H+Na[2+]', ''),
-            (mw + 37.9555 + PROTON, 'M+K[1+]', ''),         # K = 37.9555 + PROTON = 38.9628
-            (mw + 18.0106 + PROTON, 'M+H2O+H[1+]', ''), 
-            (mw - 18.0106 + PROTON, 'M-H2O+H[1+]', 'H2O'), 
-            (mw - 36.0212 + PROTON, 'M-H4O2+H[1+]', 'H4O2'),
-            (mw - 17.0265 + PROTON, 'M-NH3+H[1+]', 'NH3'),
-            (mw - 27.9950 + PROTON, 'M-CO+H[1+]', 'CO'),
-            (mw - 43.9898 + PROTON, 'M-CO2+H[1+]', 'CO2'),
-            (mw - 46.0054 + PROTON, 'M-HCOOH+H[1+]', 'H2CO2'),
-            (mw + 67.9874 + PROTON, 'M+HCOONa[1+]', ''),
-            (mw - 67.9874 + PROTON, 'M-HCOONa+H[1+]', 'HCO2Na'),
-            (mw + 57.9586 + PROTON, 'M+NaCl[1+]', ''), 
-            (mw - 72.0211 + PROTON, 'M-C3H4O2+H[1+]', 'C3H4O2'),
-            (mw + 83.9613 + PROTON, 'M+HCOOK[1+]', ''),
-            (mw - 83.9613 + PROTON, 'M-HCOOK+H[1+]', 'HCO2K'),
-            ]
-
-    elif mode == 'neg': 
-        addList = [
-            #(mw - PROTON, 'M-H[-]', ''),                   # already in anchor empCpd
-            (mw/2 - PROTON, 'M-2H[2-]', ''),
-            (mw + 1.0034 - PROTON, 'M(C13)-H[-]', 'C'),
-            (mw + 1.9958 - PROTON, 'M(S34)-H[-]', 'S'),
-            (mw + 1.9972 - PROTON, 'M(Cl37)-H[-]', 'Cl'),
-            (mw + 22.9893 - 2*PROTON, 'M+Na-2H[-]', ''),
-            (mw + 38.9628 - 2*PROTON, 'M+K-2H[-]', ''),
-            (mw - 18.0106 - PROTON, 'M-H2O-H[-]', 'H2O'),
-            #(mw + 34.9689, 'M+Cl[-]', ''),
-            (mw + 36.9659, 'M+Cl37[-]', ''),
-            (mw + 78.9183, 'M+Br[-]', ''),
-            (mw + 80.9163, 'M+Br81[-]', ''),
-            (mw + 2*12 + 3*1.007825 + 14.00307 - PROTON, 'M+ACN-H[-]', ''),
-            (mw + 1.007825 + 12 + 2*15.99491, 'M+HCOO[-]', ''),
-            (mw + 3*1.007825 + 2*12 + 2*15.99491, 'M+CH3COO[-]', ''),
-            (mw - PROTON + 15.99491, 'M-H+O[-]', ''),
-            ]
-
-    dict_cFormula = __parse_chemformula__(cFormula)
-    adducts2get = []
-    for x in addList:
-        if __check_sub__(dict_cFormula, __parse_chemformula__(x[2])):
-            adducts2get.append(x[:2])
-
-    return adducts2get
 
