@@ -2,7 +2,7 @@
 # atomic masses adopted from the National Institute of Standarts and Technology (NIST)
 #   (http://physics.nist.gov/PhysRefData/Compositions/index.html)
 atoms = {
-    'H': 
+    'H':
 }
 
 
@@ -38,7 +38,7 @@ Silver-107	Ag-107	106.905094
 Silver-109	Ag-109	108.904756
 Tin-120	Sn-120	119.902199
 Cesium	Cs-133	132.905450
-		
+
 Proton	H+	1.007276
 Electron	e-	0.000549
 
@@ -48,7 +48,7 @@ Electron	e-	0.000549
 #
 
 PROTON = 1.00727646677
-
+electron = 0.000549
 
 isotope_shifts = {
     'C13': 1.0034,
@@ -68,168 +68,167 @@ adduct_shifts_neg = {
 
 }
 
-
-
 # common mz diff in LC-MS
-# 
-mass_signatures = [
-(-82.95402353323, 'M-HCOOK+H[1+]'),
-(-71.01382353323001, 'M-C3H4O2+H[1+]'),
-(-66.98012353323, 'M-HCOONa+H[1+]'),
-(-46.005479, 'H2O+CO'),
-(-44.99812353323, 'M-HCOOH+H[1+]'),
-(-42.98252353323, 'M-CO2+H[1+]'),
-(-35.037114, 'NH3+H2O'),
-(-35.01392353323, 'M-H4O2+H[1+]'),
-(-26.98772353323, 'M-CO+H[1+]'),
-(-19.01787646677, 'M-H2O-H[-]'),
-(-18.010565, 'H2O'),
-(-17.026549, 'NH3'),
-(-17.00332353323, 'M-H2O+H[1+]'),
-(-16.019223533229997, 'M-NH3+H[1+]'),
-(-1.00727646677, '-H[-]'),
-(-0.0038764667699999755, 'M(C13)-H[-]'),
-(0.5017, 'double charged with C13'),
-(0.98402, 'OH <-> NH2, e.g. de-amidiation, CHNO compounds'),
-(0.98852353323, 'M(S34)-H[-]'),
-(0.98992353323, 'M(Cl37)-H[-]'),
-(1.0034, 'M(C13)'),
-(1.00727646677, '+H[1+]'),
-(1.34167646677, 'M(C13)+3H[3+]'),
-(1.50897646677, 'M(C13)+2H[2+]'),
-(1.97975, 'K+ <-> Cl-+2H2+, salt adduct'),
-(1.99566, 'F <-> OH, halogen exchange with hydroxy group (typically -F + OH)'),
-(1.9958, 'M(S34)'),
-(1.9972, 'M(Cl37)'),
-(2.01067646677, 'M(C13)+H[1+]'),
-(2.014552, '2H'),
-(2.01565, '± 2H, opening or forming of double bond'),
-(3.00307646677, 'M(S34)+H[1+]'),
-(3.00447646677, 'M(Cl37)+H[1+]'),
-(3.021828, '3H'),
-(4.9554, 'Na+<-> NH4+, salt adduct'),
-(7.00467, 'F <-> CN, halogen exchange with cyano group'),
-(8.96578, 'Cl <-> CN, halogen exchange with cyano group'),
-(11.99827646677, 'M+H+Na[2+]'),
-(13.97927, 'O <-> 2H, e.g. Oxidation follwed by H2O elimination'),
-(13.99419, 'Cl-+2H2+ <-> Na+, salt adduct'),
-(14.01565, "± CH2, alkane chains, waxes, fatty acids, methylation; or '-[C3H6ON] <-> -[C2H4ON], acrylamide versus iodoacetamide in cysteine alkylation (gels)"),
-(14.987633533230001, 'M-H+O[-]'),
-(15.97394, 'Na+<-> K+, salt adduct'),
-(15.97716, 'S <-> O, sulfur compounds'),
-(15.99492, '± O, e.g. oxidation/reduction'),
-(17.02655, '± NH3, ammonium adduct/neutral ammonium loss; or NH4+<-> H+, salt adduct'),
-(17.96611, 'Cl <-> OH, halogen exchange with hydroxy group (typically -Cl + OH)'),
-(17.99058, 'F <-> H, halogen exchange'),
-(18.01057, '± H2O, water addition/loss'),
-(18.033823, 'NH4+'),
-(18.99458, 'CN <-> COOH, nitrile compounds'),
-(19.01787646677, 'M+H2O+H[1+]'),
-(20.92933, 'K+<-> NH4+, salt adduct'),
-(20.97474706646, 'M+Na-2H[-]'),
-(21.98194, 'Na+<-> H+, salt adduct'),
-(22.989218, 'Na'),
-(23.996494, 'H+Na'),
-(24.99525, 'CN <-> H, nitrile compounds'),
-(25.00377, '2H+Na'),
-(27.0109, '± HCN, nitrile compounds'),
-(27.99492, '± CO'),
-(28.00615, '- 2N, nitrogen loss, e.g. azido compounds (N2)'),
-(28.0313, '± C2H4, natural alkane chains such as fatty acids'),
-(29.97418, 'NO2 <-> NH2, nitro compounds'),
-(29.99799, '-NO, nitroso compounds'),
-(31.97207, '± S, sulfur compounds'),
-(31.98983, '± 2O, oxygen loss'),
-(32.026215, 'MeOH'),
-(33.02146, '-NH2OH, loss from hydroxamic acids'),
-(33.96103, 'Cl <-> H, halogen exchange'),
-(33.98772, '± H2S, sulfur compounds'),
-(34.969402, 'Cl-'),
-(35.9767, 'Cl-+2H2+ <-> H+, salt adduct'),
-(36.94824706646, 'M+K-2H[-]'),
-(36.9664, 'M+Cl37[-]'),
-(37.955882, 'K-H'),
-(37.98916, '2CN <-> 2COOH, nitrile compounds'),
-(38.963158, 'K'),
-(39.970434, 'H+K'),
-(39.99248, 'Na+ <-> -H2O+H'),
-(40.01926853323, 'M+ACN-H[-]'),
-(40.0313, '"(C3H6O - H2O), acetone condensation after dehydration"'),
-(40.97771, '2H+K'),
-(41.026549, 'Acetonitrile'),
-(42.01057, '± COCH2'),
-(42.04695, '± C3H6, propylation'),
-(43.00581, '± CONH (wrong calc. in ref.)'),
-(43.94948, '79Br <-> Cl, halogen exchange (typically -Br +Cl)'),
-(43.96389, '2Na-2H'),
-(43.98983, '± CO2'),
-(44.998201, 'COOH-'),
-(45.94744, '81Br <-> Cl, halogen exchange (typically -Br +Cl)'),
-(45.978436, '2Na'),
-(46.00548, '± CO+H2O (carboxylic acid)'),
-(46.985712, 'H+2Na'),
-(47.96699, '± SO, sulfur compounds'),
-(52.91311, 'Fe3+ - 4H- <-> H-, salt adduct (probably only for polymers)'),
-(52.91526, '79Br <-> CN, halogen exchange with cyano group'),
-(54.91322, '81Br <-> CN, halogen exchange with cyano group'),
-(56.0626, '± C4H8, butylation'),
-(57.958622, 'NaCl'),
-(58.00548, '± CO2CH2'),
-(58.04187, '"+C3H6O, acetone condensation"'),
-(58.96587646677, 'M+NaCl[1+]'),
-(59.013295, 'M+CH3COO[-]'),
-(59.03711, '± C2H5NO, N-acetyl or cut from side chain of Asn in peptides'),
-(59.93783, 'Na+ + K+ - H+ <-> H+, salt adduct'),
-(61.9156, '79Br <-> OH, halogen exchange with hydroxy group (typically -Br + OH)'),
-(61.952376, 'Na+K'),
-(62.959652, 'H+Na+K'),
-(63.91355, '81Br <-> OH, halogen exchange with hydroxy group (typically -Br + OH)'),
-(63.9619, '± SO2, sulfur compounds'),
-(63.99829, '-CH3SOH, specific loss from singly oxidized methionine residues'),
-(65.945835, '3Na-3H'),
-(67.987424, 'NaCOOH'),
-(68.967654, '3Na'),
-(68.99467646676999, 'M+HCOONa[1+]'),
-(77.91051, '79Br <-> H, halogen exchange'),
-(77.926316, '2K'),
-(78.9183, 'M+Br[-]'),
-(78.933592, 'H+2K'),
-(79.90847, '81Br <-> H, halogen exchange'),
-(79.95682, '± SO3, sulfur compounds'),
-(80.9163, 'M+Br81[-]'),
-(83.961361, 'KCOOH'),
-(84.941594, '2Na+K'),
-(84.96857646676999, 'M+HCOOK[1+]'),
-(89.969369, 'NaCOOH +Na-H'),
-(91.93562, 'I <-> Cl, halogen exchange (typically -I +Cl)'),
-(97.96738, '± H2SO4, sulfur compounds'),
-(97.9769, '± H3PO4, phosphorous compounds'),
-(100.9014, 'I <-> CN, halogen exchange with cyano group'),
-(100.915534, 'Na+2K'),
-(109.90173, 'I <-> OH, halogen exchange with hydroxy group (typically -I + OH)'),
-(113.992903, 'HCOOH + NaCOOH'),
-(115.917245, '2X NaCl'),
-(116.889474, '3K'),
-(125.89665, 'I <-> H, halogen exchange'),
-(125.946046, 'NaCl + NaCOOH'),
-(135.974848, '2X NaCOOH'),
-(146.05791, '± [Deoxy-Hexose-H2O, C6O4H10], e.g. Fucose'),
-(162.05283, '± [Hexose-H2O, C6O5H10], e.g. Glucose, Galactose, Mannose, Fructose'),
-(164.06848, '± [Deoxy-Hexose-H2O, C6O5H12], e.g. Fucose'),
-(176.03209, '± [Glucuronic acid-H2O, C6O6H8]'),
-(180.06339, '± [Hexose, C6O6H12], e.g. Glucose, Galactose, Mannose, Fructose'),
-(194.04266, '± [Glucuronic acid, C6O7H10]'),
-(203.07937, '± [HexNAc-H2O, C8O5NH13], N-acetylhexoseamine'),
-(206.05791, '+ sinapic acid - H2O, (C11H12O5-H2O), MALDI-matrix for proteins, possible photo- or condensation adduct'),
-(221.08994, '± [HexNAc, C8O6NH15], N-acetylhexoseamine'),
-(289.07324, '± [Glutathione-H2O, C10O5N3SH15]'),
-(291.09542, '± [Neu5Ac-H2O, C11O8NH17], N-acetylneuraminic acid, sialic acid, NANA'),
-(305.06816, '± [Glutathione+O-H2O, C10O6N3SH15]'),
-(307.08381, '± [Glutathione, C10O6N3SH17]'),
-(309.10598, '± [Neu5Ac, C11O9NH19], N-acetylneuraminic acid, sialic acid, NANA'),
-(324.10565, '± [Sucrose-H2O, C12O10H20]'),
-(342.11622, '± [Sucrose, C12O11H22]'),
-(484.17101, '+Tetraphenyl-tetramethyl-trisiloxane, (C28H32O2Si3), ( from silicon-based diffusion pump oil (DC7040, Dow corning)'),
-(546.18666, '+Pentaphenyl-trimethyl-trisiloxane, (C33H34O2Si3), ( from silicon-based diffusion pump oil (DC7050, Dow corning)')
-]
 
+mass_signatures = [
+(-82.95402353323, 'M-HCOOK+H[1+]' , {'C':-1,'O':-2, 'K':-1, 'electron':-1}),#without 'electron':-1 delta not correct
+(-71.01382353323001, 'M-C3H4O2+H[1+]', {'C':-3,'H':-3, 'O':-2,'electron':-1}),#without 'electron':-1 delta not correct
+(-66.98012353323, 'M-HCOONa+H[1+]', {'C':-1 , 'O':-2,'Na':-1 ,'electron':-1}),#without 'electron':-1 delta not correct
+(-46.005479, 'H2O+CO',{'C':-1 , 'H':-2, 'O':-2 }),
+(-44.99812353323, 'M-HCOOH+H[1+]',{'C': -1, 'H':-1, 'O':-2,'electron':-1 }),#without 'electron':-1 delta not correct
+(-42.98252353323, 'M-CO2+H[1+]',{'C':-1 , 'H':1, 'O':-2,'electron':-1}),#without 'electron':-1 delta not correct
+(-35.037114, 'NH3+H2O',{'H':-5, 'O':-1, 'N':-1 ),
+(-35.01392353323, 'M-H4O2+H[1+]',{'H':-3, 'O':-2,'electron':-1}),#without 'electron':-1 delta not correct
+(-26.98772353323, 'M-CO+H[1+]',{'C':-1 , 'H':1, 'O':-1 ,'electron':-1}),#without 'electron':-1 delta not correct
+(-19.01787646677, 'M-H2O-H[-]', {'H':-3, 'O':-1 ,'electron':1}),#without 'electron':1 delta not correct
+(-18.010565, 'H2O',{'H':-2, 'O':-1}),
+(-17.026549, 'NH3',{'N':-1 , 'H':-3}),
+(-17.00332353323, 'M-H2O+H[1+]',{'H':-1,'O':-1 ,'electron':-1}),#without 'electron':-1 delta not correct
+(-16.019223533229997, 'M-NH3+H[1+]', {'N': -1, 'H':-2 ,'electron':-1}),#without 'electron':-1 delta not correct
+(-1.00727646677, '-H[-]',{'H':-1,'electron':1}),#without 'electron':1 delta not correct
+#//@shuzhao-li; I am not adding any delta differences based on charges from now onwards; lets discuss; let me know how to proceed
+#because for sure its need to be dealt with 
+(-0.0038764667699999755, 'M(C13)-H[-]',{ 'C':-1, '(C13)':1, 'H':-1}),#?[-] deal with it
+(0.5017, 'double charged with C13',{'(2C13)':1 }),
+(0.98402, 'OH <-> NH2, e.g. de-amidiation, CHNO compounds', {'O':1 , 'H':-1 ; 'N':-1}),
+(0.98852353323, 'M(S34)-H[-]', {'S':-1, '(S34)':1, 'H':-1}),#deal with [-]
+(0.98992353323, 'M(Cl37)-H[-]',{ 'Cl':-1,'(Cl37)':1, 'H':-1 }),#deal with [-]
+(1.0034, 'M(C13)',{'C':-1 , '(C13)':1 }),
+(1.00727646677, '+H[1+]',{'H':1 }),#deal with [+]
+(1.34167646677, 'M(C13)+3H[3+]',{'C':-1 , '(C13)':1 , 'H':3}),#?[3+]
+(1.50897646677, 'M(C13)+2H[2+]',{'C':-1 , '(C13)':1 , 'H':2}),#?[2+]
+(1.97975, 'K+ <-> Cl-+2H2+, salt adduct', {}),#??
+(1.99566, 'F <-> OH, halogen exchange with hydroxy group (typically -F + OH)', {'F':1 , 'O':-1, 'H':-1 }),
+(1.9958, 'M(S34)', {'S':-1, '(S34)':1,}),
+(1.9972, 'M(Cl37)',{'Cl':-1,'(Cl37)':1}),
+(2.01067646677, 'M(C13)+H[1+]',{'C':-1 , '(C13)':1 , 'H':1}),#?[1+]
+(2.014552, '2H', {'H':2 }),
+(2.01565, '± 2H, opening or forming of double bond', {'H':2}),
+(3.00307646677, 'M(S34)+H[1+]',{'S':-1,'(S34)':1 , 'H':1 }),#?[1+]
+(3.00447646677, 'M(Cl37)+H[1+]', {'Cl':-1, '(Cl37)':1, 'H':1}),#?[1+]
+(3.021828, '3H',{'H':3}),
+(4.9554, 'Na+<-> NH4+, salt adduct',{'Na':1 , 'N':-1 , 'H':-4}),
+(7.00467, 'F <-> CN, halogen exchange with cyano group',{'F':1 , 'C':-1, 'N':-1 }),
+(8.96578, 'Cl <-> CN, halogen exchange with cyano group',{'Cl':1 , 'C':-1, 'N':-1 }),
+(11.99827646677, 'M+H+Na[2+]',{'H':1 , 'Na':1}),# delta looks wrong; even just  H+Na gets us 23.99759; ?[2+] also needs to be taken care of still
+(13.97927, 'O <-> 2H, e.g. Oxidation follwed by H2O elimination', {'H':-2, 'O':1 }),
+(13.99419, 'Cl-+2H2+ <-> Na+, salt adduct',{}),#??
+(14.01565, "± CH2, alkane chains, waxes, fatty acids, methylation; or '-[C3H6ON] <-> -[C2H4ON], acrylamide versus iodoacetamide in cysteine alkylation (gels)",{'C':1, 'H':2 }),
+(14.987633533230001, 'M-H+O[-]',{'H':-1, 'O':1 }),#? -H+O=14.98709; 'H':-1, 'O':1 , 'electron':1=14.98764
+(15.97394, 'Na+<-> K+, salt adduct',{'Na':-1, 'K':1 }),
+(15.97716, 'S <-> O, sulfur compounds',{'S':1, 'O':-1 }),
+(15.99492, '± O, e.g. oxidation/reduction', {'O':1 }),
+(17.02655, '± NH3, ammonium adduct/neutral ammonium loss; or NH4+<-> H+, salt adduct',{'N':1, 'H':3 }),
+(17.96611, 'Cl <-> OH, halogen exchange with hydroxy group (typically -Cl + OH)',{'Cl':1, 'O':-1 , 'H':-1}),
+(17.99058, 'F <-> H, halogen exchange',{'F':1, 'H':-1 }),
+(18.01057, '± H2O, water addition/loss',{'H':2, 'O':1 } ),
+(18.033823, 'NH4+',{'N':1, 'H':4 }),
+(18.99458, 'CN <-> COOH, nitrile compounds', { 'N':-1 , 'H':1, 'O':2}),
+(19.01787646677, 'M+H2O+H[1+]',{ 'H': 3, 'O':1}),#?[1+]
+(20.92933, 'K+<-> NH4+, salt adduct', { 'K':1 , 'N':-1, 'H':-4}),
+(20.97474706646, 'M+Na-2H[-]', { 'Na':1 , 'H':-2 }),#?[-]
+(21.98194, 'Na+<-> H+, salt adduct', { 'Na':1 , 'H':-1}),
+(22.989218, 'Na',{ 'Na':1 }),
+(23.996494, 'H+Na',{ 'Na':1 , 'H':1}),
+(24.99525, 'CN <-> H, nitrile compounds', { 'C':1,'N':1 , 'H':-1}),
+(25.00377, '2H+Na',{ 'Na':1 , 'H':2}),
+(27.0109, '± HCN, nitrile compounds',{ 'N':1 , 'H':1, 'C':1}),
+(27.99492, '± CO', { 'C':1 , 'O':1}),
+(28.00615, '- 2N, nitrogen loss, e.g. azido compounds (N2)',{ 'N':2}),#?had to add here to get delta insterad of - 2N
+(28.0313, '± C2H4, natural alkane chains such as fatty acids',{ 'C':2 , 'H':4}),
+(29.97418, 'NO2 <-> NH2, nitro compounds',{ 'H':-2, 'O':2}),
+(29.99799, '-NO, nitroso compounds',{ 'N': -1, 'O':-1}),
+(31.97207, '± S, sulfur compounds',{ 'S': 1}),
+(31.98983, '± 2O, oxygen loss',{ 'O':2}),
+(32.026215, 'MeOH',{ 'C':1 , 'H':4, 'O':1}),
+(33.02146, '-NH2OH, loss from hydroxamic acids', { 'N':1 , 'H':3, 'O':1}),#?To get positive difference I had to add not minus  although formula says -NH2OH
+(33.96103, 'Cl <-> H, halogen exchange',{ 'Cl': 1, 'H':-1}),
+(33.98772, '± H2S, sulfur compounds',{ 'H': 2, 'S':1}),
+(34.969402, 'Cl-',{ 'Cl': -1}),#?take care of electron 
+(35.9767, 'Cl-+2H2+ <-> H+, salt adduct',{}),#??
+(36.94824706646, 'M+K-2H[-]',{ 'K':1, 'H':-2}),#? [-]
+(36.9664, 'M+Cl37[-]', { '(Cl37)':1}),#?[-]; rest based on this understanding (mw + 36.9659, 'M+Cl37[-]', {'(Cl37)':1}),
+(37.955882, 'K-H',{ 'K':1 , 'H':-1}),
+(37.98916, '2CN <-> 2COOH, nitrile compounds',{'N':-2,'O':4 , 'H':2}),
+(38.963158, 'K',{ 'K':1} ),
+(39.970434, 'H+K',{ 'K':1 , 'H':1}),
+(39.99248, 'Na+ <-> -H2O+H',{ 'Na':1 , 'O':1,'H':-1}),#??Na+O+H gets 39.99251; does not make sense to me
+(40.01926853323, 'M+ACN-H[-]', { 'C':2, 'N':1,'H':2}),#?[-]
+(40.0313, '"(C3H6O - H2O), acetone condensation after dehydration"', { 'H':4 ,'C':3}),
+(40.97771, '2H+K',{ 'H':2 ,'K':1}),
+(41.026549, 'Acetonitrile', { 'C':2 ,'H':3, 'N':1}),
+(42.01057, '± COCH2',{ 'C':2 ,'O':1, 'H':2} ),
+(42.04695, '± C3H6, propylation', { 'C':3 ,'H':6}),
+(43.00581, '± CONH (wrong calc. in ref.)',{ 'C':1 ,'O':1, 'N':1 'H':1}),
+(43.94948, '79Br <-> Cl, halogen exchange (typically -Br +Cl)', { 'Br':1 ,'Cl':-1}),
+(43.96389, '2Na-2H', { 'Na':2 ,'H':-2}),
+(43.98983, '± CO2', { 'C':1 ,'O':2}),
+(44.998201, 'COOH-', { 'C':1 ,'O':2, 'H':1}),#?[-] to be taken care of
+(45.94744, '81Br <-> Cl, halogen exchange (typically -Br +Cl)',{'Br81':1 ,'Cl':-1}),#?Br81 name is correct ?
+(45.978436, '2Na', { 'Na':2}),
+(46.00548, '± CO+H2O (carboxylic acid)', { 'C':1 ,'O':2, 'H':2}),
+(46.985712, 'H+2Na',{ 'H':1 ,'Na':2}),
+(47.96699, '± SO, sulfur compounds',{ 'S':1 ,'O':1}),
+(52.91311, 'Fe3+ - 4H- <-> H-, salt adduct (probably only for polymers)',{'Fe':3 ,'H':-4 }),#?dont know how to get correct delta here but its for sure 'Fe':3 ,'H':-4 not correct
+(52.91526, '79Br <-> CN, halogen exchange with cyano group',{'Br':1 ,'C':-1, 'N':-1} ),
+(54.91322, '81Br <-> CN, halogen exchange with cyano group', {'Br81':1 ,'C':-1, 'N':-1}),#?Br81 name is correct ?
+(56.0626, '± C4H8, butylation', {'C':4 ,'H':8}),
+(57.958622, 'NaCl', {'Na':1 ,'Cl':1}),
+(58.00548, '± CO2CH2', {'C':2 ,'O':2,'H':2}),
+(58.04187, '"+C3H6O, acetone condensation"',{'C':3 ,'H':6, 'O':1}),
+(58.96587646677, 'M+NaCl[1+]', {'Na':1 ,'Cl':1}),#? [1+] to take care of
+(59.013295, 'M+CH3COO[-]', {'C':2 ,'H':3, 'O':2}),#?dont need [-] in delta
+(59.03711, '± C2H5NO, N-acetyl or cut from side chain of Asn in peptides', {'C':2 ,'H':5, 'N':1, 'O':1}),
+(59.93783, 'Na+ + K+ - H+ <-> H+, salt adduct'),#?Na+K=61.95347 ; not getting correct delta here
+(61.9156, '79Br <-> OH, halogen exchange with hydroxy group (typically -Br + OH)', {'Br':1,'O':-1, 'H':-1}),
+(61.952376, 'Na+K', ,{'K':1, 'Na':1}),
+(62.959652, 'H+Na+K', {'H':1,'Na':1, 'K':1}),
+(63.91355, '81Br <-> OH, halogen exchange with hydroxy group (typically -Br + OH)', {'Br81':1,'O':-1, 'H':-1}),#?just that notation Br81 is ok?
+(63.9619, '± SO2, sulfur compounds',{'S':1,'O':2}),
+(63.99829, '-CH3SOH, specific loss from singly oxidized methionine residues',{'C':-1,'H':-4, 'S':-1, 'O':-1}),
+(65.945835, '3Na-3H',{'Na':3,'H':-3}),
+(67.987424, 'NaCOOH', {'C':1,'O':2, 'Na':1, 'H':1}),
+(68.967654, '3Na', {'Na':3}),
+(68.99467646676999, 'M+HCOONa[1+]',{'C':1,'O':2, 'Na':2, 'H':1}),#?[1+]
+(77.91051, '79Br <-> H, halogen exchange', {'Br':1,'H':-1}),
+(77.926316, '2K', {'K':2}),
+(78.9183, 'M+Br[-]', {'Br':1}),#?[-] didnt need to have its mass included ;
+(78.933592, 'H+2K', {'H':1,'K':2}),
+(79.90847, '81Br <-> H, halogen exchange', {'Br81':1,'H':-1}),#?Just that Br81 is correct to use
+(79.95682, '± SO3, sulfur compounds', {'O':3,S':1}),
+(80.9163, 'M+Br81[-]', {'Br81':1}),#?[-] didnt need to have its mass included ; and that Br81 is correct to use
+(83.961361, 'KCOOH', {'O':2,'C':1, 'K':1, 'H':1}),
+(84.941594, '2Na+K', {'Na':2,'K':1}),
+(84.96857646676999, 'M+HCOOK[1+]', {'C':1,'H':1, 'O':2, 'K':1}),#?[1+]
+(89.969369, 'NaCOOH +Na-H',{'C':1,'O':2, 'Na':2}),
+(91.93562, 'I <-> Cl, halogen exchange (typically -I +Cl)', {'I':-1 ,  'Cl':1}),
+(97.96738, '± H2SO4, sulfur compounds', {'O':4,'H':2, 'S':1}),
+(97.9769, '± H3PO4, phosphorous compounds', {'O':4,'H':3, 'P':1}),
+(100.9014, 'I <-> CN, halogen exchange with cyano group', {'C':-1 ,  'N':-1, 'I':1}),
+(100.915534, 'Na+2K', {'K':2, 'Na':1}),
+(109.90173, 'I <-> OH, halogen exchange with hydroxy group (typically -I + OH)', {'I':1 ,  'H':-1, 'O':-1}),
+(113.992903, 'HCOOH + NaCOOH', {'C':2 ,  'O':4,'H':3, 'Na':1}),
+(115.917245, '2X NaCl', {'Cl':2, 'Na':2}),
+(116.889474, '3K', {'K':3 }),
+(125.89665, 'I <-> H, halogen exchange', {'I':1 ,  'H':-1}),
+(125.946046, 'NaCl + NaCOOH',{'C':1 ,  'O':2,'H':1, 'Na':2, 'Cl':1}),
+(135.974848, '2X NaCOOH', {'C':2 ,  'O':4,'H':2, 'Na':2}),
+(146.05791, '± [Deoxy-Hexose-H2O, C6O4H10], e.g. Fucose', {'C':6 ,'O':4,'H':10}),
+(162.05283, '± [Hexose-H2O, C6O5H10], e.g. Glucose, Galactose, Mannose, Fructose', {'C':6 ,'O':5,'H':10}),
+(164.06848, '± [Deoxy-Hexose-H2O, C6O5H12], e.g. Fucose', {'C':6 , 'O':5,'H':12}),
+(176.03209, '± [Glucuronic acid-H2O, C6O6H8]',{'C':6,  'O':6,'H':8}),
+(180.06339, '± [Hexose, C6O6H12], e.g. Glucose, Galactose, Mannose, Fructose', {'C':6 ,  'O':6,'H':12}),
+(194.04266, '± [Glucuronic acid, C6O7H10]', {'C':6 ,  'O':7,'H':10}),
+(203.07937, '± [HexNAc-H2O, C8O5NH13], N-acetylhexoseamine', {'C':8 ,  'O':5,'N':1,'H':13}),
+(206.05791, '+ sinapic acid - H2O, (C11H12O5-H2O), MALDI-matrix for proteins, possible photo- or condensation adduct',{'C':11 ,  'O':4,'H':10}),
+(221.08994, '± [HexNAc, C8O6NH15], N-acetylhexoseamine', {'C':8,  'O':6, 'N':1, 'H':15}),
+(289.07324, '± [Glutathione-H2O, C10O5N3SH15]',{'C':10 ,  'O':5, 'N':3, 'S':1,'H':15}),
+(291.09542, '± [Neu5Ac-H2O, C11O8NH17], N-acetylneuraminic acid, sialic acid, NANA',{'C':11,  'O':8, 'N':1,H':17}),
+(305.06816, '± [Glutathione+O-H2O, C10O6N3SH15]', {'C':10 ,  'O':6, 'N':3, 'S':1,'H':15}),
+(307.08381, '± [Glutathione, C10O6N3SH17]',{'C':10 , 'O':6,'N':3, 'S':1, 'H':17}),
+(309.10598, '± [Neu5Ac, C11O9NH19], N-acetylneuraminic acid, sialic acid, NANA',{'C':11 , 'H':19, 'O':9, 'N':1}),
+(324.10565, '± [Sucrose-H2O, C12O10H20]',{'C':12 , 'H':20, 'O':10}),
+(342.11622, '± [Sucrose, C12O11H22]',{'C':12 , 'H':22, 'O':11}),
+(484.17101, '+Tetraphenyl-tetramethyl-trisiloxane, (C28H32O2Si3), ( from silicon-based diffusion pump oil (DC7040, Dow corning)',{'C':28 , 'H':32, 'O':2,'Si':3}),
+(546.18666, '+Pentaphenyl-trimethyl-trisiloxane, (C33H34O2Si3), ( from silicon-based diffusion pump oil (DC7050, Dow corning)', {'C':33 , 'H':34, 'O':2, 'Si':3})
+]
