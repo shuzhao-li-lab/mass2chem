@@ -118,9 +118,10 @@ def compute_adducts_formulae(mw, neutral_formula,  mode='pos'):
 
     A dictionary of element changes is ued in the calculation.
     Another function add_formula_dict checks validity of required numbers of atoms.
+    Electron is not considered in formula calculation, but may affected mass calculation.
 
     The isotopes, neutral losses and adducts can have multiplications,
-    but the 3rd round search will take care of those.
+    but multiple rounds of search will take care of those.
 
     Reaction notion in dictionary: 
     {'C': 3, 'H': 6, 'N': 2, 'O': 2} changed by {'C': -1, 'H': 1, 'O': -1} 

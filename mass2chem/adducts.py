@@ -99,14 +99,11 @@ def compute_adducts(mw, cFormula):
 
     print (compute_adducts( model.dict_cpds_mass['C05587'], dict_formula['C05587'] ))
 
-
-
-
-
-    To-do:
-    Seprate pos and neg.
-    The isotopes, neutral losses and adducts need to be separated, and they have can multiplications.
-
+    Note
+    ----
+    This is used by mummichog-3-dev.
+    Newer version of adduct function is in formula.py.
+    SL 2021-08-25
 
     '''
     # PROTON = 1.00727646677
