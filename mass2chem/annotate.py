@@ -1,12 +1,15 @@
 '''
 DB based, step wise, formula mass centered MS1 annotation
 
-use case:
+use case 1:
+    input feature table
+    output:
+        feature table with flags of contaminants, empCpd and corresponding ions
+        nonredundant table with one feature (selected by highest intensity) per empCpd, and empCpd annotations
 
-input feature table
-output:
-    feature table with flags of contaminants, empCpd and corresponding ions
-    nonredundant table with one feature (selected by highest intensity) per empCpd, and empCpd annotations
+use case 2:
+    single sample annotation, to faciliate correspondence in data preprocessing
+
 
 To-do:
 # to import library of authentic chemical standards
@@ -18,6 +21,8 @@ To-do:
 "C05769": {"formula": "C36H34N4O8", "mw": 654.269, "name": "Coproporphyrin I", "adducts": {"M+2H[2+]": 328.14177646677, "M+Br81[-]": 735.1853, "M-H2O+H[1+]": 637.2656764667701, "M-C3H4O2+H[1+]": 583.25517646677, "M-HCOOH+H[1+]": 609.27087646677, "M-CO+H[1+]": 627.28127646677, "M+K[1+]": 693.23177646677, "M+Cl[-]": 689.2379, "M+Na-2H[-]": 674.23644706646, "M-CO2+H[1+]": 611.28647646677, "M+Na[1+]": 677.25827646677, "M-2H[2-]": 326.12722353323, "M+H[1+]": 655.27627646677, "M-H4O2+H[1+]": 619.25507646677, "M(C13)-H[-]": 654.26512353323, "M+HCOONa[1+]": 723.26367646677, "M(C13)+2H[2+]": 328.64347646677004, "M+HCOOK[1+]": 739.23757646677, "M+HCOO[-]": 699.266645, "M(C13)+3H[3+]": 219.43134313343666, "M-H[-]": 653.26172353323, "M+ACN-H[-]": 694.2882685332299, "M+Cl37[-]": 691.2349, "M-H2O-H[-]": 635.25112353323, "M+Br[-]": 733.1873, "M+3H[3+]": 219.09694313343667, "M+CH3COO[-]": 713.282295, "M(C13)+H[1+]": 656.2796764667701, "M[1+]": 654.269, "M-NH3+H[1+]": 638.2497764667701, "M+NaCl[1+]": 713.2348764667701, "M+H+Na[2+]": 339.13277646677, "M+H2O+H[1+]": 673.28687646677, "M-H+O[-]": 669.25663353323, "M+K-2H[-]": 690.20994706646}}, 
 "C05768": {"formula": "C36H44N4O8", "mw": 660.3159, "name": "Coproporphyrinogen I", "adducts": {"M+2H[2+]": 331.16522646677004, "M+Br81[-]": 741.2322, "M-H2O+H[1+]": 643.3125764667701, "M-C3H4O2+H[1+]": 589.30207646677, "M-HCOOH+H[1+]": 615.31777646677, "M-CO+H[1+]": 633.3281764667701, "M+K[1+]": 699.2786764667701, "M+Cl[-]": 695.2848, "M+Na-2H[-]": 680.28334706646, "M-CO2+H[1+]": 617.33337646677, "M+Na[1+]": 683.30517646677, "M-2H[2-]": 329.15067353323, "M+H[1+]": 661.3231764667701, "M-H4O2+H[1+]": 625.30197646677, "M(C13)-H[-]": 660.3120235332301, "M+HCOONa[1+]": 729.31057646677, "M(C13)+2H[2+]": 331.66692646677006, "M+HCOOK[1+]": 745.28447646677, "M+HCOO[-]": 705.3135450000001, "M(C13)+3H[3+]": 221.44697646677002, "M-H[-]": 659.30862353323, "M+ACN-H[-]": 700.33516853323, "M+Cl37[-]": 697.2818000000001, "M-H2O-H[-]": 641.2980235332301, "M+Br[-]": 739.2342000000001, "M+3H[3+]": 221.11257646677004, "M+CH3COO[-]": 719.329195, "M(C13)+H[1+]": 662.3265764667701, "M[1+]": 660.3159, "M-NH3+H[1+]": 644.2966764667701, "M+NaCl[1+]": 719.2817764667701, "M+H+Na[2+]": 342.15622646677, "M+H2O+H[1+]": 679.33377646677, "M-H+O[-]": 675.30353353323, "M+K-2H[-]": 696.2568470664601}}, 
 
+DB1, DB2, DB3 for tiered searches.
+Precompute selectivity within each DB. Use in indexed format.
 
 '''
 
@@ -34,7 +39,9 @@ from .lib.PubChemLite import PubChemLite
 
 from .lib.LCMS_contaminants import contaminants_pos, contaminants_neg
 
+from .io import read_features, index_features
 from .formula import compute_adducts_formulae
+from .calibrate import mass_calibrate
 
 
 # ad hoc, will repalce with better lists for calibration, for each of pos and neg.
@@ -50,80 +57,16 @@ FEATURE_REGISTRY = {}
 EMPCPD_REGISTRY = {}
 
 
-def fake_mass_calibrate(list_features):
-    for F in list_features:
-        F['calibrated_mz'] = F['mz']
-    return list_features
-
-
-def mass_calibrate(list_features, calibration_mass_dict, limit_ppm=25):
+def mass_formula_annotate(mz, indexed_DB, ppm=2):
     '''
-    Use formula based reference mass list to calibrate m/z values in list_of_features.
-    Assuming a large number of compounds in ref_mass_dict exist in the list_of_features,
-    which should be the case in common biological matrices.
-    A regression model is built for (theoretical m/z) = a * (measured m/z) + b,
-    then the model is applied to all features to calculate a calibrated mz.
-
-    To-do: add 99% interval of ppm from fitting, and use for the whole expt.
-    
-    Input
-    -----
-    list_features: List of Feature instances, from the same Experiment.
-    calibration_mass_dict: list of known formulae and corresponding m/z values. 
-                E.g. in positive ESI {'C7H11N3O2_169.085127': 170.092403, 
-                'C3H10N2_74.084398': 75.091674, ...}
-    
-    limit_ppm: 25. Expecting a high-res instrument performs within 25 ppm, 
-                a should be 0.000025 within 1, and b should be < 0.01.
-                Otherwise, raise flag.
-
-    Return
-    ------
-    (a, b): coefficients in calibration model.
-    updated_list_features: [{'id': '', 'mz': 0, 'calibrated_mz': 0, 'rtime': 0, ...}, ...]
+    Find formula_mass in indexed_DB for mz.
     '''
-    def _find_closest(query_mz, indexed_features, limit_ppm):
-        # to find closest match of a theoretical m/z in indexed_features, under limit_ppm
-        # return (delta, feature_mz, query_mz) or None
-        _delta = query_mz * limit_ppm * 0.000001
-        _low_lim, _high_lim = query_mz - _delta, query_mz + _delta
-        result = []
-        for ii in range(int(_low_lim), int(_high_lim)+1):
-            for F in indexed_features[ii]:
-                result.append( (abs(query_mz-F['mz']), F['mz'], query_mz) )
+    matched = _find_closest(query_mz, indexed_features, ppm)
 
-        result.sort()
-        if result and result[0][0] < _delta:
-            return result[0]
-        else:
-            return None
 
-    def _objective(x, a, b): return a * x + b
 
-    indexed_features = index_features(list_features)
-    matched = []
-    for m in calibration_mass_dict.values():
-        best_pair = _find_closest(m, indexed_features, limit_ppm)
-        if best_pair:
-            matched.append(best_pair)
+    return matched
 
-    num_matched = len(matched)
-    if num_matched < 3:
-        print("Aborted. Found %d matched mass features." %num_matched)
-
-    else:
-        if num_matched < 10:
-            print("Warning. Using %d matched mass features, too few for regression." %num_matched)
-        X, Y = [x[1] for x in matched], [x[2] for x in matched]
-        popt, _ = curve_fit(_objective, X, Y)
-        a, b = popt
-        if abs(b) > 0.01 or abs(a-1) > 0.000025:
-            print(" -- WARNING -- extreme parameters are usually bad, ", a, b)
-
-        for F in list_features:
-            F['calibrated_mz'] = a * F['mz'] + b
-
-        return (a,b), list_features
 
 
 def do_two_step_annotation(indexed_features, anchorDict, mode='pos',  
@@ -236,74 +179,7 @@ def extend_annotate_anchorList(list_empCpds, unmatched_features, mode='pos',  MA
     return __extend_search__(list_empCpds, unmatched_features, mode,  MASS_RANGE, ppm)
 
 
-def read_features(feature_table, 
-                        id_col=False, mz_col=1, rtime_col=2, 
-                        intensity_cols=(4,10), delimiter="\t"):
-    '''
-    Read a text feature table into a list of features.
-    Internal use.
 
-    To-do: should switch to pd.read_table??
-
-    Input
-    -----
-    feature_table: Tab delimited feature table. First line as header.
-                    Recommended col 0 for ID, col 1 for m/z, col 2 for rtime.
-    id_col: column for id. If feature ID is not given, row_number is used as ID.
-    mz_col: column for m/z.
-    rtime_col: column for retention time.
-    intensity_cols: range of columns for intensity values.
-
-    Return
-    ------
-    List of features: [{'id': '', 'mz': 0, 'rtime': 0, 
-                        intensities: [], 'representative_intensity': 0, ...}, 
-                        ...], 
-                        where representative_intensity is mean value.
-    '''
-    featureLines = open(feature_table).read().splitlines()
-    header = featureLines[0].split(delimiter)
-    num_features = len(featureLines)-1
-    # sanity check
-    print("table headers ordered: ", header[mz_col], header[rtime_col])
-    print("Read %d feature lines" %num_features)
-    L = []
-    for ii in range(1, num_features+1):
-        if featureLines[ii].strip():
-            a = featureLines[ii].split(delimiter)
-            if isinstance(id_col, int):         # feature id specified
-                iid = a[id_col]
-            else:
-                iid = 'row'+str(ii)
-            xstart, xend = intensity_cols
-            intensities = [float(x) for x in a[xstart: xend]]
-            L.append({
-                'id': iid, 'mz': float(a[mz_col]), 'rtime': float(a[rtime_col]),
-                'intensities': intensities,
-                'representative_intensity': np.mean(intensities),
-            })
-    return L
-
-
-def index_features(list_of_features, range_low=20, range_high=2000):
-    '''
-    Indexing a list of features to speed up search.
-    A filter/Exception should be added for the mass range in production.
-    Internal use.
-
-    Input
-    -----
-    List of features, [{'id': '', 'mz': 0, 'rtime': 0, ...}, ...]
-    range_low, range_high: m/z range, default [20, 2000]. 
-
-    Return
-    ------
-    Dictionary of features, indexed using integer of m/z.
-    '''
-    L = {}
-    for ii in range(range_low, range_high+1): L[ii] = []
-    for F in list_of_features: L[int(F['mz'])].append(F)
-    return L
 
 
 def flag_contaminants(indexed_features, contaminant_list, ppm=2):
