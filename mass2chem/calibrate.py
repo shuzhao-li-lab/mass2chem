@@ -23,24 +23,12 @@ Suggested use:
 from .calibrate import normal_error_distribution as mass_calibrate
 
 
-
 These have to be based on high-selectivity ions, otherwise ground truth is hard to establish,
 and the statistics is not valid.
-
 
 This should be done after correspondence of high-selectivity features 
 (after peak detection and initial annotation).
 If the mass calibration is off, correct shift (mu) and use empirical stdev to recalculate selectivity.
-
-
-mu, std = norm.fit(np.array(Y)-np.array(X))
-print(mu, std)
-
-p = norm.pdf(xx, mu, std)
-plt.plot(xx, p, 'kx', linewidth=2)
-
-
-
 
 
 
@@ -50,9 +38,31 @@ from scipy.stats import norm
 
 from .io import index_features
 
+def mass_calibrate(mz_List_1, mz_List_2):
+    '''
+    mz_List_1, mz_List_2 as numpy arrays.
+    return
+    ------
+    The mean (List2 - List1) and standard deviation of mass differences. 
+    The latter can be used as a guide of precision in an experiment.
+
+    Example
+    -------
+    p = norm.pdf(xx, mu, std)
+    plt.plot(xx, p, 'kx', linewidth=2)
+
+    '''
+    return norm.fit(mz_List_2 - mz_List_1)
 
 
-def normal_error_distribution(query_features, anchor_features, limit_ppm=10):
+
+# -----------------------------------------------------------------------------
+#
+# Prototype code with short-handed data structure
+#
+# -----------------------------------------------------------------------------
+
+def old_mass_calibrate(query_features, anchor_features, limit_ppm=10):
     '''
     Use a list of common metabolites to calibrate m/z values in query_features 
     (e.g. all m/z values in a smaple).
@@ -82,8 +92,6 @@ def normal_error_distribution(query_features, anchor_features, limit_ppm=10):
         best_pair = _find_closest(m, indexed_features, limit_ppm)
         if best_pair:
             matched.append(best_pair)
-
-
 
     def _find_closest(query_mz, indexed_features, limit_ppm):
         # to find closest match of a theoretical m/z in indexed_features, under limit_ppm
@@ -129,18 +137,7 @@ def normal_error_distribution(query_features, anchor_features, limit_ppm=10):
         return (a,b), list_features
 
 
-
-
-def normal_error_distribution_2():
-    pass
-
-
-
-
-
-
 def fake_mass_calibrate(list_features):
     for F in list_features:
         F['calibrated_mz'] = F['mz']
     return list_features
-

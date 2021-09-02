@@ -13,8 +13,6 @@ use case 2:
 
 To-do:
 # to import library of authentic chemical standards
-# from metDataModel.derived import userData, metabolicModel
-# from .io import *
 
 # core data structures
 # from metDataModel import derived
@@ -41,7 +39,8 @@ from .lib.LCMS_contaminants import contaminants_pos, contaminants_neg
 
 from .io import read_features, index_features
 from .formula import compute_adducts_formulae
-from .calibrate import mass_calibrate
+
+# from .calibrate import mass_calibrate
 
 
 # ad hoc, will repalce with better lists for calibration, for each of pos and neg.
@@ -53,21 +52,52 @@ MASS_RANGE = (50, 2000)
 # fraction of total retention time, or of ranks of retention time
 # used to determine coelution of ions ad hoc
 RETENTION_TIME_TOLERANCE_FRAC = 0.02
+
 FEATURE_REGISTRY = {}
 EMPCPD_REGISTRY = {}
 
 
-def mass_formula_annotate(mz, indexed_DB, ppm=2):
+
+def list_search_formula_mass_db(list_query_mz, indexed_DB, limit_ppm=10):
+    return [search_formula_mass_db(query_mz, indexed_DB, limit_ppm) for query_mz in list_query_mz]
+
+
+def search_formula_mass_db(query_mz, indexed_DB, limit_ppm=10):
     '''
-    Find formula_mass in indexed_DB for mz.
+    Find best matched formula_mass in indexed_DB for query_mz within ppm limit.
+    
+    indexed_DB: # m/z, formula_mass, ion, selectivity
+        e.g. DB_1[199] = 
+        [[199.02130599999998, 'C6H8O6_176.032088', 'Na', 0.9380613934169085], 
+        [199.024074, 'C4H10NO6P_199.024574', 'M*', 0.9380612687488975], 
+        [199.03976846677, 'C5H12ClN2O2P_198.032492', 'M+H[1+]', ...]
+
+    return
+    ------
+    Closest match as a list of [m/z, formula_mass, ion, selectivity];
+    None if out of ppm limit.
     '''
-    matched = _find_closest(query_mz, indexed_features, ppm)
+    _delta = query_mz * limit_ppm * 0.000001
+    _low_lim, _high_lim = query_mz - _delta, query_mz + _delta
+    result = []
+    for ii in range(int(_low_lim), int(_high_lim)+1):
+        for F in indexed_DB[ii]:
+            result.append( (abs(query_mz-F[0]), F) )
+
+    result.sort()
+    if result and result[0][0] < _delta:
+        return result[0][1]
+    else:
+        return None
 
 
 
-    return matched
 
-
+# -----------------------------------------------------------------------------
+#
+# Prototype code with short-handed data structure, still used for particular cases
+#
+# -----------------------------------------------------------------------------
 
 def do_two_step_annotation(indexed_features, anchorDict, mode='pos',  
                                             MASS_RANGE=MASS_RANGE, ppm=2):

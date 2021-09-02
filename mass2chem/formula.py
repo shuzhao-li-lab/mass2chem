@@ -13,6 +13,12 @@ Primary goal in the Mummichog suite is to compute:
 '''
 
 import re
+from collections import namedtuple
+
+PROTON = 1.00727646677
+electron = 0.000549
+
+Ion = namedtuple('Ion', ['mz', 'ion', 'delta_formula'])
 
 
 def parse_chemformula_dict(x):
@@ -112,7 +118,95 @@ def dict_to_hill_formula(d):
     return formula
 
 
-def compute_adducts_formulae(mw, neutral_formula,  mode='pos'):
+def __get_adduct_list__(mw, mode, primary_only):
+    '''
+    Return list of adduct or isotope, [(mz, ion, formula_change_dictionary), ...].
+    Next step compute_adducts_formulae will validate the ion.
+    Enforcing primary ions because others are not valid without them;
+    but logic implemented in search functions, not here.
+    '''
+
+    if mode == 'pos': 
+        primaryList = [
+            (mw - electron, 'M[1+]', {}),                              # e not changing formula
+            (mw + PROTON, 'M+H[1+]', {'H': 1}),                        #  
+            (mw + 21.9820 + PROTON, 'M+Na[1+]', {'Na': 1}),            # Na = 21.9820 + PROTON = 22.9893
+            (mw + 18.0106 + PROTON, 'M+H2O+H[1+]', {'H': 3, 'O':1}),   #  
+            ]
+        if primary_only:
+            return [Ion(*L) for L in primaryList]
+
+        else:
+            extendedList = [
+                # Use {'C':-1} to force check that C exists in formula
+                (mw +1.0034 - electron, 'M(C13)[1+]', {'C':-1, '(C13)':1}), 
+                (mw +1.0034 + PROTON, 'M(C13)+H[1+]', {'C':-1, '(C13)':1, 'H':1}),
+                
+                (mw/2 + PROTON, 'M+2H[2+]', {'H': 2}),
+                (mw/3 + PROTON, 'M+3H[3+]', {'H': 3}),
+
+                (mw/2 + 0.5017 + PROTON, 'M(C13)+2H[2+]', {'C':-1, '(C13)':1, 'H':2}),
+                (mw/3 + 0.3344 + PROTON, 'M(C13)+3H[3+]', {'C':-1, '(C13)':1, 'H':3}),
+                # Sulfur:  32S (95.02%), 33S (0.75%), 34S (4.21%), .
+                (mw +1.9958 + PROTON, 'M(S34)+H[1+]', {'S':-1, '(S34)':1, 'H':1}),
+                # Chlorine has two stable isotopes, 35Cl (75.77%) and 37Cl (24.23%)
+                (mw +1.9972 + PROTON, 'M(Cl37)+H[1+]', {'Cl':-1, '(Cl37)':1, 'H':1}),
+                
+                (mw/2 + 10.991 + PROTON, 'M+H+Na[2+]', {'H':1, 'Na':1}),
+                (mw + 37.9555 + PROTON, 'M+K[1+]', {'K':1}),         # K = 37.9555 + PROTON = 38.9628
+                (mw + 57.9586 + PROTON, 'M+NaCl[1+]', {'Na': 1, 'Cl': 1}), 
+                (mw + 18.033823, 'M+NH4[1+]', {'H': 4, 'N': 1}),
+                
+                # Not checking existance of chemical groups here, but should do so when switching to structure based calculations
+                (mw - 18.0106 + PROTON, 'M-H2O+H[1+]', {'H': -1, 'O': -1}), 
+                (mw - 36.0212 + PROTON, 'M-H4O2+H[1+]', {'H': -3, 'O': -2}),
+                (mw - 17.0265 + PROTON, 'M-NH3+H[1+]', {'H': -2, 'N': -1}),
+                (mw - 27.9950 + PROTON, 'M-CO+H[1+]', {'H': 1, 'C': -1, 'O': -1}),
+                (mw - 43.9898 + PROTON, 'M-CO2+H[1+]', {'H': 1, 'C': -1, 'O': -2}),
+                (mw - 46.0054 + PROTON, 'M-HCOOH+H[1+]', {'H': -1, 'C': -1, 'O': -2}),
+                (mw + 67.9874 + PROTON, 'M+HCOONa[1+]', {'H': 1, 'C': 1, 'O': 2, 'Na': 1}),
+                (mw - 72.0211 + PROTON, 'M-C3H4O2+H[1+]', {'H': -3, 'C': -3, 'O': -2}),
+                (mw + 83.9613 + PROTON, 'M+HCOOK[1+]', {'H': 1, 'C': 1, 'O': 2, 'K': 1}),
+
+                # removed, too infrequent
+                # (mw - 67.9874 + PROTON, 'M-HCOONa+H[1+]', 'HCO2Na'),
+                # (mw - 83.9613 + PROTON, 'M-HCOOK+H[1+]', 'HCO2K'),
+                ]
+            return [Ion(*L) for L in primaryList + extendedList]
+
+    elif mode == 'neg':
+        primaryList = [
+            (mw - PROTON, 'M-H[-]', {'H': -1}),       
+            (mw + electron, 'M[-]', {}), 
+            (mw - 18.0106 - PROTON, 'M-H2O-H[-]', {'H': -3, 'O':-1}),   
+            (mw + 34.9689, 'M+Cl[-]', {'Cl':1}),
+            ]
+        if primary_only:
+            return [Ion(*L) for L in primaryList]
+
+        else:
+            extendedList = [
+                (mw + 1.0034 - PROTON, 'M(C13)-H[-]', {'C':-1, '(C13)':1, 'H':-1}),
+                (mw + 36.9659, 'M+Cl37[-]', {'(Cl37)':1}),
+                (mw + 1.9972 - PROTON, 'M(Cl37)-H[-]', {'Cl':-1, '(Cl37)':1, 'H':-1}),
+                (mw + 1.9958 - PROTON, 'M(S34)-H[-]', {'S':-1, '(S34)':1, 'H':-1}),
+
+                (mw/2 - PROTON, 'M-2H[2-]', {'H': -2}),
+                (mw + 22.9893 - 2*PROTON, 'M+Na-2H[-]', {'H':-2, 'Na':1}),
+                (mw + 38.9628 - 2*PROTON, 'M+K-2H[-]', {'H':-2, 'K':1}),
+                
+                (mw + 78.9183, 'M+Br[-]', {'Br':1}),
+                (mw + 80.9163, 'M+Br81[-]', {'(Br81)':1}),
+
+                (mw + 40.01926853323, 'M+ACN-H[-]', {'C':2, 'H':2, 'N':1}),
+                (mw + 1.007825 + 12 + 2*15.99491, 'M+HCOO[-]', {'C':1, 'H':1, 'O':2}),
+                (mw + 59.013295, 'M+CH3COO[-]', {'C':2, 'H':3, 'O':2}),
+                (mw - PROTON + 15.99491, 'M-H+O[-]', {'H': -1, 'O':1}),
+                ]
+            return [Ion(*L) for L in primaryList + extendedList]
+
+
+def compute_adducts_formulae(mw, neutral_formula,  mode='pos', primary_only=False):
     '''
     Calculating isotopes and adducts, return m/z and formulae.
 
@@ -132,87 +226,12 @@ def compute_adducts_formulae(mw, neutral_formula,  mode='pos'):
     List of adducts: e.g. [(58.53894096677, 'M+2H[2+]', result_formula), ...,]
 
     '''
-
-    PROTON = 1.00727646677
-    electron = 0.000549
-
-    if mode == 'pos': 
-        addList = [
-            # math function, readable notion, computable dictionary
-            # tiers: primary 4; isotopes; others - but logic implemented in search functions, not here
-
-            #  anchor empCpds
-            (mw - electron, 'M[1+]', {}),                              # e not changing formula
-            (mw + PROTON, 'M+H[1+]', {'H': 1}),                        #  
-            (mw + 21.9820 + PROTON, 'M+Na[1+]', {'Na': 1}),            # Na = 21.9820 + PROTON = 22.9893
-            (mw + 18.0106 + PROTON, 'M+H2O+H[1+]', {'H': 3, 'O':1}),   #  
-
-            # Use {'C':-1} to force check that C exists in formula
-            (mw +1.0034 - electron, 'M(C13)[1+]', {'C':-1, '(C13)':1}), 
-            (mw +1.0034 + PROTON, 'M(C13)+H[1+]', {'C':-1, '(C13)':1, 'H':1}),
-            
-            (mw/2 + PROTON, 'M+2H[2+]', {'H': 2}),
-            (mw/3 + PROTON, 'M+3H[3+]', {'H': 3}),
-
-            (mw/2 + 0.5017 + PROTON, 'M(C13)+2H[2+]', {'C':-1, '(C13)':1, 'H':2}),
-            (mw/3 + 0.3344 + PROTON, 'M(C13)+3H[3+]', {'C':-1, '(C13)':1, 'H':3}),
-            # Sulfur:  32S (95.02%), 33S (0.75%), 34S (4.21%), .
-            (mw +1.9958 + PROTON, 'M(S34)+H[1+]', {'S':-1, '(S34)':1, 'H':1}),
-            # Chlorine has two stable isotopes, 35Cl (75.77%) and 37Cl (24.23%)
-            (mw +1.9972 + PROTON, 'M(Cl37)+H[1+]', {'Cl':-1, '(Cl37)':1, 'H':1}),
-            
-            (mw/2 + 10.991 + PROTON, 'M+H+Na[2+]', {'H':1, 'Na':1}),
-            (mw + 37.9555 + PROTON, 'M+K[1+]', {'K':1}),         # K = 37.9555 + PROTON = 38.9628
-            (mw + 57.9586 + PROTON, 'M+NaCl[1+]', {'Na': 1, 'Cl': 1}), 
-            (mw + 18.033823, 'M+NH4[1+]', {'H': 4, 'N': 1}),
-            
-            # Not checking existance of chemical groups here, but should do so when switching to structure based calculations
-            (mw - 18.0106 + PROTON, 'M-H2O+H[1+]', {'H': -1, 'O': -1}), 
-            (mw - 36.0212 + PROTON, 'M-H4O2+H[1+]', {'H': -3, 'O': -2}),
-            (mw - 17.0265 + PROTON, 'M-NH3+H[1+]', {'H': -2, 'N': -1}),
-            (mw - 27.9950 + PROTON, 'M-CO+H[1+]', {'H': 1, 'C': -1, 'O': -1}),
-            (mw - 43.9898 + PROTON, 'M-CO2+H[1+]', {'H': 1, 'C': -1, 'O': -2}),
-            (mw - 46.0054 + PROTON, 'M-HCOOH+H[1+]', {'H': -1, 'C': -1, 'O': -2}),
-            (mw + 67.9874 + PROTON, 'M+HCOONa[1+]', {'H': 1, 'C': 1, 'O': 2, 'Na': 1}),
-            (mw - 72.0211 + PROTON, 'M-C3H4O2+H[1+]', {'H': -3, 'C': -3, 'O': -2}),
-            (mw + 83.9613 + PROTON, 'M+HCOOK[1+]', {'H': 1, 'C': 1, 'O': 2, 'K': 1}),
-
-            # removing, too infrequent
-            # (mw - 67.9874 + PROTON, 'M-HCOONa+H[1+]', 'HCO2Na'),
-            # (mw - 83.9613 + PROTON, 'M-HCOOK+H[1+]', 'HCO2K'),
-            ]
-
-    elif mode == 'neg': 
-        addList = [
-            #  anchor empCpds
-            (mw - PROTON, 'M-H[-]', {'H': -1}),       
-            (mw + electron, 'M[-]', {}), 
-            (mw - 18.0106 - PROTON, 'M-H2O-H[-]', {'H': -3, 'O':-1}),   
-            (mw + 34.9689, 'M+Cl[-]', {'Cl':1}),
-
-            (mw + 1.0034 - PROTON, 'M(C13)-H[-]', {'C':-1, '(C13)':1, 'H':-1}),
-            (mw + 36.9659, 'M+Cl37[-]', {'(Cl37)':1}),
-            (mw + 1.9972 - PROTON, 'M(Cl37)-H[-]', {'Cl':-1, '(Cl37)':1, 'H':-1}),
-            (mw + 1.9958 - PROTON, 'M(S34)-H[-]', {'S':-1, '(S34)':1, 'H':-1}),
-
-            (mw/2 - PROTON, 'M-2H[2-]', {'H': -2}),
-            (mw + 22.9893 - 2*PROTON, 'M+Na-2H[-]', {'H':-2, 'Na':1}),
-            (mw + 38.9628 - 2*PROTON, 'M+K-2H[-]', {'H':-2, 'K':1}),
-            
-            (mw + 78.9183, 'M+Br[-]', {'Br':1}),
-            (mw + 80.9163, 'M+Br81[-]', {'(Br81)':1}),
-
-            (mw + 40.01926853323, 'M+ACN-H[-]', {'C':2, 'H':2, 'N':1}),
-            (mw + 1.007825 + 12 + 2*15.99491, 'M+HCOO[-]', {'C':1, 'H':1, 'O':2}),
-            (mw + 59.013295, 'M+CH3COO[-]', {'C':2, 'H':3, 'O':2}),
-            (mw - PROTON + 15.99491, 'M-H+O[-]', {'H': -1, 'O':1}),
-            ]
-
     dict_neutral_formula = parse_chemformula_dict(neutral_formula)
     adducts2get = []
-    for x in addList:
-        result = add_formula_dict(dict_neutral_formula, x[2])
+    for x in __get_adduct_list__(mw, mode, primary_only):
+        # ['mz', 'ion', 'delta_formula']
+        result = add_formula_dict(dict_neutral_formula, x.delta_formula)
         if result:
-            adducts2get.append( [x[0], x[1], dict_to_hill_formula(result)] )
+            adducts2get.append( [x.mz, x.ion, dict_to_hill_formula(result)] )
 
     return adducts2get
