@@ -16,17 +16,37 @@ To-do:
 
 # core data structures
 # from metDataModel import derived
-"C05769": {"formula": "C36H34N4O8", "mw": 654.269, "name": "Coproporphyrin I", "adducts": {"M+2H[2+]": 328.14177646677, "M+Br81[-]": 735.1853, "M-H2O+H[1+]": 637.2656764667701, "M-C3H4O2+H[1+]": 583.25517646677, "M-HCOOH+H[1+]": 609.27087646677, "M-CO+H[1+]": 627.28127646677, "M+K[1+]": 693.23177646677, "M+Cl[-]": 689.2379, "M+Na-2H[-]": 674.23644706646, "M-CO2+H[1+]": 611.28647646677, "M+Na[1+]": 677.25827646677, "M-2H[2-]": 326.12722353323, "M+H[1+]": 655.27627646677, "M-H4O2+H[1+]": 619.25507646677, "M(C13)-H[-]": 654.26512353323, "M+HCOONa[1+]": 723.26367646677, "M(C13)+2H[2+]": 328.64347646677004, "M+HCOOK[1+]": 739.23757646677, "M+HCOO[-]": 699.266645, "M(C13)+3H[3+]": 219.43134313343666, "M-H[-]": 653.26172353323, "M+ACN-H[-]": 694.2882685332299, "M+Cl37[-]": 691.2349, "M-H2O-H[-]": 635.25112353323, "M+Br[-]": 733.1873, "M+3H[3+]": 219.09694313343667, "M+CH3COO[-]": 713.282295, "M(C13)+H[1+]": 656.2796764667701, "M[1+]": 654.269, "M-NH3+H[1+]": 638.2497764667701, "M+NaCl[1+]": 713.2348764667701, "M+H+Na[2+]": 339.13277646677, "M+H2O+H[1+]": 673.28687646677, "M-H+O[-]": 669.25663353323, "M+K-2H[-]": 690.20994706646}}, 
-"C05768": {"formula": "C36H44N4O8", "mw": 660.3159, "name": "Coproporphyrinogen I", "adducts": {"M+2H[2+]": 331.16522646677004, "M+Br81[-]": 741.2322, "M-H2O+H[1+]": 643.3125764667701, "M-C3H4O2+H[1+]": 589.30207646677, "M-HCOOH+H[1+]": 615.31777646677, "M-CO+H[1+]": 633.3281764667701, "M+K[1+]": 699.2786764667701, "M+Cl[-]": 695.2848, "M+Na-2H[-]": 680.28334706646, "M-CO2+H[1+]": 617.33337646677, "M+Na[1+]": 683.30517646677, "M-2H[2-]": 329.15067353323, "M+H[1+]": 661.3231764667701, "M-H4O2+H[1+]": 625.30197646677, "M(C13)-H[-]": 660.3120235332301, "M+HCOONa[1+]": 729.31057646677, "M(C13)+2H[2+]": 331.66692646677006, "M+HCOOK[1+]": 745.28447646677, "M+HCOO[-]": 705.3135450000001, "M(C13)+3H[3+]": 221.44697646677002, "M-H[-]": 659.30862353323, "M+ACN-H[-]": 700.33516853323, "M+Cl37[-]": 697.2818000000001, "M-H2O-H[-]": 641.2980235332301, "M+Br[-]": 739.2342000000001, "M+3H[3+]": 221.11257646677004, "M+CH3COO[-]": 719.329195, "M(C13)+H[1+]": 662.3265764667701, "M[1+]": 660.3159, "M-NH3+H[1+]": 644.2966764667701, "M+NaCl[1+]": 719.2817764667701, "M+H+Na[2+]": 342.15622646677, "M+H2O+H[1+]": 679.33377646677, "M-H+O[-]": 675.30353353323, "M+K-2H[-]": 696.2568470664601}}, 
 
-DB1, DB2, DB3 for tiered searches.
+Old data structure in mummichog v2:
+"C05769": {"formula": "C36H34N4O8", "mw": 654.269, "name": "Coproporphyrin I", 
+"adducts": {"M+2H[2+]": 328.14177646677, "M+Br81[-]": 735.1853, "M-H2O+H[1+]": 637.2656764667701, "M-C3H4O2+H[1+]": 583.25517646677, "M-HCOOH+H[1+]": 609.27087646677, "M-CO+H[1+]": 627.28127646677, 
+        "M+K[1+]": 693.23177646677, "M+Cl[-]": 689.2379, "M+Na-2H[-]": 674.23644706646, "M-CO2+H[1+]": 611.28647646677, "M+Na[1+]": 677.25827646677, "M-2H[2-]": 326.12722353323, "M+H[1+]": 655.27627646677, 
+        "M-H4O2+H[1+]": 619.25507646677, "M(C13)-H[-]": 654.26512353323, "M+HCOONa[1+]": 723.26367646677, "M(C13)+2H[2+]": 328.64347646677004, "M+HCOOK[1+]": 739.23757646677, "M+HCOO[-]": 699.266645, 
+        "M(C13)+3H[3+]": 219.43134313343666, "M-H[-]": 653.26172353323, "M+ACN-H[-]": 694.2882685332299, "M+Cl37[-]": 691.2349, "M-H2O-H[-]": 635.25112353323, "M+Br[-]": 733.1873, 
+        "M+3H[3+]": 219.09694313343667, "M+CH3COO[-]": 713.282295, "M(C13)+H[1+]": 656.2796764667701, "M[1+]": 654.269, "M-NH3+H[1+]": 638.2497764667701, "M+NaCl[1+]": 713.2348764667701, 
+        "M+H+Na[2+]": 339.13277646677, "M+H2O+H[1+]": 673.28687646677, "M-H+O[-]": 669.25663353323, "M+K-2H[-]": 690.20994706646}}, 
+
+Use DB1, DB2, (DB3, ...) for tiered searches.
+Start with DB1 for searching primary ions, because other adducts/isotopes can only exist if a primary ion does.
 Precompute selectivity within each DB. Use in indexed format.
+
+Use indexed_DB            
+example DB_1[99] = 
+            [['C2H4NaO3_99.00532', 99.00532046676999, 'C2H4NaO3', 0.9999999571942034, [('C2H4O3_76.016044', 'M+Na[1+]')]], 
+            ['C4H5NS_99.013721', 99.01372099999999, 'C4H5NS', 0.9967247109333564, [('C4H5NS_99.01427', 'M[1+]')]], 
+            ['C3H8NaO2_99.041706', 99.04170646677, 'C3H8NaO2', 0.999999999998776, [('C3H8O2_76.05243', 'M+Na[1+]')]], ...]
+
+empCpds will be organized based on matched DB entries after formula_mass annotation.
+
+
+
 
 '''
 
 # import re
 import numpy as np
 from scipy.optimize import curve_fit
+from scipy.stats import norm as normal_distribution
 
 # from metDataModel.core import import Feature, EmpiricalCompound
 
@@ -57,6 +77,9 @@ FEATURE_REGISTRY = {}
 EMPCPD_REGISTRY = {}
 
 
+def make_formula_mass_id(formula, mass):
+    return formula + '_' + str(round(mass,6))
+
 
 def list_search_formula_mass_db(list_query_mz, indexed_DB, limit_ppm=10):
     return [search_formula_mass_db(query_mz, indexed_DB, limit_ppm) for query_mz in list_query_mz]
@@ -66,15 +89,16 @@ def search_formula_mass_db(query_mz, indexed_DB, limit_ppm=10):
     '''
     Find best matched formula_mass in indexed_DB for query_mz within ppm limit.
     
-    indexed_DB: # m/z, formula_mass, ion, selectivity
-        e.g. DB_1[199] = 
-        [[199.02130599999998, 'C6H8O6_176.032088', 'Na', 0.9380613934169085], 
-        [199.024074, 'C4H10NO6P_199.024574', 'M*', 0.9380612687488975], 
-        [199.03976846677, 'C5H12ClN2O2P_198.032492', 'M+H[1+]', ...]
+    indexed_DB: # [formula_mass, m/z, charged_formula, selectivity, [relations to neutral formula]]
+            example DB_1[99] = 
+            [['C2H4NaO3_99.00532', 99.00532046676999, 'C2H4NaO3', 0.9999999571942034, [('C2H4O3_76.016044', 'M+Na[1+]')]], 
+            ['C4H5NS_99.013721', 99.01372099999999, 'C4H5NS', 0.9967247109333564, [('C4H5NS_99.01427', 'M[1+]')]], 
+            ['C3H8NaO2_99.041706', 99.04170646677, 'C3H8NaO2', 0.999999999998776, [('C3H8O2_76.05243', 'M+Na[1+]')]], ...]
 
     return
     ------
-    Closest match as a list of [m/z, formula_mass, ion, selectivity];
+    Closest match as an entry,
+             [formula_mass, m/z, charged_formula, selectivity, [relations to neutral formula]]
     None if out of ppm limit.
     '''
     _delta = query_mz * limit_ppm * 0.000001
@@ -82,7 +106,8 @@ def search_formula_mass_db(query_mz, indexed_DB, limit_ppm=10):
     result = []
     for ii in range(int(_low_lim), int(_high_lim)+1):
         for F in indexed_DB[ii]:
-            result.append( (abs(query_mz-F[0]), F) )
+            # F[1] is m/z, fixed DB format
+            result.append( (abs(query_mz-F[1]), F) )
 
     result.sort()
     if result and result[0][0] < _delta:
@@ -90,12 +115,105 @@ def search_formula_mass_db(query_mz, indexed_DB, limit_ppm=10):
     else:
         return None
 
+def create_extended_DB(list_empCpd_seeds, mode='pos'):
+    '''
+    This creates a new DB of common isotopes and adducts based on what's found after getting primary ions in DB1, 
+    because isotopes/adducts depend on the existence of a primary ion.
 
+    input
+    -----
+    list_empCpd_seeds: list of entries as [formula_mass, ...]. Not full empCpd class.
+    
+    return
+    ------
+    indexed_DB in the format of each entry like:
+    [formula_mass, m/z, charged_formula, selectivity, [relations to neutral formula]]
+
+    '''
+    new_DB = {}
+    for x in set(list_empCpd_seeds):             # remove redundancy
+        neutral_formula, mw = x.split("_")       # [('C2H4O3_76.016044',..
+        adducts = compute_adducts_formulae(float(mw), neutral_formula, mode)    
+                                                 # e.g. [(58.53894096677, 'M+2H[2+]', result_formula), ...,]
+        for A in adducts:
+            new = [ make_formula_mass_id(A[2], A[0]), A[0], A[2], None, [(x, A[1]),] ]
+            ii = int(A[0])
+            if ii in new_DB:
+                new_DB[ii].append(new)
+            else:
+                new_DB[ii] = [new]
+
+    return new_DB
+
+
+def annotate_formula_mass(list_query_mz, indexed_DB, check_mass_accuracy=False, mode='pos', limit_ppm=10):
+    '''
+    Annotate input m/z list using formula based mass, including common isotopes and adducts.
+    Two-step process, search primary ions before moving to others.
+    This is using ions specified in .formula.compute_adducts_formulae.
+    If check_mass_accuracy is True, the ppm deviations of each matched primary ion are fitted to a normal distribution,
+    to estimate mass_accuracy and ppm_std.
+
+    input
+    -----
+    input_list: m/z values.
+    indexed_DB: per entry - [formula_mass, m/z, charged_formula, ion, selectivity, [relations to neutral formula]]
+                This can be a pre-loaded DB, or hot DB in asari.
+
+    return
+    ------
+    {mass_accuracy: estimated based on difference from formula value
+    ppm_std:         estimated based on precision distribution
+    annotated_list: [matched DB entry or None, ...]
+    corrected_list_query_mz: m/z values will be corrected if they deviate from formula values by mass_accuracy > 5 ppm.
+    }
+    '''
+    result = list_search_formula_mass_db(list_query_mz, indexed_DB, limit_ppm)
+    mass_accuracy, ppm_std, corrected_list_query_mz = None, None, None
+    N = len(list_query_mz)
+    if check_mass_accuracy:
+        list_ppm_errors = []
+        for ii in range(N):
+            if result[ii]:
+                list_ppm_errors.append( 1000000 * (list_query_mz[ii] - result[ii][1])/result[ii][1] )
+
+        mass_accuracy, ppm_std = normal_distribution.fit(list_ppm_errors)
+        if abs(mass_accuracy) > 5:   # this is considered significant mass shift, requiring m/z correction for all 
+            list_query_mz = [x-x*0.000001*mass_accuracy for x in list_query_mz]
+            # Also change search ppm if self.__mass_stdev__ > 5
+            result = list_search_formula_mass_db(list_query_mz, indexed_DB, max(10, 2*ppm_std))
+            corrected_list_query_mz = list_query_mz
+            # update ppm_std because it may be used for downstream search parameters
+            list_ppm_errors = []
+            for ii in range(N):
+                if result[ii]:
+                    list_ppm_errors.append( 1000000 * (list_query_mz[ii] - result[ii][1])/result[ii][1] )
+            _mu, ppm_std= normal_distribution.fit(list_ppm_errors)
+
+        elif ppm_std > 5:      # no mass correction but need redo search using higher ppm for unmatched mz
+            result = list_search_formula_mass_db(list_query_mz, indexed_DB, 2*ppm_std)
+
+    # create new DB for common isotopes and adducts based on what's found earlier
+    extended_DB = create_extended_DB([x[4][0][0] for x in result if x], mode)
+    # extend search to common isotopes and adducts
+    if ppm_std:
+        limit_ppm = 2 * ppm_std
+    for ii in range(N):
+        if not result[ii]:
+            result[ii] = search_formula_mass_db(list_query_mz[ii], extended_DB, limit_ppm)
+
+    return {
+        'mass_accuracy': mass_accuracy,
+        'ppm_std': ppm_std,
+        'annotated_list': result,
+        'corrected_list_query_mz': corrected_list_query_mz,
+        }
 
 
 # -----------------------------------------------------------------------------
 #
-# Prototype code with short-handed data structure, still used for particular cases
+# Prototype code with short-handed data structure, 
+# still used for particular cases, backward compatibility only during dev
 #
 # -----------------------------------------------------------------------------
 
