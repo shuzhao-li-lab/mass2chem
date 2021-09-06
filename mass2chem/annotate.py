@@ -105,9 +105,10 @@ def search_formula_mass_db(query_mz, indexed_DB, limit_ppm=10):
     _low_lim, _high_lim = query_mz - _delta, query_mz + _delta
     result = []
     for ii in range(int(_low_lim), int(_high_lim)+1):
-        for F in indexed_DB[ii]:
-            # F[1] is m/z, fixed DB format
-            result.append( (abs(query_mz-F[1]), F) )
+        if ii in indexed_DB:
+            for F in indexed_DB[ii]:
+                # F[1] is m/z, fixed DB format
+                result.append( (abs(query_mz-F[1]), F) )
 
     result.sort()
     if result and result[0][0] < _delta:
