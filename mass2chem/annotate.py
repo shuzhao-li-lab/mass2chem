@@ -98,7 +98,7 @@ def search_formula_mass_db(query_mz, indexed_DB, limit_ppm=10):
     return
     ------
     Closest match as an entry,
-             [formula_mass, m/z, charged_formula, selectivity, [relations to neutral formula]]
+             (match_ppm, [formula_mass, m/z, charged_formula, selectivity, [relations to neutral formula]])
     None if out of ppm limit.
     '''
     _delta = query_mz * limit_ppm * 0.000001
@@ -112,14 +112,17 @@ def search_formula_mass_db(query_mz, indexed_DB, limit_ppm=10):
 
     result.sort()
     if result and result[0][0] < _delta:
-        return result[0][1]
+        return () result[0][1]
     else:
         return None
 
 def create_extended_DB(list_empCpd_seeds, mode='pos'):
     '''
-    This creates a new DB of common isotopes and adducts based on what's found after getting primary ions in DB1, 
+    This creates a new DB of common isotopes and adducts based on a given seed list.
+    This is using ions specified in .formula.compute_adducts_formulae.
+    This can be used on what's found after getting primary ions in DB1, 
     because isotopes/adducts depend on the existence of a primary ion.
+    Otherwise, the presence of a primary ion will be enforced at empCpd level.
 
     input
     -----
@@ -147,11 +150,13 @@ def create_extended_DB(list_empCpd_seeds, mode='pos'):
     return new_DB
 
 
-def annotate_formula_mass(list_query_mz, indexed_DB, check_mass_accuracy=False, mode='pos', limit_ppm=10):
+def annotate_formula_mass(list_query_mz, indexed_DB, check_mass_accuracy=False, limit_ppm=10):
     '''
-    Annotate input m/z list using formula based mass, including common isotopes and adducts.
-    Two-step process, search primary ions before moving to others.
-    This is using ions specified in .formula.compute_adducts_formulae.
+    Annotate input m/z list using formula based mass in the indexed_DB,
+    which should be generic, not assuming separation of primary ions and their common isotopes and adducts.
+    Search efficiency will be improved by the construction strategy of the indexed_DB,
+    not dependent on the algorithm in this function. E.g., more frequent features should be in first DB to search.
+
     If check_mass_accuracy is True, the ppm deviations of each matched primary ion are fitted to a normal distribution,
     to estimate mass_accuracy and ppm_std.
 
@@ -160,6 +165,8 @@ def annotate_formula_mass(list_query_mz, indexed_DB, check_mass_accuracy=False, 
     input_list: m/z values.
     indexed_DB: per entry - [formula_mass, m/z, charged_formula, ion, selectivity, [relations to neutral formula]]
                 This can be a pre-loaded DB, or hot DB in asari.
+
+    # mode='pos', 
 
     return
     ------
@@ -181,6 +188,7 @@ def annotate_formula_mass(list_query_mz, indexed_DB, check_mass_accuracy=False, 
         mass_accuracy, ppm_std = normal_distribution.fit(list_ppm_errors)
         if abs(mass_accuracy) > 5:   # this is considered significant mass shift, requiring m/z correction for all 
             list_query_mz = [x-x*0.000001*mass_accuracy for x in list_query_mz]
+            # redo search because we may find different matches after mass correction
             # Also change search ppm if self.__mass_stdev__ > 5
             result = list_search_formula_mass_db(list_query_mz, indexed_DB, max(10, 2*ppm_std))
             corrected_list_query_mz = list_query_mz
@@ -193,15 +201,6 @@ def annotate_formula_mass(list_query_mz, indexed_DB, check_mass_accuracy=False, 
 
         elif ppm_std > 5:      # no mass correction but need redo search using higher ppm for unmatched mz
             result = list_search_formula_mass_db(list_query_mz, indexed_DB, 2*ppm_std)
-
-    # create new DB for common isotopes and adducts based on what's found earlier
-    extended_DB = create_extended_DB([x[4][0][0] for x in result if x], mode)
-    # extend search to common isotopes and adducts
-    if ppm_std:
-        limit_ppm = 2 * ppm_std
-    for ii in range(N):
-        if not result[ii]:
-            result[ii] = search_formula_mass_db(list_query_mz[ii], extended_DB, limit_ppm)
 
     return {
         'mass_accuracy': mass_accuracy,
