@@ -34,39 +34,13 @@ Silver-107	Ag-107	106.905094
 Silver-109	Ag-109	108.904756
 Tin-120	Sn-120	119.902199
 Cesium	Cs-133	132.905450
-
-# ----------------------------------------------------------------------
-# How to use 
-
-Proton	H+	1.007276
-Electron	e-	0.000549
-
-isotope_shifts = {
-    'C13': 1.0034,
-    '2C13': 2.0068,
-    'S34': 1.9958,
-    'Cl37': 1.9972,
-
-}
-
-# examples
-adduct_shifts_pos = {
-    'M+Na[1+]': 22.9893,
-
-}
-
-adduct_shifts_neg = {
-    'M+Cl[-]': 34.9689,
-
-}
-
 '''
 
 PROTON = 1.00727646677
 electron = 0.000549
 
 # common mz diff in LC-MS
-# Electron is not considered in formula calculation, but may affected mass calculation.
+# Electron is not considered in formula calculation, but may affect mass calculation.
 # The dictionary in each entry is used for formula calculation, not mass.
 
 mass_signatures = [

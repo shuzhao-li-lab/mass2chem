@@ -39,13 +39,11 @@ example DB_1[99] =
 empCpds will be organized based on matched DB entries after formula_mass annotation.
 
 
-
-
 '''
 
 # import re
 import numpy as np
-from scipy.optimize import curve_fit
+# from scipy.optimize import curve_fit
 from scipy.stats import norm as normal_distribution
 
 # from metDataModel.core import import Feature, EmpiricalCompound
@@ -57,7 +55,7 @@ from .lib.PubChemLite import PubChemLite
 
 from .lib.LCMS_contaminants import contaminants_pos, contaminants_neg
 
-from .io import read_features, index_features
+from .io import tFeature, read_feature_tuples
 from .formula import compute_adducts_formulae
 
 # from .calibrate import mass_calibrate
@@ -80,9 +78,35 @@ EMPCPD_REGISTRY = {}
 def make_formula_mass_id(formula, mass):
     return formula + '_' + str(round(mass,6))
 
-
 def list_search_formula_mass_db(list_query_mz, indexed_DB, limit_ppm=10):
     return [search_formula_mass_db(query_mz, indexed_DB, limit_ppm) for query_mz in list_query_mz]
+
+def bin_by_median(List_of_tuples, func_tolerance):
+    '''
+    Not perfect because left side may deviate out of tolerance, but LC-MS data always have enough gaps for separation.
+    Will add kernel density method for grouping m/z features.
+    List_of_tuples: [(value, object), (value, object), ...], to be separated into bins by values (either rt or mz).
+                    objects have attribute of sample_name if to align elsewhere.
+    return: [seprated bins], each as a list in the same input format. If all falls in same bin, i.e. [List_of_tuples].
+    '''
+    new = [[List_of_tuples[0], ], ]
+    for X in List_of_tuples[1:]:
+        if X[0]-np.median([ii[0] for ii in new[-1]]) < func_tolerance(X[0]):       # median moving with list change
+            new[-1].append(X)
+        else:
+            new.append([X])
+    PL = []
+    for L in new:
+        PL.append([X[1] for X in L])
+    return PL
+
+
+def assemble_empcpds_by_formula(List_of_features):
+    pass
+
+
+def assemble_empcpds_denovo(List_of_features):
+    pass
 
 
 def search_formula_mass_db(query_mz, indexed_DB, limit_ppm=10):
@@ -112,7 +136,7 @@ def search_formula_mass_db(query_mz, indexed_DB, limit_ppm=10):
 
     result.sort()
     if result and result[0][0] < _delta:
-        return () result[0][1]
+        return result[0][1]
     else:
         return None
 
