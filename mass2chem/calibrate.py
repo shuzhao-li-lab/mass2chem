@@ -10,7 +10,8 @@ Multiple methods to calibrate:
     Because the model is too sensitive to `a` and mass shift in this slope is often negligible,
     method 2 is preferred.
 
-    2. (theoretical m/z) = (measured m/z) + b + e. Systematic shift can be reflected in `b`.
+    2. (measured m/z)/(theoretical m/z) - 1 =  b + e. Systematic shift can be reflected in `b`.
+    b*10e6 is conventional ppm.
     Assuming a normal distribution of mass errors, b and std are fitted.
 
     3. (theoretical m/z) = b + e*f(measured m/z). The accuracy is a function of m/z, as 

@@ -43,6 +43,10 @@ electron = 0.000549
 # Electron is not considered in formula calculation, but may affect mass calculation.
 # The dictionary in each entry is used for formula calculation, not mass.
 
+# To-dos:
+# to add 15N, 18O etc;
+# to separate pos and neg ionization, and biological reactions if possible
+
 mass_signatures = [
 (-82.95402353323, 'M-HCOOK+H[1+]' , {'C':-1,'O':-2, 'K':-1, }),
 (-71.01382353323001, 'M-C3H4O2+H[1+]', {'C':-3,'H':-3, 'O':-2,}),
