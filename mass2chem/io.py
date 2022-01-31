@@ -121,27 +121,31 @@ def read_features(feature_table,
             })
     return L
 
-#
-# --------------------- to update ------------------------------
-#
 
-def text_to_features(textValue, MASS_RANGE = (50, 2500), delimiter='\t'):
+
+def text_to_mcg_features(textValue, MASS_RANGE = (50, 2500), delimiter='\t'):
     '''
-    Parse text input to List of Feature instances.
+    Parse text input to List of features, in JSON peak formats. 
+    The older versions used instances of metDataModel.Feature, which is better for complex operations.
+    Here, simplicity is preferred.
 
     Input
     -----
-    Text string of feature table, Column order is hard coded for now, 
+    Text string of feature table, mummichog format, Column order is hard coded for now, 
     1st row as header = [mz, retention_time, p_value, statistic, CompoundID_from_user].
     Each row is a unique feature. Redundant entries should be check prior to this function.
 
     Return
     -------
-    (List of metDataModel.Feature, list of excluded lines in input text)
+    peak_list: [{''id_number': 555, 'mz': 133.09702315984987, 'apex': 654, 
+    'height': 14388.0, 
+    'left_base': 648, 'right_base': 655, },
+                 ...]
+    list of excluded lines in input text
     '''
     list_of_features, excluded_list = [], []
     lines = textValue.splitlines()
-    header_fields = lines[0].rstrip().split(delimiter)
+    _header_fields = lines[0].rstrip().split(delimiter)
 
     for ii in range(len( lines )-1):
         y = lines[ii+1].split('\t')
@@ -151,10 +155,15 @@ def text_to_features(textValue, MASS_RANGE = (50, 2500), delimiter='\t'):
         
         if MASS_RANGE[0] < mz < MASS_RANGE[1]:
             # row # human-friendly, numbering from 1
-            F = Feature(id='row'+str(ii+1))
-            [F.mz, F.rtime] = [mz, retention_time]
-            F.statistics['statistic_score'] = statistic
-            F.statistics['p_value'] = p_value
+            F = {
+                'id_number': 'row'+str(ii+1),
+                'mz': mz,
+                'retention_time': retention_time,
+                'apex': retention_time,
+                'statistic_score': statistic,
+                'p_value': p_value,
+                'CompoundID_from_user': CompoundID_from_user,
+            }
             list_of_features.append( F )
         else:
             excluded_list.append( lines[ii+1] )
@@ -162,6 +171,6 @@ def text_to_features(textValue, MASS_RANGE = (50, 2500), delimiter='\t'):
     return (list_of_features, excluded_list)
 
 
-def textfile_to_features(infile):
-    return text_to_features(open(inputFile).read())
+def textfile_to_mcg_features(infile):
+    return text_to_mcg_features(open(infile).read())
 

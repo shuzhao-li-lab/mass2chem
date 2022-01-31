@@ -210,7 +210,7 @@ def compute_adducts_formulae(mw, neutral_formula,  mode='pos', primary_only=Fals
     '''
     Calculating isotopes and adducts, return m/z and formulae.
 
-    A dictionary of element changes is ued in the calculation.
+    A dictionary of element changes is used in the calculation.
     Another function add_formula_dict checks validity of required numbers of atoms.
     Electron is not considered in formula calculation, but may affected mass calculation.
 
