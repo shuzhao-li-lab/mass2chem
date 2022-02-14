@@ -24,6 +24,15 @@ class epdsConstructor:
     ECCON = epdsConstructor(list_peaks)
     list_empCpds = ECCON.peaks_to_epds()
     # e.g. {'id': 358, 'list_peaks': [(4215, 'anchor'), (4231, '13C/12C'), (4339, 'anchor,+NH4')]},
+
+
+
+    To add -
+    
+    support of user input formats where rtime isn't precise or unavailable.
+
+
+    
     '''
 
     def __init__(self, peak_list, mode='pos'):
@@ -32,7 +41,7 @@ class epdsConstructor:
         self.peak_dict = build_peak_id_dict(self.peak_list)
         self.mode = mode
 
-    def peaks_to_epds(self):
+    def peaks_to_epds(self, exclude_singletons=True):
         '''
         Anchor peak is the most abundant isotopic peak.
         Modification peaks are from adducts, neutral loss and fragments.
@@ -55,8 +64,8 @@ class epdsConstructor:
         # [[(182, 'anchor'), (191, '13C/12C'), (205, '18O/16O')], ...]
         for L in isosignatures:
             found += [x[0] for x in L]
-
         print("Round 1 - numbers of epds and included peaks: ", (len(isosignatures), len(found)))
+
         remaining_peaks = [P for P in self.peak_list if P['id_number'] not in found]
         mztree = build_centurion_tree(remaining_peaks)
         for G in isosignatures:
@@ -70,20 +79,30 @@ class epdsConstructor:
         remaining_peaks = [P for P in remaining_peaks if P['id_number'] not in found2]
         mztree = build_centurion_tree(remaining_peaks)
         _NN2 = len(found2)
-
         print("Round 2 - numbers of epds and included peaks: ", (len(epds), _NN2))
+
         # do de novo adduct initiations
         adduct_signatures = find_adduct_signatures(remaining_peaks, mztree, common_adducts[self.mode])
         for G in adduct_signatures:
             epds.append(G)
             _NN2 += len(G)
-
         print("Round 3 - numbers of epds and included peaks: ", (len(epds), _NN2))
-        # the now remaining are to be assigned or singletons
+
+        # the now remaining are yet to be assigned or singletons, not handled here
         for ii in range(len(epds)):
             list_empCpds.append(
                 {'id': ii, 'list_peaks': epds[ii]}
             )
+        if not exclude_singletons:
+            found3 = []
+            for L in adduct_signatures:
+                found3 += [x[0] for x in L]
+            remaining_peaks = [P for P in remaining_peaks if P['id_number'] not in found3]
+            for P in remaining_peaks:
+                ii += 1
+                list_empCpds.append(
+                    {'id': ii, 'list_peaks': [(P['id_number'], 'anchor')]}
+                )
 
         return list_empCpds
 
