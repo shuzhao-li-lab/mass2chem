@@ -1,12 +1,21 @@
 '''
 Two lines of search methods:
 - A centurion_tree is an indexed dictionary of peaks/features.
-- We also use DataFrame based vector operations.
+- We also use DataFrame based vector operations for some cases (less often).
 
 Emperical compounds are constructed by co-eluting isotopic and adduct patterns.
 # isotopic_signatures: example as [(182, 'anchor'), (191, 'M(13C)'), (205, 'M(18O)')]
 # consider Cl as adduct, both 35Cl and 37Cl are considered
 # 34S and 37Cl are close, but should have diff ratios and are formula dependent
+
+'15N/14N' and '33S/32S' are close for high m/z features, e.g. 0.002353/470 ~ 5 pmm.
+'18O/16O' and 'M(13C),M(15N)' are close for high m/z features, e.g. 0.003855/770 ~ 5 pmm.
+
+Comprehensive combinations of isotopes and adducts, vs seeded search:
+all adducts can be combined with isotopes in theory, greatly depending on abundance in practice.
+Controlled by coelution, it's high confidence in assigning these peaks to empCpds, 
+but not 100% correct. 
+Until we have a better strategy, step-wise searches are less prone to errors.
 '''
 
 # Mass difference and Abundance of natually occuring isotopic elements.
@@ -61,6 +70,13 @@ extended_adducts = {
     'neg': [],
 }
 
+# this does not include combinatorial values of isotopes and adducts
+# Mostly used as seeds; better to do inclusive search after matched to formulae
+seed_empCpd_patterns = {
+    'pos': [(1.003355, '13C/12C', (0, 0.8)), (1.0078, 'H'), (21.9820, 'Na/H'), ],
+    'neg': [(1.003355, '13C/12C', (0, 0.8)), (1.0078, 'H'), (20.97474706646, '+Na-2H'), (34.9689, '35Cl')],
+}
+
 
 
 #
@@ -92,7 +108,6 @@ def build_peak_id_dict(list_peaks):
         d[p['id_number']] = p
     return d
 
-
 def __build_centurion_tree_mzlist(mzList):
     '''
     Return a dictionary, indexing mzList by 100*mz bins.
@@ -108,7 +123,6 @@ def __build_centurion_tree_mzlist(mzList):
             d[cent] = [(mzList[ii], ii)]
     return d
 
-
 def find_all_matches_centurion_indexed_list(query_mz, mz_centurion_tree, limit_ppm=5):
     '''
     Return matched peaks in mz_centurion_tree.
@@ -123,7 +137,6 @@ def find_all_matches_centurion_indexed_list(query_mz, mz_centurion_tree, limit_p
                 results.append(peak)
                 
     return results
-
 
 def find_best_match_centurion_indexed_list(query_mz, mz_centurion_tree, limit_ppm=2):
     '''
@@ -141,8 +154,7 @@ def find_best_match_centurion_indexed_list(query_mz, mz_centurion_tree, limit_pp
                 
     return result[0]
 
-
-def is_coeluted(P1, P2, rt_tolerance=10):
+def is_coeluted_by_overlap(P1, P2):
     '''
     coelution is defined by verlap more than half of the smaller peak, or apexes within rt_tolerance.
     
@@ -161,22 +173,114 @@ def is_coeluted(P1, P2, rt_tolerance=10):
         overlap = min(P1['right_base'], P2['right_base']) - max(P1['left_base'], P2['left_base'])
         if overlap > 0.5 * min(len1, len2):
             _coeluted = True
-            
-    except KeyError:
-        if abs(P1['apex']-P2['apex']) <= rt_tolerance:
-            _coeluted = True
-        
+    except:
+        raise KeyError("KeyError, try function is_coeluted_by_distance.")
     return _coeluted
 
-   
-def find_isotopic_signatures(list_peaks, mztree, isotopic_patterns, mz_tolerance_ppm=5, rt_tolerance_scans=5):
+def is_coeluted_by_distance(P1, P2, rt_tolerance=10):
+    _coeluted = False
+    if abs(P1['apex']-P2['apex']) <= rt_tolerance:
+        _coeluted = True
+    return _coeluted
+
+
+def get_seed_empCpd_signatures(list_peaks, 
+                    mztree, 
+                    search_patterns = seed_empCpd_patterns['pos'],
+                    is_coeluted = is_coeluted_by_overlap,
+                    mz_tolerance_ppm=5, 
+                    rt_tolerance_scans=5):
     '''
-    See find_isotopic_pairs. This extends to all related isotopic signatures.
-    Allows ambiguous matches, which are dealt with in empCpd statistics.
+    To find a core group of ions that belong to an empirical compound (emp_cpd, or empCpd, ecd).
+    This should be a combination of 12C/13C isotopes and common adducts;
+    an empCpd can be constructed even if the 13C ion is missing.
+    Other isotopes and adducts can be searched after establishing the seed empCpds.
+
+    This is currently a heuristic approach to generate empCpds without too many errors.
+    One may research more to polish an optimal method of assigning ions to empCpds, 
+    where chemical formulae and learned patterns can be incorporated.
 
     Input
     =====
-    isotopic_patterns = [(1.003355, '13C/12C', (0, 0.2)), ...], the third item is optional limits of abundance ratio.
+    list_peaks: [{'parent_masstrace_id': 1670, 'mz': 133.09702315984987, 'apex': 654, 'height': 14388.0, 
+                    'left_base': 648, 'right_base': 655, 'id_number': 555}, ...]
+    mztree: indexed list_peaks
+    search_patterns: Use seed_empCpd_patterns. May update after seeing experimental statistics.
+                    Avoid H2O because hard to distinguish from differences in chemical formulae.
+                    The third item in tuples is to control abundance ratio, 
+                    which is linient to leave room for high carbon numbers and measurement.
+    is_coeluted_by_overlap: coelution function
+
+    Return
+    ======
+    list of lists of peak numbers that match search_patterns patterns, e.g.
+    [ [(195, 'anchor'), (206, '13C/12C')],  ...]
+    '''
+    signatures = []
+    for P1 in list_peaks:
+        matched = [ (P1['id_number'], 'anchor'), ]          # Nature is nice to have lowest mass for the most abundant 
+        for _pair in search_patterns:
+            (mass_difference, relation) = _pair[:2]
+            tmp = find_all_matches_centurion_indexed_list(P1['mz'] + mass_difference, mztree, mz_tolerance_ppm)
+            for P2 in tmp:
+                if len(_pair) > 2:             # more stringent
+                    if abs(P1['apex']-P2['apex']) <= rt_tolerance_scans and is_coeluted(P1, P2):
+                        (abundance_ratio_min, abundance_ratio_max) = _pair[2]
+                        # checking abundance ratio
+                        if abundance_ratio_min*P1['height'] < P2['height'] < abundance_ratio_max*P1['height']:
+                            matched.append( (P2['id_number'], relation) )
+                else:
+                    if is_coeluted(P1, P2):
+                        matched.append( (P2['id_number'], relation) )
+ 
+        if len(matched) > 1:
+            # if len(matched) > 2: matched = merge_confused_peak_matches(matched)
+            signatures.append(matched)
+
+    return signatures
+   
+
+def extend_seed_empCpd_signature(seed_signatures, peak_dict, mztree, ext_search_patterns, 
+                                is_coeluted = is_coeluted_by_overlap,
+                                mz_tolerance_ppm=5):
+    '''
+    Extend a single signature by ext_search_patterns, including combinatorial values of isotopes and adducts.
+
+    Input
+    =====
+    mztree: indexed list_peaks
+    seed_signatures: e.g. [(182, 'anchor'), (191, '13C/12C'), (205, '18O/16O')]
+    search_patterns: e.g. [(10.991, 'Na/H, double charged'), (18.0106, '+H2O'), (18.033823, '+NH4'),]
+    example peak: {'parent_masstrace_id': 1670, 'mz': 133.09702315984987, 'apex': 654, 'height': 14388.0, 
+                    'left_base': 648, 'right_base': 655, 'id_number': 555}
+
+    Return
+    ======
+    One epd (empirical compound) based on seed peaks and ext_search_patterns, as a list of [(peak_id, relation), ...]
+    '''
+    matched = []
+    for seed in seed_signatures:
+        peak, relation = peak_dict[seed[0]], seed[1]
+        for adduct in ext_search_patterns:
+            tmp = find_all_matches_centurion_indexed_list( peak['mz'] + adduct[0], mztree, mz_tolerance_ppm )
+            for P2 in tmp:
+                if is_coeluted(peak, P2):
+                    matched.append( (P2['id_number'], relation +','+ adduct[1]) )
+
+    return matched
+
+
+def find_isotopic_signatures(list_peaks, mztree, isotopic_patterns, mz_tolerance_ppm=5, rt_tolerance_scans=5):
+    '''
+    See find_isotopic_pairs. This extends to all related isotopic signatures.
+    Allows ambiguous matches, which will be dealt with in empCpd statistics.
+    But the peaks need to be unique. E.g. 
+    '15N/14N' and '33S/32S', '18O/16O' and 'M(13C),M(15N)' are close for high m/z features.
+    Matches like ('F5486', '15N/14N'), ('F5486', '33S/32S') need to merge on the peak/feature.
+
+    Input
+    =====
+    isotopic_patterns = [(1.003355, '13C/12C', (0, 0.8)), ...], the third item is optional limits of abundance ratio.
 
     Return
     ======
@@ -188,7 +292,6 @@ def find_isotopic_signatures(list_peaks, mztree, isotopic_patterns, mz_tolerance
       [(182, 'anchor'), (191, '13C/12C'), (205, '18O/16O')],
       [(295, 'anchor'), (335, '13C/12C'), (368, 'M(13C),M(34S)')], ...]
     '''
-
     signatures = []
     for P1 in list_peaks:
         matched = [ (P1['id_number'], 'anchor'), ]          # Nature is nice to have lowest mass for the most abundant 
@@ -196,7 +299,7 @@ def find_isotopic_signatures(list_peaks, mztree, isotopic_patterns, mz_tolerance
             (mass_difference, relation) = isotopic_pair[:2]
             tmp = find_all_matches_centurion_indexed_list(P1['mz'] + mass_difference, mztree, mz_tolerance_ppm)
             for P2 in tmp:
-                if abs(P1['apex']-P2['apex']) <= rt_tolerance_scans and is_coeluted(P1, P2):
+                if abs(P1['apex']-P2['apex']) <= rt_tolerance_scans and is_coeluted_by_overlap(P1, P2):
                     if len(isotopic_pair) == 2:             # not checking abundance ratio
                         matched.append( (P2['id_number'], relation) )
                     else:
@@ -205,10 +308,10 @@ def find_isotopic_signatures(list_peaks, mztree, isotopic_patterns, mz_tolerance
                         if abundance_ratio_min*P1['height'] < P2['height'] < abundance_ratio_max*P1['height']:
                             matched.append( (P2['id_number'], relation) )
         if len(matched) > 1:
+            # if len(matched) > 2: matched = merge_confused_peak_matches(matched)
             signatures.append(matched)
 
     return signatures
-
 
 
 def find_adduct_signatures(list_peaks, mztree, adduct_patterns, mz_tolerance_ppm=5):
@@ -222,13 +325,29 @@ def find_adduct_signatures(list_peaks, mztree, adduct_patterns, mz_tolerance_ppm
         for adduct in adduct_patterns:
             tmp = find_all_matches_centurion_indexed_list( P1['mz'] + adduct[0], mztree, mz_tolerance_ppm )
             for P2 in tmp:
-                if is_coeluted(P1, P2):
+                if is_coeluted_by_overlap(P1, P2):
                     matched.append( (P2['id_number'], adduct[1]) )
 
         if len(matched) > 1:
             signatures.append(matched)
 
     return signatures
+
+
+def merge_confused_peak_matches(L):
+    '''
+    merge if same peak is matched to more than one isotopes or adducts.
+    L example: [(295, 'anchor'), (335, '13C/12C'), (368, 'M(13C),M(34S)')]
+    '''
+    tmp, _d = [L[0]], {}
+    for peak in L[1:]:
+        if peak[0] in _d:
+            _d[peak[0]] += ';' + peak[1]
+        else:
+            _d[peak[0]] = peak[1]
+    for k,v in _d.items():
+        tmp.append((k,v))
+    return tmp
 
 
 def find_mzdiff_pairs_from_masstracks(list_mass_tracks, list_mz_diff=[1.003355, 21.9820], mz_tolerance_ppm=5):
