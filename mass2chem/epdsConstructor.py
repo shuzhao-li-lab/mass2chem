@@ -5,9 +5,6 @@ The ion patterns here are constructed differently from formula based calculation
 because formulae are not known here.
 
         Anchor peak is the most abundant isotopic peak. Modification peaks are from adducts, neutral loss and fragments.
-
-
-
         Requires at least one of isotopic_signatures and adduct_signatures. Use peak numbers only.
         If initiated by isotopic_signatures, do adduct search;
         elif initiated by adduct_signatures, assuming other primary isotopes are not seen.
@@ -67,19 +64,6 @@ class epdsConstructor:
         ======
         list_empCpds, [{'id': ii, 'list_peaks': [(peak_id, ion), (), ...],}, ...]
             The first peak is anchor ion.
-
-
-        remaining_peaks = [P for P in remaining_peaks if P['id_number'] not in found2]
-        mztree = build_centurion_tree(remaining_peaks)
-
-        adduct_signatures = find_adduct_signatures(remaining_peaks, mztree, common_adducts[self.mode])
-        for G in adduct_signatures:
-            epds.append(G)
-            _NN2 += len(G)
-        
-        epds = self.consolidate_epds(epds)
-
-
         '''
         print("\n\nAnnotating empirical compounds on %d features/peaks, ..." %len(self.peak_list))
         list_empCpds = []
@@ -119,6 +103,59 @@ class epdsConstructor:
                 G + extend_seed_empCpd_signature(G, self.peak_dict, mztree, ext_search_patterns, is_coeluted, mz_tolerance_ppm)
             )
         return epds
+
+    def peaks_to_epdDict(self, mz_tolerance_ppm=5, rt_tolerance_scans=5, is_coeluted=is_coeluted_by_overlap,):
+        '''
+        Wrap peaks_to_epds to comply empCpd JSON convention.
+
+        Return
+        ======
+        list_empCpds, [{'interim_id': 12,
+                        'neutral_formula_mass': None,
+                        'neutral_formula': None,
+                        'Database_referred': [],
+                        'identity': [],
+                        'MS1_pseudo_Spectra': [{'id_number': 'F94',
+                        'mz': 98.97531935309317,
+                        'apex': 700.0,
+                        'ion_relation': 'anchor',
+                        'parent_epd_id': 12},
+                        {'id_number': 'F8161',
+                        'mz': 99.9786892845517,
+                        'apex': 701.0,
+                        'ion_relation': '13C/12C',
+                        'parent_epd_id': 12},
+                        {'id_number': 'F317',
+                        'mz': 116.98587698692174,
+                        'apex': 700.0,
+                        'ion_relation': 'anchor,+H2O',
+                        'parent_epd_id': 12}],
+                        'MS2_Spectra': []}, ...]
+        '''
+        return self.index_reformat_epds( self.peaks_to_epds(mz_tolerance_ppm, rt_tolerance_scans, is_coeluted) )
+
+    def index_reformat_epds(self, list_empCpds):
+        '''
+        Careful with format inconsistency
+        '''
+        new = {}
+        for E in list_empCpds:
+            features = []
+            for peak in E['list_peaks']:
+                self.peak_dict[peak[0]]['ion_relation'] = peak[1]
+                features.append( self.peak_dict[peak[0]] )
+            new[E['id']] = {
+                'interim_id': E['id'], 
+                'neutral_formula_mass': None,
+                'neutral_formula': None,
+                'Database_referred': [],
+                'identity': [],
+                'MS1_pseudo_Spectra': features,
+                'MS2_Spectra': [],
+                }
+
+        return new
+
 
 # -----------------------------------------------------------------------------
 #
