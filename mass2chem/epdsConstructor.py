@@ -96,7 +96,7 @@ class epdsConstructor:
             list_empCpds.append(
                 {'id': ii, 'list_peaks': epds[ii]}
             )
-        print("epdsConstructor - numbers of seeded epds and included peaks: ", (ii, _NN2))
+        print("epdsConstructor - numbers of seeded epds and included peaks: ", (ii+1, _NN2))
         return list_empCpds
 
     def build_epds_2_steps(self, peak_list, search_patterns, ext_search_patterns, 
