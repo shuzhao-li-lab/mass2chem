@@ -75,7 +75,7 @@ class epdsConstructor:
         for L in epds:
             found2 += [x[0] for x in L]
         found2 = set(found2)
-        _NN2 = len(found2)
+        _NN2, ii = len(found2), -1
         for ii in range(len(epds)):
             list_empCpds.append(
                 {'id': ii, 'list_peaks': epds[ii]}
