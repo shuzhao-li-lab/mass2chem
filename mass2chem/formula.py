@@ -132,6 +132,7 @@ def __get_adduct_list__(mw, mode, primary_only):
             (mw + PROTON, 'M+H[1+]', {'H': 1}),                        #  
             (mw + 21.9820 + PROTON, 'M+Na[1+]', {'Na': 1}),            # Na = 21.9820 + PROTON = 22.9893
             (mw + 18.0106 + PROTON, 'M+H2O+H[1+]', {'H': 3, 'O':1}),   #  
+            (mw + 18.033823, 'M+NH4[1+]', {'H': 4, 'N': 1}),
             ]
         if primary_only:
             return [Ion(*L) for L in primaryList]
@@ -155,9 +156,7 @@ def __get_adduct_list__(mw, mode, primary_only):
                 (mw/2 + 10.991 + PROTON, 'M+H+Na[2+]', {'H':1, 'Na':1}),
                 (mw + 37.9555 + PROTON, 'M+K[1+]', {'K':1}),         # K = 37.9555 + PROTON = 38.9628
                 (mw + 57.9586 + PROTON, 'M+NaCl[1+]', {'Na': 1, 'Cl': 1}), 
-                (mw + 18.033823, 'M+NH4[1+]', {'H': 4, 'N': 1}),
                 
-                # Not checking existance of chemical groups here, but should do so when switching to structure based calculations
                 (mw - 18.0106 + PROTON, 'M-H2O+H[1+]', {'H': -1, 'O': -1}), 
                 (mw - 36.0212 + PROTON, 'M-H4O2+H[1+]', {'H': -3, 'O': -2}),
                 (mw - 17.0265 + PROTON, 'M-NH3+H[1+]', {'H': -2, 'N': -1}),
