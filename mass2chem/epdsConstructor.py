@@ -5,9 +5,6 @@ The ion patterns here are constructed differently from formula based calculation
 because formulae are not known here.
 
         Anchor peak is the most abundant isotopic peak. Modification peaks are from adducts, neutral loss and fragments.
-
-
-
         Requires at least one of isotopic_signatures and adduct_signatures. Use peak numbers only.
         If initiated by isotopic_signatures, do adduct search;
         elif initiated by adduct_signatures, assuming other primary isotopes are not seen.
@@ -46,7 +43,6 @@ class epdsConstructor:
     support of user input formats where rtime isn't precise or unavailable.
 
     '''
-
     def __init__(self, peak_list, mode='pos'):
         '''
         self.peak_dict: {peak_id: {'parent_masstrace_id': 1670, 'mz': 133.09702315984987, 'apex': 654, 'height': 14388.0, 
@@ -56,58 +52,115 @@ class epdsConstructor:
         self.peak_list = peak_list
         self.peak_dict = build_peak_id_dict(self.peak_list)
         self.mode = mode
+        self.seed_search_patterns = seed_empCpd_patterns[self.mode]
+        self.ext_search_patterns = [x for x in common_adducts[self.mode] if x not in self.seed_search_patterns]
 
-    def peaks_to_epds(self, mz_tolerance_ppm=5, rt_tolerance_scans=5, is_coeluted=is_coeluted_by_overlap,
-                            ):
+    def peaks_to_epdDict(self, 
+                            seed_search_patterns, 
+                            ext_search_patterns,
+                            mz_tolerance_ppm=5, 
+                            check_coelution=True,
+                            isotope_rt_tolerance=5,     # default is scan number
+                            coelution_rt_tolerance=10, 
+                            coelution_function='overlap',
+                            check_isotope_ratio = True):
+        '''
+        Wrapper function of constructing empCpds (empricial compounds).
+        This complies with empCpd JSON convention, while self.peaks_to_epds produces short-handed lists.
+        Input
+        =====
+        mz_tolerance_ppm: ppm tolerance in examining m/z patterns.
+        seed_search_patterns: initial ions for constructing an empCpd. 
+                This is very conservative and requires stricter isotope_rt_tolerance, because other ions can be searched later. 
+                Can use self.seed_search_patterns, e.g. for pos ions:
+                [(1.003355, '13C/12C', (0, 0.8)), (1.0078, 'H'), (21.9820, 'Na/H')]
+        ext_search_patterns: 
+                Additional ions to be searched to extend seed empCpds. Can use self.ext_search_patterns.
+        check_coelution: True unless retention time is not available.
+        isotope_rt_tolerance: tolerance threshold for deviation in retetion time, stricter version for seed ions (isotopes). 
+                Default unit is scan number, but can be arbitrary.
+        coelution_rt_tolerance: tolerance threshold for deviation in retetion time of adducts (other than seeds).
+        coelution_function: default is 'overlap', checking overlap of peaks. Fallback is by distance, if any other value is given.
+
+        Return
+        ======
+        list_empCpds, e.g. [{'interim_id': 12,
+                        'neutral_formula_mass': None,
+                        'neutral_formula': None,
+                        'Database_referred': [],
+                        'identity': [],
+                        'MS1_pseudo_Spectra': [{'id_number': 'F94',
+                        'mz': 98.97531935309317,
+                        'apex': 700.0,
+                        'ion_relation': 'anchor',
+                        'parent_epd_id': 12},
+                        {'id_number': 'F8161',
+                        'mz': 99.9786892845517,
+                        'apex': 701.0,
+                        'ion_relation': '13C/12C',
+                        'parent_epd_id': 12},
+                        {'id_number': 'F317',
+                        'mz': 116.98587698692174,
+                        'apex': 700.0,
+                        'ion_relation': 'anchor,+H2O',
+                        'parent_epd_id': 12}],
+                        'MS2_Spectra': []}, ...]
+        '''
+        return self.index_reformat_epds( 
+                        self.peaks_to_epds(
+                        seed_search_patterns, ext_search_patterns, mz_tolerance_ppm, 
+                        check_coelution, isotope_rt_tolerance, coelution_rt_tolerance, coelution_function, check_isotope_ratio) 
+                        )
+
+    def peaks_to_epds(self, seed_search_patterns, ext_search_patterns,
+                            mz_tolerance_ppm=5, 
+                            check_coelution=True,       # use later
+                            isotope_rt_tolerance=5, coelution_rt_tolerance=10, 
+                            coelution_function='overlap',
+                            check_isotope_ratio=True):
         '''
         Seeds by core set of 12C/13C isotopes and common adducts; then extend to common adducts.
         exhaustive_search is discouraged here, because it can be done better when formulae are supplied by a reference database.
+        See parameter descriptions in peaks_to_epdDict.
 
         Return
         ======
         list_empCpds, [{'id': ii, 'list_peaks': [(peak_id, ion), (), ...],}, ...]
             The first peak is anchor ion.
-
-
-        remaining_peaks = [P for P in remaining_peaks if P['id_number'] not in found2]
-        mztree = build_centurion_tree(remaining_peaks)
-
-        adduct_signatures = find_adduct_signatures(remaining_peaks, mztree, common_adducts[self.mode])
-        for G in adduct_signatures:
-            epds.append(G)
-            _NN2 += len(G)
-        
-        epds = self.consolidate_epds(epds)
-
-
         '''
         print("\n\nAnnotating empirical compounds on %d features/peaks, ..." %len(self.peak_list))
+        if coelution_function == 'overlap':
+            is_coeluted = is_coeluted_by_overlap
+        else:
+            is_coeluted = is_coeluted_by_distance
+            # usage e.g. is_coeluted(P1, P2, coelution_rt_tolerance=10)
+
         list_empCpds = []
-        search_patterns = seed_empCpd_patterns[self.mode]
-        ext_search_patterns = [x for x in common_adducts[self.mode] if x not in search_patterns]
-        epds = self.build_epds_2_steps(self.peak_list, search_patterns, ext_search_patterns, 
-                                                is_coeluted, mz_tolerance_ppm, rt_tolerance_scans)
+        epds = self.build_epds_2_steps(self.peak_list, seed_search_patterns, ext_search_patterns, 
+                        mz_tolerance_ppm, 
+                        isotope_rt_tolerance, coelution_rt_tolerance, is_coeluted, check_isotope_ratio)
         found2 = []
         for L in epds:
             found2 += [x[0] for x in L]
         found2 = set(found2)
-        _NN2 = len(found2)
+        _NN2, ii = len(found2), -1
         for ii in range(len(epds)):
             list_empCpds.append(
                 {'id': ii, 'list_peaks': epds[ii]}
             )
-        print("epdsConstructor - numbers of seeded epds and included peaks: ", (ii, _NN2))
+        print("epdsConstructor - numbers of seeded epds and included peaks: ", (ii+1, _NN2))
         return list_empCpds
 
-    def build_epds_2_steps(self, peak_list, search_patterns, ext_search_patterns, 
-                            is_coeluted, mz_tolerance_ppm, rt_tolerance_scans):
+    def build_epds_2_steps(self, peak_list, search_patterns, ext_search_patterns, mz_tolerance_ppm, 
+                                isotope_rt_tolerance, coelution_rt_tolerance, is_coeluted, check_isotope_ratio):
         '''
         return list of epds by 2-step search: seeds first, then extended by another set of search pattern.
         search_patterns, e.g. [(1.003355, '13C/12C', (0, 0.8)), (10.991, 'Na/H, double charged'), (18.0106, '+H2O')]
         '''
         epds, found = [], []
         mztree = build_centurion_tree(peak_list)
-        seeds = get_seed_empCpd_signatures(peak_list, mztree, search_patterns, is_coeluted, mz_tolerance_ppm, rt_tolerance_scans)
+        seeds = get_seed_empCpd_signatures(peak_list, mztree, search_patterns, mz_tolerance_ppm, 
+                        isotope_rt_tolerance, coelution_rt_tolerance, is_coeluted, check_isotope_ratio)
         # [[(182, 'anchor'), (191, '13C/12C'), (205, 'H')], ...]
         for L in seeds:
             found += [x[0] for x in L]
@@ -116,9 +169,34 @@ class epdsConstructor:
         mztree = build_centurion_tree(remaining_peaks)
         for G in seeds:
             epds.append(
-                G + extend_seed_empCpd_signature(G, self.peak_dict, mztree, ext_search_patterns, is_coeluted, mz_tolerance_ppm)
+                G + extend_seed_empCpd_signature(G, self.peak_dict, mztree, ext_search_patterns, 
+                        mz_tolerance_ppm, coelution_rt_tolerance, is_coeluted)
             )
         return epds
+
+
+    def index_reformat_epds(self, list_empCpds):
+        '''
+        Careful with format inconsistency
+        '''
+        new = {}
+        for E in list_empCpds:
+            features = []
+            for peak in E['list_peaks']:
+                self.peak_dict[peak[0]]['ion_relation'] = peak[1]
+                features.append( self.peak_dict[peak[0]] )
+            new[E['id']] = {
+                'interim_id': E['id'], 
+                'neutral_formula_mass': None,
+                'neutral_formula': None,
+                'Database_referred': [],
+                'identity': [],
+                'MS1_pseudo_Spectra': features,
+                'MS2_Spectra': [],
+                }
+
+        return new
+
 
 # -----------------------------------------------------------------------------
 #
@@ -143,6 +221,7 @@ class epdsConstructor:
         Search list_peaks for adducts that fit patterns relative to anchor ions in existing empCpds.
         Co-elution required.
         This is not done in initial empCpd construction to reduce errors in assigning peaks to empCpds.
+
         in progress -
         '''
         
