@@ -235,3 +235,76 @@ def compute_adducts_formulae(mw, neutral_formula,  mode='pos', primary_only=Fals
             adducts2get.append( [x.mz, x.ion, dict_to_hill_formula(result)] )
 
     return adducts2get
+
+
+
+
+def calculate_mass(formula_dict,decimal_places):
+    '''
+    Calculate mass from the formula dictionary. 
+    The mass is originated from: https://www.nist.gov/pml/atomic-weights-and-isotopic-compositions-relative-atomic-masses
+    Documented here are the masses of elements of which the isotope is most abundant.
+    '''
+
+    mass = {
+    'C': 12.0000,
+    'H': 1.0078250322,
+    'O': 15.99491461957,
+    'N': 14.00307400443,
+    'S': 31.9720711744,
+    'P': 30.97376199842,
+    'Fe': 55.93493633,
+    'He': 4.00260325413,
+    'Li': 7.0160034366,
+    'Be': 9.012183065,
+    'B': 11.00930536,
+    'F': 18.99840316273,
+    'Ne': 19.9924401762,
+    'Na': 22.9897692820,
+    'Mg': 23.985041697,
+    'Al': 26.98153853,
+    'Si': 27.97692653465,
+    'Cl': 34.968852682,
+    'Ar': 39.9623831237,
+    'K': 38.9637064864,
+    'Ca': 39.962590863,
+    'Sc': 44.95590828,
+    'Ti': 47.94794198,
+    'V': 50.94395704,
+    'Cr': 51.94050623,
+    'Mn': 54.93804391,
+    'Co': 58.93319429,
+    'Ni': 57.93534241,
+    'Cu': 62.92959772,
+    'Zn': 63.92914201,
+    'Ga': 68.9255735,
+    'Ge': 73.921177761,
+    'As': 74.92159457,
+    'Se': 79.9165218,
+    'Br': 83.9114977282,
+    'Kr': 77.92036494,
+    'Rb': 84.9117897379,
+    'Sr': 87.9056125,
+    'Y': 88.9058403,
+    'Zr': 89.9046977,
+    'Nb': 92.9063730,
+    'Mo': 97.90540482,
+    'Tc': 96.9063667,
+    'Ru': 101.9043441,
+    'Rh': 102.9054980,
+    'Pd': 105.9034804,
+    'Ag': 106.9050916,
+    'Cd': 113.90336509,
+    'In': 114.903878776,
+    'Sn': 117.90160657,
+    'Sb': 120.9038120,
+    'Te': 129.906222748,
+    'I': 126.9044719,
+    'Xe': 131.9041550856
+    }  # stop here. 
+
+    _m = 0
+    for k,v in formula_dict.items():
+        _m += round(v * mass[k],decimal_places)
+    return _m
+    
