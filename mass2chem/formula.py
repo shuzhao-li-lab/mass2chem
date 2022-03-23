@@ -299,11 +299,14 @@ def calculate_mass(formula_dict,decimal_places):
     'Sb': 120.9038120,
     'Te': 129.906222748,
     'I': 126.9044719,
-    'Xe': 131.9041550856
+    'Xe': 131.9041550856,
+    'Hg': 201.97064340,
+    'Pb': 207.9766525
     }  # stop here. 
 
     _m = 0
     for k,v in formula_dict.items():
-        _m += round(v * mass[k],decimal_places)
+        _m += v * mass[k]
+        _m = round(_m,decimal_places)
     return _m
     
