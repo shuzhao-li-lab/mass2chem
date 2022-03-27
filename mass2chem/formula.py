@@ -93,7 +93,7 @@ def parse_chemformula_dict(x):
     parse_chemformula_dict('C3H6N2O2')
     {'C': 3, 'H': 6, 'N': 2, 'O': 2}
     '''
-    p = re.findall(r'([A-Z][a-z]*)(\d*)', x)
+    p = re.findall(r'([A-Z][a-z]*)(-?\d*)', x)
     d = {}
     for pair in p: d[pair[0]] = int( pair[1] or 1 )
     return d
