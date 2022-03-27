@@ -7,7 +7,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
   name='mass2chem',
-  version='0.3.1',
+  version='0.3.2',
 
   author='Shuzhao Li',
   author_email='shuzhao.li@gmail.com',
