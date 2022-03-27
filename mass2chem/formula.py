@@ -14,6 +14,7 @@ Primary goal in the Mummichog suite is to compute:
 
 import re
 from collections import namedtuple
+import warnings
 
 PROTON = 1.00727646677
 electron = 0.000549
@@ -310,3 +311,27 @@ def calculate_mass(formula_dict,decimal_places):
         _m = round(_m,decimal_places)
     return _m
     
+
+
+def calculate_formula_diff(formula_dict1, formula_dict2):
+    '''
+    Calculate the differences between two formula dictionaries, always return the absolute values if the differences are all positive or all negative values
+    '''
+    unique_elements = set(list(formula_dict1.keys()) + list(formula_dict2.keys()))
+    
+    for e in unique_elements:      # update the dictionary with keys that present in another formula
+        if e not in formula_dict1:
+            formula_dict1.update({e:0})
+        if e not in formula_dict2:
+            formula_dict2.update({e:0})
+    
+    diff_dict = {key: formula_dict1[key] - formula_dict2.get(key, 0) for key in formula_dict1}
+    diff_dict = {k:v for k,v in diff_dict.items() if v !=0} # remove those with zero
+    if all([x > 0 for x in diff_dict.values()]):
+        res = diff_dict
+    elif all([x < 0 for x in diff_dict.values()]):
+        res = {k:abs(v) for k,v in diff_dict.items()}        
+    else:
+        res = diff_dict
+        warnings.warn('the differences between the two formulas are not all positive or all negative values')
+    return(res)
