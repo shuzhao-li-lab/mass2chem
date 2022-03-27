@@ -322,25 +322,22 @@ def compute_adducts_formulae(mw, neutral_formula,  mode='pos', primary_only=Fals
     return adducts2get
 
 
-def calculate_formula_diff(formula_dict1, formula_dict2):
+def calculate_formula_diff(FM_D1, FM_D2):
     '''
-    Calculate the differences between two formula dictionaries, always return the absolute values if the differences are all positive or all negative values
+    Calculate the differences between two formula dictionaries (FM_D1 - FM_D2), and return a formula dictionary documenting the differences
+    
     '''
-    unique_elements = set(list(formula_dict1.keys()) + list(formula_dict2.keys()))
+    unique_elements = set(list(FM_D1.keys()) + list(FM_D2.keys()))
     
     for e in unique_elements:      # update the dictionary with keys that present in another formula
-        if e not in formula_dict1:
-            formula_dict1.update({e:0})
-        if e not in formula_dict2:
-            formula_dict2.update({e:0})
+        if e not in FM_D1:
+            FM_D1.update({e:0})
+        if e not in FM_D2:
+            FM_D2.update({e:0})
     
-    diff_dict = {key: formula_dict1[key] - formula_dict2.get(key, 0) for key in formula_dict1}
+    diff_dict = {key: FM_D1[key] - FM_D2.get(key, 0) for key in FM_D1}
     diff_dict = {k:v for k,v in diff_dict.items() if v !=0} # remove those with zero
-    if all([x > 0 for x in diff_dict.values()]):
-        res = diff_dict
-    elif all([x < 0 for x in diff_dict.values()]):
-        res = {k:abs(v) for k,v in diff_dict.items()}        
-    else:
-        res = diff_dict
+    if not all([x > 0 for x in diff_dict.values()]) or not all([x < 0 for x in diff_dict.values()]):
         warnings.warn('the differences between the two formulas are not all positive or all negative values')
-    return(res)
+    
+    return(diff_dict)
