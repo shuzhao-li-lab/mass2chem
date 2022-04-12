@@ -80,12 +80,29 @@ atom_mass_dict = {
     'I': 126.9044719,
     'Xe': 131.9041550856,
     'Hg': 201.97064340,
-    'Pb': 207.9766525
+    'Pb': 207.9766525,
+
+    # Common isotopic mass
+    '[13C]': 13.00335483507,
+    '[15N]': 15.00010889888,
+    'D':  2.01410177812,
+    '[37Cl]':  36.965902602,
+    '[18O]': 17.99915961286,
+    '[34S]': 33.967867004,
+    '[81Br]': 80.916291,
+    '[56Fe]': 55.934938,
+    '[7Li]': 7.016005,
+    '[11B]': 11.009305,
+    '[65Cu]': 64.927794,
+    '[109Ag]': 108.904756
     }
 
 
-def parse_chemformula_dict(x):
-    '''This does not deal with nested groups in chemical formula, or isotopes.
+def parse_chemformula_dict(x, remove_additive_cpd = True):
+    '''
+    This does not deal with nested groups in chemical formula. But the number of repetitive elements present in the formula will be sumed
+    Default: removing additive compounds (for example, [13C]4H12N2·2HCl will turn into [13C]4H12N2)
+    Handles common isotopes.
     Formula from HMDB 3.5 are compatible.
 
     Example
@@ -93,9 +110,13 @@ def parse_chemformula_dict(x):
     parse_chemformula_dict('C3H6N2O2')
     {'C': 3, 'H': 6, 'N': 2, 'O': 2}
     '''
-    p = re.findall(r'([A-Z][a-z]*)(-?\d*)', x)
-    d = {}
-    for pair in p: d[pair[0]] = int( pair[1] or 1 )
+    if remove_additive_cpd == True:
+        if '·' in x:
+            x = x.split('·')[0]
+    p = re.findall(r'(\[\d*[A-Z][a-z]*\]|[A-Z][a-z]*)(-?\d*)', x)
+    k = set([x[0] for x in p])
+    d = {k:int(0) for k in k}
+    for pair in p: d[pair[0]] += int( pair[1] or 1 )
     return d
 
 
@@ -341,3 +362,25 @@ def calculate_formula_diff(FM_D1, FM_D2):
         warnings.warn('the differences between the two formulas are not all positive or all negative values')
     
     return(diff_dict)
+
+def adjust_salt_formula(F, export_str = True):
+    '''
+    Formula in the commercially provided products usually contain salts, but ions detected mass spec are not in salt form.
+    To convert to compatible format for adduct calculation, salts (e.g., K, Na) need to replace by Hydrogens.
+    '''
+    exchange_dict = {
+    'K': {'H': 1},
+    'Na': {'H': 1},
+    'Ca': {'H': 2},
+    'Mg': {'H': 2}}
+    F_D = parse_chemformula_dict(F, remove_additive_cpd = True)
+    for k,v in exchange_dict.items():
+        if k in F_D:
+            for i in range(F_D[k]):
+                F_D = add_formula_dict(F_D,v)
+            F_D.pop(k,None)
+    if export_str:
+        res = dict_to_hill_formula(F_D)
+    else:
+        res = F_D
+    return res
