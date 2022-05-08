@@ -81,6 +81,7 @@ atom_mass_dict = {
     'Xe': 131.9041550856,
     'Hg': 201.97064340,
     'Pb': 207.9766525,
+    'Ba': 137.905247,
 
     # Common isotopic mass
     '[13C]': 13.00335483507,
@@ -98,23 +99,47 @@ atom_mass_dict = {
     }
 
 
-def parse_chemformula_dict(x, remove_additive_cpd = True):
+def parse_chemformula_dict(x):  # return to its original form
+    '''This does not deal with nested groups in chemical formula, or isotopes.
+    Formula from HMDB 3.5 are compatible.
+    Example
+    -------
+    parse_chemformula_dict('C3H6N2O2')
+    {'C': 3, 'H': 6, 'N': 2, 'O': 2}
+    Note
+    ----
+    If formula contains negative number of elements, it will have no warnings but get a errenous dictionary (e.g., 'C2H12O-5' will return {'C': 2, 'H': 12, 'O': 1})
+    Be careful of those circumstances.
     '''
-    This does not deal with nested groups in chemical formula. But the number of repetitive elements present in the formula will be sumed
-    Default: removing additive compounds (for example, [13C]4H12N2·2HCl will turn into [13C]4H12N2)
+    p = re.findall(r'([A-Z][a-z]*)(\d*)', x)
+    d = {}
+    for pair in p: d[pair[0]] = int( pair[1] or 1 )
+    return d
+
+
+
+def parse_chemformula_dict_comprehensive(x, remove_additive_cpd = True, handle_negative_number = True):
+    '''
+    A more inclusive parsing function (compare to `parse_chemformula_dict`) to handle some rare cases of formula parsing
+    This also deals with nested groups in chemical formula. And the number of repetitive elements present in the formula will be sumed (e.g., CH2O2H24O4)
+    Default: removing additive compounds (e.g., [13C]4H12N2·2HCl will turn into [13C]4H12N2)
+    Default: Handle negative number in parsing dictionary (e.g.,, C-2H-2O-2)
     Handles common isotopes.
     Formula from HMDB 3.5 are compatible.
 
     Example
     -------
-    parse_chemformula_dict('C3H6N2O2')
-    {'C': 3, 'H': 6, 'N': 2, 'O': 2}
+    parse_chemformula_dict_comprehensive('C-2H12O5H-4·H2O', remove_additive_cpd=True, handle_negative_number=True)
+    {'C': -2, 'H': 8, 'O': 5}
     '''
-    if remove_additive_cpd == True:
+    if remove_additive_cpd == True: # remove additive compound is true
         if '·' in x:
             x = x.split('·')[0]
-    p = re.findall(r'(\[\d*[A-Z][a-z]*\]|[A-Z][a-z]*)(-?\d*)', x)
-    k = set([x[0] for x in p])
+    if handle_negative_number == True: # handle formula which has negative value; If the formula somehow has `-` not indicating negative number, this function will not work
+        p = re.findall(r'(\[\d*[A-Z][a-z]*\]|[A-Z][a-z]*)(-?\d*)', x)
+    else: 
+        p = re.findall(r'([A-Z][a-z]*)(\d*)', x)
+    k = set([x[0] for x in p]) # handle repetitive element (nested group)
     d = {k:int(0) for k in k}
     for pair in p: d[pair[0]] += int( pair[1] or 1 )
     return d
