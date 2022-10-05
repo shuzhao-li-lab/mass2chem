@@ -42,10 +42,10 @@ setup(
   install_requires=[
     'numpy',
     'scipy',
-
+    'treelib',
   ],
 
-  python_requires='>=3',
+  python_requires='>=3.7',
 
 
 

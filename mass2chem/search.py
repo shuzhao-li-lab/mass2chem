@@ -84,7 +84,6 @@ seed_empCpd_patterns = {
 }
 
 
-
 #
 # -----------------------------------------------------------------------------
 #
@@ -107,14 +106,13 @@ def build_centurion_tree(list_peaks):
             d[cent] = [p]
     return d
 
-
 def build_peak_id_dict(list_peaks):
     d = {}
     for p in list_peaks:
         d[p['id_number']] = p
     return d
 
-def __build_centurion_tree_mzlist(mzList):
+def build_centurion_tree_mzlist(mzList):
     '''
     Return a dictionary, indexing mzList by 100*mz bins.
     Because most high-resolution mass spectrometers measure well under 0.01 amu, 
@@ -131,7 +129,7 @@ def __build_centurion_tree_mzlist(mzList):
 
 def find_all_matches_centurion_indexed_list(query_mz, mz_centurion_tree, limit_ppm=5):
     '''
-    Return matched peaks in mz_centurion_tree.
+    Return matched peaks in mz_centurion_tree by m/z diff within limit_ppm.
     '''
     q = int(query_mz * 100)
     mz_tol = query_mz * limit_ppm * 0.000001
@@ -409,4 +407,15 @@ def search_formula_mass_dataframe(query_mz, DFDB, limit_ppm=10):
         return (DFDB.iloc[ii].name, ppm)            # name is formula_mass
     else:
         return None
+
+def is_matched_lcms_peaks(peak1, peak2, mz_tolerance_ppm=5, rt_tolerance=10):
+    '''
+    Check if two peaks are matched by mz and rtime.
+    peak format: {'id': 'F1', 'mz': 60.0808, 'rtime': 117.7, ...}
+    '''
+    matched = False
+    mz_tol = peak1['mz'] * mz_tolerance_ppm * 0.000001
+    if abs(peak2['mz']-peak1['mz']) < mz_tol and abs(peak2['rtime']-peak1['rtime']) < rt_tolerance:
+        matched = True
+    return matched
 

@@ -1,4 +1,6 @@
 from collections import namedtuple
+import os
+import json
 import numpy as np
 
 # from metDataModel.core import Feature
@@ -11,7 +13,7 @@ tFeature = namedtuple('tFeature', ['feature_id', 'mass_id', 'mz', 'rtime', 'rt_m
 
 
 def read_feature_tuples(feature_table, 
-                        id_col=True, mz_col=1, rtime_col=2, 
+                        id_col=0, mz_col=1, rtime_col=2, 
                         intensity_cols=(3,4), delimiter="\t"):
     '''
     Read a text feature table into a list of features.
@@ -23,7 +25,7 @@ def read_feature_tuples(feature_table,
     id_col: column for id. If feature ID is not given, row_number is used as ID.
     mz_col: column for m/z.
     rtime_col: column for retention time.
-    intensity_cols: range of columns for intensity values.
+    intensity_cols: range of columns for intensity values. E.g. (3,5) includes only col 3 and 4.
 
     Return
     ------
@@ -39,7 +41,7 @@ def read_feature_tuples(feature_table,
     for ii in range(1, num_features+1):
         if featureLines[ii].strip():
             a = featureLines[ii].split(delimiter)
-            if isinstance(id_col, int):         # feature id specified
+            if isinstance(id_col, int):         # feature id specified in a col, which could be 0
                 iid = a[id_col]
             else:
                 iid = 'row'+str(ii)
@@ -51,7 +53,6 @@ def read_feature_tuples(feature_table,
                 'representative_intensity': np.mean(intensities),
             })
     return L
-
 
 
 def index_features(list_of_features, range_low=20, range_high=2000):
@@ -76,7 +77,7 @@ def index_features(list_of_features, range_low=20, range_high=2000):
 
 
 def read_features(feature_table, 
-                        id_col=True, mz_col=1, rtime_col=2, 
+                        id_col=0, mz_col=1, rtime_col=2, 
                         intensity_cols=(3,4), delimiter="\t"):
     '''
     Read a text feature table into a list of features.
@@ -89,7 +90,7 @@ def read_features(feature_table,
     id_col: column for id. If feature ID is not given, row_number is used as ID.
     mz_col: column for m/z.
     rtime_col: column for retention time.
-    intensity_cols: range of columns for intensity values.
+    intensity_cols: range of columns for intensity values. E.g. (3,5) includes only col 3 and 4.
 
     Return
     ------
@@ -121,6 +122,33 @@ def read_features(feature_table,
             })
     return L
 
+
+def get_json_peaklist_from_featuretable(feature_table, outfile='',
+                        id_col=0, mz_col=1, rtime_col=2, intensity_cols=(11,12), delimiter="\t"):
+    '''
+    Read a text feature table into a list of features and export as JSON file.
+    Will update later to expand import attributes.
+
+    Parameters
+    ----------
+    feature_table: Tab delimited feature table. First line as header.
+                    Recommended col 0 for ID, col 1 for m/z, col 2 for rtime.
+    id_col: column for id. If feature ID is not given, row_number is used as ID.
+    mz_col: column for m/z.
+    rtime_col: column for retention time.
+    intensity_cols: range of columns for intensity values. E.g. (3,5) includes only col 3 and 4.
+    '''
+    features = read_features(feature_table, 
+                        id_col=id_col, mz_col=mz_col, rtime_col=rtime_col, 
+                        intensity_cols=intensity_cols, delimiter=delimiter)
+    if not outfile:
+        outfile = os.path.basename(feature_table).replace(".", "_") + '.json'
+    with open(outfile, 'w', encoding='utf-8') as f:
+            json.dump(features, f, ensure_ascii=False, indent=2)
+
+
+def read_json_peaklist(jfile):
+    return json.load( open(jfile, 'rb') )
 
 
 def text_to_mcg_features(textValue, MASS_RANGE = (50, 2500), delimiter='\t'):
