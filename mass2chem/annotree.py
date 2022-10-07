@@ -65,7 +65,12 @@ def make_peak_dict(peak_list):
     return peak_dict
 
 def construct_isotopic_trees(peak_list, 
-                    search_patterns = [(1.003355, '13C/12C', (0, 0.8))], 
+                    search_patterns = [ (1.003355, '13C/12C', (0, 0.8)),
+                                        (2.00671, '13C/12C*2', (0, 0.8)),
+                                        (3.010065, '13C/12C*3', (0, 0.8)),
+                                        (4.01342, '13C/12C*4', (0, 0.8)),
+                                        (5.016775, '13C/12C*5', (0, 0.8)),
+                                        (6.02013, '13C/12C*6', (0, 0.8)),], 
                     mz_tolerance_ppm=5, 
                     isotope_rt_tolerance=2, 
                     check_isotope_ratio = False,
@@ -76,6 +81,9 @@ def construct_isotopic_trees(peak_list,
     For other parameters, see get_isotopic_pairs.
     Return node2tree, a dict of peak to tree mapping.
     No peak is assigned to more than one trees. But some close peaks can't be distinguished here.
+    search_patterns: Need to consider all possible number of 13C labels. 
+                     If *6 exists, it's not granted that *4 exists. So we can't rely on pairwise to connect all pairs.
+                     The third item, (0, 0.8) here, is an option to constrain ratios but not used in this function.
 
     Example
     =======
@@ -250,6 +258,16 @@ def merge_trees_by_modifications(trees, list_peaks, search_patterns, rt_verify_f
     print("Got %d merged trees." %len(good_trees))
     return good_trees
 
+def add_data_to_tag(trees, len_limit=20):
+    '''
+    Append relation note in data to tree.tag, for more informtive showing
+    '''
+    for tree in trees:
+        for node in tree.nodes:
+            N = tree.get_node(node)
+            N.tag += ' ' + str(N.data)[:len_limit]
+
+    return trees
 
 def merge_trees_by_insrc_modifications(trees, list_peaks,
                     search_patterns = [(1.0078, 'H'), (21.9820, 'Na/H'), (41.026549, 'Acetonitrile')], 
@@ -259,9 +277,10 @@ def merge_trees_by_insrc_modifications(trees, list_peaks,
     with user supplied search_patterns (can be from search.common_adducts).
     These in-source modifications must have same retention time.
     '''
-    return merge_trees_by_modifications(trees, list_peaks,
+    trees = merge_trees_by_modifications(trees, list_peaks,
                     search_patterns, rt_verify_function=rt_matched_by_tolerance,
                     mz_tolerance_ppm=mz_tolerance_ppm, rt_tolerance=rt_tolerance)
+    return add_data_to_tag(trees)
 
 def merge_trees_by_derivatization(trees, list_peaks,
                     search_patterns = [(161.08407, 'DmPA'), (233.05105, 'Dens'), (247.07793, 'DnsHz')], 
@@ -270,14 +289,15 @@ def merge_trees_by_derivatization(trees, list_peaks,
     Merge trees that are from same compound but with chemical labeling/derivatization,
     which leads to greater retention time.
     '''
-    return merge_trees_by_modifications(trees, list_peaks,
+    trees = merge_trees_by_modifications(trees, list_peaks,
                     search_patterns, rt_verify_function=rt_compared_by_values,
                     mz_tolerance_ppm=mz_tolerance_ppm, rt_tolerance=None)
-
+    return add_data_to_tag(trees)
 
 def export_json_trees(trees, outfile="export_annoTree.tsv"):
-    pass
-
+    L = [tree.to_json() for tree in trees]
+    with open(outfile, 'w', encoding='utf-8') as f:
+        json.dump(L, f, ensure_ascii=False, indent=2)
 
 def export_tsv_trees(trees, outfile="export_annoTree.tsv"):
     s = 'Feature_ID\tFeature_tag\troot\troot_tag\trelation\n'
@@ -287,6 +307,30 @@ def export_tsv_trees(trees, outfile="export_annoTree.tsv"):
             s += '\t'.join([ND.identifier, ND.tag, ROOT.identifier, ROOT.tag, ND.data or '']) + '\n'
     with open(outfile, 'w') as O:
         O.write(s)
+
+def is_datatag_in_tree(tree, datatag="13C/12C*6"):
+    _in_ = False
+    for node in tree.nodes:
+        if datatag in tree.get_node(node).tag or datatag in tree.get_node(node).data:
+            _in_ = True
+            
+    return _in_
+
+def find_trees_by_datatag(trees, datatag="13C/12C*6"):
+    found = []
+    for tree in trees:
+        if is_datatag_in_tree(tree, datatag):
+            found.append(tree)
+            
+    return found
+
+def find_trees_by_datatag_list(trees, datatag_list=["13C/12C", 
+                                "13C/12C*2", "13C/12C*3", "13C/12C*4", "13C/12C*5", "13C/12C*6",]):
+    '''
+    Return a list of [tree roots] corresponding to the datatag_list.
+    Note 13C/12C is not limited to *1 but all inclusive.
+    '''
+    return [find_trees_by_datatag(trees, datatag) for datatag in datatag_list]
 
 
 
@@ -312,5 +356,4 @@ class empTree:
         self.ambiguous = False
         self.uniqe_nodes = []
         self.trees = []
-
 

@@ -81,7 +81,6 @@ def read_features(feature_table,
                         intensity_cols=(3,4), delimiter="\t"):
     '''
     Read a text feature table into a list of features.
-    Internal use.
 
     Input
     -----
