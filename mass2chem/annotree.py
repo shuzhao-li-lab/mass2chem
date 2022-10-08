@@ -292,7 +292,12 @@ def merge_trees_by_derivatization(trees, list_peaks,
     trees = merge_trees_by_modifications(trees, list_peaks,
                     search_patterns, rt_verify_function=rt_compared_by_values,
                     mz_tolerance_ppm=mz_tolerance_ppm, rt_tolerance=None)
-    return add_data_to_tag(trees)
+    # return add_data_to_tag(trees)
+    return trees
+
+
+
+
 
 def export_json_trees(trees, outfile="export_annoTree.tsv"):
     L = [tree.to_json() for tree in trees]
