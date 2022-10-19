@@ -25,23 +25,17 @@ Example data:
         │   └── 182.1233@171.7
         └── 181.1198@173.3
 
-
 Trees use peak IDs, but full peak data are in json peak lists.
 
-Shuzhao 2022-09-22
-
-#
-# to-dos: Above only includes isotopic peaks; will add peaks without C13 counterparts into empCpd trees
-#
-# 
-
-The trees can be annotated by customized methods, e.g.
+The trees (empCpds) can be annotated by customized methods, e.g.
 - in-house compound library
 - targeted pathway search
 - public databases
 - linking tandem mass spec data
 
-
+# to-dos: 
+# Above only includes isotopic peaks; will add peaks without C13 counterparts into empCpd trees
+# To add plot functions of isotopologues
 '''
 
 import os
