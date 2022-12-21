@@ -123,7 +123,7 @@ mass_signatures = [
 (33.02146, '-NH2OH, loss from hydroxamic acids', { 'N':1 , 'H':3, 'O':1}),
 (33.96103, 'Cl <-> H, halogen exchange',{ 'Cl': 1, 'H':-1}),
 (33.98772, '± H2S, sulfur compounds',{ 'H': 2, 'S':1}),
-(34.969402, 'Cl-',{ 'Cl': -1}),
+(34.969402, 'Cl-',{ 'Cl': 1}),
 # 
 (35.9767, 'Cl-+2H2+ <-> H+, salt adduct',{'Cl': 1, 'H':1}),
 (36.94824706646, 'M+K-2H[-]',{ 'K':1, 'H':-2}),
