@@ -155,32 +155,8 @@ class epdsConstructor:
         print("epdsConstructor - numbers of seeded epds and included peaks: ", (ii+1, _NN2))
         return list_empCpds
 
+
     def build_epds_2_steps(self, peak_list, search_patterns, ext_search_patterns, mz_tolerance_ppm, 
-                                isotope_rt_tolerance, coelution_rt_tolerance, is_coeluted, check_isotope_ratio):
-        '''
-        return list of epds by 2-step search: 
-
-
-        '''
-
-        subnetworks, peak_dict, edge_dict = peaks_to_networks(peak_list, 
-                    isotope_search_patterns = isotope_search_patterns,
-                    adduct_search_patterns = adduct_search_patterns,
-                    mz_tolerance_ppm=mz_tolerance_ppm, 
-                    rt_tolerance = rt_tolerance)
-
-
-        epdTrees = []
-        for subnet in subnetworks:
-            E = empTree(subnet)
-            epdTrees.append(
-                E.to_tree()
-            )
-
-        return epdTrees
-
- 
-    def __old__build_epds_2_steps(self, peak_list, search_patterns, ext_search_patterns, mz_tolerance_ppm, 
                                 isotope_rt_tolerance, coelution_rt_tolerance, is_coeluted, check_isotope_ratio):
         '''
         return list of epds by 2-step search: seeds first, then extended by another set of search pattern.
