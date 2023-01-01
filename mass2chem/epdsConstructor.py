@@ -17,6 +17,8 @@ from .search import *
 
 class epdsConstructor:
     '''
+    Warning: epdsConstructor is moved to khipu package. This module is no longer maintained.
+
     To organize a table of peaks/features into a list of empirical compounds
     (https://github.com/shuzhao-li/metDataModel).
     empCpds (or epds) can be initiated by signatures on isotopic relationships or adduct relationships.
@@ -49,6 +51,8 @@ class epdsConstructor:
                     'left_base': 648, 'right_base': 655, 'id_number': 555}, ...}
         '''
         # will add parameters dict
+        print("Deprecation warning: epdsConstructor is moved to khipu package.")
+
         self.peak_list = peak_list
         self.peak_dict = build_peak_id_dict(self.peak_list)
         self.mode = mode
@@ -166,7 +170,6 @@ class epdsConstructor:
                     rt_tolerance = rt_tolerance)
 
 
-
         epdTrees = []
         for subnet in subnetworks:
             E = empTree(subnet)
@@ -174,17 +177,9 @@ class epdsConstructor:
                 E.to_tree()
             )
 
-
-
-
-
-
-
         return epdTrees
 
  
-
-
     def __old__build_epds_2_steps(self, peak_list, search_patterns, ext_search_patterns, mz_tolerance_ppm, 
                                 isotope_rt_tolerance, coelution_rt_tolerance, is_coeluted, check_isotope_ratio):
         '''
@@ -209,7 +204,6 @@ class epdsConstructor:
         return epds
 
 
-
     def index_reformat_epds(self, list_empCpds):
         '''
         Format list of empCpds to a dictionary with fields as defined in metDataModel.
@@ -232,4 +226,3 @@ class epdsConstructor:
                 }
 
         return new
-

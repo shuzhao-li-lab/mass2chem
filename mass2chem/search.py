@@ -159,8 +159,9 @@ def find_best_match_centurion_indexed_list(query_mz, mz_centurion_tree, limit_pp
     return result[0]
 
 def is_coeluted_by_overlap(P1, P2, rt_tolerance=20):
-    '''
-    coelution is defined by overlap more than half of the smaller peak, or apexes within rt_tolerance.
+    '''Check overalp in elution peaks. Used for annotation with asari, when peak parameters are detailed.
+    Coelution is defined by overlap more than half of the smaller peak, or apexes within rt_tolerance (
+    so this is computational term, not LC term). 
     If not enough parameters are given for peaks, fallback to is_coeluted_by_distance(P1, P2, rt_tolerance=10).
     
     Example peak format: {'parent_masstrace_id': 1670, 'mz': 133.09702315984987, 'apex': 654, 'height': 14388.0,
