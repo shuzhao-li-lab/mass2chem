@@ -15,89 +15,31 @@ Primary goal in the Mummichog suite is to compute:
 import re
 from collections import namedtuple
 import warnings
+import os
+import json
+
+"""
+Isotope information sourced from:
+
+https://www.nist.gov/pml/atomic-weights-and-isotopic-compositions-relative-atomic-masses
+
+Coursey, J.S., Schwab, D.J., Tsai, J.J., and Dragoset, R.A. (2015), 
+Atomic Weights and Isotopic Compositions (version 4.1). 
+[Online] Available: http://physics.nist.gov/Comp [2023, July, 18]. 
+National Institute of Standards and Technology, Gaithersburg, MD.
+
+Per NIST website:
+
+NIST web pages are provided as a public service by the National Institute of Standards and Technology (NIST). 
+With the exception of material marked as copyrighted, information presented on NIST sites are considered 
+public information and may be distributed or copied. Use of appropriate byline/photo/image credits is requested.
+"""
 
 Ion = namedtuple('Ion', ['mz', 'ion', 'delta_formula'])
-
-PROTON = 1.00727646677
-electron = 0.000549
-
-# prepared by Minghao Gong
-# from: https://www.nist.gov/pml/atomic-weights-and-isotopic-compositions-relative-atomic-masses
-# Using mass of most abundant isotope.
-atom_mass_dict = {
-    'C': 12.0000,
-    'H': 1.0078250322,
-    'O': 15.99491461957,
-    'N': 14.00307400443,
-    'S': 31.9720711744,
-    'P': 30.97376199842,
-    'Fe': 55.93493633,
-    'He': 4.00260325413,
-    'Li': 7.0160034366,
-    'Be': 9.012183065,
-    'B': 11.00930536,
-    'F': 18.99840316273,
-    'Ne': 19.9924401762,
-    'Na': 22.9897692820,
-    'Mg': 23.985041697,
-    'Al': 26.98153853,
-    'Si': 27.97692653465,
-    'Cl': 34.968852682,
-    'Ar': 39.9623831237,
-    'K': 38.9637064864,
-    'Ca': 39.962590863,
-    'Sc': 44.95590828,
-    'Ti': 47.94794198,
-    'V': 50.94395704,
-    'Cr': 51.94050623,
-    'Mn': 54.93804391,
-    'Co': 58.93319429,
-    'Ni': 57.93534241,
-    'Cu': 62.92959772,
-    'Zn': 63.92914201,
-    'Ga': 68.9255735,
-    'Ge': 73.921177761,
-    'As': 74.92159457,
-    'Se': 79.9165218,
-    'Br': 83.9114977282,
-    'Kr': 77.92036494,
-    'Rb': 84.9117897379,
-    'Sr': 87.9056125,
-    'Y': 88.9058403,
-    'Zr': 89.9046977,
-    'Nb': 92.9063730,
-    'Mo': 97.90540482,
-    'Tc': 96.9063667,
-    'Ru': 101.9043441,
-    'Rh': 102.9054980,
-    'Pd': 105.9034804,
-    'Ag': 106.9050916,
-    'Cd': 113.90336509,
-    'In': 114.903878776,
-    'Sn': 117.90160657,
-    'Sb': 120.9038120,
-    'Te': 129.906222748,
-    'I': 126.9044719,
-    'Xe': 131.9041550856,
-    'Hg': 201.97064340,
-    'Pb': 207.9766525,
-    'Ba': 137.905247,
-
-    # Common isotopic mass
-    '[13C]': 13.00335483507,
-    '[15N]': 15.00010889888,
-    'D':  2.01410177812,
-    '[37Cl]':  36.965902602,
-    '[18O]': 17.99915961286,
-    '[34S]': 33.967867004,
-    '[81Br]': 80.916291,
-    '[56Fe]': 55.934938,
-    '[7Li]': 7.016005,
-    '[11B]': 11.009305,
-    '[65Cu]': 64.927794,
-    '[109Ag]': 108.904756
-    }
-
+NIST_mass_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), './source_data/NIST_isotope_data.json')
+atom_mass_dict = json.load(open(NIST_mass_path))['all']
+PROTON = atom_mass_dict["PROTON"]
+ELECTRON = atom_mass_dict['e']
 
 def parse_chemformula_dict(x):  # return to its original form
     '''This does not deal with nested groups in chemical formula, or isotopes.
@@ -260,7 +202,7 @@ def __get_adduct_list__(mw, mode, primary_only):
 
     if mode == 'pos': 
         primaryList = [
-            (mw - electron, 'M[1+]', {}),                              # e not changing formula
+            (mw - ELECTRON, 'M[1+]', {}),                              # e not changing formula
             (mw + PROTON, 'M+H[1+]', {'H': 1}),                        #  
             (mw + 21.9820 + PROTON, 'M+Na[1+]', {'Na': 1}),            # Na = 21.9820 + PROTON = 22.9893
             (mw + 18.0106 + PROTON, 'M+H2O+H[1+]', {'H': 3, 'O':1}),   #  
@@ -272,7 +214,7 @@ def __get_adduct_list__(mw, mode, primary_only):
         else:
             extendedList = [
                 # Use {'C':-1} to force check that C exists in formula
-                (mw +1.0034 - electron, 'M(C13)[1+]', {'C':-1, '(C13)':1}), 
+                (mw +1.0034 - ELECTRON, 'M(C13)[1+]', {'C':-1, '(C13)':1}), 
                 (mw +1.0034 + PROTON, 'M(C13)+H[1+]', {'C':-1, '(C13)':1, 'H':1}),
                 
                 (mw/2 + PROTON, 'M+2H[2+]', {'H': 2}),
@@ -308,7 +250,7 @@ def __get_adduct_list__(mw, mode, primary_only):
     elif mode == 'neg':
         primaryList = [
             (mw - PROTON, 'M-H[-]', {'H': -1}),       
-            (mw + electron, 'M[-]', {}), 
+            (mw + ELECTRON, 'M[-]', {}), 
             (mw - 18.0106 - PROTON, 'M-H2O-H[-]', {'H': -3, 'O':-1}),   
             (mw + 34.9689, 'M+Cl[-]', {'Cl':1}),
             ]
