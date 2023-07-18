@@ -2,6 +2,23 @@ import requests as re
 import json
 import os 
 
+"""
+Isotope information sourced from:
+
+https://www.nist.gov/pml/atomic-weights-and-isotopic-compositions-relative-atomic-masses
+
+Coursey, J.S., Schwab, D.J., Tsai, J.J., and Dragoset, R.A. (2015), 
+Atomic Weights and Isotopic Compositions (version 4.1). 
+[Online] Available: http://physics.nist.gov/Comp [2023, July, 18]. 
+National Institute of Standards and Technology, Gaithersburg, MD.
+
+Per NIST website:
+
+NIST web pages are provided as a public service by the National Institute of Standards and Technology (NIST). 
+With the exception of material marked as copyrighted, information presented on NIST sites are considered 
+public information and may be distributed or copied. Use of appropriate byline/photo/image credits is requested.
+"""
+
 NIST_TABLE_URL = 'https://physics.nist.gov/cgi-bin/Compositions/stand_alone.pl?ele=&all=all&ascii=ascii2&isotype=all'
 
 def fetch_NIST_isotope_table(url=NIST_TABLE_URL):
