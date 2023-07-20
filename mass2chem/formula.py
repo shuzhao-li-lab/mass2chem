@@ -9,7 +9,6 @@ Primary goal in the Mummichog suite is to compute:
 2. Isotopes
 3. In source reactions, including adducts, neutral loss, fragments
 4. Biochemical reactions
-
 '''
 
 import re
@@ -27,6 +26,10 @@ Coursey, J.S., Schwab, D.J., Tsai, J.J., and Dragoset, R.A. (2015),
 Atomic Weights and Isotopic Compositions (version 4.1). 
 [Online] Available: http://physics.nist.gov/Comp [2023, July, 18]. 
 National Institute of Standards and Technology, Gaithersburg, MD.
+
+And subatomic masses sourced from:
+
+https://physics.nist.gov/cgi-bin/cuu/Value?mpu or meu
 
 Per NIST website:
 

@@ -68,21 +68,36 @@ def isotopes_to_mass_tables(isotope_list, inject_subatomic=True):
                 if abundance > element_masses[element][1]:
                     element_masses[element] = (mass, abundance)
             isotope_masses['[' + str(mass_number) + element + ']'] = mass
-    subatomic = {
-        'e': 0.000549, 
-        'PROTON': 1.00727646677
-    }
+    if inject_subatomic:
+        subatomic = {
+            # these values were taken from: 
+            # https://physics.nist.gov/cgi-bin/cuu/Value?meu and 
+            # https://physics.nist.gov/cgi-bin/cuu/Value?mpu
+            # which are also provided by NIST free of use.
+
+            'e': 0.000548579909065,
+            'PROTON': 1.007276466621
+        }
+    else:
+        subatomic = {}
     element_masses = {k: v[0] for k, v in element_masses.items()}
     all_masses = {}
     all_masses.update(element_masses)
     all_masses.update(isotope_masses)
     all_masses.update(subatomic)
-    return {
-        "elements": element_masses,
-        "isotopes": isotope_masses,
-        "subatomic": subatomic,
-        "all": all_masses 
-    }
+    if inject_subatomic:
+        return {
+            "elements": element_masses,
+            "isotopes": isotope_masses,
+            "subatomic": subatomic,
+            "all": all_masses 
+        }
+    else:
+        return {
+            "elements": element_masses,
+            "isotopes": isotope_masses,
+            "all": all_masses 
+        }
 
 def dump_mass_isotope_mass_table(mass_tables, path=None):
     if path is None:
