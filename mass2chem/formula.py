@@ -39,7 +39,8 @@ public information and may be distributed or copied. Use of appropriate byline/p
 """
 
 Ion = namedtuple('Ion', ['mz', 'ion', 'delta_formula'])
-NIST_mass_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), './source_data/NIST_isotope_data.json')
+NIST_mass_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'source_data/NIST_isotope_data.json')
+print(NIST_mass_path)
 atom_mass_dict = json.load(open(NIST_mass_path))['all']
 PROTON = atom_mass_dict["PROTON"]
 ELECTRON = atom_mass_dict['e']
