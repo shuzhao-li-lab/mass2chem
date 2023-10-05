@@ -16,6 +16,7 @@ from collections import namedtuple
 import warnings
 import os
 import json
+from .source_data import NIST_isotope_data
 
 """
 Isotope information sourced from:
@@ -39,9 +40,7 @@ public information and may be distributed or copied. Use of appropriate byline/p
 """
 
 Ion = namedtuple('Ion', ['mz', 'ion', 'delta_formula'])
-NIST_mass_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'source_data/NIST_isotope_data.json')
-print(NIST_mass_path)
-atom_mass_dict = json.load(open(NIST_mass_path))['all']
+atom_mass_dict = NIST_isotope_data.NIST_ISOTOPE_DATA['all']
 PROTON = atom_mass_dict["PROTON"]
 ELECTRON = atom_mass_dict['e']
 
