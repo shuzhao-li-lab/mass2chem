@@ -1,46 +1,35 @@
-# mass2chem - common utilities in interpreting mass spectrometry data
+# mass2chem - low level utilities in interpreting mass spectrometry data
 
-Annotation and Inferrence
+This package provides 
+- functions on handling chemical formulas
+- formula based adduct calculation 
+- indexing and search functions on mass spec data
+- libraries of common metabolites, contaminants, mass differences
+- [to-do] functions of chemical similary, dataset similarity
 
-## Included or work in progress
-* Handling chemical formula 
-* A list of common mass values, including contaminants
-* A list of common adducts, rules, while they are more directly ready in future Azimuth
+## Related tools
+- Generalized computing of isotopes and adducts: khipu (https://github.com/shuzhao-li-lab/khipu, https://pubs.acs.org/doi/10.1021/acs.analchem.2c05810)
 
-## to include
-* Chemical similary computing
-* Reaction inference, including mass diff corresponding to common reactions
-* hook/adaptor to other tools
+- High-level metabolite functions and metabolic models: Json's Metabolite Services (JMS, https://github.com/shuzhao-li-lab/JMS)
 
-## Added basic formula based calculations
-Note: RE based formula parsing is still limited.
+- Metabolomics data processing: asari (https://github.com/shuzhao-li-lab/asari, https://www.nature.com/articles/s41467-023-39889-1)
 
-Pychemy isn't good fit, as 
-1) high-resolution calculation needs update
-2) Open babel binding is not worthy the trouble
+- Python-Centric Pipeline for Metabolomics (https://github.com/shuzhao-li-lab/PythonCentricPipelineForMetabolomics)
 
-E.g. in pychemy.adducts, it's wrong to use ('M+3H', 0.33,  1.0073),
-because the computing/rounding error in 0.33 (correct is 1/3) is far too large for mass precision.
+- Common data models for metabolomics: metDataModel (https://github.com/shuzhao-li/metDataModel)
 
-Pychemy is included as stripped version in "mass2chem.chem" for now, but only used for formula handling.
-It may be removed completely in future versions.
+## Third party references:
 
-For high-resolution measurements, electrons should be considered too.
-
-
-## Related
-https://github.com/shuzhao-li/metDataModel
-
-https://github.com/shuzhao-li/asari 
-
-Third party:
-
-https://github.com/opencobra/cobrapy/blob/devel/cobra/core/formula.py (they are using average molecular weight, not mass spec oriented)
+https://github.com/opencobra/cobrapy/blob/devel/cobra/core/formula.py (using average molecular weight at the time of retrieval, not mass spec oriented)
 
 https://github.com/domdfcoding/chemistry_tools
 
+Pychemy (https://github.com/ginkgobioworks/pychemy). 
+Pychemy at this time isn't good fit for high-resolution metabolomics because its mass calculation is not of enough precision. E.g. in pychemy.adducts, it's wrong to use ('M+3H', 0.33,  1.0073),
+because the computing/rounding error in 0.33 (correct is 1/3) is far too large for mass precision.
+For high-resolution measurements, electrons should be considered too.
 
+------------------------
+Please do not hesitate to contact us via the GitHub issues.
 
-## Dev note
-The organization of this repo will change, after compatibility check on application packages.
- 
+Citation to come.

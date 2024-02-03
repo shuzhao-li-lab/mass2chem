@@ -14,8 +14,7 @@ Primary goal in the Mummichog suite is to compute:
 import re
 from collections import namedtuple
 import warnings
-import os
-import json
+
 from .source_data import NIST_isotope_data
 
 """
