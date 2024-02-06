@@ -1,7 +1,7 @@
 '''
 Two lines of search methods:
 - A centurion_tree is an indexed dictionary of peaks/features.
-- We also use DataFrame based vector operations for some cases (less often).
+- We also use DataFrame based vector operations for some cases (less often, less useful).
 
 Emperical compounds are constructed by co-eluting isotopic and adduct patterns.
 # isotopic_signatures: example as [(182, 'anchor'), (191, 'M(13C)'), (205, 'M(18O)')]
