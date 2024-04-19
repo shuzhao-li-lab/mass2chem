@@ -119,7 +119,8 @@ def add_formula_dict(dict1, dict2):
 
 def calculate_formula_mass(formula, massDict=atom_mass_dict):
     '''
-    Modified from MG's calculate_mass. Rounding is not useful during calculation. 
+    Calculate mass from the formula dictionary. 
+    Modified from MG's calculate_mass. 
     '''
     formula_dict = parse_chemformula_dict(formula)
     _m = 0
@@ -127,18 +128,6 @@ def calculate_formula_mass(formula, massDict=atom_mass_dict):
         _m += v * massDict[k]
     return _m
 
-
-def calculate_mass(formula_dict, decimal_places=6, massDict=atom_mass_dict):
-    '''
-    Calculate mass from the formula dictionary, with rounded decimals. 
-    Modified for MG. 
-    '''
-    _m = 0
-    for k,v in formula_dict.items():
-        _m += v * massDict[k]
-    _m = round(_m,decimal_places)
-    return _m
-    
 
 def check_elemental_subset(Fm1, Fm2):
     '''
