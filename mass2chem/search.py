@@ -88,10 +88,12 @@ seed_empCpd_patterns = {
 # -----------------------------------------------------------------------------
 #
 
-def build_centurion_tree(list_peaks):
+def build_centurion_tree(list_peaks, key='mz'):
     '''
     list_peaks: [{'parent_masstrace_id': 1670, 'mz': 133.09702315984987, 'apex': 654, 'height': 14388.0, 
                     'left_base': 648, 'right_base': 655, 'id_number': 555}, ...]
+    key: key used in list_peaks for mass value. Default 'mz'. Common keys include 'neutral_mass' etc.
+    
     Return a dictionary, indexing mzList by 100*mz bins.
     Because most high-resolution mass spectrometers measure well under 0.01 amu, 
     one only needs to search the corresponding 0.01 bin and two adjacent bins (to capture bordering values).
@@ -99,17 +101,17 @@ def build_centurion_tree(list_peaks):
     '''
     d = {}
     for p in list_peaks:
-        cent = int(100 * p['mz'])
+        cent = int(100 * p[key])
         if cent in d:
             d[cent].append(p)
         else:
             d[cent] = [p]
     return d
 
-def build_peak_id_dict(list_peaks):
+def build_peak_id_dict(list_peaks, key='id_number'):
     d = {}
     for p in list_peaks:
-        d[p['id_number']] = p
+        d[p[key]] = p
     return d
 
 def build_centurion_tree_mzlist(mzList):
@@ -127,7 +129,7 @@ def build_centurion_tree_mzlist(mzList):
             d[cent] = [(mzList[ii], ii)]
     return d
 
-def find_all_matches_centurion_indexed_list(query_mz, mz_centurion_tree, limit_ppm=5):
+def find_all_matches_centurion_indexed_list(query_mz, mz_centurion_tree, limit_ppm=5, key='mz'):
     '''
     Return matched peaks in mz_centurion_tree by m/z diff within limit_ppm.
     '''
@@ -137,12 +139,12 @@ def find_all_matches_centurion_indexed_list(query_mz, mz_centurion_tree, limit_p
     for ii in (q-1, q, q+1):
         L = mz_centurion_tree.get(ii, [])
         for peak in L:
-            if abs(peak['mz']-query_mz) < mz_tol:
+            if abs(peak[key]-query_mz) < mz_tol:
                 results.append(peak)
                 
     return results
 
-def find_best_match_centurion_indexed_list(query_mz, mz_centurion_tree, limit_ppm=2):
+def find_best_match_centurion_indexed_list(query_mz, mz_centurion_tree, limit_ppm=2, key='mz'):
     '''
     Return matched indices in mz_centurion_tree (based on peak list).
     '''
@@ -152,7 +154,7 @@ def find_best_match_centurion_indexed_list(query_mz, mz_centurion_tree, limit_pp
     for ii in (q-1, q, q+1):
         L = mz_centurion_tree.get(ii, [])
         for peak in L:
-            _d = abs(peak['mz']-query_mz)
+            _d = abs(peak[key]-query_mz)
             if _d < min(result[1], mz_tol):     # enforce mz_tol here
                 result = (peak, _d)
                 
