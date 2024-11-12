@@ -98,5 +98,6 @@ class MassDeltaExplainer(object):
             "solutions": [x.data for x in matches]
         }
 
-MDE = MassDeltaExplainer("./components_pos.csv")
-print(json.dumps(MDE.explains(15.994914),indent=4))
+# example usage
+#MDE = MassDeltaExplainer("./components_pos.csv")
+#print(json.dumps(MDE.explains(15.994914),indent=4))
