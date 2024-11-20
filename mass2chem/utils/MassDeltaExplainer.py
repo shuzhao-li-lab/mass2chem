@@ -122,7 +122,7 @@ class MassDeltaExplainer(object):
         return {
             "explained": bool(matches),
             "num_solutions": len(matches),
-            "solutions": [x.data for x in matches]
+            "solutions": [x.data for x in matches],
         }
 
 # example usage
@@ -133,9 +133,15 @@ MDE = MassDeltaExplainer("./components_pos.csv")
 
 new_ft = []
 for x in pd.read_csv(sys.argv[1], sep="\t").to_dict(orient='records'):
-    results = MDE.explains(x['delta_mz'])
-    if results['explained']:
-        x['explained'] = [x['key'] for x in results['solutions']]
+    r1 = MDE.explains(x['delta_mz'])
+    r2 = MDE.explains(-1 * x['delta_mz'])
+    r_combined = {
+        "explained": r1['explained'] or r2['explained'],
+        "num_solutions": len(r1['solutions']) + len(r2['solutions']),
+        "solutions": r1["solutions"] + r2["solutions"]
+    }
+    if r_combined['explained']:
+        x['explained'] = [x['key'] for x in sorted(r_combined['solutions'], key=lambda x: -x["solution_prob"])]
     else:
         x['explained'] = []
     new_ft.append(x)
