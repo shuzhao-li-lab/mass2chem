@@ -7,9 +7,18 @@ from mass2chem.formula import parse_chemformula_dict
 import json
 import uuid
 import tqdm
+import sys
 
 class MassDeltaExplainer(object):
-    def __init__(self, component_path, PPM_MZ_TOL=5, MIN_ISO_PROB=0.001, ELEMENT_NEUTRAL=False, MASS_LIMIT=200, DEPTH=3, CLEAN_SOLUTIONS=True) -> None:
+    def __init__(self, 
+                 component_path, 
+                 PPM_MZ_TOL=5, 
+                 MIN_ISO_PROB=0.001, 
+                 ELEMENT_NEUTRAL=False, 
+                 MASS_LIMIT=200, 
+                 DEPTH=4, 
+                 CLEAN_SOLUTIONS=True,
+                 FIXED_MZ_ERR=0.001) -> None:
         self.components = pd.read_csv(component_path).to_dict(orient='records')
         for comp in self.components:
             comp['id'] = str(uuid.uuid4())
@@ -20,6 +29,7 @@ class MassDeltaExplainer(object):
         self.ELEMENT_NEUTRAL = ELEMENT_NEUTRAL # if true, consider only solutions in which the net formula did not change
         self.MASS_LIMIT = MASS_LIMIT # eliminate solutions whose mass delta exceeds this value
         self.CLEAN_SOLUTIONS = CLEAN_SOLUTIONS # remove bookkeeping fields from output
+        self.FIXED_MZ_ERR = FIXED_MZ_ERR
         self.combine_components() # build the mz_tree
 
     def combine_components(self):
@@ -53,6 +63,8 @@ class MassDeltaExplainer(object):
                                 all_solutions.append(new_solution)
             working_depth += 1
         
+        added = set()
+        working_solutions = []
         for solution in all_solutions:
             #print(json.dumps(solution, indent=4))
             solution["solution_mass_delta"] = np.sum([x['mz_delta'] for x in solution["components"]["added"]] + [-1 * x['mz_delta'] for x in solution["components"]["removed"]])
@@ -67,8 +79,23 @@ class MassDeltaExplainer(object):
             if solution["solution_prob"] > self.MIN_ISO_PROB: # filter improbable
                 if (self.ELEMENT_NEUTRAL and solution['isotope_only']) or not self.ELEMENT_NEUTRAL: # filter modifications that change formulas
                     mz_err = solution['solution_mass_delta'] / 1e6 * self.PPM_MZ_TOL # make interval based on ppm
+                    mz_err += self.FIXED_MZ_ERR
                     if mz_err > 0: # to avoid null intervals
-                        self.mz_tree.addi(solution['solution_mass_delta'] - mz_err, solution['solution_mass_delta'] + mz_err, solution)
+                        comps_added = sorted([x["Name"] for x in solution['components']["added"]])
+                        comps_removed = sorted([x["Name"] for x in solution['components']["removed"]])
+                        key = ''
+                        if comps_added:
+                            key += "added_" + "_".join(comps_added)
+                        if comps_added and comps_removed:
+                            key += "_"
+                        if comps_removed:
+                            key += "removed_" + "_".join(comps_removed)
+                        if key not in added:
+                            added.add(key)
+                            solution["key"] = key
+                            self.mz_tree.addi(solution['solution_mass_delta'] - mz_err, solution['solution_mass_delta'] + mz_err, solution)
+                            working_solutions.append(solution)
+        json.dump(working_solutions, open("solutions.json", 'w'), indent=4)
 
     @staticmethod
     def isotope_only_solution(solution):
@@ -99,5 +126,34 @@ class MassDeltaExplainer(object):
         }
 
 # example usage
-#MDE = MassDeltaExplainer("./components_pos.csv")
-#print(json.dumps(MDE.explains(15.994914),indent=4))
+MDE = MassDeltaExplainer("./components_pos.csv")
+#print(json.dumps(MDE.explains(9.9842),indent=4))
+#exit()
+
+
+new_ft = []
+for x in pd.read_csv(sys.argv[1], sep="\t").to_dict(orient='records'):
+    results = MDE.explains(x['delta_mz'])
+    if results['explained']:
+        x['explained'] = [x['key'] for x in results['solutions']]
+    else:
+        x['explained'] = []
+    new_ft.append(x)
+
+count_explained = 0
+count_unexplained = 0
+for z in new_ft:
+    try:
+        if z['explained']:
+            count_explained += int(z['count_estimate'].split(" ")[0])
+        else:
+            count_unexplained += int(z['count_estimate'].split(" ")[0])
+    except:
+        pass
+
+
+
+print(count_explained / (count_explained + count_unexplained))
+
+
+print(pd.DataFrame(new_ft).to_csv("./MDE_expalained.tsv", sep="\t"))
