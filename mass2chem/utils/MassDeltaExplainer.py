@@ -78,7 +78,7 @@ class MassDeltaExplainer(object):
 
             if solution["solution_prob"] > self.MIN_ISO_PROB: # filter improbable
                 if (self.ELEMENT_NEUTRAL and solution['isotope_only']) or not self.ELEMENT_NEUTRAL: # filter modifications that change formulas
-                    mz_err = solution['solution_mass_delta'] / 1e6 * self.PPM_MZ_TOL # make interval based on ppm
+                    mz_err = abs(solution['solution_mass_delta'] / 1e6 * self.PPM_MZ_TOL) # make interval based on ppm
                     mz_err += self.FIXED_MZ_ERR
                     if mz_err > 0: # to avoid null intervals
                         comps_added = sorted([x["Name"] for x in solution['components']["added"]])
@@ -127,17 +127,11 @@ class MassDeltaExplainer(object):
 
 # example usage
 MDE = MassDeltaExplainer("./components_pos.csv")
-#print(json.dumps(MDE.explains(9.9842),indent=4))
-#exit()
-
 
 new_ft = []
 for x in pd.read_csv(sys.argv[1], sep="\t").to_dict(orient='records'):
-    print(x)
     r1 = MDE.explains(x['delta_mz'])
     r2 = MDE.explains(-1 * x['delta_mz'])
-    print("\t", r1)
-    print("\t", r2)
     r_combined = {
         "explained": r1['explained'] or r2['explained'],
         "num_solutions": len(r1['solutions']) + len(r2['solutions']),
