@@ -131,7 +131,18 @@ MDE = MassDeltaExplainer("./components_pos.csv")
 new_ft = []
 for x in pd.read_csv(sys.argv[1], sep="\t").to_dict(orient='records'):
     r1 = MDE.explains(x['delta_mz'])
+    print("\n")
+    print("----")
+    print("SEARCH: ", x['delta_mz'])
+    print("POS:")
+    for z in r1['solutions']:
+        print("\t", z)
+
     r2 = MDE.explains(-1 * x['delta_mz'])
+    print("NEG:")
+    for z in r2["solutions"]:
+        print("\t", z)
+    print(len(r1), len(r2))
     r_combined = {
         "explained": r1['explained'] or r2['explained'],
         "num_solutions": len(r1['solutions']) + len(r2['solutions']),
