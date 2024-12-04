@@ -16,9 +16,9 @@ class MassDeltaExplainer(object):
                  MIN_ISO_PROB=0.001, 
                  ELEMENT_NEUTRAL=False, 
                  MASS_LIMIT=200, 
-                 DEPTH=4, 
+                 DEPTH=3, 
                  CLEAN_SOLUTIONS=True,
-                 FIXED_MZ_ERR=0.001) -> None:
+                 FIXED_MZ_ERR=0.0001) -> None:
         self.components = pd.read_csv(component_path).to_dict(orient='records')
         for comp in self.components:
             comp['id'] = str(uuid.uuid4())
@@ -133,15 +133,30 @@ MDE = MassDeltaExplainer("./components_pos.csv")
 
 new_ft = []
 for x in pd.read_csv(sys.argv[1], sep="\t").to_dict(orient='records'):
+    print(x)
     r1 = MDE.explains(x['delta_mz'])
     r2 = MDE.explains(-1 * x['delta_mz'])
+    print("\t", r1)
+    print("\t", r2)
     r_combined = {
         "explained": r1['explained'] or r2['explained'],
         "num_solutions": len(r1['solutions']) + len(r2['solutions']),
         "solutions": r1["solutions"] + r2["solutions"]
     }
     if r_combined['explained']:
-        x['explained'] = [x['key'] for x in sorted(r_combined['solutions'], key=lambda x: -x["solution_prob"])]
+        x['explained'] = []
+        for solution in sorted(r_combined['solutions'], key=lambda x: -x["solution_prob"]):
+            net_formula_delta = {}
+            for component in solution["components"]["added"]:
+                if component['Name'] not in net_formula_delta:
+                    net_formula_delta[component['Name']] = 0
+                net_formula_delta[component['Name']] += 1
+            for component in solution["components"]["removed"]:
+                if component['Name'] not in net_formula_delta:
+                    net_formula_delta[component['Name']] = 0
+                net_formula_delta[component['Name']] -= 1
+            x['explained'].append((float(solution['solution_mass_delta']), float(solution['solution_prob']), net_formula_delta))
+        #x['explained'] = [x['key'] for x in sorted(r_combined['solutions'], key=lambda x: -x["solution_prob"])]
     else:
         x['explained'] = []
     new_ft.append(x)
@@ -149,17 +164,11 @@ for x in pd.read_csv(sys.argv[1], sep="\t").to_dict(orient='records'):
 count_explained = 0
 count_unexplained = 0
 for z in new_ft:
-    try:
-        if z['explained']:
-            count_explained += int(z['count_estimate'].split(" ")[0])
-        else:
-            count_unexplained += int(z['count_estimate'].split(" ")[0])
-    except:
-        pass
-
+    if z['explained']:
+        count_explained += int(z['count_estimate'])
+    else:
+        count_unexplained += int(z['count_estimate'])
 
 
 print(count_explained / (count_explained + count_unexplained))
-
-
-print(pd.DataFrame(new_ft).to_csv("./MDE_expalained.tsv", sep="\t"))
+print(pd.DataFrame(new_ft).to_csv(sys.argv[1].replace(".tsv", "_results.tsv"), sep="\t"))
