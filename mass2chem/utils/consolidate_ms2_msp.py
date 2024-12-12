@@ -1,17 +1,22 @@
 from matchms.importing import load_from_msp
 from matchms.similarity import CosineHungarian
 from matchms.exporting import save_as_msp
+from matchms.filtering import default_filters, reduce_to_number_of_peaks
+
 import os
 import numpy as np
 import tqdm
 import sys
 
 path = sys.argv[1]
+min_peaks = int(sys.argv[2])
+max_peaks = int(sys.argv[3])
 spectral_registry = {}
 total = 0
 for x in tqdm.tqdm(load_from_msp(path)):
     try:
         inchikey = x.metadata_dict()['inchikey']
+        x = reduce_to_number_of_peaks(default_filters(x), min_peaks, max_peaks)
         if inchikey:
             if inchikey not in spectral_registry:
                 spectral_registry[inchikey] = []
