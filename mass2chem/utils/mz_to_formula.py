@@ -1,8 +1,32 @@
+'''
+This script implements a dynamic programming approach for de-novo L4 annotation of m/z values.
+
+Given an m/z value and list of possible isotopes, it performs a top down recursive search implemented
+using dynamic programming. The solutions are stored in a table that exists outside function scope for 
+reuse in later problems. 
+
+The output is the set of "components" or formula elements that consist of the solution. 
+
+The approach is similar to, but distinct from other tools. 
+
+First, there is no database of any kind. 
+Second, the search space is much more flexible. We can have limits of elements and element
+    combinations using a simple rule mechanism.
+Third, with some computational improvements, we may be able to search of all chemical space
+    for many sample types. 
+
+The small size of the dynamic programming solution has implications 
+
+
+'''
+
+
+
 import numpy as np
 from collections import defaultdict
 
 # values are rounded to this decimal place to enable states for dynamic programming.
-ROUND = 4
+ROUND = 3
 
 # minNAP of solutions, assuming peak is monoisotopic and tallest assumes NAP of 0.5. 
 MIN_NAP = 0.4
@@ -38,7 +62,7 @@ COUNT_RULES = {
 }
 
 class BackpropagateDP:
-    def __init__(self, components, max_solutions):
+    def __init__(self, components, max_solutions=len(ELEMENT_RANGE)):
         """
         Initialize the backpropagation-based evaluator.
 
@@ -63,7 +87,7 @@ class BackpropagateDP:
         # lets define base cases and what needs to be returned
         if -error <= query_mass <= error:
             # here the query mass is within the target value, return an empty initial solution
-            return [{"path": [], "nap": 1.0, "val": 2, "formula": [], "mass": 0, "counts": {}}]
+            return [{"path": set(), "nap": 1.0, "val": 2, "formula": [], "mass": 0, "counts": {}}]
         if step == 0:
             # here we have traversed the table but no solution was found
             return []
@@ -82,48 +106,32 @@ class BackpropagateDP:
             # see if the resulting mass difference can be explained. It will be explained if there are a chain of 
             # elements that reach the base case or we run out of table. 
             MIN_NAP_eff = MIN_NAP / component['nap']
-            for previous_path in self.backpropagate(query_mass - component['mz_delta'], step - 1, error, ROUND, MIN_NAP):                     
-            
-                pp = previous_path
+
+            for previous_path in self.backpropagate(query_mass - component['mz_delta'], step - 1, error, ROUND, MIN_NAP):   
+                cpath = [self.components[i] for i in previous_path["path"]]
                 # skip if we've seen this path before
                 # solution reuses table entry 
-                if frozenset(sorted(previous_path["path"])) in used:
+                if (frozenset(previous_path["path"]) in used) \
+                    or (component['name'] in [c['name'] for c in cpath]) \
+                    or (np.prod([c['nap'] for c in cpath]) < MIN_NAP_eff) \
+                    or (np.sum([c['valence'] for c in cpath]) <= -component['valence']):
                     continue
-
-                # skip if elements are reused
-                # solution reuses element
-                if component['name'] in [self.components[i]['name'] for i in pp['path']]:
-                    continue
-                
-                # skip if NAP not high enough
-                # nap is not sufficient
-
-                #if pp and np.prod([self.components[i]['nap'] for i in pp]) < (MIN_NAP / component['nap']):
-                if np.prod([self.components[i]['nap'] for i in pp['path']]) < MIN_NAP_eff:
-                #if previous_path['nap'] < MIN_NAP / component['nap']:
-                    continue
-
-                # skip if valence not positive
-                # too many hydrogen or equivalents
-                if np.sum([self.components[i]['valence'] for i in pp['path']]) <= -1 * component['valence']:
-                    continue
-
                 #used.add(frozenset(sorted(previous_path["path"])))
-                new_path = sorted(previous_path["path"] + [comp_i])
+                #new_path = sorted(previous_path["path"] + [comp_i])
+                new_path = previous_path["path"] | {comp_i}
                 if frozenset(new_path) not in used:
-                    
                     new_counts = previous_path["counts"].copy()
                     for k in component['tags']:
                         new_counts[k] = new_counts.get(k, 0) + 1
-
-                    self.dp_cache[query_mass].append({
-                        "path": new_path,
-                        #"nap": previous_path["nap"] * component['nap'],
-                        #"val": previous_path["val"] + component['valence'],
-                        #"formula": previous_path["formula"] + [component['name']],
-                        #"mass": component['mz_delta'] + previous_path["mass"],
-                        "counts": new_counts
-                    })
+                    PASSED = True
+                    for rule, count in COUNT_RULES.items():
+                        if new_counts.get(rule, 0) > count:
+                            PASSED = False
+                    if PASSED:
+                        self.dp_cache[query_mass].append({
+                            "path": new_path,
+                            "counts": new_counts
+                        })
         # self.dp_cache[query_mass] would have been populated during the traversal
         return self.dp_cache[query_mass]
 
@@ -143,7 +151,7 @@ class BackpropagateDP:
         return self.backpropagate(query_mass, max_steps, error)
     
 class MassExplainer:
-    def __init__(self, csv_file, max_solutions=10):
+    def __init__(self, csv_file, max_solutions=len(ELEMENT_RANGE)):
         """
         Initialize the MassExplainer with isotopologue data.
 
@@ -153,7 +161,7 @@ class MassExplainer:
         """
         self.max_solutions = max_solutions
         self.components = self._parse_csv(csv_file)
-        self.lazy_dp = BackpropagateDP(self.components, max_solutions=5)
+        self.lazy_dp = BackpropagateDP(self.components, max_solutions=len(ELEMENT_RANGE))
 
     def _parse_csv(self, file_path):
         """
