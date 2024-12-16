@@ -20,49 +20,12 @@ The small size of the dynamic programming solution has implications
 
 '''
 
-
-
 import numpy as np
-from collections import defaultdict
+from collections import defaultdict, Counter
 
-# values are rounded to this decimal place to enable states for dynamic programming.
-ROUND = 3
-
-# minNAP of solutions, assuming peak is monoisotopic and tallest assumes NAP of 0.5. 
-MIN_NAP = 0.4
-
-# limit bounds on how many of each element to expect
-ELEMENT_RANGE = {
-    "C": 40,
-    "H": 130,
-    "O": 10,
-    "N": 5,
-    "Cl": 6,
-    "Br": 6,
-}
-
-#how many hydrogen bonds we expect per element max
-VALENCE_TABLE = {
-    "C": 3,
-    "O": 1,
-    "N": 2,
-    "H": -1,
-    "Cl": -1,
-    "Br": -1,
-}
-
-# these can limit the space in a more complex way
-TAGS = {
-    "Cl": ["halogen"],
-    "N": ["halogen"]
-}
-
-COUNT_RULES = {
-    "halogen": 6
-}
 
 class BackpropagateDP:
-    def __init__(self, components, max_solutions=len(ELEMENT_RANGE)):
+    def __init__(self, components, elements, max_mass, min_NAP, round, extra_rules=None):
         """
         Initialize the backpropagation-based evaluator.
 
@@ -70,72 +33,80 @@ class BackpropagateDP:
         - components: List of components, each being a dictionary with 'mz_delta' and other properties.
         - max_solutions: Maximum number of steps to consider for solutions.
         """
-        self.components = components
-        self.max_solutions = max_solutions
-        self.dp_cache = {}  # Caches intermediate results
+        if extra_rules is None:
+            extra_rules = {}
+        self.components = np.array(components)
+        self.elements = elements
+        # split components into groups by element that are mutually exclusive, consider only one set per step. 
+        # put a null component in each set to ensure that we can exclude them though. 
 
-    def backpropagate(self, query_mass, step, error, ROUND=ROUND, MIN_NAP=MIN_NAP):
+        self.component_sets = {}
+        for i, comp in enumerate(components):
+            if comp['name'] not in self.component_sets:
+                self.component_sets[comp['name']] = set()
+            self.component_sets[comp['name']].add(i)
+
+        self.max_solutions = len(self.elements)
+        self.dp_cache = [{} for i in range(self.max_solutions + 1)]  # Caches intermediate results
+        self.valences = np.array([x['valence'] for x in self.components], dtype=np.int16)
+        self.naps = np.array([x['nap'] for x in self.components], dtype=np.float16)
+        self.max_mass = max_mass
+        self.min_NAP = min_NAP
+        self.round = round
+        self.extra_rules = extra_rules
+
+
+    def backpropagate(self, query_mass, step=None):
         # first round the query mass, this makes it have finite number of states. 
         # memory consumption is therefore now ~ O(max_mz * 10**ROUND)
-        query_mass = round(query_mass, ROUND)
+        if step is None:
+            step = len(self.elements)
+        query_mass = round(query_mass, self.round)
 
-        # if we have the value already, just return it
+        # if we have the value, return it
         if query_mass in self.dp_cache:
-            # first, if value is in table, return cached value
-            return self.dp_cache[query_mass]
+            return self.dp_cache[step][query_mass]
+
+        # out of bounds, too small or too big
+        if query_mass < -1*(10**-self.round) or query_mass > self.max_mass:
+            self.dp_cache[step][query_mass] = []
+            return self.dp_cache[step][query_mass]
 
         # lets define base cases and what needs to be returned
-        if -error <= query_mass <= error:
+        if abs(query_mass) <= 1*(10**-self.round):
             # here the query mass is within the target value, return an empty initial solution
-            return [{"path": set(), "nap": 1.0, "val": 2, "formula": [], "mass": 0, "counts": {}}]
+            self.dp_cache[step][query_mass] = [frozenset()]
+            return self.dp_cache[step][query_mass]
+        
         if step == 0:
-            # here we have traversed the table but no solution was found
             return []
+            #self.dp_cache[query_mass] = []
+            #return self.dp_cache[query_mass]
 
         # now, we didn't have it cached and it wasn't zero and we still have table left to traverse
-        self.dp_cache[query_mass] = []
-        for comp_i, component in enumerate(self.components):
+        
+        self.dp_cache[step][query_mass] = set()
+        for comp_i, component in [(i,x) for (i,x) in enumerate(self.components) if i in self.component_sets[self.elements[step - 1]]]:
             used = set()
 
             # solution is too massive
-            if query_mass < component['mz_delta'] - error:
+            if query_mass < component['mz_delta'] - (10**-self.round):
                 continue
             
-            # here is the dynamic programming.
-            # okay, the dp_cache is a table indexed by mass, we are going to remove component mass and 
-            # see if the resulting mass difference can be explained. It will be explained if there are a chain of 
-            # elements that reach the base case or we run out of table. 
-            MIN_NAP_eff = MIN_NAP / component['nap']
-
-            for previous_path in self.backpropagate(query_mass - component['mz_delta'], step - 1, error, ROUND, MIN_NAP):   
-                cpath = [self.components[i] for i in previous_path["path"]]
-                # skip if we've seen this path before
-                # solution reuses table entry 
-                if (frozenset(previous_path["path"]) in used) \
+            MIN_NAP_eff = self.min_NAP / component['nap']
+            for previous_path in self.backpropagate(query_mass - component['mz_delta'], step - 1):
+                cpath = self.components[list(previous_path)]
+                if (frozenset(previous_path) in used) \
                     or (component['name'] in [c['name'] for c in cpath]) \
-                    or (np.prod([c['nap'] for c in cpath]) < MIN_NAP_eff) \
-                    or (np.sum([c['valence'] for c in cpath]) <= -component['valence']):
+                    or (np.prod(self.naps[list(previous_path)]) < MIN_NAP_eff) \
+                    or (np.sum(self.valences[list(previous_path)]) + component['valence'] + 2 < 0)\
+                    or any(Counter(tag for c in cpath for tag in c["tags"])[tag] > self.extra_rules.get(tag, float('inf')) for tag in self.extra_rules):
                     continue
-                #used.add(frozenset(sorted(previous_path["path"])))
-                #new_path = sorted(previous_path["path"] + [comp_i])
-                new_path = previous_path["path"] | {comp_i}
-                if frozenset(new_path) not in used:
-                    new_counts = previous_path["counts"].copy()
-                    for k in component['tags']:
-                        new_counts[k] = new_counts.get(k, 0) + 1
-                    PASSED = True
-                    for rule, count in COUNT_RULES.items():
-                        if new_counts.get(rule, 0) > count:
-                            PASSED = False
-                    if PASSED:
-                        self.dp_cache[query_mass].append({
-                            "path": new_path,
-                            "counts": new_counts
-                        })
-        # self.dp_cache[query_mass] would have been populated during the traversal
-        return self.dp_cache[query_mass]
+                used.add(frozenset(previous_path))
+                self.dp_cache[step][query_mass].add(frozenset(previous_path | {comp_i}))
+        return self.dp_cache[step][query_mass]
 
-    def query(self, query_mass, max_steps=None):
+    def query(self, query_mass):
         """
         Query paths leading to a specific mass with lazy evaluation.
 
@@ -146,12 +117,10 @@ class BackpropagateDP:
         Returns:
         - List of paths leading to the query_mass.
         """
-        max_steps = max_steps if max_steps is None else self.max_solutions
-        error = (query_mass / 1e6 * 5) + (10**-ROUND)
-        return self.backpropagate(query_mass, max_steps, error)
+        return self.backpropagate(query_mass)
     
 class MassExplainer:
-    def __init__(self, csv_file, max_solutions=len(ELEMENT_RANGE)):
+    def __init__(self, csv_file, elements=["12C", "16O", "14N", "35Cl", "1H"], max_mass=1000, min_NAP=0.4, round=3):
         """
         Initialize the MassExplainer with isotopologue data.
 
@@ -159,11 +128,13 @@ class MassExplainer:
             csv_file (str): Path to the CSV file containing isotopologue data.
             max_solutions (int): Maximum number of components in a solution.
         """
-        self.max_solutions = max_solutions
-        self.components = self._parse_csv(csv_file)
-        self.lazy_dp = BackpropagateDP(self.components, max_solutions=len(ELEMENT_RANGE))
+        self.max_mass = max_mass
+        self.min_NAP = min_NAP
+        self.round = round
+        self.components = self._parse_csv(csv_file, elements)
+        self.lazy_dp = BackpropagateDP(self.components, elements, max_mass, min_NAP, round) #, max_solutions=len(ELEMENTS))
 
-    def _parse_csv(self, file_path):
+    def _parse_csv(self, file_path, to_extract):
         """
         Parse the CSV file and calculate isotope mass deltas relative to the most abundant isotopologue.
 
@@ -174,35 +145,48 @@ class MassExplainer:
             list: List of components with relative mass differences.
         """
         isotopes = {}
-        with open(file_path, 'r') as f:
-            next(f)  # Skip header
-            for line in f:
-                name, mz_delta, prob, formula = line.strip().split(',')
-                mz_delta = float(mz_delta)
-                prob = float(prob)
-                if formula not in isotopes:
-                    isotopes[formula] = []
-                isotopes[formula].append({'name': name, 'mz_delta': mz_delta, 'prob': prob})
-
+        # this is hacky - fix this!!!
+        for ele in to_extract:
+            with open(file_path, 'r') as f:
+                next(f)  # Skip header
+                for line in f:
+                    name, mz_delta, prob, formula, valence, max_count,tags, _ = line.strip().split(',')
+                    if name == ele:
+                        mz_delta = float(mz_delta)
+                        prob = float(prob)
+                        valence = int(valence)
+                        max_count = int(max_count)
+                        tags = tags.split("|") if tags else []
+                        if formula not in isotopes:
+                            isotopes[formula] = []
+                        isotopes[formula].append({'name': name, 'mz_delta': mz_delta, 'prob': prob, 'valence': valence, 'max': max_count, 'tags': tags})
         # Normalize isotopes to the most abundant (highest probability)
         components = []
         for formula, isotope_list in isotopes.items():
             isotope_list.sort(key=lambda x: -x['prob'])  # Sort by descending probability
-            for i in range(1, ELEMENT_RANGE.get(formula, 3)):
-                isotope = isotope_list[0]
-                if isotope['prob'] ** i > MIN_NAP:
+            isotope = isotope_list[0]
+            components.append({
+                        'name': isotope['name'],
+                        'name2': isotope['name'] + "_0",
+                        'mz_delta': 0,
+                        'nap': 1,
+                        'formula': {},
+                        'tags': [],
+                        'valence': 0
+                    })
+            for num_iso in range(1, isotope['max']):
+                if isotope['prob'] ** num_iso > self.min_NAP and float(isotope['mz_delta']) * num_iso < self.max_mass:
                     components.append({
                         'name': isotope['name'],
-                        'name2': isotope['name'] + "_" + str(i),
-                        'mz_delta': float(isotope['mz_delta']) * i,
-                        'nap': isotope['prob'] ** i,
-                        'formula': {formula: i},
-                        'tags': TAGS.get(formula, []) * i,
-                        'valence': VALENCE_TABLE.get(formula, -1) * i
-                    })
+                        'name2': isotope['name'] + "_" + str(num_iso),
+                        'mz_delta': float(isotope['mz_delta']) * num_iso,
+                        'nap': isotope['prob'] ** num_iso,
+                        'formula': {formula: num_iso},
+                        'tags': isotope['tags'] * num_iso if isotope['tags'] else [],
+                        'valence': isotope['valence'] * num_iso})
         return components
 
-    def explains(self, mz_value, ppm_tolerance):
+    def explains(self, query_mass):
         """
         Determine if the mz_value can be explained by a linear combination of components.
 
@@ -213,33 +197,48 @@ class MassExplainer:
         Returns:
             list: Solutions that explain the mz_value within the given tolerance.
         """
-        # Initialize lazy DP
-        
-        print("Len Cache: ", len(self.lazy_dp.dp_cache))
-        return self.lazy_dp.query(mz_value, ppm_tolerance)
+        from mass2chem.formula import dict_to_hill_formula
+        results = set()
+        for path in self.lazy_dp.query(query_mass):
+            path_formula = {}
+            path_nap = 1.0
+            path_mass = 0.0
+            for comp_i in path:
+                path_formula.update(self.components[comp_i]['formula'])
+                path_nap *= self.components[comp_i]['nap']
+                path_mass += self.components[comp_i]['mz_delta']
+            if path_formula:
+                results.add((dict_to_hill_formula(path_formula), path_nap, path_mass))
+        return {'query_mass': query_mass, 
+                'possible_m0': [{
+                'formula': r[0],
+                'nap': r[1],
+                'mass': r[2]
+            } for r in results]}
+
+
+
 
 # Example Usage
 if __name__ == "__main__":
+    import random
+    import time
     X, Y = [], []
     # Initialize the MassExplainer with the provided CSV file
-    explainer = MassExplainer("./isotopes.csv", max_solutions=5)
-    import time
-    i = 0
-    while True:
-        print(i)
-        i += 1
+    explainer = MassExplainer("./isotopes.csv")
+    for i in range(100*100):
+        q = i / 100
         t1 = time.time()
-        c = explainer.explains(i*12, 5)
-        for z in c:
-            print("\t", i*12, z)
+        c = explainer.explains(q)
         t2 = time.time()
-        print("Time Elapsed: ", str(t2-t1), " mz: ", str(i * 12)) 
-        #print("Len Cache: ", str(len(explainer.dp_cache)))
-        X.append(i)
-        Y.append(t2-t1)
-        if (t2-t1) > 10.0:
-            break
 
-    import matplotlib.pyplot as plt
-    plt.scatter(X, Y)
-    plt.show()
+        if c['possible_m0']:
+            print(q)
+            print(c)
+            print(t2 - t1)
+        X.append(q)
+        Y.append(t2-t1)
+
+    #import matplotlib.pyplot as plt
+    #plt.scatter(X, Y)
+    #plt.show()
