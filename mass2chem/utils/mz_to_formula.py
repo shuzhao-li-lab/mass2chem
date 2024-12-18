@@ -15,7 +15,10 @@ Second, the search space is much more flexible. We can have limits of elements a
 Third, with some computational improvements, we may be able to search of all chemical space
     for many sample types. 
 
-The small size of the dynamic programming solution has implications 
+The small size of the dynamic programming solution has implications if certain criteria are met. For 
+newer AMD processors with very large L3 caches, the entirety of the backprop table can fit in CPU 
+cache, possibly making this code extremely fast despite not having the best big O complexity. Second
+re-writing this code in C++
 
 
 '''
@@ -226,8 +229,8 @@ if __name__ == "__main__":
     X, Y = [], []
     # Initialize the MassExplainer with the provided CSV file
     explainer = MassExplainer("./isotopes.csv")
-    for i in range(100*100):
-        q = i / 100
+    for i in range(0, 1000):
+        q = i 
         t1 = time.time()
         c = explainer.explains(q)
         t2 = time.time()
@@ -239,6 +242,6 @@ if __name__ == "__main__":
         X.append(q)
         Y.append(t2-t1)
 
-    #import matplotlib.pyplot as plt
-    #plt.scatter(X, Y)
-    #plt.show()
+    import matplotlib.pyplot as plt
+    plt.scatter(X, Y)
+    plt.show()
