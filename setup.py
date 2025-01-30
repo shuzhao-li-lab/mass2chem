@@ -40,7 +40,7 @@ setup(
   ),
   include_package_data=True,
   package_data={
-    "your_package": ["sourcedata/*.tsv"],
+    "mass2chem": ["source_data/*.tsv"],
   },
   install_requires=[
     'numpy',
