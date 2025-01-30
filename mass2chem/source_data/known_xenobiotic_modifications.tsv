@@ -1,0 +1,1699 @@
+Mass difference	Rationale	Formula Change
+-212.0086	denucleotide (monophosphate)	{'C': -5, 'H': -9, 'O': -7, 'P': -1}
+-207.068414	de-3-phenoxyphenylacetonitrile	{'C': -14, 'H': -9, 'N': -1, 'O': -1}
+-192.027003	deglucuronidation	{'C': -6, 'H': -8, 'O': -7}
+-181.048741	des(N-(4,6-dimethoxypyrimidin-2-yl)formamide)	{'C': -7, 'H': -7, 'N': -3, 'O': -3}
+-178.047738	degluconoylation	{'C': -6, 'H': -10, 'O': -6}
+-177.039913	deglucuronidation	{'C': -6, 'O': -6, 'H': -9}
+-176.104859	PEG repeat unit loss x4	{'C': -8, 'H': -16, 'O': -4}
+-176.032088	deglucuronidation	{'C': -6, 'O': -6, 'H': -8}
+-174.125594	PPG repeat unit loss x3	{'C': -9, 'H': -18, 'O': -3}
+-166.049075	N-(4-methoxy-6-methyl-1,3,5-triazin-2-yl)formamide loss	{'C': -6, 'H': -6, 'N': -4, 'O': -2}
+-162.052823	deglucuronidation	{'C': -6, 'H': -10, 'O': -5}
+-145.0739	deglycosylation	{'C': -6, 'H': -11, 'N': -1, 'O': -3}
+-132.078644	PEG repeat unit loss x3	{'C': -6, 'H': -12, 'O': -3}
+-129.078979	hydrolase-type deglycosidation	{'C': -6, 'H': -11, 'N': -1, 'O': -2}
+-129.078979	hydrolase-type deglycosidation	{'C': -6, 'H': -11, 'N': -1, 'O': -2}
+-125.896648	de iodination	{'H': 1, 'I': -1}
+-123.974787	de(O,O-dimethyl thiophosphonate)	{'C': -2, 'H': -5, 'O': -2, 'P': -1, 'S': -1}
+-116.08373	PPG repeat unit loss x2	{'C': -6, 'H': -12, 'O': -2}
+-116.0626	dealkylation (typically de-1-propenylbenzene)	{'C': -9, 'H': -8}
+-116.0626	dealkylation (typically de-1-propenylbenzene)	{'C': -9, 'H': -8}
+-100.016	cleavage (succinyl)	{'C': -4, 'H': -4, 'O': -3}
+-99.068414	hydrolysis, cleavage	{'C': -5, 'H': -9, 'N': -1, 'O': -1}
+-93.981981	de methylphosphorylation	{'H': -3, 'C': -1, 'O': -3, 'P': -1}
+-90.04695	dealkylation, dearylation, debenzylation	{'C': -7, 'H': -6}
+-90.04695	dealkylation, dearylation, debenzylation	{'C': -7, 'H': -6}
+-88.052429	PEG repeat unit loss x2	{'C': -4, 'H': -8, 'O': -2}
+-86.036779	alkyl ester/carboxyl loss	{'C': -4, 'H': -6, 'O': -2}
+-79.966331	dephosphorylation	{'H': -1, 'O': -3, 'P': -1}
+-79.9568	desulphation	{'S': -1, 'O': -3}
+-77.987066	de methylphosphonylation	{'H': -3, 'C': -1, 'O': -2, 'P': -1}
+-77.910511	debromination	{'H': 1, 'Br': -1}
+-76.0313	dephenylation, didealkynelatoin	{'C': -6, 'H': -4}
+-76.0313	dephenylation, didealkynelatoin	{'C': -6, 'H': -4}
+-72.021129	ethyl formate loss	{'C': -3, 'H': -4, 'O': -2}
+-71.037114	loss of N,N-dimethylformamide	{'C': -3, 'H': -5, 'N': -1, 'O': -1}
+-70.0783	dealkylation	{'C': -5, 'H': -10}
+-68.9851	cleavage	{'H': 1, 'C': -2, 'N': -1, 'O': -2}
+-68.0626	alkyl ring loss	{'C': -5, 'H': -8}
+-68.0626	alkyl ring loss	{'C': -5, 'H': -8}
+-67.922055	Dichlorination 2x	{'H': 2, 'Cl': -2}
+-63.9797	dehydroxylation 4x	{'O': -4}
+-63.9619	Sulfur dioxide loss	{'O': -2, 'S': -1}
+-61.9923	dechloroethylation	{'C': -2, 'H': -4, 'Cl': -1}
+-61.052764	ethanolamine loss	{'C': -2, 'H': -7, 'N': -1, 'O': -1}
+-60.0211	desmolysis	{'C': -2, 'H': -4, 'O': -2}
+-59.9847	dehydroxylation	{'C': -1, 'O': -3}
+-58.041865	N-dealkoxylation, O-dealkoxylation	{'C': -3, 'H': -6, 'O': -1}
+-58.041865	PPG repeat unit loss	{'C': -3, 'H': -6, 'O': -1}
+-58.005479	hydrolysis, loss of acetic acid, loss of methylester	{'C': -2, 'H': -2, 'O': -2}
+-58.005479	hydrolysis, loss of acetic acid, loss of methylester	{'C': -2, 'H': -2, 'O': -2}
+-57.021464	methylformamide loss	{'C': -2, 'H': -3, 'N': -1, 'O': -1}
+-56.0626	dealkylation	{'C': -4, 'H': -8}
+-56.0626	dealkylation	{'C': -4, 'H': -8}
+-56.026215	beta-elimination (among others)	{'C': -3, 'H': -4, 'O': -1}
+-56.0262	hydrolysis	{'C': -3, 'H': -4, 'O': -1}
+-54.031694	3x water loss	{'H': -6, 'O': -3}
+-49.992328	dechloromethyl	{'C': -1, 'H': -3, 'Cl': -1}
+-49.992328	dechloromethyl	{'C': -1, 'H': -3, 'Cl': -1}
+-45.0215	dehydroxylation	{'C': -1, 'H': -3, 'N': -1, 'O': -1}
+-44.985078	hydrolysis	{'H': 1, 'N': -1, 'O': -2}
+-44.0262	dealkoxylation, dehydroxyethylation	{'C': -1, 'H': -2, 'O': -1}
+-44.0262	dealkoxylation, dehydroxyethylation	{'C': -2, 'H': -4, 'O': -1}
+-43.989829	decarboxylation	{'C': -1, 'O': -2}
+-43.989829	decarboxylation	{'C': -1, 'O': -2}
+-43.042199	ethanolamine loss	{'C': -2, 'H': -5, 'N': -1}
+-43.005814	amide hydrolysis, urea derivative	{'C': -1, 'H': -1, 'N': -1, 'O': -1}
+-43.005814	amide hydrolysis	{'C': -1, 'H': -1, 'N': -1, 'O': -1}
+-42.04695	deisopropylation, depropylation, dealkylation	{'C': -3, 'H': -6}
+-42.04695	tri-demethylation	{'H': -6, 'C': -3}
+-42.010565	hydrolysis, deacetylation	{'C': -2, 'H': -2, 'O': -1}
+-42.010565	deacetylation	{'H': -2, 'C': -2, 'O': -1}
+-40.0313	descyclopropyl, dealkenation	{'C': -3, 'H': -4}
+-40.0313	descyclopropyl, dealkenation	{'C': -3, 'H': -4}
+-39.0109	hydrolysis	{'C': -2, 'H': -1, 'N': -1}
+-38.01565	dealkyneation, dealkylation + aromatic ring opening	{'C': -3, 'H': -2}
+-38.01565	dealkyneation, dealkylation + aromatic ring opening	{'C': -3, 'H': -2}
+-36.021129	2x dehydration	{'H': -4, 'O': -2}
+-33.961028	dechlorination, dehalogenation	{'H': 1, 'Cl': -1}
+-33.961028	dechlorination	{'H': 1, 'Cl': -1}
+-31.989829	2x dehydroxylation	{'O': -2}
+-30.010565	demethoxylation	{'C': -1, 'H': -2, 'O': -1}
+-30.010565	demethoxylation	{'C': -1, 'H': -2, 'O': -1}
+-29.992806	hydroxylation of thiomethyl	{'O': 1, 'S': -1, 'C': -1, 'H': -2}
+-29.992806	hydroxylation of thiomethyl	{'O': 1, 'S': -1, 'C': -1, 'H': -2}
+-29.974179	reduction	{'H': 2, 'O': -2}
+-28.990164	reduction	{'H': 1, 'N': -1, 'O': -1}
+-28.0313	desethylation, didemethylation, dealkylation	{'C': -2, 'H': -4}
+-28.0313	desethylation	{'C': -2, 'H': -4}
+-27.994915	secondary amine cleavage, decarbonylation	{'C': -1, 'O': -1}
+-27.994915	decarbonylation	{'C': -1, 'O': -1}
+-27.047285	ethyl amino loss	{'O': 1, 'H': -5, 'C': -2, 'N': -1}
+-26.01565	alkyl loss (typically partial loss from ring)	{'C': -2, 'H': -2}
+-26.01565	alkyl loss (typically partial loss from ring)	{'C': -2, 'H': -2}
+-24.995249	decyano group	{'H': 1, 'C': -1, 'N': -1}
+-21.981943	sodium adduct to proton adduct	{'H': 1, 'Na': -1}
+-20.026215	dehydration + dehydrogenation	{'H': -4, 'O': -1}
+-20.006228	defluorination adjacent to O	{'H': -1, 'F': -1}
+-20.006228	defluorination adjacent to O	{'H': -1, 'F': -1}
+-18.99458	oxidation of cynao group	{'N': 1, 'H': -1, 'O': -2}
+-18.010565	dehydration	{'H': -2, 'O': -1}
+-17.990578	defluorination	{'H': 1, 'F': -1}
+-17.966113	dehalogenation, dechlorination	{'O': 1, 'H': 1, 'Cl': -1}
+-17.966113	dechlorination	{'O': 1, 'H': 1, 'Cl': -1}
+-17.026549	ammomiun adduct to proton adduct	{'H': -3, 'N': -1}
+-16.0313	demethylation + dehydrogenation	{'C': -1, 'H': -4}
+-15.9949	reduction	{'O': -1}
+-15.977156	desulfuration	{'O': 1, 'S': -1}
+-15.977156	desulfuration	{'O': 1, 'S': -1}
+-15.9739	potassium to sodium adduct	{'Na': 1, 'K': -1}
+-15.010899	deamination, desamination	{'N': -1, 'H': -1}
+-15.010899	deamination, desamination	{'N': -1, 'H': -1}
+-14.01565	demethylation	{'C': -1, 'H': -2}
+-13.979265	reduction	{'H': 2, 'O': -1}
+-12.036386	dealkylation + hydroxylation	{'O': 1, 'C': -2, 'H': -4}
+-12.0	demethylation + reduction	{'C': -1}
+-11.9636	reduction	{'H': 4, 'O': -1}
+-4.9559	sodium adduct to ammonium adduct 	{'N': 1, 'H': 4, 'Na': -1}
+-4.0313	x2 dehydrogenation	{'H': -4}
+-3.994915	dehydration + methylation	{'C': 1, 'O': -1}
+-3.986848	OXA, dechlorination + carboxylation	{'O': 2, 'H': -1, 'Cl': -1}
+-2.01565	dehydrogenation	{'H': -2}
+-1.979265	dehydroxylation + methylation	{'C': 1, 'H': 2, 'O': -1}
+-1.942879	dealkylation (desethyl/didesmethyl) + carboxylation	{'C': 2, 'H': 6, 'O': -2}
+-0.984016	amination	{'N': 1, 'H': 1, 'O': -1}
+-0.036386	oxidation	{'O': 1, 'C': -1, 'H': -4}
+0.984016	amide hydroxylation	{'O': 1, 'N': -1, 'H': -1}
+0.984016	deamination	{'N': -1, 'H': -1, 'O': 1}
+0.997035	15N(1)	{'N': 1}
+1.00335	C isotope	{}
+1.00335	C isotope	{'C': 1}
+1.007	proton	{'H': 1}
+1.0317	transamination	{}
+1.942879	dealkylation (desethyl/didesmethyl) + carboxylation	{'C': -2, 'H': -6, 'O': 2}
+1.979265	demethylation + hydroxylation (on same or differing sites)	{'O': 1, 'C': -1, 'H': -2}
+1.979265	demethylation + hydroxylation (on same or differing sites)	{'C': -1, 'H': -2, 'O': 1}
+1.9958	S isotope	{}
+1.9958	S isotope	{'S': 1}
+1.99705	Cl isotope	{}
+1.99705	Cl isotope	{'Cl': 1}
+1.99795	Br isotope	{}
+1.99795	Br isotope	{'Br': 1}
+2.00425	O isotope	{}
+2.00425	O isotope	{'O': 1}
+2.01565	reduction	{'H': 2}
+2.01565	hydrogenation	{'H': 2}
+2.9997	hydrolysis	{'N': -1, 'O': 1, 'H': 1}
+3.019	C isotope and reduction	{'H': 2}
+3.986848	OXA, dechlorination + carboxylation	{'H': 1, 'Cl': 1, 'O': -2}
+3.994915	oxidative cleavage	{'O': 1, 'C': -1}
+3.994915	oxidative cleavage	{'C': -1, 'O': 1}
+4.0313	x2 reduction	{'H': 4}
+4.0313	x2 reduction	{'H': 4}
+4.9559	ammonium to sodium adduct	{}
+4.9559	ammonium to sodium adduct	{'N': -1, 'H': -4, 'Na': 1}
+7.016005	lithium adduct	{'Li': 1}
+11.9636	oxidation	{'H': -4, 'O': 1}
+12.0	methylation and reduction	{'C': 1}
+12.0		{'C': 1}
+12.0	methylation and reduction	{'C': 1}
+12.036386	dealkylation + hydroxylation	{'C': 2, 'H': 4, 'O': -1}
+12.036386	alkylation + dehydroxylation	{'O': -1, 'C': 2, 'H': 4}
+13.007825		{'C': 1, 'H': 1}
+13.979265	hydroxylation difference carboxylation	{'H': -2, 'O': 1}
+13.979265	oxidation, epoxidation	{'O': 1, 'H': -2}
+13.979265	oxidation, epoxidation	{'H': -2, 'O': 1}
+14.003074		{'N': 1}
+14.01565	chain elongation	{'C': 1, 'H': 2}
+14.01565	Methylation	{'C': 1, 'H': 2}
+14.96328	amine oxidation	{'O': 2, 'N': -1, 'H': -3}
+14.96328	amine oxidation	{'N': -1, 'H': -3, 'O': 2}
+14.98709	ketone formation adjacent to N, N-oxidation	{'O': 1, 'H': -1}
+14.999666	Deamidation followed by a methylation	{'N': -1, 'H': 1, 'C': 1, 'O': 1}
+15.010899		{'H': 1, 'N': 1}
+15.010899	amination	{'N': 1, 'H': 1}
+15.023475		{'C': 1, 'H': 3}
+15.958529	demethylation + carboxylation	{'O': 2, 'C': -1, 'H': -4}
+15.958529	demethylation + carboxylation	{'C': -1, 'H': -4, 'O': 2}
+15.9738	lithium to sodium adduct	{}
+15.9739	sodium to potassium adduct	{}
+15.9739	sodium to potassium adduct	{'Na': -1, 'K': 1}
+15.9949	oxidation	{'O': 1}
+16.018724		{'H': 2, 'N': 1}
+16.0313		{'C': 1, 'H': 4}
+16.0313	Methylation + reduction	{'C': 1, 'H': 4}
+17.00274		{'H': 1, 'O': 1}
+17.026549	replacement of proton with ammonium ion	{'H': 3, 'N': 1}
+18.010565	water	{'H': 2, 'O': 1}
+18.010565	hydration	{'H': 2, 'O': 1}
+18.034374	ammonium adduct	{'H': 4, 'N': 1}
+18.99458	oxidation of cynao group	{'N': -1, 'H': 1, 'O': 2}
+20.026215	hydration + hydrogenation	{'H': 4, 'O': 1}
+21.981943	Sodium adduct	{'H': -1, 'Na': 1}
+22.989769	sodium adduct	{'Na': 1}
+24.0		{'C': 2}
+24.995249	cyano	{'H': -1, 'C': 1, 'N': 1}
+25.007825		{'C': 2, 'H': 1}
+26.003074		{'C': 1, 'N': 1}
+26.01565		{'C': 2, 'H': 2}
+27.010899		{'C': 1, 'H': 1, 'N': 1}
+27.023475		{'C': 2, 'H': 3}
+27.047285	ethyl amino	{'O': -1, 'H': 5, 'C': 2, 'N': 1}
+27.994915	oxo group	{'C': 1, 'O': 1}
+27.994915	carbonylation	{'C': 1, 'O': 1}
+28.006148		{'N': 2}
+28.0313	demethylation	{'C': 2, 'H': 4}
+28.990164	nitrosylation	{'H': -1, 'N': 1, 'O': 1}
+29.00274		{'C': 1, 'H': 1, 'O': 1}
+29.013973		{'H': 1, 'N': 2}
+29.015316	deamidation followed by esterification with ethanol	{'N': -1, 'H': 3, 'C': 2, 'O': 1}
+29.026549		{'C': 1, 'H': 3, 'N': 1}
+29.039125		{'C': 2, 'H': 5}
+29.974179	methyl carboxylation, other oxidation	{'O': 2, 'H': -2}
+29.974179	reduction of nitro to amide	{'O': 2, 'H': -2}
+29.974179		{'O': 2, 'H': -2}
+29.974179	methyl carboxylation, other oxidation, reduction of nitro to amide	{'H': -2, 'O': 2}
+29.992806	hydroxylation of thiomethyl	{'O': -1, 'S': 1, 'C': 1, 'H': 2}
+29.997989		{'N': 1, 'O': 1}
+30.010565	desmethylation + reduction of sulfoxide	{'C': 1, 'H': 2, 'O': 1}
+30.010565	methoxylation	{'C': 1, 'H': 2, 'O': 1}
+30.021798		{'N': 2, 'H': 2}
+30.034374		{'C': 1, 'H': 4, 'N': 1}
+30.04695		{'C': 2, 'H': 6}
+30.973762		{'P': 1}
+31.005814		{'H': 1, 'N': 1, 'O': 1}
+31.01839		{'C': 1, 'H': 3, 'O': 1}
+31.029623		{'H': 3, 'N': 2}
+31.042199		{'C': 1, 'H': 5, 'N': 1}
+31.989829	(di)hydroxylation	{'O': 2}
+31.989829	(di)hydroxylation	{'O': 2}
+32.013639		{'H': 2, 'N': 1, 'O': 1}
+32.026215		{'C': 1, 'H': 4, 'O': 1}
+32.037448		{'H': 4, 'N': 2}
+32.997654		{'H': 1, 'O': 2}
+33.021464		{'H': 3, 'N': 1, 'O': 1}
+34.005479	hydroxylation, epoxidation	{'H': 2, 'O': 2}
+34.005479		{'H': 2, 'O': 2}
+34.005479	hydroxylation, epoxidation	{'H': 2, 'O': 2}
+36.0		{'C': 3}
+36.021129	2x water	{'H': 4, 'O': 2}
+36.021129	2x water	{'H': 4, 'O': 2}
+37.007825		{'C': 3, 'H': 1}
+37.946941	Replacement of 2 protons by calcium	{'H': -2, 'Ca': 1}
+37.955882	Replacement of proton by potassium	{'H': -1, 'K': 1}
+38.003074		{'C': 2, 'N': 1}
+38.01565		{'C': 3, 'H': 2}
+38.963707	potassium adduct	{'K': 1}
+39.010899		{'C': 2, 'H': 1, 'N': 1}
+39.023475		{'C': 3, 'H': 3}
+39.9925	extra OH sodium adduct	{'H': 1, 'O': 1}
+39.994915		{'C': 2, 'O': 1}
+40.006148		{'C': 1, 'N': 2}
+40.018724		{'C': 2, 'H': 2, 'N': 1}
+40.0313		{'C': 3, 'H': 4}
+41.00274		{'C': 2, 'H': 1, 'O': 1}
+41.013973		{'C': 1, 'H': 1, 'N': 2}
+41.026549		{'C': 2, 'H': 3, 'N': 1}
+41.039125		{'C': 3, 'H': 5}
+41.997989		{'C': 1, 'N': 1, 'O': 1}
+42.009222		{'N': 3}
+42.010565	Acetylation	{'H': 2, 'C': 2, 'O': 1}
+42.021798		{'C': 1, 'H': 2, 'N': 2}
+42.034374		{'C': 2, 'H': 4, 'N': 1}
+42.04695		{'C': 3, 'H': 6}
+43.017047		{'H': 1, 'N': 3}
+43.01839		{'C': 2, 'H': 3, 'O': 1}
+43.029623		{'C': 1, 'H': 3, 'N': 2}
+43.042199	ethanolamine	{'C': 2, 'H': 5, 'N': 1}
+43.042199		{'C': 2, 'H': 5, 'N': 1}
+43.042199	ethanolamine	{'C': 2, 'H': 5, 'N': 1}
+43.054775		{'C': 3, 'H': 7}
+43.989829	carboxylation	{'C': 1, 'O': 2}
+44.001063		{'N': 2, 'O': 1}
+44.013639		{'C': 1, 'H': 2, 'N': 1, 'O': 1}
+44.024872		{'H': 2, 'N': 3}
+44.0262	hydroxyethylation	{'C': 2, 'H': 4, 'O': 1}
+44.026215	PEG repeat unit	{'C': 2, 'H': 4, 'O': 1}
+44.037448		{'C': 1, 'H': 4, 'N': 2}
+44.050024		{'C': 2, 'H': 6, 'N': 1}
+44.0626		{'C': 3, 'H': 8}
+44.985078	aromatic nitro addition	{'N': 1, 'O': 2, 'H': -1}
+44.985078	Oxidation to nitro	{'H': -1, 'N': 1, 'O': 2}
+44.997654		{'C': 1, 'H': 1, 'O': 2}
+45.008888		{'H': 1, 'N': 2, 'O': 1}
+45.021464		{'C': 1, 'H': 3, 'N': 1, 'O': 1}
+45.032697		{'H': 3, 'N': 3}
+45.03404		{'C': 2, 'H': 5, 'O': 1}
+45.045273		{'C': 1, 'H': 5, 'N': 2}
+45.057849		{'C': 2, 'H': 7, 'N': 1}
+45.987721	Beta-methylthiolation	{'H': 2, 'C': 1, 'S': 1}
+45.992903		{'N': 1, 'O': 2}
+45.995787	ESA, dechlorination + sulfonation	{'S': 1, 'O': 3, 'H': 1, 'Cl': -1}
+45.995787	ESA, dechlorination + sulfonation	{'Cl': -1, 'S': 1, 'O': 3, 'H': 1}
+46.005479	formic acid adduct	{'C': 1, 'H': 2, 'O': 2}
+46.016713		{'H': 2, 'N': 2, 'O': 1}
+46.029289		{'C': 1, 'H': 4, 'N': 1, 'O': 1}
+46.040522		{'H': 4, 'N': 3}
+46.041865		{'C': 2, 'H': 6, 'O': 1}
+46.053098		{'C': 1, 'H': 6, 'N': 2}
+47.000728		{'H': 1, 'N': 1, 'O': 2}
+47.013304		{'C': 1, 'H': 3, 'O': 2}
+47.024538		{'H': 3, 'N': 2, 'O': 1}
+47.037114		{'C': 1, 'H': 5, 'N': 1, 'O': 1}
+47.048347		{'H': 5, 'N': 3}
+48.992569		{'H': 1, 'O': 3}
+49.007825		{'C': 4, 'H': 1}
+49.016378		{'H': 3, 'N': 1, 'O': 2}
+50.000394		{'H': 2, 'O': 3}
+50.003074		{'C': 3, 'N': 1}
+50.01565		{'C': 4, 'H': 2}
+51.010899		{'C': 3, 'H': 1, 'N': 1}
+51.023475		{'C': 4, 'H': 3}
+51.994915		{'C': 3, 'O': 1}
+52.006148		{'C': 2, 'N': 2}
+52.018724		{'C': 3, 'H': 2, 'N': 1}
+52.0313		{'C': 4, 'H': 4}
+53.013973		{'C': 2, 'H': 1, 'N': 2}
+53.026549		{'C': 3, 'H': 3, 'N': 1}
+53.039125		{'C': 4, 'H': 5}
+53.997989		{'C': 2, 'N': 1, 'O': 1}
+54.009222		{'C': 1, 'N': 3}
+54.010565		{'C': 3, 'H': 2, 'O': 1}
+54.021798		{'C': 2, 'H': 2, 'N': 2}
+54.031694	3x water	{'H': 6, 'O': 3}
+54.031694	3x water	{'H': 6, 'O': 3}
+54.034374		{'C': 3, 'H': 4, 'N': 1}
+54.04695		{'C': 4, 'H': 6}
+55.005814		{'C': 2, 'H': 1, 'N': 1, 'O': 1}
+55.017047		{'C': 1, 'H': 1, 'N': 3}
+55.01839		{'C': 3, 'H': 3, 'O': 1}
+55.029623		{'C': 2, 'H': 3, 'N': 2}
+55.042199		{'C': 3, 'H': 5, 'N': 1}
+55.054775		{'C': 4, 'H': 7}
+55.989829		{'C': 2, 'O': 2}
+56.001063		{'C': 1, 'N': 2, 'O': 1}
+56.012296		{'N': 4}
+56.013639		{'C': 2, 'H': 2, 'N': 1, 'O': 1}
+56.024872		{'C': 1, 'H': 2, 'N': 3}
+56.026215		{'C': 3, 'H': 4, 'O': 1}
+56.037448		{'C': 2, 'H': 4, 'N': 2}
+56.050024		{'C': 3, 'H': 6, 'N': 1}
+56.997654		{'C': 2, 'H': 1, 'O': 2}
+57.008888		{'C': 1, 'H': 1, 'N': 2, 'O': 1}
+57.020121		{'H': 1, 'N': 4}
+57.021464	glycination	{'C': 2, 'H': 3, 'N': 1, 'O': 1}
+57.021464	Addition of Glycine	{'H': 3, 'C': 2, 'N': 1, 'O': 1}
+57.032697	guanidine analog	{'C': 1, 'H': 3, 'N': 3}
+57.03404		{'C': 3, 'H': 5, 'O': 1}
+57.045273		{'C': 2, 'H': 5, 'N': 2}
+57.057849		{'C': 3, 'H': 7, 'N': 1}
+57.070425		{'C': 4, 'H': 9}
+57.992903		{'C': 1, 'N': 1, 'O': 2}
+58.004137		{'N': 3, 'O': 1}
+58.005479		{'C': 2, 'H': 2, 'O': 2}
+58.005479	acetic acid addition	{'C': 2, 'H': 2, 'O': 2}
+58.016713		{'C': 1, 'H': 2, 'N': 2, 'O': 1}
+58.027946		{'H': 2, 'N': 4}
+58.029289		{'C': 2, 'H': 4, 'N': 1, 'O': 1}
+58.040522		{'C': 1, 'H': 4, 'N': 3}
+58.041865	PPG repeat unit	{'C': 3, 'H': 6, 'O': 1}
+58.053098		{'C': 2, 'H': 6, 'N': 2}
+58.065674		{'C': 3, 'H': 8, 'N': 1}
+58.07825		{'C': 4, 'H': 10}
+59.000728		{'C': 1, 'H': 1, 'N': 1, 'O': 2}
+59.011962		{'H': 1, 'N': 3, 'O': 1}
+59.013304		{'C': 2, 'H': 3, 'O': 2}
+59.024538		{'C': 1, 'H': 3, 'N': 2, 'O': 1}
+59.035771		{'H': 3, 'N': 4}
+59.037114		{'C': 2, 'H': 5, 'N': 1, 'O': 1}
+59.048347		{'C': 1, 'H': 5, 'N': 3}
+59.04969		{'C': 3, 'H': 7, 'O': 1}
+59.060923		{'C': 2, 'H': 7, 'N': 2}
+59.073499		{'C': 3, 'H': 9, 'N': 1}
+59.9847	carboxylation + hydroxylation	{'C': 1, 'O': 3}
+59.984744		{'C': 1, 'O': 3}
+59.995977		{'N': 2, 'O': 2}
+60.0		{'C': 5}
+60.008553		{'C': 1, 'H': 2, 'N': 1, 'O': 2}
+60.019787		{'H': 2, 'N': 3, 'O': 1}
+60.021129		{'C': 2, 'H': 4, 'O': 2}
+60.032363		{'C': 1, 'H': 4, 'N': 2, 'O': 1}
+60.043596		{'H': 4, 'N': 4}
+60.044939		{'C': 2, 'H': 6, 'N': 1, 'O': 1}
+60.056172		{'C': 1, 'H': 6, 'N': 3}
+60.057515		{'C': 3, 'H': 8, 'O': 1}
+60.068748		{'C': 2, 'H': 8, 'N': 2}
+60.91392		{'H': -2}
+60.992569		{'C': 1, 'H': 1, 'O': 3}
+61.003802		{'H': 1, 'N': 2, 'O': 2}
+61.007825		{'C': 5, 'H': 1}
+61.016378		{'C': 1, 'H': 3, 'N': 1, 'O': 2}
+61.027612		{'H': 3, 'N': 3, 'O': 1}
+61.028954		{'C': 2, 'H': 5, 'O': 2}
+61.040188		{'C': 1, 'H': 5, 'N': 2, 'O': 1}
+61.051421		{'H': 5, 'N': 4}
+61.052764	ethanolamine	{'C': 2, 'H': 7, 'N': 1, 'O': 1}
+61.052764		{'C': 2, 'H': 7, 'N': 1, 'O': 1}
+61.052764	ethanolamine	{'C': 2, 'H': 7, 'N': 1, 'O': 1}
+61.063997		{'C': 1, 'H': 7, 'N': 3}
+61.987818		{'N': 1, 'O': 3}
+62.000394		{'C': 1, 'H': 2, 'O': 3}
+62.003074		{'C': 4, 'N': 1}
+62.011627		{'H': 2, 'N': 2, 'O': 2}
+62.01565		{'C': 5, 'H': 2}
+62.036779		{'C': 2, 'H': 6, 'O': 2}
+62.048013		{'C': 1, 'H': 6, 'N': 2, 'O': 1}
+62.059246		{'H': 6, 'N': 4}
+62.995643		{'H': 1, 'N': 1, 'O': 3}
+63.008219		{'C': 1, 'H': 3, 'O': 3}
+63.010899		{'C': 4, 'H': 1, 'N': 1}
+63.019452		{'H': 3, 'N': 2, 'O': 2}
+63.023475		{'C': 5, 'H': 3}
+63.032028		{'C': 1, 'H': 5, 'N': 1, 'O': 2}
+63.043262		{'H': 5, 'N': 3, 'O': 1}
+63.9619	SulfurDioxide	{'O': 2, 'S': 1}
+63.979658		{'O': 4}
+63.9797	hydroxylation 4x	{'O': 4}
+63.994915		{'C': 4, 'O': 1}
+64.003468		{'H': 2, 'N': 1, 'O': 3}
+64.006148		{'C': 3, 'N': 2}
+64.016044		{'C': 1, 'H': 4, 'O': 3}
+64.018724		{'C': 4, 'H': 2, 'N': 1}
+64.027277		{'H': 4, 'N': 2, 'O': 2}
+64.0313		{'C': 5, 'H': 4}
+64.987484		{'H': 1, 'O': 4}
+65.00274		{'C': 4, 'H': 1, 'O': 1}
+65.00274		{'C': 4, 'H': 1, 'O': 1}
+65.013973		{'C': 3, 'H': 1, 'N': 2}
+65.026549		{'C': 4, 'H': 3, 'N': 1}
+65.039125		{'C': 5, 'H': 5}
+65.995309		{'H': 2, 'O': 4}
+65.997989		{'C': 3, 'N': 1, 'O': 1}
+66.009222		{'C': 2, 'N': 3}
+66.010565		{'C': 4, 'H': 2, 'O': 1}
+66.021798		{'C': 3, 'H': 2, 'N': 2}
+66.04695		{'C': 5, 'H': 6}
+67.005814		{'C': 3, 'H': 1, 'N': 1, 'O': 1}
+67.017047		{'C': 2, 'H': 1, 'N': 3}
+67.01839		{'C': 4, 'H': 3, 'O': 1}
+67.029623		{'C': 3, 'H': 3, 'N': 2}
+67.042199	pyrrolidone	{'C': 4, 'H': 5, 'N': 1}
+67.042199		{'C': 4, 'H': 5, 'N': 1}
+67.054775		{'C': 5, 'H': 7}
+67.989829		{'C': 3, 'O': 2}
+68.001063		{'C': 2, 'N': 2, 'O': 1}
+68.012296		{'C': 1, 'N': 4}
+68.013639		{'C': 3, 'H': 2, 'N': 1, 'O': 1}
+68.024872		{'C': 2, 'H': 2, 'N': 3}
+68.026215		{'C': 4, 'H': 4, 'O': 1}
+68.037448		{'C': 3, 'H': 4, 'N': 2}
+68.050024		{'C': 4, 'H': 6, 'N': 1}
+68.0626		{'C': 5, 'H': 8}
+68.997654		{'C': 3, 'H': 1, 'O': 2}
+69.008888		{'C': 2, 'H': 1, 'N': 2, 'O': 1}
+69.020121		{'C': 1, 'H': 1, 'N': 4}
+69.021464	dehydroalanine	{'C': 3, 'H': 3, 'N': 1, 'O': 1}
+69.021464		{'C': 3, 'H': 3, 'N': 1, 'O': 1}
+69.021464		{'C': 3, 'H': 3, 'N': 1, 'O': 1}
+69.032697		{'C': 2, 'H': 3, 'N': 3}
+69.03404		{'C': 4, 'H': 5, 'O': 1}
+69.045273		{'C': 3, 'H': 5, 'N': 2}
+69.057849		{'C': 4, 'H': 7, 'N': 1}
+69.070425		{'C': 5, 'H': 9}
+69.992903		{'C': 2, 'N': 1, 'O': 2}
+70.004137		{'C': 1, 'N': 3, 'O': 1}
+70.005479	pyruvate	{'C': 3, 'H': 2, 'O': 2}
+70.005479		{'C': 3, 'H': 2, 'O': 2}
+70.016713		{'C': 2, 'H': 2, 'N': 2, 'O': 1}
+70.027946		{'C': 1, 'H': 2, 'N': 4}
+70.040522		{'C': 2, 'H': 4, 'N': 3}
+70.041865		{'C': 4, 'H': 6, 'O': 1}
+70.053098		{'C': 3, 'H': 6, 'N': 2}
+70.065674		{'C': 4, 'H': 8, 'N': 1}
+70.07825		{'C': 5, 'H': 10}
+70.089484	putrescine	{'C': 4, 'H': 10, 'N': 2, 'O': -1}
+71.000728		{'C': 2, 'H': 1, 'N': 1, 'O': 2}
+71.011962		{'C': 1, 'H': 1, 'N': 3, 'O': 1}
+71.013304		{'C': 3, 'H': 3, 'O': 2}
+71.024538		{'C': 2, 'H': 3, 'N': 2, 'O': 1}
+71.035771		{'C': 1, 'H': 3, 'N': 4}
+71.037114	alanine	{'C': 3, 'H': 5, 'N': 1, 'O': 1}
+71.037114	beta-alanine	{'C': 3, 'H': 5, 'N': 1, 'O': 1}
+71.037114	N-methyl-glycine	{'C': 3, 'H': 5, 'N': 1, 'O': 1}
+71.037114	sarcosine	{'C': 3, 'H': 5, 'N': 1, 'O': 1}
+71.048347		{'C': 2, 'H': 5, 'N': 3}
+71.04969		{'C': 4, 'H': 7, 'O': 1}
+71.060923		{'C': 3, 'H': 7, 'N': 2}
+71.073499		{'C': 4, 'H': 9, 'N': 1}
+71.086075		{'C': 5, 'H': 11}
+71.984744		{'C': 2, 'O': 3}
+71.995977		{'C': 1, 'N': 2, 'O': 2}
+72.0		{'C': 6}
+72.007211		{'N': 4, 'O': 1}
+72.008553		{'C': 2, 'H': 2, 'N': 1, 'O': 2}
+72.019787		{'C': 1, 'H': 2, 'N': 3, 'O': 1}
+72.021129	lactic acid	{'C': 3, 'H': 4, 'O': 2}
+72.032363		{'C': 2, 'H': 4, 'N': 2, 'O': 1}
+72.043596		{'C': 1, 'H': 4, 'N': 4}
+72.044939		{'C': 3, 'H': 6, 'N': 1, 'O': 1}
+72.056172		{'C': 2, 'H': 6, 'N': 3}
+72.057515		{'C': 4, 'H': 8, 'O': 1}
+72.068748		{'C': 3, 'H': 8, 'N': 2}
+72.081324		{'C': 4, 'H': 10, 'N': 1}
+72.0939		{'C': 5, 'H': 12}
+72.992569		{'C': 2, 'H': 1, 'O': 3}
+73.003802		{'C': 1, 'H': 1, 'N': 2, 'O': 2}
+73.007825		{'C': 6, 'H': 1}
+73.016378		{'C': 2, 'H': 3, 'N': 1, 'O': 2}
+73.027612		{'C': 1, 'H': 3, 'N': 3, 'O': 1}
+73.028954		{'C': 3, 'H': 5, 'O': 2}
+73.040188		{'C': 2, 'H': 5, 'N': 2, 'O': 1}
+73.051421		{'C': 1, 'H': 5, 'N': 4}
+73.052764	serinol	{'C': 3, 'H': 7, 'N': 1, 'O': 1}
+73.052764		{'C': 3, 'H': 7, 'N': 1, 'O': 1}
+73.063997		{'C': 2, 'H': 7, 'N': 3}
+73.06534		{'C': 4, 'H': 9, 'O': 1}
+73.076573		{'C': 3, 'H': 9, 'N': 2}
+73.089149		{'C': 4, 'H': 11, 'N': 1}
+73.987818		{'C': 1, 'N': 1, 'O': 3}
+73.999051		{'N': 3, 'O': 2}
+74.000394		{'C': 2, 'H': 2, 'O': 3}
+74.003074		{'C': 5, 'N': 1}
+74.011627		{'C': 1, 'H': 2, 'N': 2, 'O': 2}
+74.01565		{'C': 6, 'H': 2}
+74.018791	polysiloxane repeat unit	{'C': 2, 'H': 6, 'O': 1, 'Si': 1}
+74.024203		{'C': 2, 'H': 4, 'N': 1, 'O': 2}
+74.035437		{'C': 1, 'H': 4, 'N': 3, 'O': 1}
+74.036779		{'C': 3, 'H': 6, 'O': 2}
+74.048013		{'C': 2, 'H': 6, 'N': 2, 'O': 1}
+74.059246		{'C': 1, 'H': 6, 'N': 4}
+74.060589		{'C': 3, 'H': 8, 'N': 1, 'O': 1}
+74.071822		{'C': 2, 'H': 8, 'N': 3}
+74.073165		{'C': 4, 'H': 10, 'O': 1}
+74.084398		{'C': 3, 'H': 10, 'N': 2}
+74.995643		{'C': 1, 'H': 1, 'N': 1, 'O': 3}
+75.006876		{'H': 1, 'N': 3, 'O': 2}
+75.008219		{'C': 2, 'H': 3, 'O': 3}
+75.010899		{'C': 5, 'H': 1, 'N': 1}
+75.019452		{'C': 1, 'H': 3, 'N': 2, 'O': 2}
+75.023475		{'C': 6, 'H': 3}
+75.030686		{'H': 3, 'N': 4, 'O': 1}
+75.032028	glycine	{'C': 2, 'H': 5, 'N': 1, 'O': 2}
+75.032028		{'C': 2, 'H': 5, 'N': 1, 'O': 2}
+75.043262		{'C': 1, 'H': 5, 'N': 3, 'O': 1}
+75.044604		{'C': 3, 'H': 7, 'O': 2}
+75.055838		{'C': 2, 'H': 7, 'N': 2, 'O': 1}
+75.067071		{'C': 1, 'H': 7, 'N': 4}
+75.068414		{'C': 3, 'H': 9, 'N': 1, 'O': 1}
+75.079647		{'C': 2, 'H': 9, 'N': 3}
+75.979658		{'C': 1, 'O': 4}
+75.990892		{'N': 2, 'O': 3}
+75.994915		{'C': 5, 'O': 1}
+76.003468		{'C': 1, 'H': 2, 'N': 1, 'O': 3}
+76.006148		{'C': 4, 'N': 2}
+76.014701		{'H': 2, 'N': 3, 'O': 2}
+76.018724		{'C': 5, 'H': 2, 'N': 1}
+76.027277		{'C': 1, 'H': 4, 'N': 2, 'O': 2}
+76.0313		{'C': 6, 'H': 4}
+76.038511		{'H': 4, 'N': 4, 'O': 1}
+76.039853		{'C': 2, 'H': 6, 'N': 1, 'O': 2}
+76.051087		{'C': 1, 'H': 6, 'N': 3, 'O': 1}
+76.052429		{'C': 3, 'H': 8, 'O': 2}
+76.063663		{'C': 2, 'H': 8, 'N': 2, 'O': 1}
+76.074896		{'C': 1, 'H': 8, 'N': 4}
+76.987484		{'C': 1, 'H': 1, 'O': 4}
+76.998717		{'H': 1, 'N': 2, 'O': 3}
+77.00274		{'C': 5, 'H': 1, 'O': 1}
+77.011293		{'C': 1, 'H': 3, 'N': 1, 'O': 3}
+77.013973		{'C': 4, 'H': 1, 'N': 2}
+77.022526		{'H': 3, 'N': 3, 'O': 2}
+77.023869		{'C': 2, 'H': 5, 'O': 3}
+77.026549		{'C': 5, 'H': 3, 'N': 1}
+77.035102		{'C': 1, 'H': 5, 'N': 2, 'O': 2}
+77.039125		{'C': 6, 'H': 5}
+77.046336		{'H': 5, 'N': 4, 'O': 1}
+77.058912		{'C': 1, 'H': 7, 'N': 3, 'O': 1}
+77.982732		{'N': 1, 'O': 4}
+77.987066	Methylphosphonylation	{'H': 3, 'C': 1, 'O': 2, 'P': 1}
+77.995309		{'C': 1, 'H': 2, 'O': 4}
+77.997989		{'C': 4, 'N': 1, 'O': 1}
+78.006542		{'H': 2, 'N': 2, 'O': 3}
+78.009222		{'C': 3, 'N': 3}
+78.010565		{'C': 5, 'H': 2, 'O': 1}
+78.019118		{'C': 1, 'H': 4, 'N': 1, 'O': 3}
+78.021798		{'C': 4, 'H': 2, 'N': 2}
+78.030351		{'H': 4, 'N': 3, 'O': 2}
+78.031694		{'C': 2, 'H': 6, 'O': 3}
+78.034374		{'C': 5, 'H': 4, 'N': 1}
+78.042927		{'C': 1, 'H': 6, 'N': 2, 'O': 2}
+78.04695		{'C': 6, 'H': 6}
+78.054161		{'H': 6, 'N': 4, 'O': 1}
+78.990558		{'H': 1, 'N': 1, 'O': 4}
+79.003134		{'C': 1, 'H': 3, 'O': 4}
+79.005814		{'C': 4, 'H': 1, 'N': 1, 'O': 1}
+79.014367		{'H': 3, 'N': 2, 'O': 3}
+79.017047		{'C': 3, 'H': 1, 'N': 3}
+79.01839		{'C': 5, 'H': 3, 'O': 1}
+79.026943		{'C': 1, 'H': 5, 'N': 1, 'O': 3}
+79.029623		{'C': 4, 'H': 3, 'N': 2}
+79.038176		{'H': 5, 'N': 3, 'O': 2}
+79.042199		{'C': 5, 'H': 5, 'N': 1}
+79.054775		{'C': 6, 'H': 7}
+79.9568	sulphation	{'S': 1, 'O': 3}
+79.966331	Phosphorylation	{'H': 1, 'O': 3, 'P': 1}
+79.989829		{'C': 4, 'O': 2}
+79.998383		{'H': 2, 'N': 1, 'O': 4}
+80.001063		{'C': 3, 'N': 2, 'O': 1}
+80.010959		{'C': 1, 'H': 4, 'O': 4}
+80.012296		{'C': 2, 'N': 4}
+80.013639		{'C': 4, 'H': 2, 'N': 1, 'O': 1}
+80.022192		{'H': 4, 'N': 2, 'O': 3}
+80.024872		{'C': 3, 'H': 2, 'N': 3}
+80.026215		{'C': 5, 'H': 4, 'O': 1}
+80.037448		{'C': 4, 'H': 4, 'N': 2}
+80.050024		{'C': 5, 'H': 6, 'N': 1}
+80.0626		{'C': 6, 'H': 8}
+80.997654		{'C': 4, 'H': 1, 'O': 2}
+81.006208		{'H': 3, 'N': 1, 'O': 4}
+81.008888		{'C': 3, 'H': 1, 'N': 2, 'O': 1}
+81.020121		{'C': 2, 'H': 1, 'N': 4}
+81.021464		{'C': 4, 'H': 3, 'N': 1, 'O': 1}
+81.032697		{'C': 3, 'H': 3, 'N': 3}
+81.03404		{'C': 5, 'H': 5, 'O': 1}
+81.045273		{'C': 4, 'H': 5, 'N': 2}
+81.057849		{'C': 5, 'H': 7, 'N': 1}
+81.070425		{'C': 6, 'H': 9}
+81.992903		{'C': 3, 'N': 1, 'O': 2}
+82.004137		{'C': 2, 'N': 3, 'O': 1}
+82.005479		{'C': 4, 'H': 2, 'O': 2}
+82.016713		{'C': 3, 'H': 2, 'N': 2, 'O': 1}
+82.027946		{'C': 2, 'H': 2, 'N': 4}
+82.029289		{'C': 4, 'H': 4, 'N': 1, 'O': 1}
+82.040522		{'C': 3, 'H': 4, 'N': 3}
+82.041865		{'C': 5, 'H': 6, 'O': 1}
+82.053098		{'C': 4, 'H': 6, 'N': 2}
+82.065674		{'C': 5, 'H': 8, 'N': 1}
+82.07825		{'C': 6, 'H': 10}
+83.000728		{'C': 3, 'H': 1, 'N': 1, 'O': 2}
+83.011962		{'C': 2, 'H': 1, 'N': 3, 'O': 1}
+83.013304		{'C': 4, 'H': 3, 'O': 2}
+83.024538		{'C': 3, 'H': 3, 'N': 2, 'O': 1}
+83.035771		{'C': 2, 'H': 3, 'N': 4}
+83.037114	2,3-dehydro-2-aminobutyric acid	{'C': 4, 'H': 5, 'N': 1, 'O': 1}
+83.037114	homoserine lactone	{'C': 4, 'H': 5, 'N': 1, 'O': 1}
+83.037114	hydroxy pyrrolidone	{'C': 4, 'H': 5, 'N': 1, 'O': 1}
+83.037114	N-methyl-dehydroalanine	{'C': 4, 'H': 5, 'N': 1, 'O': 1}
+83.037114		{'C': 4, 'H': 5, 'N': 1, 'O': 1}
+83.048347		{'C': 3, 'H': 5, 'N': 3}
+83.04969		{'C': 5, 'H': 7, 'O': 1}
+83.060923		{'C': 4, 'H': 7, 'N': 2}
+83.073499		{'C': 5, 'H': 9, 'N': 1}
+83.086075		{'C': 6, 'H': 11}
+83.984744		{'C': 3, 'O': 3}
+83.995977		{'C': 2, 'N': 2, 'O': 2}
+84.0		{'C': 7}
+84.007211		{'C': 1, 'N': 4, 'O': 1}
+84.008553		{'C': 3, 'H': 2, 'N': 1, 'O': 2}
+84.019787		{'C': 2, 'H': 2, 'N': 3, 'O': 1}
+84.021129		{'C': 4, 'H': 4, 'O': 2}
+85.016378	alpha-formylglycine	{'C': 3, 'H': 3, 'N': 1, 'O': 2}
+85.052764	2-aminobutyric acid	{'C': 4, 'H': 7, 'N': 1, 'O': 1}
+85.052764	2-aminoisobutyric acid	{'C': 4, 'H': 7, 'N': 1, 'O': 1}
+85.052764	D-2-aminobutyric acid	{'C': 4, 'H': 7, 'N': 1, 'O': 1}
+85.052764	N-methyl-alanine	{'C': 4, 'H': 7, 'N': 1, 'O': 1}
+85.052764	N-methyl-beta-alanine	{'C': 4, 'H': 7, 'N': 1, 'O': 1}
+85.052764	pyrrolidone	{'C': 4, 'H': 7, 'N': 1, 'O': 1}
+85.089149	isovalinol	{'C': 5, 'H': 11, 'N': 1}
+85.089149	valinol	{'C': 5, 'H': 11, 'N': 1}
+86.048013	2,3-diaminopropionic acid	{'C': 3, 'H': 6, 'N': 2, 'O': 1}
+87.030686		{'C': 1, 'H': 3, 'N': 4, 'O': 1}
+87.032028	dehydroalanine	{'C': 3, 'H': 5, 'N': 1, 'O': 2}
+87.032028	isoserine	{'C': 3, 'H': 5, 'N': 1, 'O': 2}
+87.032028	serine	{'C': 3, 'H': 5, 'N': 1, 'O': 2}
+87.032028	serine analog	{'C': 3, 'H': 5, 'N': 1, 'O': 2}
+88.016044	pyruvate	{'C': 3, 'H': 4, 'O': 3}
+88.052429	butanoic acid	{'C': 4, 'H': 8, 'O': 2}
+88.052429	PEG repeat unit x2	{'C': 4, 'H': 8, 'O': 2}
+88.100048	putrescine	{'C': 4, 'H': 12, 'N': 2}
+89.047678	alanine	{'C': 3, 'H': 7, 'N': 1, 'O': 2}
+89.047678	beta-alanine	{'C': 3, 'H': 7, 'N': 1, 'O': 2}
+89.047678	N-methyl-glycine	{'C': 3, 'H': 7, 'N': 1, 'O': 2}
+90.031694	lactic acid	{'C': 3, 'H': 6, 'O': 3}
+91.063329	serinol	{'C': 3, 'H': 9, 'N': 1, 'O': 2}
+93.981981	O-Methylphosphorylation	{'H': 3, 'C': 1, 'O': 3, 'P': 1}
+95.943487	Thiophosphorylation	{'H': 1, 'O': 2, 'P': 1, 'S': 1}
+96.068748	proline carboxamid	{'C': 5, 'H': 8, 'N': 2}
+97.052764	2-methylamino-2-dehydrobutyric acid	{'C': 5, 'H': 7, 'N': 1, 'O': 1}
+97.052764	D-proline	{'C': 5, 'H': 7, 'N': 1, 'O': 1}
+97.052764	norcoronamic acid	{'C': 5, 'H': 7, 'N': 1, 'O': 1}
+97.052764	proline	{'C': 5, 'H': 7, 'N': 1, 'O': 1}
+97.06534		{'C': 6, 'H': 9, 'O': 1}
+98.073165	3-methylvaleric acid	{'C': 6, 'H': 10, 'O': 1}
+99.032028	D-N-formyl-alanine	{'C': 4, 'H': 5, 'N': 1, 'O': 2}
+99.032028	N-formyl-alanine	{'C': 4, 'H': 5, 'N': 1, 'O': 2}
+99.068414	2-methyl-3-aminobutanoic acid	{'C': 5, 'H': 9, 'N': 1, 'O': 1}
+99.068414	D-isovaline	{'C': 5, 'H': 9, 'N': 1, 'O': 1}
+99.068414	D-norvaline	{'C': 5, 'H': 9, 'N': 1, 'O': 1}
+99.068414	D-valine	{'C': 5, 'H': 9, 'N': 1, 'O': 1}
+99.068414	isovaline	{'C': 5, 'H': 9, 'N': 1, 'O': 1}
+99.068414	N-dimethyl-alanine	{'C': 5, 'H': 9, 'N': 1, 'O': 1}
+99.068414	norvaline	{'C': 5, 'H': 9, 'N': 1, 'O': 1}
+99.068414	valine	{'C': 5, 'H': 9, 'N': 1, 'O': 1}
+99.104799	isoleucinol	{'C': 6, 'H': 13, 'N': 1}
+99.104799	leucinol	{'C': 6, 'H': 13, 'N': 1}
+100.016044		{'C': 4, 'H': 4, 'O': 3}
+100.052429	2-hydroxyisovalerate	{'C': 5, 'H': 8, 'O': 2}
+100.052429	D-2-hydroxyisovalerate	{'C': 5, 'H': 8, 'O': 2}
+100.052429	tiglic acid	{'C': 5, 'H': 8, 'O': 2}
+100.063663	(2R,3R)-2,3-diaminobutyric acid	{'C': 4, 'H': 8, 'N': 2, 'O': 1}
+100.063663	(2S,3S)-2,3-diaminobutyric acid	{'C': 4, 'H': 8, 'N': 2, 'O': 1}
+100.063663	(2S)-2,3-diaminobutyric acid	{'C': 4, 'H': 8, 'N': 2, 'O': 1}
+100.063663	2,4-diaminobutyric acid	{'C': 4, 'H': 8, 'N': 2, 'O': 1}
+100.063663	D-2,4-diaminobutyric acid	{'C': 4, 'H': 8, 'N': 2, 'O': 1}
+100.993535	dehydro-cysteine	{'C': 3, 'H': 3, 'N': 1, 'O': 1, 'S': 1}
+101.047678	2,3-dehydro-2-aminobutyric acid	{'C': 4, 'H': 7, 'N': 1, 'O': 2}
+101.047678	4-amino-3-hydroxybutyric acid	{'C': 4, 'H': 7, 'N': 1, 'O': 2}
+101.047678	allo-threonine	{'C': 4, 'H': 7, 'N': 1, 'O': 2}
+101.047678	D-3-methoxyalanine	{'C': 4, 'H': 7, 'N': 1, 'O': 2}
+101.047678	homoserine	{'C': 4, 'H': 7, 'N': 1, 'O': 2}
+101.047678	homoserine lactone	{'C': 4, 'H': 7, 'N': 1, 'O': 2}
+101.047678	hydroxy pyrrolidone	{'C': 4, 'H': 7, 'N': 1, 'O': 2}
+101.047678	N-methyl-D-serine	{'C': 4, 'H': 7, 'N': 1, 'O': 2}
+101.047678	N-methyl-dehydroalanine	{'C': 4, 'H': 7, 'N': 1, 'O': 2}
+101.047678	N-methyl-serine	{'C': 4, 'H': 7, 'N': 1, 'O': 2}
+101.047678	threonine	{'C': 4, 'H': 7, 'N': 1, 'O': 2}
+102.031694	2-hydroxy-3-butenoic acid	{'C': 4, 'H': 6, 'O': 3}
+102.06808	2-methyl-butanoic acid	{'C': 5, 'H': 10, 'O': 2}
+102.06808	3-methylbutanoic acid	{'C': 5, 'H': 10, 'O': 2}
+103.009185	cysteine	{'C': 3, 'H': 5, 'N': 1, 'O': 1, 'S': 1}
+103.009185	cysteine	{'C': 3, 'H': 5, 'N': 1, 'O': 1, 'S': 1}
+103.026943	alpha-formylglycine	{'C': 3, 'H': 5, 'N': 1, 'O': 3}
+103.063329	2-aminobutyric acid	{'C': 4, 'H': 9, 'N': 1, 'O': 2}
+103.063329	2-aminoisobutyric acid	{'C': 4, 'H': 9, 'N': 1, 'O': 2}
+103.063329	D-2-aminobutyric acid	{'C': 4, 'H': 9, 'N': 1, 'O': 2}
+103.063329	N-methyl-alanine	{'C': 4, 'H': 9, 'N': 1, 'O': 2}
+103.063329	N-methyl-beta-alanine	{'C': 4, 'H': 9, 'N': 1, 'O': 2}
+103.099714	isovalinol	{'C': 5, 'H': 13, 'N': 1, 'O': 1}
+103.099714	valinol	{'C': 5, 'H': 13, 'N': 1, 'O': 1}
+104.026215	benzoic acid	{'C': 7, 'H': 4, 'O': 1}
+104.047344	3-hydroxybutanoic acid	{'C': 4, 'H': 8, 'O': 3}
+104.058578	2,3-diaminopropionic acid	{'C': 3, 'H': 8, 'N': 2, 'O': 2}
+105.042593	D-serine	{'C': 3, 'H': 7, 'N': 1, 'O': 3}
+105.042593	isoserine	{'C': 3, 'H': 7, 'N': 1, 'O': 3}
+105.042593	serine	{'C': 3, 'H': 7, 'N': 1, 'O': 3}
+110.030255	N-methyl-glycine-thiazole	{'C': 5, 'H': 6, 'N': 2, 'S': 1, 'O': -1}
+110.035437		{'C': 4, 'H': 4, 'N': 3, 'O': 1}
+110.084398	N-methylglutamine	{'C': 6, 'H': 10, 'N': 2}
+111.019452		{'C': 4, 'H': 3, 'N': 2, 'O': 2}
+111.032028	4-oxo-proline	{'C': 5, 'H': 5, 'N': 1, 'O': 2}
+111.032028	pyroglutamic acid	{'C': 5, 'H': 5, 'N': 1, 'O': 2}
+111.068414	3-methylproline	{'C': 6, 'H': 9, 'N': 1, 'O': 1}
+111.068414	4-methylproline	{'C': 6, 'H': 9, 'N': 1, 'O': 1}
+111.068414	5-methylproline	{'C': 6, 'H': 9, 'N': 1, 'O': 1}
+111.068414	coronamic acid	{'C': 6, 'H': 9, 'N': 1, 'O': 1}
+111.068414	homoproline	{'C': 6, 'H': 9, 'N': 1, 'O': 1}
+112.052429	keto-leucine	{'C': 6, 'H': 8, 'O': 2}
+112.052429	trans2,trans4-dihexaneic acid	{'C': 6, 'H': 8, 'O': 2}
+112.063663	hydroxy-cycloornithine	{'C': 5, 'H': 8, 'N': 2, 'O': 1}
+113.011293	aziridine dicarboxylic acid	{'C': 4, 'H': 3, 'N': 1, 'O': 3}
+113.047678	3-hydroxyproline	{'C': 5, 'H': 7, 'N': 1, 'O': 2}
+113.047678	4-hydroxyproline	{'C': 5, 'H': 7, 'N': 1, 'O': 2}
+113.047678	hydroxyproline	{'C': 5, 'H': 7, 'N': 1, 'O': 2}
+113.047678	methyl-succinimide	{'C': 5, 'H': 7, 'N': 1, 'O': 2}
+113.047678	N-formyl-D-aminobyric acid	{'C': 5, 'H': 7, 'N': 1, 'O': 2}
+113.084064	2-methyl-3-aminopentanoic acid	{'C': 6, 'H': 11, 'N': 1, 'O': 1}
+113.084064	allo-isoleucine	{'C': 6, 'H': 11, 'N': 1, 'O': 1}
+113.084064	isoleucine	{'C': 6, 'H': 11, 'N': 1, 'O': 1}
+113.084064	leucine	{'C': 6, 'H': 11, 'N': 1, 'O': 1}
+113.084064	leucine	{'C': 6, 'H': 11, 'N': 1, 'O': 1}
+113.084064	N-methyl-norvaline	{'C': 6, 'H': 11, 'N': 1, 'O': 1}
+113.084064	N-methyl-valine	{'C': 6, 'H': 11, 'N': 1, 'O': 1}
+113.084064	tert-Leu	{'C': 6, 'H': 11, 'N': 1, 'O': 1}
+113.131683	norspermidine	{'C': 6, 'H': 15, 'N': 3, 'O': -1}
+114.031694	hydroxyacetyl propionyl	{'C': 5, 'H': 6, 'O': 3}
+114.031694	pentanedioic acid	{'C': 5, 'H': 6, 'O': 3}
+114.042927	asparagine	{'C': 4, 'H': 6, 'N': 2, 'O': 2}
+114.042927	asparagine	{'C': 4, 'H': 6, 'N': 2, 'O': 2}
+114.042927	N1-formyl-2,3-diaminopropionic acid	{'C': 4, 'H': 6, 'N': 2, 'O': 2}
+114.06808	2-hydroxy-3-methyl-pentanoic acid	{'C': 6, 'H': 10, 'O': 2}
+114.06808	4-methyl-D-2-hydroxy-valeric acid	{'C': 6, 'H': 10, 'O': 2}
+114.06808	D-2-hydroxy-3-methylpentanoic acid	{'C': 6, 'H': 10, 'O': 2}
+114.079313	ornithine	{'C': 5, 'H': 10, 'N': 2, 'O': 1}
+114.079313	proline carboxamid	{'C': 5, 'H': 10, 'N': 2, 'O': 1}
+115.026943	aspartic acid	{'C': 4, 'H': 5, 'N': 1, 'O': 3}
+115.026943	aspartic acid	{'C': 4, 'H': 5, 'N': 1, 'O': 3}
+115.026943	N-formyl-isoserine	{'C': 4, 'H': 5, 'N': 1, 'O': 3}
+115.063329	2-methylamino-2-dehydrobutyric acid	{'C': 5, 'H': 9, 'N': 1, 'O': 2}
+115.063329	beta-hydroxyvaline	{'C': 5, 'H': 9, 'N': 1, 'O': 2}
+115.063329	N-methylthreonine	{'C': 5, 'H': 9, 'N': 1, 'O': 2}
+115.063329	norcoronamic acid	{'C': 5, 'H': 9, 'N': 1, 'O': 2}
+115.063329	O-methyl-threonine	{'C': 5, 'H': 9, 'N': 1, 'O': 2}
+115.063329	proline	{'C': 5, 'H': 9, 'N': 1, 'O': 2}
+116.047344	beta-vinyllactic acid	{'C': 5, 'H': 8, 'O': 3}
+116.08373	3-methylvaleric acid	{'C': 6, 'H': 12, 'O': 2}
+116.08373	hexanoic acid	{'C': 6, 'H': 12, 'O': 2}
+116.08373	PPG repeat unit x2	{'C': 6, 'H': 12, 'O': 2}
+117.024835	alpha-methylcysteine	{'C': 4, 'H': 7, 'N': 1, 'O': 1, 'S': 1}
+117.024835	N-methylcysteine	{'C': 4, 'H': 7, 'N': 1, 'O': 1, 'S': 1}
+117.042593	4-hydroxythreonine	{'C': 4, 'H': 7, 'N': 1, 'O': 3}
+117.042593	D-N-formyl-alanine	{'C': 4, 'H': 7, 'N': 1, 'O': 3}
+117.042593	N-formyl-alanine	{'C': 4, 'H': 7, 'N': 1, 'O': 3}
+117.042593	succinamid acid	{'C': 4, 'H': 7, 'N': 1, 'O': 3}
+117.078979	2-methyl-3-aminobutanoic acid	{'C': 5, 'H': 11, 'N': 1, 'O': 2}
+117.078979	3-amino-pentanoic acid	{'C': 5, 'H': 11, 'N': 1, 'O': 2}
+117.078979	D-isovaline	{'C': 5, 'H': 11, 'N': 1, 'O': 2}
+117.078979	D-norvaline	{'C': 5, 'H': 11, 'N': 1, 'O': 2}
+117.078979	D-valine	{'C': 5, 'H': 11, 'N': 1, 'O': 2}
+117.078979	isovaline	{'C': 5, 'H': 11, 'N': 1, 'O': 2}
+117.078979	N-dimethyl-alanine	{'C': 5, 'H': 11, 'N': 1, 'O': 2}
+117.078979	norvaline	{'C': 5, 'H': 11, 'N': 1, 'O': 2}
+117.078979	valine	{'C': 5, 'H': 11, 'N': 1, 'O': 2}
+117.115364	isoleucinol	{'C': 6, 'H': 15, 'N': 1, 'O': 1}
+117.115364	leucinol	{'C': 6, 'H': 15, 'N': 1, 'O': 1}
+118.026609	2-hydroxy-3-epoxy-butanoic acid	{'C': 4, 'H': 6, 'O': 4}
+118.026609	succinic acid	{'C': 4, 'H': 6, 'O': 4}
+118.041865	phenylacetic acid	{'C': 8, 'H': 6, 'O': 1}
+118.062994	2-hydroxyisovalerate	{'C': 5, 'H': 10, 'O': 3}
+118.062994	D-2-hydroxyisovalerate	{'C': 5, 'H': 10, 'O': 3}
+118.074228	(2R,3R)-2,3-diaminobutyric acid	{'C': 4, 'H': 10, 'N': 2, 'O': 2}
+118.074228	(2S,3S)-2,3-diaminobutyric acid	{'C': 4, 'H': 10, 'N': 2, 'O': 2}
+118.074228	(2S)-2,3-diaminobutyric acid	{'C': 4, 'H': 10, 'N': 2, 'O': 2}
+118.074228	2,4-diaminobutyric acid	{'C': 4, 'H': 10, 'N': 2, 'O': 2}
+118.074228	D-2,4-diaminobutyric acid	{'C': 4, 'H': 10, 'N': 2, 'O': 2}
+119.004099	dehydro-cysteine	{'C': 3, 'H': 5, 'N': 1, 'O': 2, 'S': 1}
+119.058243	4-amino-3-hydroxybutyric acid	{'C': 4, 'H': 9, 'N': 1, 'O': 3}
+119.058243	allo-threonine	{'C': 4, 'H': 9, 'N': 1, 'O': 3}
+119.058243	D-3-methoxyalanine	{'C': 4, 'H': 9, 'N': 1, 'O': 3}
+119.058243	D-allo-threonine	{'C': 4, 'H': 9, 'N': 1, 'O': 3}
+119.058243	D-homoserine	{'C': 4, 'H': 9, 'N': 1, 'O': 3}
+119.058243	D-threonine	{'C': 4, 'H': 9, 'N': 1, 'O': 3}
+119.058243	homoserine	{'C': 4, 'H': 9, 'N': 1, 'O': 3}
+119.058243	N-methyl-D-serine	{'C': 4, 'H': 9, 'N': 1, 'O': 3}
+119.058243	N-methyl-serine	{'C': 4, 'H': 9, 'N': 1, 'O': 3}
+119.058243	threonine	{'C': 4, 'H': 9, 'N': 1, 'O': 3}
+120.021129	para-hydroxy-benzoic acid	{'C': 7, 'H': 4, 'O': 2}
+120.042259	2,3-dihydroxy-butanoic acid	{'C': 4, 'H': 8, 'O': 4}
+121.016378	hydroxypicolinic acid	{'C': 6, 'H': 3, 'N': 1, 'O': 2}
+121.019749	cysteine	{'C': 3, 'H': 7, 'N': 1, 'O': 2, 'S': 1}
+121.019749	D-cysteine	{'C': 3, 'H': 7, 'N': 1, 'O': 2, 'S': 1}
+122.036779	benzoic acid	{'C': 7, 'H': 6, 'O': 2}
+125.035102		{'C': 5, 'H': 5, 'N': 2, 'O': 2}
+125.047678	4-oxo-5-methylproline	{'C': 6, 'H': 7, 'N': 1, 'O': 2}
+125.047678	4-oxo-homoproline	{'C': 6, 'H': 7, 'N': 1, 'O': 2}
+125.047678	D-allo-threonine	{'C': 6, 'H': 7, 'N': 1, 'O': 2}
+125.047678	N-formyl-proline	{'C': 6, 'H': 7, 'N': 1, 'O': 2}
+127.038176	beta-ureido-dehydroalanine	{'C': 4, 'H': 5, 'N': 3, 'O': 2}
+127.063329	3-hydroxy-5-methylproline	{'C': 6, 'H': 9, 'N': 1, 'O': 2}
+127.063329	N-acetyl-2-aminoisobutyric acid	{'C': 6, 'H': 9, 'N': 1, 'O': 2}
+127.063329	N-formyl-valine	{'C': 6, 'H': 9, 'N': 1, 'O': 2}
+127.099714	alpha-ethylnorvaline	{'C': 7, 'H': 13, 'N': 1, 'O': 1}
+127.099714	beta-methylisoleucine	{'C': 7, 'H': 13, 'N': 1, 'O': 1}
+127.099714	D-N-methyl-alloisoleucine	{'C': 7, 'H': 13, 'N': 1, 'O': 1}
+127.099714	D-N-methyl-leucine	{'C': 7, 'H': 13, 'N': 1, 'O': 1}
+127.099714	dolavaline	{'C': 7, 'H': 13, 'N': 1, 'O': 1}
+127.099714	homoisoleucine	{'C': 7, 'H': 13, 'N': 1, 'O': 1}
+127.099714	N-methyl-alloIsoleucine	{'C': 7, 'H': 13, 'N': 1, 'O': 1}
+127.099714	N-methyl-isoleucine	{'C': 7, 'H': 13, 'N': 1, 'O': 1}
+127.099714	N-methyl-leucine	{'C': 7, 'H': 13, 'N': 1, 'O': 1}
+127.147333	spermidine	{'C': 7, 'H': 17, 'N': 3, 'O': -1}
+128.040819	N-methyl-glycine-thiazole	{'C': 5, 'H': 8, 'N': 2, 'S': 1}
+128.047344	L-aculose	{'C': 6, 'H': 8, 'O': 3}
+128.058578	beta-methyl-asparagine	{'C': 5, 'H': 8, 'N': 2, 'O': 2}
+128.058578	D-glutamine	{'C': 5, 'H': 8, 'N': 2, 'O': 2}
+128.058578	D-N2-methyl-asparagine	{'C': 5, 'H': 8, 'N': 2, 'O': 2}
+128.058578	glutamine	{'C': 5, 'H': 8, 'N': 2, 'O': 2}
+128.058578	N-methylasparagine	{'C': 5, 'H': 8, 'N': 2, 'O': 2}
+128.058578	N1-acetyl-2,3-diaminopropionic acid	{'C': 5, 'H': 8, 'N': 2, 'O': 2}
+128.094963	beta lysine	{'C': 6, 'H': 12, 'N': 2, 'O': 1}
+128.094963	D-lysine	{'C': 6, 'H': 12, 'N': 2, 'O': 1}
+128.094963	lysine	{'C': 6, 'H': 12, 'N': 2, 'O': 1}
+128.094963	N-hydroxy-histamine	{'C': 6, 'H': 12, 'N': 2, 'O': 1}
+128.094963	N-methylglutamine	{'C': 6, 'H': 12, 'N': 2, 'O': 1}
+129.042593	4-oxo-proline	{'C': 5, 'H': 7, 'N': 1, 'O': 3}
+129.042593	beta-methoxy-aspartic acid	{'C': 5, 'H': 7, 'N': 1, 'O': 3}
+129.042593	beta-methyl-aspartic acid	{'C': 5, 'H': 7, 'N': 1, 'O': 3}
+129.042593	D-beta-methyl-aspartic acid	{'C': 5, 'H': 7, 'N': 1, 'O': 3}
+129.042593	D-glutamic acid	{'C': 5, 'H': 7, 'N': 1, 'O': 3}
+129.042593	glutamic acid	{'C': 5, 'H': 7, 'N': 1, 'O': 3}
+129.042593	O-acetyl-serine	{'C': 5, 'H': 7, 'N': 1, 'O': 3}
+129.042593	pyroglutamic acid	{'C': 5, 'H': 7, 'N': 1, 'O': 3}
+129.078979	3-hydroxyleucine	{'C': 6, 'H': 11, 'N': 1, 'O': 2}
+129.078979	3-methylproline	{'C': 6, 'H': 11, 'N': 1, 'O': 2}
+129.078979	4-methylproline	{'C': 6, 'H': 11, 'N': 1, 'O': 2}
+129.078979	5-methylproline	{'C': 6, 'H': 11, 'N': 1, 'O': 2}
+129.078979	beta-hydroxy-N-methyl-valine	{'C': 6, 'H': 11, 'N': 1, 'O': 2}
+129.078979	coronamic acid	{'C': 6, 'H': 11, 'N': 1, 'O': 2}
+129.078979	D-homoproline	{'C': 6, 'H': 11, 'N': 1, 'O': 2}
+129.078979	gama-hydroxy-N-methyl-valine	{'C': 6, 'H': 11, 'N': 1, 'O': 2}
+129.078979	homoproline	{'C': 6, 'H': 11, 'N': 1, 'O': 2}
+129.078979	L-acosamine	{'C': 6, 'H': 11, 'N': 1, 'O': 2}
+129.078979	L-ristosamine	{'C': 6, 'H': 11, 'N': 1, 'O': 2}
+130.037842	D-hydroxyasparagine	{'C': 4, 'H': 6, 'N': 2, 'O': 3}
+130.037842	hydroxyasparagine	{'C': 4, 'H': 6, 'N': 2, 'O': 3}
+130.049075	alpha-guanidino serine	{'C': 3, 'H': 6, 'N': 4, 'O': 2}
+130.062994	L-cinerulose A	{'C': 6, 'H': 10, 'O': 3}
+130.062994	2-epoxy-hexanoic acid	{'C': 6, 'H': 10, 'O': 3}
+130.062994	keto-leucine	{'C': 6, 'H': 10, 'O': 3}
+130.074228	D-hydroxy-cycloornithine	{'C': 5, 'H': 10, 'N': 2, 'O': 2}
+130.074228	D-N5-hydroxyornithine	{'C': 5, 'H': 10, 'N': 2, 'O': 2}
+130.074228	hydroxy-cycloornithine	{'C': 5, 'H': 10, 'N': 2, 'O': 2}
+130.074228	N5-hydroxy ornithine	{'C': 5, 'H': 10, 'N': 2, 'O': 2}
+130.09938	5-methyl-hexanoic acid	{'C': 7, 'H': 14, 'O': 2}
+130.09938	heptanoic acid	{'C': 7, 'H': 14, 'O': 2}
+131.021858	aziridine dicarboxylic acid	{'C': 4, 'H': 5, 'N': 1, 'O': 4}
+131.021858	D-hydroxyaspartic acid	{'C': 4, 'H': 5, 'N': 1, 'O': 4}
+131.021858	hydroxyaspartic acid	{'C': 4, 'H': 5, 'N': 1, 'O': 4}
+131.040485	methionine	{'C': 5, 'H': 9, 'N': 1, 'O': 1, 'S': 1}
+131.040485	N,S-dimethylcysteine	{'C': 5, 'H': 9, 'N': 1, 'O': 1, 'S': 1}
+131.058243	3-hydroxyproline	{'C': 5, 'H': 9, 'N': 1, 'O': 3}
+131.058243	4-hydroxyproline	{'C': 5, 'H': 9, 'N': 1, 'O': 3}
+131.058243	D-hydroxyproline	{'C': 5, 'H': 9, 'N': 1, 'O': 3}
+131.058243	N-formyl-D-aminobutyric acid	{'C': 5, 'H': 9, 'N': 1, 'O': 3}
+131.094629	2-methyl-3-aminopentanoic acid	{'C': 6, 'H': 13, 'N': 1, 'O': 2}
+131.094629	allo-isoleucine	{'C': 6, 'H': 13, 'N': 1, 'O': 2}
+131.094629	D-allo-isoleucine	{'C': 6, 'H': 13, 'N': 1, 'O': 2}
+131.094629	D-isoleucine	{'C': 6, 'H': 13, 'N': 1, 'O': 2}
+131.094629	D-leucine	{'C': 6, 'H': 13, 'N': 1, 'O': 2}
+131.094629	D-N-methyl-norvaline	{'C': 6, 'H': 13, 'N': 1, 'O': 2}
+131.094629	D-N-methylvaline	{'C': 6, 'H': 13, 'N': 1, 'O': 2}
+131.094629	D-tert-Leu	{'C': 6, 'H': 13, 'N': 1, 'O': 2}
+131.094629	isoleucine	{'C': 6, 'H': 13, 'N': 1, 'O': 2}
+131.094629	leucine	{'C': 6, 'H': 13, 'N': 1, 'O': 2}
+131.094629	N-methyl-valine	{'C': 6, 'H': 13, 'N': 1, 'O': 2}
+131.094629	tert-Leu	{'C': 6, 'H': 13, 'N': 1, 'O': 2}
+131.142248	norspermidine	{'C': 6, 'H': 17, 'N': 3}
+132.042259	2-hydroxy-3-(oxiran-2-yl)propanoic acid	{'C': 5, 'H': 8, 'O': 4}
+132.042259	arabinose	{'C': 5, 'H': 8, 'O': 4}
+132.042259	D-arabinose	{'C': 5, 'H': 8, 'O': 4}
+132.042259	hydroxyacetyl propionyl	{'C': 5, 'H': 8, 'O': 4}
+132.042259	lyxose	{'C': 5, 'H': 8, 'O': 4}
+132.042259	pentanedioic acid	{'C': 5, 'H': 8, 'O': 4}
+132.053492	asparagine	{'C': 4, 'H': 8, 'N': 2, 'O': 3}
+132.053492	D-asparagine	{'C': 4, 'H': 8, 'N': 2, 'O': 3}
+132.053492	N1-formyl-2,3-diaminopropionic acid	{'C': 4, 'H': 8, 'N': 2, 'O': 3}
+132.078644	L-rhodinose	{'C': 6, 'H': 12, 'O': 3}
+132.078644	2-hydroxy-3-methyl-pentanoic acid	{'C': 6, 'H': 12, 'O': 3}
+132.078644	2-hydroxy-4-methylpentanoic acid, 2-hydroxy-4-methylvaleric acid	{'C': 6, 'H': 12, 'O': 3}
+132.078644	3-hydroxy-hexanoic acid	{'C': 6, 'H': 12, 'O': 3}
+132.078644	4-methyl-D-2-hydroxy-valeric acid, 4-methyl-D-2-hydroxy-pentanoic acid	{'C': 6, 'H': 12, 'O': 3}
+132.078644	D-2-hydroxy-3-methylpentanoic acid	{'C': 6, 'H': 12, 'O': 3}
+132.078644	L-olivose	{'C': 6, 'H': 12, 'O': 3}
+132.078644	PEG repeat unit x3	{'C': 6, 'H': 12, 'O': 3}
+132.089878	D-ornithine	{'C': 5, 'H': 12, 'N': 2, 'O': 2}
+132.089878	ornithine	{'C': 5, 'H': 12, 'N': 2, 'O': 2}
+133.037508	aspartic acid	{'C': 4, 'H': 7, 'N': 1, 'O': 4}
+133.037508	D-aspartic ccid	{'C': 4, 'H': 7, 'N': 1, 'O': 4}
+133.037508	N-formyl-isoserine	{'C': 4, 'H': 7, 'N': 1, 'O': 4}
+133.052764	D-phenylglycine	{'C': 8, 'H': 7, 'N': 1, 'O': 1}
+133.052764	phenylglycine	{'C': 8, 'H': 7, 'N': 1, 'O': 1}
+133.073893	beta-hydroxyvaline	{'C': 5, 'H': 11, 'N': 1, 'O': 3}
+133.073893	D-beta-hydroxyvaline	{'C': 5, 'H': 11, 'N': 1, 'O': 3}
+133.073893	N-methylthreonine	{'C': 5, 'H': 11, 'N': 1, 'O': 3}
+133.073893	O-methyl-threonine	{'C': 5, 'H': 11, 'N': 1, 'O': 3}
+133.089149	phenylalaninol	{'C': 9, 'H': 11, 'N': 1}
+134.04667		{'C': 5, 'H': 4, 'N': 5}
+134.057909	2,3-dihydroxy-3-methyl-butanoic acid	{'C': 5, 'H': 10, 'O': 4}
+134.057909	2,4-dihydroxy-3-methyl-butanoic acid	{'C': 5, 'H': 10, 'O': 4}
+135.008706	4-chloro-threonine	{'C': 4, 'H': 6, 'Cl': 1, 'N': 1, 'O': 2}
+135.0354	alpha-methylcysteine	{'C': 4, 'H': 9, 'N': 1, 'O': 2, 'S': 1}
+135.0354	N-methylcysteine	{'C': 4, 'H': 9, 'N': 1, 'O': 2, 'S': 1}
+135.053158	4-hydroxythreonine	{'C': 4, 'H': 9, 'N': 1, 'O': 4}
+136.016044	2,3-dihydroxybenzoic acid	{'C': 7, 'H': 4, 'O': 3}
+136.037173	2,3,4-trihydroxy-butanoic acid	{'C': 4, 'H': 8, 'O': 5}
+136.052429	phenylacetic acid	{'C': 8, 'H': 8, 'O': 2}
+137.047678	para-amino benzoic acid	{'C': 7, 'H': 7, 'N': 1, 'O': 2}
+137.058912	histidine	{'C': 6, 'H': 7, 'N': 3, 'O': 1}
+138.031694	para-hydroxy-benzoic acid	{'C': 7, 'H': 6, 'O': 3}
+138.042927	dehydropyrrolidone	{'C': 6, 'H': 6, 'N': 2, 'O': 2}
+138.06808	trans2,trans4,trans6-trioctaneic acid	{'C': 8, 'H': 10, 'O': 2}
+139.026943	hydroxypicolinic acid	{'C': 6, 'H': 5, 'N': 1, 'O': 3}
+139.063329	2,3-dimethylpyroglutamic acid	{'C': 7, 'H': 9, 'N': 1, 'O': 2}
+140.08373	2,trans4-octenoic acid	{'C': 8, 'H': 12, 'O': 2}
+140.08373	oct-7-ynoic acid	{'C': 8, 'H': 12, 'O': 2}
+140.106196	arginal	{'C': 6, 'H': 12, 'N': 4}
+140.998141	N-methylchloropyrrole	{'C': 6, 'H': 4, 'Cl': 1, 'N': 1, 'O': 1}
+141.078979	4-amino-2,2-dimethyl-3-oxopentanoic acid	{'C': 7, 'H': 11, 'N': 1, 'O': 2}
+141.078979	4-oxovancosamine	{'C': 7, 'H': 11, 'N': 1, 'O': 2}
+141.078979	N-acetyl-isovaline	{'C': 7, 'H': 11, 'N': 1, 'O': 2}
+141.078979	N-acetylvaline	{'C': 7, 'H': 11, 'N': 1, 'O': 2}
+141.078979	N-formyl-isoleucine	{'C': 7, 'H': 11, 'N': 1, 'O': 2}
+141.078979	N-formyl-leucine	{'C': 7, 'H': 11, 'N': 1, 'O': 2}
+141.115364	N-dimethyl-leucine	{'C': 8, 'H': 15, 'N': 1, 'O': 1}
+141.115364	N,beta-dimethylleucine	{'C': 8, 'H': 15, 'N': 1, 'O': 1}
+141.115364	N,gamma-alloisoleucine	{'C': 8, 'H': 15, 'N': 1, 'O': 1}
+141.115364	N,O-dimethyl-isoleucine	{'C': 8, 'H': 15, 'N': 1, 'O': 1}
+141.115364	O-acetyl-leucinol	{'C': 8, 'H': 15, 'N': 1, 'O': 1}
+142.050418	rednose	{'C': 6, 'H': 8, 'N': 1, 'O': 3}
+142.074228	beta-methylglutamine	{'C': 6, 'H': 10, 'N': 2, 'O': 2}
+142.074228	D-beta-methylglutamine	{'C': 6, 'H': 10, 'N': 2, 'O': 2}
+143.058243	2-aminoadipic acid	{'C': 6, 'H': 9, 'N': 1, 'O': 3}
+143.058243	3-methyl-glutamic acid	{'C': 6, 'H': 9, 'N': 1, 'O': 3}
+143.058243	4-oxo-5-methylproline	{'C': 6, 'H': 9, 'N': 1, 'O': 3}
+143.058243	4-oxo-homoproline	{'C': 6, 'H': 9, 'N': 1, 'O': 3}
+143.058243	D-glutamic acid methyl ester	{'C': 6, 'H': 9, 'N': 1, 'O': 3}
+143.058243	glutamic acid methyl ester	{'C': 6, 'H': 9, 'N': 1, 'O': 3}
+143.058243	N-formyl-proline	{'C': 6, 'H': 9, 'N': 1, 'O': 3}
+143.094629	L-actinosamine	{'C': 7, 'H': 13, 'N': 1, 'O': 2}
+143.094629	L-eremosamine	{'C': 7, 'H': 13, 'N': 1, 'O': 2}
+143.094629	N-methyl-hydroxyisoleucine	{'C': 7, 'H': 13, 'N': 1, 'O': 2}
+143.094629	norstatine	{'C': 7, 'H': 13, 'N': 1, 'O': 2}
+144.053492	beta-hydroxyglutamine	{'C': 5, 'H': 8, 'N': 2, 'O': 3}
+144.053492	D-beta-hydroxy-N2-methyl-asparagine	{'C': 5, 'H': 8, 'N': 2, 'O': 3}
+144.089878	hydroxy-beta lysine	{'C': 6, 'H': 12, 'N': 2, 'O': 2}
+144.11503	6-methylheptanoic acid	{'C': 8, 'H': 16, 'O': 2}
+144.11503	octanoic acid	{'C': 8, 'H': 16, 'O': 2}
+145.037508	methoxyaspartic acid	{'C': 5, 'H': 7, 'N': 1, 'O': 4}
+145.048741	beta-ureido-dehydroalanine	{'C': 4, 'H': 7, 'N': 3, 'O': 3}
+145.073893	3-hydroxy-5-methylproline	{'C': 6, 'H': 11, 'N': 1, 'O': 3}
+145.073893	N-acetyl-2-aminoisobutyric acid	{'C': 6, 'H': 11, 'N': 1, 'O': 3}
+145.073893	N-formyl-valine	{'C': 6, 'H': 11, 'N': 1, 'O': 3}
+145.0739	glycosylation	{'C': 6, 'H': 11, 'N': 1, 'O': 3}
+145.110279	2-methyl-3-aminohexadecanoic acid	{'C': 7, 'H': 15, 'N': 1, 'O': 2}
+145.110279	alpha-ethylnorvaline	{'C': 7, 'H': 15, 'N': 1, 'O': 2}
+145.110279	beta-methylisoleucine	{'C': 7, 'H': 15, 'N': 1, 'O': 2}
+145.110279	D-N-methyl-alloisoleucine	{'C': 7, 'H': 15, 'N': 1, 'O': 2}
+145.110279	D-N-methyl-leucine	{'C': 7, 'H': 15, 'N': 1, 'O': 2}
+145.110279	dolavaline	{'C': 7, 'H': 15, 'N': 1, 'O': 2}
+145.110279	homoisoleucine	{'C': 7, 'H': 15, 'N': 1, 'O': 2}
+145.110279	N-methyl-alloIsoleucine	{'C': 7, 'H': 15, 'N': 1, 'O': 2}
+145.110279	N-methyl-isoleucine	{'C': 7, 'H': 15, 'N': 1, 'O': 2}
+145.110279	N-methyl-leucine	{'C': 7, 'H': 15, 'N': 1, 'O': 2}
+145.157898	spermidine	{'C': 7, 'H': 19, 'N': 3}
+146.021523	glucuronidation and reduction of sulfoxide	{'C': 5, 'H': 6, 'O': 5}
+146.021523	glucuronidation and reduction of sulfoxide	{'C': 5, 'H': 6, 'O': 5}
+146.036779	p-coumaric acid	{'C': 9, 'H': 6, 'O': 2}
+146.057909	L-cinerulose B	{'C': 6, 'H': 10, 'O': 4}
+146.057909	L-rhamnose	{'C': 6, 'H': 10, 'O': 4}
+146.069142	beta-methyl-asparagine	{'C': 5, 'H': 10, 'N': 2, 'O': 3}
+146.069142	D-glutamine	{'C': 5, 'H': 10, 'N': 2, 'O': 3}
+146.069142	D-N2-methyl-asparagine	{'C': 5, 'H': 10, 'N': 2, 'O': 3}
+146.069142	glutamine	{'C': 5, 'H': 10, 'N': 2, 'O': 3}
+146.069142	N-methylasparagine	{'C': 5, 'H': 10, 'N': 2, 'O': 3}
+146.069142	N1-acetyl-2,3-diaminopropionic acid	{'C': 5, 'H': 10, 'N': 2, 'O': 3}
+146.094294	4-O-methyl-L-rhodinose	{'C': 7, 'H': 14, 'O': 3}
+146.094294	O-methyl-L-amicetose	{'C': 7, 'H': 14, 'O': 3}
+146.094294	3-hydroxy-heptanoic acid	{'C': 7, 'H': 14, 'O': 3}
+146.094294	3-methoxy-hexanoic acid	{'C': 7, 'H': 14, 'O': 3}
+146.105528	beta lysine	{'C': 6, 'H': 14, 'N': 2, 'O': 2}
+146.105528	D-lysine	{'C': 6, 'H': 14, 'N': 2, 'O': 2}
+146.105528	lysine	{'C': 6, 'H': 14, 'N': 2, 'O': 2}
+146.105528	N-hydroxy-histamine	{'C': 6, 'H': 14, 'N': 2, 'O': 2}
+147.0354	methionine-S-oxide	{'C': 5, 'H': 9, 'N': 1, 'O': 2, 'S': 1}
+147.045092	chloro-isoleucine	{'C': 6, 'H': 10, 'Cl': 1, 'N': 1, 'O': 1}
+147.053158	beta-methoxy-aspartic acid	{'C': 5, 'H': 9, 'N': 1, 'O': 4}
+147.053158	beta-methyl-aspartic acid	{'C': 5, 'H': 9, 'N': 1, 'O': 4}
+147.053158	D-beta-methyl-aspartic acid	{'C': 5, 'H': 9, 'N': 1, 'O': 4}
+147.053158	D-glutamic acid	{'C': 5, 'H': 9, 'N': 1, 'O': 4}
+147.053158	glutamic acid	{'C': 5, 'H': 9, 'N': 1, 'O': 4}
+147.053158	O-acetyl-serine	{'C': 5, 'H': 9, 'N': 1, 'O': 4}
+147.068414	beta phenylalanine	{'C': 9, 'H': 9, 'N': 1, 'O': 1}
+147.068414	D-beta-phenylalanine	{'C': 9, 'H': 9, 'N': 1, 'O': 1}
+147.068414	D-phenylalanine	{'C': 9, 'H': 9, 'N': 1, 'O': 1}
+147.068414	N-methyl-phenylglycine	{'C': 9, 'H': 9, 'N': 1, 'O': 1}
+147.068414	phenylalanine	{'C': 9, 'H': 9, 'N': 1, 'O': 1}
+147.089543	L-acosamine	{'C': 6, 'H': 13, 'N': 1, 'O': 3}
+147.089543	L-daunosamine	{'C': 6, 'H': 13, 'N': 1, 'O': 3}
+147.089543	L-ristosamine	{'C': 6, 'H': 13, 'N': 1, 'O': 3}
+147.089543	3-hydroxyleucine	{'C': 6, 'H': 13, 'N': 1, 'O': 3}
+147.089543	beta-hydroxy-N-methyl-valine	{'C': 6, 'H': 13, 'N': 1, 'O': 3}
+147.089543	gama-hydroxy-N-methyl-valine	{'C': 6, 'H': 13, 'N': 1, 'O': 3}
+147.089543	L-acosamine	{'C': 6, 'H': 13, 'N': 1, 'O': 3}
+147.089543	L-ristosamine	{'C': 6, 'H': 13, 'N': 1, 'O': 3}
+148.016044	2-hydroxyphenyl-2-oxo-ethanoic acid	{'C': 8, 'H': 4, 'O': 3}
+148.037173	2-hydroxy-3-methyl-butanedioic acid	{'C': 5, 'H': 8, 'O': 5}
+148.048407	D-hydroxyasparagine	{'C': 4, 'H': 8, 'N': 2, 'O': 4}
+148.048407	hydroxyasparagine	{'C': 4, 'H': 8, 'N': 2, 'O': 4}
+148.052429	D-phenyl-lactate	{'C': 9, 'H': 8, 'O': 2}
+148.052429	phenyl-lactate	{'C': 9, 'H': 8, 'O': 2}
+148.05964	alpha-guanidino serine	{'C': 3, 'H': 8, 'N': 4, 'O': 3}
+148.073559	2-deoxy-L-fucose	{'C': 6, 'H': 12, 'O': 4}
+148.073559	D-digitoxose	{'C': 6, 'H': 12, 'O': 4}
+148.073559	D-oliose	{'C': 6, 'H': 12, 'O': 4}
+148.073559	D-olivose	{'C': 6, 'H': 12, 'O': 4}
+148.073559	L-boivinose (esperamicin A1 sugar 1)	{'C': 6, 'H': 12, 'O': 4}
+148.073559	L-digitoxose	{'C': 6, 'H': 12, 'O': 4}
+148.073559	2,3-dihydroxy-3-methylpentanoic acid	{'C': 6, 'H': 12, 'O': 4}
+148.073559	2,4-dihydroxy-4-methylpentanoic acid	{'C': 6, 'H': 12, 'O': 4}
+148.084792	D-N5-hydroxyornithine	{'C': 5, 'H': 12, 'N': 2, 'O': 3}
+148.084792	N5-hydroxy ornithine	{'C': 5, 'H': 12, 'N': 2, 'O': 3}
+149.032422	D-hydroxyaspartic acid	{'C': 4, 'H': 7, 'N': 1, 'O': 5}
+149.032422	hydroxyaspartic acid	{'C': 4, 'H': 7, 'N': 1, 'O': 5}
+149.047678	D-hydroxyphenylglycine	{'C': 8, 'H': 7, 'N': 1, 'O': 2}
+149.047678	hydroxyphenylglycine	{'C': 8, 'H': 7, 'N': 1, 'O': 2}
+149.05105	methionine	{'C': 5, 'H': 11, 'N': 1, 'O': 2, 'S': 1}
+149.05105	N,S-dimethylcysteine	{'C': 5, 'H': 11, 'N': 1, 'O': 2, 'S': 1}
+150.041585		{'C': 5, 'H': 4, 'N': 5, 'O': 1}
+150.052823	D-arabinose	{'C': 5, 'H': 10, 'O': 5}
+150.052823	arabinose	{'C': 5, 'H': 10, 'O': 5}
+150.052823	D-arabinose	{'C': 5, 'H': 10, 'O': 5}
+150.052823	lyxose	{'C': 5, 'H': 10, 'O': 5}
+150.089209	L-olivose	{'C': 6, 'H': 14, 'O': 4}
+150.953635	selenocysteine	{'C': 3, 'H': 5, 'N': 1, 'O': 1, 'Se': 1}
+150.993929	cysteic acid	{'C': 3, 'H': 5, 'N': 1, 'O': 4, 'S': 1}
+150.993929	D-cysteic acid	{'C': 3, 'H': 5, 'N': 1, 'O': 4, 'S': 1}
+151.043342	D-4-fluorophenylglycine	{'C': 8, 'H': 6, 'F': 1, 'N': 1, 'O': 1}
+151.063329	D-phenylglycine	{'C': 8, 'H': 9, 'N': 1, 'O': 2}
+151.063329	phenylglycine	{'C': 8, 'H': 9, 'N': 1, 'O': 2}
+151.099714	phenylalaninol	{'C': 9, 'H': 13, 'N': 1, 'O': 1}
+152.010959	3,4,5-trihydroxybenzoic acid	{'C': 7, 'H': 4, 'O': 4}
+153.019271	4-chloro-threonine	{'C': 4, 'H': 8, 'Cl': 1, 'N': 1, 'O': 3}
+153.053826	hydroxyhistidine	{'C': 6, 'H': 7, 'N': 3, 'O': 2}
+153.115364	N-methyl homo vinylogous valine	{'C': 9, 'H': 15, 'N': 1, 'O': 1}
+154.003286	2,3-dihydroxy-4-chloro-butanoic acid	{'C': 4, 'H': 7, 'Cl': 1, 'O': 4}
+154.020084	alanine-thiazole	{'C': 6, 'H': 6, 'N': 2, 'O': 1, 'S': 1}
+154.026609	2,3-dihydroxybenzoic acid	{'C': 7, 'H': 6, 'O': 4}
+154.026609	gentisic acid	{'C': 7, 'H': 6, 'O': 4}
+154.056469	proline-thiazole	{'C': 7, 'H': 10, 'N': 2, 'S': 1}
+154.085461	capreomycidine	{'C': 6, 'H': 10, 'N': 4, 'O': 1}
+154.085461	D-enduracididine	{'C': 6, 'H': 10, 'N': 4, 'O': 1}
+154.085461	enduracididine	{'C': 6, 'H': 10, 'N': 4, 'O': 1}
+154.09938	2-methylact-7-ynoic acid	{'C': 9, 'H': 14, 'O': 2}
+154.09938	2,trans4-7-methyl-octenoic acid	{'C': 9, 'H': 14, 'O': 2}
+155.069477	histidine	{'C': 6, 'H': 9, 'N': 3, 'O': 2}
+155.094629	N-acetyl-leucine	{'C': 8, 'H': 13, 'N': 1, 'O': 2}
+155.094629	O-desmethyldolaproine	{'C': 8, 'H': 13, 'N': 1, 'O': 2}
+155.131014	methyl-2-aminooctanoic acid	{'C': 9, 'H': 17, 'N': 1, 'O': 1}
+156.032363	2-carboxyquinoxaline	{'C': 9, 'H': 4, 'N': 2, 'O': 1}
+156.053492	dehydropyrrolidone	{'C': 6, 'H': 8, 'N': 2, 'O': 3}
+156.053492	N-formyl-glutamine	{'C': 6, 'H': 8, 'N': 2, 'O': 3}
+156.078644	hydroxyisovalerylpropionyl	{'C': 8, 'H': 12, 'O': 3}
+156.089878	3,4-dimethylglutamine	{'C': 7, 'H': 12, 'N': 2, 'O': 2}
+156.101111	arginine	{'C': 6, 'H': 12, 'N': 4, 'O': 1}
+156.101111	D-arginine	{'C': 6, 'H': 12, 'N': 4, 'O': 1}
+156.138839	N-trimethyl-leucine	{'C': 9, 'H': 18, 'N': 1, 'O': 1}
+157.073893	2,3-dimethylpyroglutamic acid	{'C': 7, 'H': 11, 'N': 1, 'O': 3}
+157.073893	acetylproline	{'C': 7, 'H': 11, 'N': 1, 'O': 3}
+157.085127	citrulline	{'C': 6, 'H': 11, 'N': 3, 'O': 2}
+157.085127	D-citrulline	{'C': 6, 'H': 11, 'N': 3, 'O': 2}
+157.110279	isostatine	{'C': 8, 'H': 15, 'N': 1, 'O': 2}
+157.110279	statine	{'C': 8, 'H': 15, 'N': 1, 'O': 2}
+158.069142	D-formyl-hydroxyornithine	{'C': 6, 'H': 10, 'N': 2, 'O': 3}
+158.069142	N6-formyl-hydroxyornithine	{'C': 6, 'H': 10, 'N': 2, 'O': 3}
+158.094294	5,5-dimethyl-2-oxo-hexanoic acid	{'C': 8, 'H': 14, 'O': 3}
+158.116761	arginal	{'C': 6, 'H': 14, 'N': 4, 'O': 1}
+158.13068	6-methyloctanoic acid	{'C': 9, 'H': 18, 'O': 2}
+158.13068	7-methyloctanoic acid	{'C': 9, 'H': 18, 'O': 2}
+158.13068	nonanoic acid	{'C': 9, 'H': 18, 'O': 2}
+159.008706	N-methylchloropyrrole	{'C': 6, 'H': 6, 'Cl': 1, 'N': 1, 'O': 2}
+159.053158	alpha-amino-hydroxyadipic acid	{'C': 6, 'H': 9, 'N': 1, 'O': 4}
+159.068414	N-methyl-2,3-dehydrophenylalanine	{'C': 10, 'H': 9, 'N': 1, 'O': 1}
+159.089543	4-amino-2,2-dimethyl-3-oxopentanoic acid	{'C': 7, 'H': 13, 'N': 1, 'O': 3}
+159.089543	4-oxovancosamine	{'C': 7, 'H': 13, 'N': 1, 'O': 3}
+159.089543	N-acetyl-isovaline	{'C': 7, 'H': 13, 'N': 1, 'O': 3}
+159.089543	N-acetylvaline	{'C': 7, 'H': 13, 'N': 1, 'O': 3}
+159.089543	N-formyl-isoleucine	{'C': 7, 'H': 13, 'N': 1, 'O': 3}
+159.089543	N-formyl-leucine	{'C': 7, 'H': 13, 'N': 1, 'O': 3}
+159.125929	D-forosamine	{'C': 8, 'H': 17, 'N': 1, 'O': 2}
+159.125929	N-dimethyl-leucine	{'C': 8, 'H': 17, 'N': 1, 'O': 2}
+159.125929	N,beta-dimethylleucine	{'C': 8, 'H': 17, 'N': 1, 'O': 2}
+159.125929	N,gamma-alloisoleucine	{'C': 8, 'H': 17, 'N': 1, 'O': 2}
+159.125929	N,O-dimethyl-isoleucine	{'C': 8, 'H': 17, 'N': 1, 'O': 2}
+159.125929	O-acetyl-leucinol	{'C': 8, 'H': 17, 'N': 1, 'O': 2}
+160.073559	O-methyl-L-rhamnose	{'C': 7, 'H': 12, 'O': 4}
+160.084792	beta-methylglutamine	{'C': 6, 'H': 12, 'N': 2, 'O': 3}
+160.084792	D-beta-methylglutamine	{'C': 6, 'H': 12, 'N': 2, 'O': 3}
+160.097368	4-oxo-L-vancosamine	{'C': 7, 'H': 14, 'N': 1, 'O': 3}
+160.109944	2,2-dimethyl-3-hydroxyhexanoic acid	{'C': 8, 'H': 16, 'O': 3}
+160.109944	3-hydroxy-2-methyl-heptanoic acid	{'C': 8, 'H': 16, 'O': 3}
+160.109944	3-hydroxy-octanoic acid	{'C': 8, 'H': 16, 'O': 3}
+160.940486		{'H': 3, 'O': 6, 'P': 2}
+161.068808	2-aminoadipic acid	{'C': 6, 'H': 11, 'N': 1, 'O': 4}
+161.068808	3-methyl-glutamic acid	{'C': 6, 'H': 11, 'N': 1, 'O': 4}
+161.068808	D-glutamic acid methyl ester	{'C': 6, 'H': 11, 'N': 1, 'O': 4}
+161.068808	glutamic acid methyl ester	{'C': 6, 'H': 11, 'N': 1, 'O': 4}
+161.084064	3-methylphenylalanine	{'C': 10, 'H': 11, 'N': 1, 'O': 1}
+161.084064	D-N-methyl-phenylalanine	{'C': 10, 'H': 11, 'N': 1, 'O': 1}
+161.084064	homophenylalanine	{'C': 10, 'H': 11, 'N': 1, 'O': 1}
+161.084064	N-methyl-phenylalanine	{'C': 10, 'H': 11, 'N': 1, 'O': 1}
+161.105193	3-epi-L-vancosamine	{'C': 7, 'H': 15, 'N': 1, 'O': 3}
+161.105193	L-actinosamine	{'C': 7, 'H': 15, 'N': 1, 'O': 3}
+161.105193	L-vancosamine	{'C': 7, 'H': 15, 'N': 1, 'O': 3}
+161.105193	L-vicenisamine	{'C': 7, 'H': 15, 'N': 1, 'O': 3}
+161.105193	L-actinosamine	{'C': 7, 'H': 15, 'N': 1, 'O': 3}
+161.105193	L-eremosamine	{'C': 7, 'H': 15, 'N': 1, 'O': 3}
+161.105193	L-vancosamine	{'C': 7, 'H': 15, 'N': 1, 'O': 3}
+161.105193	N-methyl-hydroxyisoleucine	{'C': 7, 'H': 15, 'N': 1, 'O': 3}
+161.105193	norstatine	{'C': 7, 'H': 15, 'N': 1, 'O': 3}
+162.031694	caffeic acid	{'C': 9, 'H': 6, 'O': 3}
+162.052823	beta-D-galactose	{'C': 6, 'H': 10, 'O': 5}
+162.052823	D-galactose	{'C': 6, 'H': 10, 'O': 5}
+162.052823	D-glucose	{'C': 6, 'H': 10, 'O': 5}
+162.052823	D-mannose	{'C': 6, 'H': 10, 'O': 5}
+162.052823	glucuronidation	{'C': 6, 'H': 10, 'O': 5}
+162.052823	L-glucose	{'C': 6, 'H': 10, 'O': 5}
+162.052823	glucuronidation	{'C': 6, 'H': 10, 'O': 5}
+162.064057	beta-hydroxyglutamine	{'C': 5, 'H': 10, 'N': 2, 'O': 4}
+162.064057	D-beta-hydroxy-N2-methyl-asparagine	{'C': 5, 'H': 10, 'N': 2, 'O': 4}
+162.089209	3-O-methyl-L-olivose/L-oleandrose	{'C': 7, 'H': 14, 'O': 4}
+162.089209	D-chalcose	{'C': 7, 'H': 14, 'O': 4}
+162.089209	D-mycarose	{'C': 7, 'H': 14, 'O': 4}
+162.089209	olivomose	{'C': 7, 'H': 14, 'O': 4}
+162.089209	olivomycose (L-chromose B)	{'C': 7, 'H': 14, 'O': 4}
+162.100442	hydroxy-beta lysine	{'C': 6, 'H': 14, 'N': 2, 'O': 3}
+163.026943	D-N-hydroxy-dehydro-hydroxyphenylglycine	{'C': 8, 'H': 5, 'N': 1, 'O': 3}
+163.026943	N-hydroxy-dehydro-hydroxyphenylglycine	{'C': 8, 'H': 5, 'N': 1, 'O': 3}
+163.030314	methionine sulfone	{'C': 5, 'H': 9, 'N': 1, 'O': 3, 'S': 1}
+163.03983	phosphinothricin	{'C': 5, 'H': 10, 'N': 1, 'O': 3, 'P': 1}
+163.048072	methoxyaspartic acid	{'C': 5, 'H': 9, 'N': 1, 'O': 5}
+163.063329	beta-tyrosine	{'C': 9, 'H': 9, 'N': 1, 'O': 2}
+163.063329	D-tyrosine	{'C': 9, 'H': 9, 'N': 1, 'O': 2}
+163.063329	N-methyl-hydroxyphenylglycine	{'C': 9, 'H': 9, 'N': 1, 'O': 2}
+163.063329	phenylserine	{'C': 9, 'H': 9, 'N': 1, 'O': 2}
+163.063329	tyrosine	{'C': 9, 'H': 9, 'N': 1, 'O': 2}
+163.084458	D-mycosamine	{'C': 6, 'H': 13, 'N': 1, 'O': 4}
+163.084458	3.5-hydroxy-4-amino-hexadecanoic acid	{'C': 6, 'H': 13, 'N': 1, 'O': 4}
+164.047344	4-hydroxy-D-phenyl-lactate	{'C': 9, 'H': 8, 'O': 3}
+164.050715	4-deoxy-4-thio-D-digitoxose	{'C': 6, 'H': 12, 'O': 3, 'S': 1}
+164.058578	propenoyl-alanyloxazole acid	{'C': 8, 'H': 8, 'N': 2, 'O': 2}
+164.068473	D-rhamnose	{'C': 6, 'H': 12, 'O': 5}
+164.068473	L-fucose	{'C': 6, 'H': 12, 'O': 5}
+164.068473	L-rhamnose	{'C': 6, 'H': 12, 'O': 5}
+164.068473	D-fucofuranose	{'C': 6, 'H': 12, 'O': 5}
+164.068473	D-fucose	{'C': 6, 'H': 12, 'O': 5}
+164.068473	D-quinovose	{'C': 6, 'H': 12, 'O': 5}
+164.068473	L-quinovose	{'C': 6, 'H': 12, 'O': 5}
+164.068473	L-rhamnose	{'C': 6, 'H': 12, 'O': 5}
+164.974819	3,4-dichloro-proline	{'C': 5, 'H': 5, 'Cl': 2, 'N': 1, 'O': 1}
+165.042593	3,5-dihydroxyphenylglycine	{'C': 8, 'H': 7, 'N': 1, 'O': 3}
+165.042593	D-3,5-dihydroxyphenylglycine	{'C': 8, 'H': 7, 'N': 1, 'O': 3}
+165.045964	methionine-S-oxide	{'C': 5, 'H': 11, 'N': 1, 'O': 3, 'S': 1}
+165.055656	chloro-isoleucine	{'C': 6, 'H': 12, 'Cl': 1, 'N': 1, 'O': 2}
+165.078979	beta phenylalanine	{'C': 9, 'H': 11, 'N': 1, 'O': 2}
+165.078979	D-beta-phenylalanine	{'C': 9, 'H': 11, 'N': 1, 'O': 2}
+165.078979	D-phenylalanine	{'C': 9, 'H': 11, 'N': 1, 'O': 2}
+165.078979	N-methyl-phenylglycine	{'C': 9, 'H': 11, 'N': 1, 'O': 2}
+165.078979	phenylalanine	{'C': 9, 'H': 11, 'N': 1, 'O': 2}
+166.026609	2-hydroxyphenyl-2-oxo-ethanoic acid	{'C': 8, 'H': 6, 'O': 4}
+166.062994	D-phenyl-lactate	{'C': 9, 'H': 10, 'O': 3}
+166.062994	phenyl-lactate	{'C': 9, 'H': 10, 'O': 3}
+166.085461	cyclo alpha-ketoarginine	{'C': 7, 'H': 10, 'N': 4, 'O': 1}
+167.058243	D-hydroxyphenylglycine	{'C': 8, 'H': 9, 'N': 1, 'O': 3}
+167.058243	hydroxyphenylglycine	{'C': 8, 'H': 9, 'N': 1, 'O': 3}
+167.094629	2-carboxy-6-hydroxyoctahydroindole	{'C': 9, 'H': 13, 'N': 1, 'O': 2}
+167.131014	3-desoxy-methyl-4-butenyl-4-methyl threonine	{'C': 10, 'H': 17, 'N': 1, 'O': 1}
+168.035734	1-methoxy-beta-alanine-thiazole	{'C': 7, 'H': 8, 'N': 2, 'O': 1, 'S': 1}
+168.11503	2,trans4-8-methyl-noneoic acid	{'C': 10, 'H': 16, 'O': 2}
+169.004493	cysteic acid	{'C': 3, 'H': 7, 'N': 1, 'O': 5, 'S': 1}
+169.004493	D-cysteic acid	{'C': 3, 'H': 7, 'N': 1, 'O': 5, 'S': 1}
+169.053907	D-4-fluorophenylglycine	{'C': 8, 'H': 8, 'F': 1, 'N': 1, 'O': 2}
+169.110279	3-amino-2-methyloct-7-ynoic acid	{'C': 9, 'H': 15, 'N': 1, 'O': 2}
+169.110279	4-butenyl-4-methyl threonine	{'C': 9, 'H': 15, 'N': 1, 'O': 2}
+169.110279	dolaproine	{'C': 9, 'H': 15, 'N': 1, 'O': 2}
+169.169131	guanylspermidine	{'C': 8, 'H': 19, 'N': 5, 'O': -1}
+170.080376	5-hydroxy-capreomycidine	{'C': 6, 'H': 10, 'N': 4, 'O': 2}
+170.094294	2-methyl-3-hydroxy-7-octynoic acid	{'C': 9, 'H': 14, 'O': 3}
+170.094294	hydroxysecbutyl acetyl propionyl	{'C': 9, 'H': 14, 'O': 3}
+170.116761	homoarginine	{'C': 7, 'H': 14, 'N': 4, 'O': 1}
+170.13068	2-methyl-8-noneic acid	{'C': 10, 'H': 18, 'O': 2}
+171.064391	hydroxyhistidine	{'C': 6, 'H': 9, 'N': 3, 'O': 3}
+171.089543	N-methoxyacetyl-valine	{'C': 8, 'H': 13, 'N': 1, 'O': 3}
+171.125929	N-desmethyldolaisoleuine	{'C': 9, 'H': 17, 'N': 1, 'O': 2}
+171.125929	N-methyl homo vinylogous valine	{'C': 9, 'H': 17, 'N': 1, 'O': 2}
+172.030649	alanine-thiazole	{'C': 6, 'H': 8, 'N': 2, 'O': 2, 'S': 1}
+172.084792	D-N-acetyl-hydroxyornithine	{'C': 7, 'H': 12, 'N': 2, 'O': 3}
+172.084792	N-acetyl-hydroxyornithine	{'C': 7, 'H': 12, 'N': 2, 'O': 3}
+172.096026	capreomycidine	{'C': 6, 'H': 12, 'N': 4, 'O': 2}
+172.096026	D-enduracididine	{'C': 6, 'H': 12, 'N': 4, 'O': 2}
+172.096026	enduracididine	{'C': 6, 'H': 12, 'N': 4, 'O': 2}
+172.100048	tryptophanol	{'C': 11, 'H': 12, 'N': 2}
+172.14633	7-methylnonanoic acid	{'C': 10, 'H': 20, 'O': 2}
+172.14633	8-methylnonanoic acid	{'C': 10, 'H': 20, 'O': 2}
+172.14633	decanoic acid	{'C': 10, 'H': 20, 'O': 2}
+173.105193	N-acetyl-isoleucine	{'C': 8, 'H': 15, 'N': 1, 'O': 3}
+173.105193	N-acetyl-leucine	{'C': 8, 'H': 15, 'N': 1, 'O': 3}
+173.105193	O-desmethyldolaproine	{'C': 8, 'H': 15, 'N': 1, 'O': 3}
+173.141579	methyl-2-aminooctanoic acid	{'C': 9, 'H': 19, 'N': 1, 'O': 2}
+174.042927	2-carboxyquinoxaline	{'C': 9, 'H': 6, 'N': 2, 'O': 2}
+174.064057	N-formyl-glutamine	{'C': 6, 'H': 10, 'N': 2, 'O': 4}
+174.089209	hydroxyisovalerylpropionyl	{'C': 8, 'H': 14, 'O': 4}
+174.100442	3,4-dimethylglutamine	{'C': 7, 'H': 14, 'N': 2, 'O': 3}
+174.100442	D-N-formyl-lysine	{'C': 7, 'H': 14, 'N': 2, 'O': 3}
+174.100442	N-formyl-lysine	{'C': 7, 'H': 14, 'N': 2, 'O': 3}
+174.111676	arginine	{'C': 6, 'H': 14, 'N': 4, 'O': 2}
+174.111676	D-arginine	{'C': 6, 'H': 14, 'N': 4, 'O': 2}
+174.125594	3-hydroxy-6-methyloctanoic acid	{'C': 9, 'H': 18, 'O': 3}
+174.125594	3-hydroxy-7-methyl-octanoic acid	{'C': 9, 'H': 18, 'O': 3}
+174.125594	3-hydroxy-nonanoic acid	{'C': 9, 'H': 18, 'O': 3}
+174.125594	4-methyl-3-hydroxy-octanoic acid	{'C': 9, 'H': 18, 'O': 3}
+174.125594	PPG repeat unit x3	{'C': 9, 'H': 18, 'O': 3}
+174.149404	N-trimethyl-leucine	{'C': 9, 'H': 20, 'N': 1, 'O': 2}
+174.959169	N-methyldichloropyrrole-2-carboxylic acid	{'C': 6, 'H': 3, 'Cl': 2, 'N': 1, 'O': 1}
+175.0667	beta,beta-dimethyl-methionine-S-oxide	{'C': 7, 'H': 13, 'N': 1, 'O': 2, 'S': 1}
+175.095691	citrulline	{'C': 6, 'H': 13, 'N': 3, 'O': 3}
+175.095691	D-citrulline	{'C': 6, 'H': 13, 'N': 3, 'O': 3}
+175.099714	alpha-amino-phenyl-valeric acid	{'C': 11, 'H': 13, 'N': 1, 'O': 1}
+175.120843	4-N-ethyl-4-amino-3-O-methoxy-2,4,5-trideoxypentose	{'C': 8, 'H': 17, 'N': 1, 'O': 3}
+175.120843	D-3-N-methyl-4-O-methyl-L-ristosamine	{'C': 8, 'H': 17, 'N': 1, 'O': 3}
+175.120843	D-angolosamine	{'C': 8, 'H': 17, 'N': 1, 'O': 3}
+175.120843	D-desosamine	{'C': 8, 'H': 17, 'N': 1, 'O': 3}
+175.120843	kedarosamine	{'C': 8, 'H': 17, 'N': 1, 'O': 3}
+175.120843	L-megosamine	{'C': 8, 'H': 17, 'N': 1, 'O': 3}
+175.120843	L-rhodosamine	{'C': 8, 'H': 17, 'N': 1, 'O': 3}
+175.120843	N,N-dimethyl-L-pyrrolosamine	{'C': 8, 'H': 17, 'N': 1, 'O': 3}
+175.120843	nogalamine	{'C': 8, 'H': 17, 'N': 1, 'O': 3}
+175.120843	isostatine	{'C': 8, 'H': 17, 'N': 1, 'O': 3}
+175.120843	statine	{'C': 8, 'H': 17, 'N': 1, 'O': 3}
+176.032088	glucuronidation	{'C': 6, 'O': 6, 'H': 8}
+176.032088	glucuronidation	{'C': 6, 'O': 6, 'H': 8}
+176.0473441	ferulic acid	{'C': 10, 'H': 8, 'O': 3}
+176.068473	sugar analog (hexose+2*deoxyhexose-pentose-deoxyhexose)	{'C': 7, 'H': 12, 'O': 5}
+176.079707	D-formyl-hydroxyornithine	{'C': 6, 'H': 12, 'N': 2, 'O': 4}
+176.079707	N6-formyl-hydroxyornithine	{'C': 6, 'H': 12, 'N': 2, 'O': 4}
+176.104859	L-cladinose	{'C': 8, 'H': 16, 'O': 4}
+176.104859	PEG repeat unit x4	{'C': 8, 'H': 16, 'O': 4}
+177.039913	glucuronidation	{'C': 6, 'O': 6, 'H': 9}
+177.039913	glucuronidation	{'C': 6, 'O': 6, 'H': 9}
+177.063722	alpha-amino-hydroxyadipic acid	{'C': 6, 'H': 11, 'N': 1, 'O': 5}
+177.078979	beta-hydroxy-N-methyl-phenylalanine	{'C': 10, 'H': 11, 'N': 1, 'O': 2}
+177.078979	homotyrosine	{'C': 10, 'H': 11, 'N': 1, 'O': 2}
+177.078979	N-methyl-2,3-dehydrophenylalanine	{'C': 10, 'H': 11, 'N': 1, 'O': 2}
+177.078979	N-methyltyrosine	{'C': 10, 'H': 11, 'N': 1, 'O': 2}
+177.100108	2'-N-methyl-D-fucosamine	{'C': 7, 'H': 15, 'N': 1, 'O': 4}
+178.047738	Gluconoylation	{'C': 6, 'H': 10, 'O': 6}
+178.066365	4-deoxy-4-methylthio-a-D-digitoxose	{'C': 7, 'H': 14, 'O': 3, 'S': 1}
+178.074228	propenoyl-2-aminobutanoyloxazole acid	{'C': 9, 'H': 10, 'N': 2, 'O': 2}
+178.084124	2-O-methyl-L-rhamnose	{'C': 7, 'H': 14, 'O': 5}
+178.084124	3-O-methyl-rhamnose	{'C': 7, 'H': 14, 'O': 5}
+178.084124	6-deoxy-3-C-methyl-L-mannose	{'C': 7, 'H': 14, 'O': 5}
+178.084124	D-digitalose	{'C': 7, 'H': 14, 'O': 5}
+178.084124	O-methyl-L-rhamnose	{'C': 7, 'H': 14, 'O': 5}
+179.058243	3,4-dihydroxyphenylalanine	{'C': 9, 'H': 9, 'N': 1, 'O': 3}
+179.058243	beta-hydroxy-tyrosine	{'C': 9, 'H': 9, 'N': 1, 'O': 3}
+179.079373	D-glucosamine	{'C': 6, 'H': 13, 'N': 1, 'O': 5}
+179.079373	4,6-dideoxy-4-hydroxylamino-D-glucose	{'C': 6, 'H': 13, 'N': 1, 'O': 5}
+179.094629	3-methylphenylalanine	{'C': 10, 'H': 13, 'N': 1, 'O': 2}
+179.094629	beta-methyl-phenylalanine	{'C': 10, 'H': 13, 'N': 1, 'O': 2}
+179.094629	D-N-methyl-phenylalanine	{'C': 10, 'H': 13, 'N': 1, 'O': 2}
+179.094629	homophenylalanine	{'C': 10, 'H': 13, 'N': 1, 'O': 2}
+179.094629	N-methyl-phenylalanine	{'C': 10, 'H': 13, 'N': 1, 'O': 2}
+179.171508	GSH-conjugation of organoiodide, glutathione conjugation of organoiodide	{'C': 10, 'H': 16, 'N': 3, 'O': 6, 'S': 1, 'I': -1}
+180.063388	D-galactose	{'C': 6, 'H': 12, 'O': 6}
+180.063388	D-glucose	{'C': 6, 'H': 12, 'O': 6}
+180.063388	D-mannose	{'C': 6, 'H': 12, 'O': 6}
+180.063388	hexose	{'C': 6, 'H': 12, 'O': 6}
+180.063388	beta-D-galactose	{'C': 6, 'H': 12, 'O': 6}
+180.063388	D-galactose	{'C': 6, 'H': 12, 'O': 6}
+180.063388	D-glucose	{'C': 6, 'H': 12, 'O': 6}
+180.063388	D-mannose	{'C': 6, 'H': 12, 'O': 6}
+180.063388	hexose analog and water loss	{'C': 6, 'H': 12, 'O': 6}
+180.063388	L-glucose	{'C': 6, 'H': 12, 'O': 6}
+181.037508	D-N-hydroxy-dehydro-hydroxyphenylglycine	{'C': 8, 'H': 7, 'N': 1, 'O': 4}
+181.037508	N-hydroxy-dehydro-hydroxyphenylglycine	{'C': 8, 'H': 7, 'N': 1, 'O': 4}
+181.040879	methionine sulfone	{'C': 5, 'H': 11, 'N': 1, 'O': 4, 'S': 1}
+181.050394	phosphinothricin	{'C': 5, 'H': 12, 'N': 1, 'O': 4, 'P': 1}
+181.073893	anticapsin	{'C': 9, 'H': 11, 'N': 1, 'O': 3}
+181.073893	beta-tyrosine	{'C': 9, 'H': 11, 'N': 1, 'O': 3}
+181.073893	D-tyrosine	{'C': 9, 'H': 11, 'N': 1, 'O': 3}
+181.073893	N-methyl-hydroxyphenylglycine	{'C': 9, 'H': 11, 'N': 1, 'O': 3}
+181.073893	phenylserine	{'C': 9, 'H': 11, 'N': 1, 'O': 3}
+181.073893	tyrosine	{'C': 9, 'H': 11, 'N': 1, 'O': 3}
+182.057909	4-hydroxy-D-phenyl-lactate	{'C': 9, 'H': 10, 'O': 4}
+182.069142	propenoyl-alanyloxazole acid	{'C': 8, 'H': 10, 'N': 2, 'O': 3}
+182.080376	D-homoarginine	{'C': 7, 'H': 10, 'N': 4, 'O': 2}
+182.116761	vinylogous arginine	{'C': 8, 'H': 14, 'N': 4, 'O': 1}
+182.985384	3,4-dichloro-proline	{'C': 5, 'H': 7, 'Cl': 2, 'N': 1, 'O': 2}
+183.008706	3-chloro-4-hydroxyphenylglycine	{'C': 8, 'H': 6, 'Cl': 1, 'N': 1, 'O': 2}
+183.053158	3,5-dihydroxyphenylglycine	{'C': 8, 'H': 9, 'N': 1, 'O': 4}
+183.053158	D-3,5-dihydroxyphenylglycine	{'C': 8, 'H': 9, 'N': 1, 'O': 4}
+183.125929	N-methyl-4-butenyl-4-methyl threonine	{'C': 10, 'H': 17, 'N': 1, 'O': 2}
+184.063663	2,3-dehydro-tryptophan	{'C': 11, 'H': 8, 'N': 2, 'O': 1}
+184.096026	alpha-ketoarginine	{'C': 7, 'H': 12, 'N': 4, 'O': 2}
+184.096026	cyclo alpha-ketoarginine	{'C': 7, 'H': 12, 'N': 4, 'O': 2}
+184.109944	2,2-dimethyl-3-hydroxy-7-octynoic acid	{'C': 10, 'H': 16, 'O': 3}
+185.084064	dolapyrrolidone	{'C': 12, 'H': 11, 'N': 1, 'O': 1}
+185.105193	2-carboxy-6-hydroxyoctahydroindole	{'C': 9, 'H': 15, 'N': 1, 'O': 3}
+185.141579	3-desoxy-methyl-4-butenyl-4-methyl threonine	{'C': 10, 'H': 19, 'N': 1, 'O': 2}
+185.141579	dolaisoleucine	{'C': 10, 'H': 19, 'N': 1, 'O': 2}
+186.046299	1-methoxy-beta-alanine-thiazole	{'C': 7, 'H': 10, 'N': 2, 'O': 2, 'S': 1}
+186.061555	dolaphenine	{'C': 11, 'H': 10, 'N': 2, 'S': 1, 'O': -1}
+186.079313	D-tryptophan	{'C': 11, 'H': 10, 'N': 2, 'O': 1}
+186.079313	tryptophan	{'C': 11, 'H': 10, 'N': 2, 'O': 1}
+186.111676	hydrated alpha-ketoarginine	{'C': 7, 'H': 14, 'N': 4, 'O': 2}
+186.125594	2,2-dimethyl-3-hydroxy-7-octenoic acid	{'C': 10, 'H': 18, 'O': 3}
+186.125594	3-oxo-decanoic acid	{'C': 10, 'H': 18, 'O': 3}
+186.16198	8-methyldecanoic acid	{'C': 11, 'H': 22, 'O': 2}
+186.16198	9-methyldecanoic acid	{'C': 11, 'H': 22, 'O': 2}
+187.063329	dehydro vinylogous tyrosine	{'C': 11, 'H': 9, 'N': 1, 'O': 2}
+187.120843	4-butenyl-4-methyl threonine	{'C': 9, 'H': 17, 'N': 1, 'O': 3}
+187.120843	dolaproine	{'C': 9, 'H': 17, 'N': 1, 'O': 3}
+187.120843	N-methyl-N-acetyl-isoleucine	{'C': 9, 'H': 17, 'N': 1, 'O': 3}
+187.179696	guanylspermidine	{'C': 8, 'H': 21, 'N': 5}
+188.09094	3,4-dihydroxyarginine	{'C': 6, 'H': 12, 'N': 4, 'O': 3}
+188.09094	5-hydroxy-capreomycidine	{'C': 6, 'H': 12, 'N': 4, 'O': 3}
+188.104859	hydroxysecbutyl acetyl propionyl	{'C': 9, 'H': 16, 'O': 4}
+188.127326	homoarginine	{'C': 7, 'H': 16, 'N': 4, 'O': 2}
+188.141245	2,2-dimethyl-3-hydroxy-octanoic acid	{'C': 10, 'H': 20, 'O': 3}
+188.141245	2,4,6-trimethyl-3-hydroxy-heptanoic acid	{'C': 10, 'H': 20, 'O': 3}
+188.141245	3-hydroxy-2-methyl-nonanoic acid	{'C': 10, 'H': 20, 'O': 3}
+188.141245	3-hydroxy-decanoic acid	{'C': 10, 'H': 20, 'O': 3}
+189.078979	N-acetylphenylalanine	{'C': 11, 'H': 11, 'N': 1, 'O': 2}
+189.078979	vinylogous tyrosine	{'C': 11, 'H': 11, 'N': 1, 'O': 2}
+189.100108	N-methoxyacetyl-valine	{'C': 8, 'H': 15, 'N': 1, 'O': 4}
+189.136493	3-N,N-dimethyl-L-eremosamine	{'C': 9, 'H': 19, 'N': 1, 'O': 3}
+189.136493	namenamicin sugar C	{'C': 9, 'H': 19, 'N': 1, 'O': 3}
+189.136493	alpha-hydroxy-6-methyl-3-aminooctanoic acid	{'C': 9, 'H': 19, 'N': 1, 'O': 3}
+189.136493	N-desmethyldolaisoleucine	{'C': 9, 'H': 19, 'N': 1, 'O': 3}
+190.074228	D-kynurenine	{'C': 10, 'H': 10, 'N': 2, 'O': 2}
+190.074228	kynurenine	{'C': 10, 'H': 10, 'N': 2, 'O': 2}
+190.084124	chromose D (4-O-acetyl-Œ≤-D-oliose)	{'C': 8, 'H': 14, 'O': 5}
+190.095357	D-N-acetyl-hydroxyornithine	{'C': 7, 'H': 14, 'N': 2, 'O': 4}
+190.095357	N-acetyl-hydroxyornithine	{'C': 7, 'H': 14, 'N': 2, 'O': 4}
+190.110613	N-methyl-4-methylamino-phenylalanine	{'C': 11, 'H': 14, 'N': 2, 'O': 1}
+190.110613	N,O-dimethyl-tyrosinecarboxamid	{'C': 11, 'H': 14, 'N': 2, 'O': 1}
+190.110613	tryptophanol	{'C': 11, 'H': 14, 'N': 2, 'O': 1}
+191.079373	4-O-carbamoyl-D-olivose	{'C': 7, 'H': 13, 'N': 1, 'O': 5}
+191.094629	3-methyl-homotyrosine	{'C': 11, 'H': 13, 'N': 1, 'O': 2}
+191.094629	alpha-amino-hydroxyphenyl-valeric acid	{'C': 11, 'H': 13, 'N': 1, 'O': 2}
+191.094629	D-N,O-dimethyl-tyrosine	{'C': 11, 'H': 13, 'N': 1, 'O': 2}
+191.094629	N-methyl-homotyrosine	{'C': 11, 'H': 13, 'N': 1, 'O': 2}
+191.094629	N,O-dimethyl-tyrosine	{'C': 11, 'H': 13, 'N': 1, 'O': 2}
+191.115758	3-N,N-dimethyl-D-mycosamine	{'C': 8, 'H': 17, 'N': 1, 'O': 4}
+191.115758	D-ravidosamine	{'C': 8, 'H': 17, 'N': 1, 'O': 4}
+192.027003	glucuronidation	{'C': 6, 'H': 8, 'O': 7}
+192.027003	glucuronidation	{'C': 6, 'H': 8, 'O': 7}
+192.099774	L-noviose	{'C': 8, 'H': 16, 'O': 5}
+192.099774	2,3-O-dimethyl-L-rhamnose	{'C': 8, 'H': 16, 'O': 5}
+192.099774	2,4-O-dimethyl-L-rhamnose	{'C': 8, 'H': 16, 'O': 5}
+192.099774	3,4-O-dimethyl-L-rhamnose	{'C': 8, 'H': 16, 'O': 5}
+192.969734	N-methyldichloropyrrole-2-carboxylic acid	{'C': 6, 'H': 5, 'Cl': 2, 'N': 1, 'O': 2}
+193.006119	di-chloro-N-methyl-dehydroleucine	{'C': 7, 'H': 9, 'Cl': 2, 'N': 1, 'O': 1}
+193.073893	beta-methoxy-tyrosine	{'C': 10, 'H': 11, 'N': 1, 'O': 3}
+193.077264	beta,beta-dimethyl-methionine-S-oxide	{'C': 7, 'H': 15, 'N': 1, 'O': 3, 'S': 1}
+193.110279	alpha-amino-phenyl-valeric acid	{'C': 11, 'H': 15, 'N': 1, 'O': 2}
+194.024894	O-sulfate-2-hydroxy-3-methylpentanoic acid	{'C': 6, 'H': 10, 'O': 5, 'S': 1}
+194.042653	D-galacturonic acid	{'C': 6, 'H': 10, 'O': 7}
+194.042653	glucuronic acid	{'C': 6, 'H': 10, 'O': 7}
+194.079038	3-methoxy-D-mannose	{'C': 7, 'H': 14, 'O': 6}
+194.079038	6-methoxy-D-glucose	{'C': 7, 'H': 14, 'O': 6}
+195.021769	di-chloro-N-methyl-leucine	{'C': 7, 'H': 11, 'Cl': 2, 'N': 1, 'O': 1}
+195.089543	beta-hydroxy-N-methyl-phenylalanine	{'C': 10, 'H': 13, 'N': 1, 'O': 3}
+195.089543	homotyrosine	{'C': 10, 'H': 13, 'N': 1, 'O': 3}
+195.089543	N-methyltyrosine	{'C': 10, 'H': 13, 'N': 1, 'O': 3}
+196.040544	2-thioglucose	{'C': 6, 'H': 12, 'O': 5, 'S': 1}
+196.084792	propenoyl-2-aminobutanoyloxazole acid	{'C': 9, 'H': 12, 'N': 2, 'O': 3}
+196.121178	methyloxazoline-isoleucine	{'C': 10, 'H': 16, 'N': 2, 'O': 2}
+196.14633	10-methyl-2,trans4-undecanoic acid	{'C': 12, 'H': 20, 'O': 2}
+196.14633	2,4-dimethyl-dec-9-ynoic acid	{'C': 12, 'H': 20, 'O': 2}
+197.024356	chloro-tyrosine	{'C': 9, 'H': 8, 'Cl': 1, 'N': 1, 'O': 2}
+197.068808	3,4-dihydroxyphenylalanine	{'C': 9, 'H': 11, 'N': 1, 'O': 4}
+197.068808	beta-hydroxy-tyrosine	{'C': 9, 'H': 11, 'N': 1, 'O': 4}
+197.141579	4-butenyl-4-methyl-N,4-methyl threonine	{'C': 11, 'H': 19, 'N': 1, 'O': 2}
+198.16198	2-methyl-5-dodecenoic acid	{'C': 12, 'H': 22, 'O': 2}
+199.084458	anticapsin	{'C': 9, 'H': 13, 'N': 1, 'O': 4}
+200.079707	N-acetyl-N6-formyl-N6-hydroxyornithine	{'C': 8, 'H': 12, 'N': 2, 'O': 4}
+200.09094	D-homoarginine	{'C': 7, 'H': 12, 'N': 4, 'O': 3}
+200.094963	N1-methyl-tryptophan	{'C': 12, 'H': 12, 'N': 2, 'O': 1}
+200.127326	vinylogous arginine	{'C': 8, 'H': 16, 'N': 4, 'O': 2}
+200.17763	10-methylundecanoic acid	{'C': 12, 'H': 24, 'O': 2}
+200.17763	dodecanoic acid	{'C': 12, 'H': 24, 'O': 2}
+201.019271	3-chloro-4-hydroxyphenylglycine	{'C': 8, 'H': 8, 'Cl': 1, 'N': 1, 'O': 3}
+201.136493	2-amino-8-oxo-decanoic acid	{'C': 10, 'H': 19, 'N': 1, 'O': 3}
+201.136493	N-methyl-4-butenyl-4-methyl threonine	{'C': 10, 'H': 19, 'N': 1, 'O': 3}
+202.074228	2,3-dehydro-tryptophan	{'C': 11, 'H': 10, 'N': 2, 'O': 2}
+202.074228	5-hydroxytryptophan	{'C': 11, 'H': 10, 'N': 2, 'O': 2}
+202.074228	phototryptophan	{'C': 11, 'H': 10, 'N': 2, 'O': 2}
+202.095357	ureido-4-oxovancosamine	{'C': 8, 'H': 14, 'N': 2, 'O': 4}
+202.10659	alpha-ketoarginine	{'C': 7, 'H': 14, 'N': 4, 'O': 3}
+202.156895	3-hydroxy-2-methyl-decanoic acid	{'C': 11, 'H': 22, 'O': 3}
+202.156895	3-hydroxy-4-methyl-decanoic acid	{'C': 11, 'H': 22, 'O': 3}
+202.156895	3-hydroxy-9-methyl-decanoic acid	{'C': 11, 'H': 22, 'O': 3}
+202.156895	3-hydroxy-undecanoic acid	{'C': 11, 'H': 22, 'O': 3}
+203.094629	dolapyrrolidone	{'C': 12, 'H': 13, 'N': 1, 'O': 2}
+203.152144	3-amino-2-hydroxy decanoic acid	{'C': 10, 'H': 21, 'N': 1, 'O': 3}
+203.152144	8-hydroxy-2-amino-decanoic acid	{'C': 10, 'H': 21, 'N': 1, 'O': 3}
+203.152144	9-hydroxy-2-amino-decanoic acid	{'C': 10, 'H': 21, 'N': 1, 'O': 3}
+203.152144	dolaisoleucine	{'C': 10, 'H': 21, 'N': 1, 'O': 3}
+204.072119	dolaphenine	{'C': 11, 'H': 12, 'N': 2, 'S': 1}
+204.089878	D-tryptophan	{'C': 11, 'H': 12, 'N': 2, 'O': 2}
+204.089878	tryptophan	{'C': 11, 'H': 12, 'N': 2, 'O': 2}
+204.12224	hydrated alpha-ketoarginine	{'C': 7, 'H': 16, 'N': 4, 'O': 3}
+204.126263	N-methyl-4-dimethylamino-phenylalanine	{'C': 12, 'H': 16, 'N': 2, 'O': 1}
+205.073893	dehydro vinylogous tyrosine	{'C': 11, 'H': 11, 'N': 1, 'O': 3}
+205.073893	vinylogous hydroxy tyrosine	{'C': 11, 'H': 11, 'N': 1, 'O': 3}
+205.107599	3-N-acetyl-D-ravidosamine	{'C': 9, 'H': 17, 'O': 5}
+205.107599	3-O-carbamoyl-L-noviose	{'C': 9, 'H': 17, 'O': 5}
+205.110279	alpha-amino-methoxyphenyl-valeric acid	{'C': 12, 'H': 15, 'N': 1, 'O': 2}
+205.131408	4-N,N-dimethylamino-4-deoxy-5-C-methyl-l-rhamnose	{'C': 9, 'H': 19, 'N': 1, 'O': 4}
+206.101505	3,4-dihydroxyarginine	{'C': 6, 'H': 14, 'N': 4, 'O': 4}
+206.115424	2,3,4-tri-O-methylrhamnose	{'C': 9, 'H': 18, 'O': 5}
+207.089543	N-acetylphenylalanine	{'C': 11, 'H': 13, 'N': 1, 'O': 3}
+207.089543	vinylogous tyrosine	{'C': 11, 'H': 13, 'N': 1, 'O': 3}
+208.048407	3-nitrotyrosine	{'C': 9, 'H': 8, 'N': 2, 'O': 4}
+208.067034	pyridylethylcysteine	{'C': 10, 'H': 12, 'N': 2, 'O': 1, 'S': 1}
+208.084792	D-kynurenine	{'C': 10, 'H': 12, 'N': 2, 'O': 3}
+208.084792	kynurenine	{'C': 10, 'H': 12, 'N': 2, 'O': 3}
+208.109944	coronafacic acid	{'C': 12, 'H': 16, 'O': 3}
+208.121178	N-methyl-4-methylamino-phenylalanine	{'C': 11, 'H': 16, 'N': 2, 'O': 2}
+208.121178	N,O-dimethyl-tyrosinecarboxamid	{'C': 11, 'H': 16, 'N': 2, 'O': 2}
+209.105193	3-methyl-homotyrosine	{'C': 11, 'H': 15, 'N': 1, 'O': 3}
+209.105193	alpha-amino-hydroxyphenyl-valeric acid	{'C': 11, 'H': 15, 'N': 1, 'O': 3}
+209.105193	D-N,O-dimethyl-tyrosine	{'C': 11, 'H': 15, 'N': 1, 'O': 3}
+209.105193	ethylene inserted tyrosine	{'C': 11, 'H': 15, 'N': 1, 'O': 3}
+209.105193	N-methyl-homotyrosine	{'C': 11, 'H': 15, 'N': 1, 'O': 3}
+209.105193	N,O-dimethyl-tyrosine	{'C': 11, 'H': 15, 'N': 1, 'O': 3}
+210.004173	D-phosphateasparagine	{'C': 4, 'H': 7, 'N': 2, 'O': 6, 'P': 1}
+210.046299	propenoyl-O-methylserinylthiazole acid	{'C': 9, 'H': 10, 'N': 2, 'O': 2, 'S': 1}
+210.16198	10-methyl-2,trans4-dodecenoic acid	{'C': 13, 'H': 22, 'O': 2}
+211.016684	di-chloro-N-methyl-dehydroleucine	{'C': 7, 'H': 11, 'Cl': 2, 'N': 1, 'O': 2}
+211.040006	chloro-N-methyl-tyrosine	{'C': 10, 'H': 10, 'Cl': 1, 'N': 1, 'O': 2}
+211.040006	D-3-chloro-N-methyl-tyrosine	{'C': 10, 'H': 10, 'Cl': 1, 'N': 1, 'O': 2}
+211.084458	beta-methoxy-tyrosine	{'C': 10, 'H': 13, 'N': 1, 'O': 4}
+212.035459	O-sulfate-2-hydroxy-3-methylpentanoic acid	{'C': 6, 'H': 12, 'O': 6, 'S': 1}
+212.17763	10-methyl-3-dodecenoic acid	{'C': 13, 'H': 24, 'O': 2}
+212.17763	11-methyl-3-dodecenoic acid	{'C': 13, 'H': 24, 'O': 2}
+213.019271	beta-hydroxy-chloro-tyrosine	{'C': 9, 'H': 8, 'Cl': 1, 'N': 1, 'O': 3}
+213.032334	di-chloro-N-methyl-leucine	{'C': 7, 'H': 13, 'Cl': 2, 'N': 1, 'O': 2}
+214.095357	3-amino-6-hydroxy-2-piperidone	{'C': 9, 'H': 14, 'N': 2, 'O': 4}
+214.131742	methyloxazoline-isoleucine	{'C': 10, 'H': 18, 'N': 2, 'O': 3}
+214.156895	3-hydroxy-5-dodecenoic acid	{'C': 12, 'H': 22, 'O': 3}
+214.156895	8-hydroxy-2,4,6-trimethyl-4-nonenoic acid	{'C': 12, 'H': 22, 'O': 3}
+214.156895	9-oxo-2,4-dimethyldecanoic acid	{'C': 12, 'H': 22, 'O': 3}
+214.19328	10-methyldodecanoic acid	{'C': 13, 'H': 26, 'O': 2}
+214.19328	11-methyldodecanoic acid	{'C': 13, 'H': 26, 'O': 2}
+215.034921	chloro-tyrosine	{'C': 9, 'H': 10, 'Cl': 1, 'N': 1, 'O': 3}
+215.115758	2-amino-9,10-epoxi-8-oxodecanoic acid	{'C': 10, 'H': 17, 'N': 1, 'O': 4}
+215.152144	4-butenyl-4-methyl-N,4-methyl threonine	{'C': 11, 'H': 21, 'N': 1, 'O': 3}
+216.089878	methoxytryptophan	{'C': 12, 'H': 12, 'N': 2, 'O': 2}
+216.089878	N-methyl-5-hydroxytryptophan	{'C': 12, 'H': 12, 'N': 2, 'O': 2}
+216.111007	2,6-diamino-7-hydroxyazelaic acid	{'C': 9, 'H': 16, 'N': 2, 'O': 4}
+216.12224	4-amino-7-guanidino-2,3-dihydroxyheptanoic acid	{'C': 8, 'H': 16, 'N': 4, 'O': 3}
+216.172545	3-hydroxy-10-methyl-undecanoic acid	{'C': 12, 'H': 24, 'O': 3}
+216.172545	3-hydroxy-2-methyl-undecanoic acid	{'C': 12, 'H': 24, 'O': 3}
+216.172545	3-hydroxy-dodecanoic acid	{'C': 12, 'H': 24, 'O': 3}
+216.969734	3,5-dichloro-4-hydroxyphenylglycine	{'C': 8, 'H': 5, 'Cl': 2, 'N': 1, 'O': 2}
+217.131408	9-hydroxy-2-amino-8-oxo-decanoic acid	{'C': 10, 'H': 19, 'N': 1, 'O': 4}
+218.090272	N-acetyl-N6-formyl-N6-hydroxyornithine	{'C': 8, 'H': 14, 'N': 2, 'O': 5}
+218.105528	N1-methyl-tryptophan	{'C': 12, 'H': 14, 'N': 2, 'O': 2}
+218.115424	4-O-acetyl-L-arcanose	{'C': 10, 'H': 18, 'O': 5}
+219.053158	DHP-methyloxazolinyl group	{'C': 11, 'H': 9, 'N': 1, 'O': 4}
+219.089543	N-methoxyacetyl-D-phenylalanine	{'C': 12, 'H': 13, 'N': 1, 'O': 3}
+220.040341	D-6‚Äô-chloro-tryptophan	{'C': 11, 'H': 9, 'Cl': 1, 'N': 2, 'O': 1}
+220.084792	5-hydroxytryptophan	{'C': 11, 'H': 12, 'N': 2, 'O': 3}
+220.084792	phototryptophan	{'C': 11, 'H': 12, 'N': 2, 'O': 3}
+220.131074	L-nogalose	{'C': 10, 'H': 20, 'O': 5}
+221.014664	dihydroxyphenylthiazol group	{'C': 10, 'H': 7, 'N': 1, 'O': 3, 'S': 1}
+221.089937	N-acetyl-D-glucosamine	{'C': 8, 'H': 15, 'N': 1, 'O': 6}
+222.013284		{'C': 6, 'H': 10, 'N': 2, 'O': 3, 'S': 2}
+222.073953	N-acetyl-D-galactose	{'C': 8, 'H': 14, 'O': 7}
+222.136828	N-methyl-4-dimethylamino-phenylalanine	{'C': 12, 'H': 18, 'N': 2, 'O': 2}
+223.084458	vinylogous hydroxy tyrosine	{'C': 11, 'H': 13, 'N': 1, 'O': 4}
+223.120843	alpha-amino-methoxyphenyl-valeric acid	{'C': 12, 'H': 17, 'N': 1, 'O': 3}
+224.046692	N-methyl-lanthionine	{'C': 6, 'H': 12, 'N': 2, 'O': 5, 'S': 1}
+224.978926	bromophenylalanine	{'C': 9, 'H': 8, 'Br': 1, 'N': 1, 'O': 1}
+226.058971	3-nitrotyrosine	{'C': 9, 'H': 10, 'N': 2, 'O': 5}
+226.19328	12-methyl-3-tridecenoic acid	{'C': 14, 'H': 26, 'O': 2}
+226.19328	7-tetradecenoic acid	{'C': 14, 'H': 26, 'O': 2}
+226.967147	tri-chloro-N-methyl-dehydroleucine	{'C': 7, 'H': 8, 'Cl': 3, 'N': 1, 'O': 1}
+228.014737	D-phosphateasparagine	{'C': 4, 'H': 9, 'N': 2, 'O': 7, 'P': 1}
+228.056863	propenoyl-O-methylserinylthiazole acid	{'C': 9, 'H': 12, 'N': 2, 'O': 3, 'S': 1}
+228.089878	N-acetyltryptophan	{'C': 13, 'H': 12, 'N': 2, 'O': 2}
+228.126263	beta,beta,N-trimethyltryptophan	{'C': 14, 'H': 16, 'N': 2, 'O': 1}
+228.136159	5-oxo-8-hydroxy-2,4,6-trimethyl-4-nonaneic acid	{'C': 12, 'H': 20, 'O': 4}
+228.20893	12-methyl-tridecanoic acid	{'C': 14, 'H': 28, 'O': 2}
+228.20893	tetradecanoic acid	{'C': 14, 'H': 28, 'O': 2}
+228.982797	tri-chloro-N-methyl-leucine	{'C': 7, 'H': 10, 'Cl': 3, 'N': 1, 'O': 1}
+229.050571	chloro-N-methyl-tyrosine	{'C': 10, 'H': 12, 'Cl': 1, 'N': 1, 'O': 3}
+229.050571	D-3-chloro-N-methyl-tyrosine	{'C': 10, 'H': 12, 'Cl': 1, 'N': 1, 'O': 3}
+229.204179	3-amino-tridecanoic acid	{'C': 13, 'H': 27, 'N': 1, 'O': 2}
+230.051384	thiazolylphenylalanine	{'C': 12, 'H': 10, 'N': 2, 'O': 1, 'S': 1}
+230.069142	D-2-carboxy-tryptophan	{'C': 12, 'H': 10, 'N': 2, 'O': 3}
+230.188195	3-hydroxy-10-methyl-dodecanoic acid	{'C': 13, 'H': 26, 'O': 3}
+230.188195	3-hydroxy-11-methyl-dodecanoic acid	{'C': 13, 'H': 26, 'O': 3}
+230.188195	3-hydroxy-tridecanoic acid	{'C': 13, 'H': 26, 'O': 3}
+231.029835	beta-hydroxy-chloro-tyrosine	{'C': 9, 'H': 10, 'Cl': 1, 'N': 1, 'O': 4}
+232.105922	3-amino-6-hydroxy-2-piperidone	{'C': 9, 'H': 16, 'N': 2, 'O': 5}
+232.167459	PPG repeat unit x4	{'C': 12, 'H': 24, 'O': 4}
+233.126323	4-O-acetyl-D-ravidosamine	{'C': 10, 'H': 19, 'N': 1, 'O': 5}
+233.126323	3-O-carbamoyl-4-O-methyl-L-noviose	{'C': 10, 'H': 19, 'N': 1, 'O': 5}
+234.055991	N-methyl-6-chloro-tryptophan	{'C': 12, 'H': 11, 'Cl': 1, 'N': 2, 'O': 1}
+234.100442	methoxytryptophan	{'C': 12, 'H': 14, 'N': 2, 'O': 3}
+234.100442	N-methyl-5-hydroxytryptophan	{'C': 12, 'H': 14, 'N': 2, 'O': 3}
+234.121572	2,6-diamino-7-hydroxyazelaic acid	{'C': 9, 'H': 18, 'N': 2, 'O': 5}
+234.132805	4-amino-7-guanidino-2,3-dihydroxyheptanoic acid	{'C': 8, 'H': 18, 'N': 4, 'O': 4}
+234.980298	3,5-dichloro-4-hydroxyphenylglycine	{'C': 8, 'H': 7, 'Cl': 2, 'N': 1, 'O': 3}
+237.063722	DHP-methyloxazolinyl group	{'C': 11, 'H': 11, 'N': 1, 'O': 5}
+237.100108	N-methoxyacetyl-D-phenylalanine	{'C': 12, 'H': 15, 'N': 1, 'O': 4}
+237.147727	pyrrolysine	{'C': 12, 'H': 19, 'N': 3, 'O': 2}
+238.050905	D-6‚Äô-chloro-tryptophan	{'C': 11, 'H': 11, 'Cl': 1, 'N': 2, 'O': 2}
+238.068867	ketodeoxyoctonic acid	{'C': 8, 'H': 14, 'O': 8}
+238.994576	beta-methyl-bromophenylalanine	{'C': 10, 'H': 10, 'Br': 1, 'N': 1, 'O': 1}
+239.025229	dihydroxyphenylthiazol group	{'C': 10, 'H': 9, 'N': 1, 'O': 4, 'S': 1}
+240.20893	12-methyl-3-tetradecenoic acid	{'C': 15, 'H': 28, 'O': 2}
+240.973841	beta-hydroxy-bromophenylalanine	{'C': 9, 'H': 8, 'Br': 1, 'N': 1, 'O': 2}
+240.973841	bromotyrosine	{'C': 9, 'H': 8, 'Br': 1, 'N': 1, 'O': 2}
+242.141913	beta,beta,N1,N-tetramethyltryptophan	{'C': 15, 'H': 18, 'N': 2, 'O': 1}
+242.151809	2,3-dihydroxy-2,6,8-trimethyldeca-(4Z,6E)-dienoic acid	{'C': 13, 'H': 22, 'O': 4}
+242.151809	2,3-dihydroxy-trans4,trans6-tridecenoic acid	{'C': 13, 'H': 22, 'O': 4}
+242.22458	12-methyltetradecanoic acid	{'C': 15, 'H': 30, 'O': 2}
+242.989491	bromophenylalanine	{'C': 9, 'H': 10, 'Br': 1, 'N': 1, 'O': 2}
+243.080338		{'C': 10, 'H': 15, 'N': 2, 'O': 3, 'S': 1}
+243.219829	3-amino-12-methyl-tridecanoic acid	{'C': 14, 'H': 29, 'N': 1, 'O': 2}
+243.219829	3-amino-tetradecanoic acid	{'C': 14, 'H': 29, 'N': 1, 'O': 2}
+244.203845	3-hydroxy-12-methyl-tridecanoic acid	{'C': 14, 'H': 28, 'O': 3}
+244.203845	3-hydroxy-tetradecanoic acid	{'C': 14, 'H': 28, 'O': 3}
+244.977712	tri-chloro-2-hydroxy-N-methyl-leucine	{'C': 7, 'H': 10, 'Cl': 3, 'N': 1, 'O': 2}
+244.977712	tri-chloro-5-hydroxy-N-methyl-leucine	{'C': 7, 'H': 10, 'Cl': 3, 'N': 1, 'O': 2}
+244.977712	tri-chloro-N-methyl-dehydroleucine	{'C': 7, 'H': 10, 'Cl': 3, 'N': 1, 'O': 2}
+246.100442	N-acetyltryptophan	{'C': 13, 'H': 14, 'N': 2, 'O': 3}
+246.136828	beta,beta,N-trimethyltryptophan	{'C': 14, 'H': 18, 'N': 2, 'O': 2}
+246.183109	3-hydroxy-2,2,4-trimethyl-7-hydroxydecanoic acid	{'C': 13, 'H': 26, 'O': 4}
+246.993362	tri-chloro-N-methyl-leucine	{'C': 7, 'H': 12, 'Cl': 3, 'N': 1, 'O': 2}
+248.061949	thiazolylphenylalanine	{'C': 12, 'H': 12, 'N': 2, 'O': 2, 'S': 1}
+248.079707	D-2-carboxy-tryptophan	{'C': 12, 'H': 12, 'N': 2, 'O': 4}
+249.086189		{'C': 10, 'H': 11, 'N': 5, 'O': 3}
+250.050905	N-methyl-6-chloro-5-hydroxytryptophan	{'C': 12, 'H': 11, 'Cl': 1, 'N': 2, 'O': 2}
+252.066555	N-methyl-6-chloro-tryptophan	{'C': 12, 'H': 13, 'Cl': 1, 'N': 2, 'O': 2}
+254.22458	7-hexadecenoic acid	{'C': 16, 'H': 30, 'O': 2}
+254.22458	9-hexadecenoic acid	{'C': 16, 'H': 30, 'O': 2}
+254.989491	D-3-bromo-N-methyl-tyrosine	{'C': 10, 'H': 10, 'Br': 1, 'N': 1, 'O': 2}
+256.167459	2,3-dihydroxy-trans4,trans6-tetradecenoic acid	{'C': 14, 'H': 24, 'O': 4}
+256.167459	2,6,8-trimethyl-5,7-dihydroxy-trans2,trans8-undecenoic acid	{'C': 14, 'H': 24, 'O': 4}
+256.24023	hexadecanoic acid	{'C': 16, 'H': 32, 'O': 2}
+257.005141	beta-methyl-bromophenylalanine	{'C': 10, 'H': 12, 'Br': 1, 'N': 1, 'O': 2}
+257.235479	3-amino-12-methyl-tetradecanoic acid	{'C': 15, 'H': 31, 'N': 1, 'O': 2}
+257.235479	3-amino-13-methyl-tetradecanoic acid	{'C': 15, 'H': 31, 'N': 1, 'O': 2}
+257.235479	3-amino-pentadecanoic acid	{'C': 15, 'H': 31, 'N': 1, 'O': 2}
+258.100442	N1-carboxy-bichomotryptophan	{'C': 14, 'H': 14, 'N': 2, 'O': 3}
+258.219495	3-hydroxy-12-methyl-tetradecanoic acid	{'C': 15, 'H': 30, 'O': 3}
+258.219495	3-hydroxy-13-methyl-tetradecanoic acid	{'C': 15, 'H': 30, 'O': 3}
+258.219495	3-hydroxy-pentadecanoic acid	{'C': 15, 'H': 30, 'O': 3}
+258.984405	beta-hydroxy-bromophenylalanine	{'C': 9, 'H': 10, 'Br': 1, 'N': 1, 'O': 3}
+258.984405	bromotyrosine	{'C': 9, 'H': 10, 'Br': 1, 'N': 1, 'O': 3}
+259.095691	isopyoverdin chromophore	{'C': 13, 'H': 13, 'N': 3, 'O': 3}
+259.095691	pyoverdin chromophore	{'C': 13, 'H': 13, 'N': 3, 'O': 3}
+260.152478	beta,beta,N1,N-tetramethyltryptophan	{'C': 15, 'H': 20, 'N': 2, 'O': 2}
+260.198759	3-hydroxy-2,2,4-trimethyl-7-methoxydecanoic acid	{'C': 14, 'H': 28, 'O': 4}
+260.198759	3,4-dihydroxy-tetradecanoic acid	{'C': 14, 'H': 28, 'O': 4}
+261.111341	5,6-dihydropyoverdin chromophore	{'C': 13, 'H': 15, 'N': 3, 'O': 3}
+261.121237	3-N-acetyl-4-O-acetyl-D-ravidosamine	{'C': 11, 'H': 19, 'N': 1, 'O': 6}
+261.136493	3-amino-4-hydroxy-6-methyl-8-phenyl-5,7-octadienoic acid	{'C': 15, 'H': 19, 'N': 1, 'O': 3}
+262.988276	tri-chloro-2-hydroxy-N-methyl-leucine	{'C': 7, 'H': 12, 'Cl': 3, 'N': 1, 'O': 3}
+262.988276	tri-chloro-5-hydroxy-N-methyl-leucine	{'C': 7, 'H': 12, 'Cl': 3, 'N': 1, 'O': 3}
+263.046154	D-6-chloro-N2-formamidotryptophan	{'C': 12, 'H': 10, 'Cl': 1, 'N': 3, 'O': 2}
+263.989825	5-bromo-tryptophan	{'C': 11, 'H': 9, 'Br': 1, 'N': 2, 'O': 1}
+265.081104		{'C': 10, 'H': 11, 'N': 5, 'O': 4}
+266.188195	8,10-dimethyl-9-hydroxy-7-methoxytridecadienoic acid	{'C': 16, 'H': 26, 'O': 3}
+266.260966	stearoylation	{'C': 18, 'H': 34, 'O': 1}
+268.06147	N-methyl-6-chloro-5-hydroxytryptophan	{'C': 12, 'H': 13, 'Cl': 1, 'N': 2, 'O': 3}
+270.183109	2,3-dihydroxy-trans4,trans6-pentadecenoic acid	{'C': 15, 'H': 26, 'O': 4}
+270.219495	3-hydroxy-9-hexadecenoic acid	{'C': 16, 'H': 30, 'O': 3}
+271.107129	GSH-conjugation of organochloride, glutathione conjugation of organochloride	{'C': 10, 'H': 16, 'N': 3, 'O': 6, 'S': 1, 'Cl': -1}
+271.251129	3-amino-14-methyl-pentadecanoic acid	{'C': 16, 'H': 33, 'N': 1, 'O': 2}
+271.251129	3-amino-hexadecanoic acid	{'C': 16, 'H': 33, 'N': 1, 'O': 2}
+272.061949	4-propenoyl-2-tyrosylthiazole acid	{'C': 14, 'H': 12, 'N': 2, 'O': 2, 'S': 1}
+272.235145	3-hydroxy-14-methyl-pentadecanoic acid	{'C': 16, 'H': 32, 'O': 3}
+272.235145	3-hydroxy-hexadecanoic acid	{'C': 16, 'H': 32, 'O': 3}
+273.000055	D-3-bromo-N-methyl-tyrosine	{'C': 10, 'H': 12, 'Br': 1, 'N': 1, 'O': 3}
+276.111007	N1-carboxy-bichomotryptophan	{'C': 14, 'H': 16, 'N': 2, 'O': 4}
+277.106256	isopyoverdin chromophore	{'C': 13, 'H': 15, 'N': 3, 'O': 4}
+277.106256	pyoverdin chromophore	{'C': 13, 'H': 15, 'N': 3, 'O': 4}
+278.005475	N-methyl-2-bromo-tryptophan	{'C': 12, 'H': 11, 'Br': 1, 'N': 2, 'O': 1}
+279.121906	5,6-dihydropyoverdin chromophore	{'C': 13, 'H': 17, 'N': 3, 'O': 4}
+279.98474	2-bromo-5-hydroxytryptophan	{'C': 11, 'H': 9, 'Br': 1, 'N': 2, 'O': 2}
+281.056719	D-6-chloro-N2-formamidotryptophan	{'C': 12, 'H': 12, 'Cl': 1, 'N': 3, 'O': 3}
+281.126323	3-amino-8-phenyl-2.4.5-trihydroxyoct-7-enoic acid	{'C': 14, 'H': 19, 'N': 1, 'O': 5}
+282.00039	5-bromo-tryptophan	{'C': 11, 'H': 11, 'Br': 1, 'N': 2, 'O': 2}
+282.25588	9-octadecenoic acid	{'C': 18, 'H': 34, 'O': 2}
+284.198759	8,10-dimethyl-9-hydroxy-7-methoxytridecadienoic acid	{'C': 16, 'H': 28, 'O': 4}
+285.074956	azotobactins chromophore	{'C': 14, 'H': 11, 'N': 3, 'O': 4}
+285.266779	3-amino-14-methyl-hexadecanoic acid	{'C': 17, 'H': 35, 'N': 1, 'O': 2}
+285.266779	3-amino-15-methyl-hexadecanoic acid	{'C': 17, 'H': 35, 'N': 1, 'O': 2}
+286.250795	3-hydroxy-14-methyl-hexadecanoic acid	{'C': 17, 'H': 34, 'O': 3}
+286.250795	3-hydroxy-15-methyl-hexadecanoic acid	{'C': 17, 'H': 34, 'O': 3}
+288.23006	3,4-dihydroxy-hexadecanoic acid	{'C': 16, 'H': 32, 'O': 4}
+289.073242		{'C': 10, 'H': 15, 'N': 3, 'O': 5, 'S': 1}
+290.072513	4-propenoyl-2-tyrosylthiazole acid	{'C': 14, 'H': 14, 'N': 2, 'O': 3, 'S': 1}
+296.01604	N-methyl-2-bromo-tryptophan	{'C': 12, 'H': 13, 'Br': 1, 'N': 2, 'O': 2}
+297.995304	2-bromo-5-hydroxytryptophan	{'C': 11, 'H': 11, 'Br': 1, 'N': 2, 'O': 3}
+298.250795	3-hydroxy-9-octadecenoic acid	{'C': 18, 'H': 34, 'O': 3}
+302.975627	D-3-iodo-N-methyl-tyrosine	{'C': 10, 'H': 10, 'I': 1, 'N': 1, 'O': 2}
+303.085521	azotobactins chromophore	{'C': 14, 'H': 13, 'N': 3, 'O': 5}
+304.046037		{'C': 10, 'H': 13, 'N': 2, 'O': 7, 'P': 1}
+305.041286		{'C': 9, 'H': 12, 'N': 3, 'O': 7, 'P': 1}
+305.068156	GSH-conjugation, glutathione conjugation	{'C': 10, 'H': 15, 'N': 3, 'O': 6, 'S': 1}
+306.025302		{'C': 9, 'H': 11, 'N': 2, 'O': 8, 'P': 1}
+306.075981	GSH-conjugation, glutathione conjugation	{'C': 10, 'H': 16, 'N': 3, 'O': 6, 'S': 1}
+307.083806	GSH-conjugation, glutathione conjugation	{'C': 10, 'H': 17, 'N': 3, 'O': 6, 'S': 1}
+308.098156	N-5-acetylneuraminic acid	{'C': 11, 'H': 18, 'N': 1, 'O': 9}
+310.058971	actinomycin chromophore	{'C': 16, 'H': 10, 'N': 2, 'O': 5}
+312.132136	3-(5'-methyl-2'-pyrrolylcarbonyl-)4-O-methyl-L-noviose	{'C': 14, 'H': 20, 'N': 2, 'O': 6}
+317.199094	O-demethyl-adda	{'C': 19, 'H': 27, 'N': 1, 'O': 3}
+320.986191	D-3-iodo-N-methyl-tyrosine	{'C': 10, 'H': 12, 'I': 1, 'N': 1, 'O': 3}
+328.069536	actinomycin chromophore	{'C': 16, 'H': 12, 'N': 2, 'O': 6}
+329.05252		{'C': 10, 'H': 12, 'N': 5, 'O': 6, 'P': 1}
+331.214744	3-amino-9-methoxy-2,6,8-trimethyl-10-phenyldeca-4,6-dienoic acid	{'C': 20, 'H': 29, 'N': 1, 'O': 3}
+339.047006	3-amino-4-hydroxy-6-methyl-8-(p-bromophenyl)-5,7-octadienoic acid	{'C': 15, 'H': 18, 'Br': 1, 'N': 1, 'O': 3}
+345.047434		{'C': 10, 'H': 12, 'N': 5, 'O': 7, 'P': 1}
+347.173273	3-amino-6-methyl-12-phenyl-2,4,5-trihydroxydodeca-7,9,11-trienoic acid	{'C': 19, 'H': 25, 'N': 1, 'O': 5}
+351.168188	3-amino-10-(p-ethoxyphenyl)-2,4,5-trihydroxydeca-7,9-dienoic acid	{'C': 18, 'H': 25, 'N': 1, 'O': 6}
+359.209658	O-acetyl-O-demethyladda	{'C': 21, 'H': 29, 'N': 1, 'O': 4}
+361.188923	3-amino-6,10-dimethyl-12-phenyl-2,4,5-trihydroxydodeca-7,9,11-trienoic acid	{'C': 20, 'H': 27, 'N': 1, 'O': 5}
+381.215138	3-amino-6-methyl-12-(p-methoxyphenyl)-2,4,5-trihydroxydodec-11-enoic acid	{'C': 20, 'H': 31, 'N': 1, 'O': 6}
+384.012368		{'C': 10, 'H': 14, 'N': 2, 'O': 10, 'P': 2}
+385.007617		{'C': 9, 'H': 13, 'N': 3, 'O': 10, 'P': 2}
+385.991632		{'C': 9, 'H': 12, 'N': 2, 'O': 11, 'P': 2}
+409.01885		{'C': 10, 'H': 13, 'N': 5, 'O': 9, 'P': 2}
+425.013765		{'C': 10, 'H': 13, 'N': 5, 'O': 10, 'P': 2}
+748.096819		{'C': 21, 'H': 33, 'N': 7, 'O': 15, 'P': 3, 'S': 1}
+765.099559		{'C': 21, 'H': 34, 'N': 7, 'O': 16, 'P': 3, 'S': 1}
