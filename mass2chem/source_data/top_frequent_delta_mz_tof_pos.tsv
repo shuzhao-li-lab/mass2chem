@@ -1,70 +1,70 @@
 delta_mz	count_estimate	mass_signature	note	dict	type
 1.003	697	1.00335	C isotope	"{'(C12)': -1, '(C13)': 1}"	isotope
-18.01	113	18.010565	water	"{'H': 2, 'O': 1}"	reaction
-21.9825	105	21.981943	Sodium adduct	"{'H': -1, 'Na': 1}"	reaction
-14.015	83	14.015649	addition of acetic acid and loss of CO2. Reaction: (+C2H2O2) and (-CO2)	"{'C': 1, 'H': 2}"	reaction
-2.015	80	2.014552	2H	{'H': 2}	reaction
+18.01	113	18.010565	water	"{'H': 2, 'O': 1}"	modification
+21.9825	105	21.981943	Sodium adduct	"{'H': -1, 'Na': 1}"	modification
+14.015	83	14.015649	addition of acetic acid and loss of CO2. Reaction: (+C2H2O2) and (-CO2)	"{'C': 1, 'H': 2}"	modification
+2.015	80	2.014552	2H	{'H': 2}	modification
 1.9975	76	1.9972	M(Cl37)	"{'Cl': -1, '(Cl37)': 1}"	isotope
 0.501	69	0.5017	double charged with C13	"{'C': -1, '(C13)': 1}"	isotope
 2.0055	66	2.00425	O isotope	"{'(O16)': -1, '(O18)': 1}"	isotope
-28.0305	59	28.0313	"± C2H4, natural alkane chains such as fatty acids"	"{'C': 2, 'H': 4}"	reaction
-22.9845	54	22.9898	Na	{'Na': 1}	reaction
-46.0055	54	46.00548	± CO+H2O (carboxylic acid)	"{'C': 1, 'O': 2, 'H': 2}"	reaction
-17.0265	53	17.0265	addition of ammonia. Reaction: (+NH3)	"{'N': 1, 'H': 3}"	reaction
-11.9995	45	12	methylation and reduction	{'C': 1}	reaction
-44.0255	41	44.024872		"{'H': 2, 'N': 3}"	reaction
-26.015	41	26.01565	acetylation and loss of oxygen. Reaction: (+C2H2O) and (-O)	"{'C': 2, 'H': 2}"	reaction
-15.995	40	15.99492	"± O, e.g. oxidation/reduction"	{'O': 1}	reaction
-16.031	39	16.0313	Methylation + reduction	"{'C': 1, 'H': 4}"	reaction
+28.0305	59	28.0313	"± C2H4, natural alkane chains such as fatty acids"	"{'C': 2, 'H': 4}"	modification
+22.9845	54	22.9898	Na	{'Na': 1}	modification
+46.0055	54	46.00548	± CO+H2O (carboxylic acid)	"{'C': 1, 'O': 2, 'H': 2}"	modification
+17.0265	53	17.0265	addition of ammonia. Reaction: (+NH3)	"{'N': 1, 'H': 3}"	modification
+11.9995	45	12	methylation and reduction	{'C': 1}	modification
+44.0255	41	44.024872		"{'H': 2, 'N': 3}"	modification
+26.015	41	26.01565	acetylation and loss of oxygen. Reaction: (+C2H2O) and (-O)	"{'C': 2, 'H': 2}"	modification
+15.995	40	15.99492	"± O, e.g. oxidation/reduction"	{'O': 1}	modification
+16.031	39	16.0313	Methylation + reduction	"{'C': 1, 'H': 4}"	modification
 3.0185	38	3.019	C isotope and reduction	"{'H': 2, '(C12)': -1, '(C13)': 1}"	isotope&reaction
-32.026	37	32.026215	MeOH	"{'C': 1, 'H': 4, 'O': 1}"	reaction
-39.993	37	39.9925	extra OH sodium adduct	"{'H': 1, 'O': 1}"	reaction
-27.9945	37	27.9949	addition of CO. Reaction: (+CO)	"{'C': 1, 'O': 1}"	reaction
-23.999	36	24	acetylation and loss of water. Reaction: (+C2H2O) and (-H2O)	{'C': 2}	reaction
-15.973	35	15.9738	lithium to sodium adduct	"{'Li': -1, 'Na': 1}"	reaction
+32.026	37	32.026215	MeOH	"{'C': 1, 'H': 4, 'O': 1}"	modification
+39.993	37	39.9925	extra OH sodium adduct	"{'H': 1, 'O': 1}"	modification
+27.9945	37	27.9949	addition of CO. Reaction: (+CO)	"{'C': 1, 'O': 1}"	modification
+23.999	36	24	acetylation and loss of water. Reaction: (+C2H2O) and (-H2O)	{'C': 2}	modification
+15.973	35	15.9738	lithium to sodium adduct	"{'Li': -1, 'Na': 1}"	modification
 19.014	35				
-42.0465	35	42.04695	"± C3H6, propylation"	"{'C': 3, 'H': 6}"	reaction
-9.984	32	9.98435	addition of CO and loss of water. Reaction: (+CO) and (-H2O)	"{'C': 1, 'H': -2}"	reaction
-30.0105	31	30.010564	addition of acetic acid and loss of CO. Reaction: (+C2H2O2) and (-CO)	"{'C': 1, 'H': 2, 'O': 1}"	reaction
-56.0625	30	56.0626	"± C4H8, butylation"	"{'C': 4, 'H': 8}"	reaction
-13.979	30	13.979264	nitrification and loss of oxygen. Reaction: (NH2 -> NO2) and (-O)	"{'H': -2, 'O': 1}"	reaction
-60.021	29	-60.0211	desmolysis	"{'C': -2, 'H': -4, 'O': -2}"	reaction
-42.01	29	42.010564	malonylation and loss of CO2. Reaction: (+C3H2O3) and (-CO2)	"{'C': 2, 'H': 2, 'O': 1}"	reaction
-3.9945	29	3.994915	oxidative cleavage	"{'O': 1, 'C': -1}"	reaction
-4.9555	29	4.9554	"Na+<-> NH4+, salt adduct"	"{'Na': 1, 'N': -1, 'H': -4}"	reaction
-67.9875	28	67.987424	NaCOOH	"{'C': 1, 'O': 2, 'Na': 1, 'H': 1}"	reaction
-74.0185	28	74.018791	polysiloxane repeat unit	"{'C': 2, 'H': 6, 'O': 1, 'Si': 1}"	reaction
+42.0465	35	42.04695	"± C3H6, propylation"	"{'C': 3, 'H': 6}"	modification
+9.984	32	9.98435	addition of CO and loss of water. Reaction: (+CO) and (-H2O)	"{'C': 1, 'H': -2}"	modification
+30.0105	31	30.010564	addition of acetic acid and loss of CO. Reaction: (+C2H2O2) and (-CO)	"{'C': 1, 'H': 2, 'O': 1}"	modification
+56.0625	30	56.0626	"± C4H8, butylation"	"{'C': 4, 'H': 8}"	modification
+13.979	30	13.979264	nitrification and loss of oxygen. Reaction: (NH2 -> NO2) and (-O)	"{'H': -2, 'O': 1}"	modification
+60.021	29	-60.0211	desmolysis	"{'C': -2, 'H': -4, 'O': -2}"	modification
+42.01	29	42.010564	malonylation and loss of CO2. Reaction: (+C3H2O3) and (-CO2)	"{'C': 2, 'H': 2, 'O': 1}"	modification
+3.9945	29	3.994915	oxidative cleavage	"{'O': 1, 'C': -1}"	modification
+4.9555	29	4.9554	"Na+<-> NH4+, salt adduct"	"{'Na': 1, 'N': -1, 'H': -4}"	modification
+67.9875	28	67.987424	NaCOOH	"{'C': 1, 'O': 2, 'Na': 1, 'H': 1}"	modification
+74.0185	28	74.018791	polysiloxane repeat unit	"{'C': 2, 'H': 6, 'O': 1, 'Si': 1}"	modification
 83.9525	27				
 17.0065	27				
 61.97	27				
 21.989	26				
-88.052	26	88.052429	butanoic acid	"{'C': 4, 'H': 8, 'O': 2}"	reaction
-40.0305	26	40.0313	"(C3H6O - H2O), acetone condensation after dehydration"	"{'H': 4, 'C': 3}"	reaction
+88.052	26	88.052429	butanoic acid	"{'C': 4, 'H': 8, 'O': 2}"	modification
+40.0305	26	40.0313	"(C3H6O - H2O), acetone condensation after dehydration"	"{'H': 4, 'C': 3}"	modification
 7.989	25				
-17.9725	25	17.974179	malonylation and loss of crotonyl. Reaction: (+C3H2O3) and (-C4H4O)	"{'C': -1, 'H': -2, 'O': 2}"	reaction
-41.026	25	41.026549	Acetonitrile	"{'C': 2, 'H': 3, 'N': 1}"	reaction
-0.9845	25	0.98402	"OH <-> NH2, e.g. de-amidiation, CHNO compounds"	"{'O': 1, 'H': -1, 'N': -1}"	reaction
-30.0465	25	30.04695	addition of C2H4 and hydrogenation. Reaction: (+C2H4) and (+H2)	"{'C': 2, 'H': 6}"	reaction
-72.0205	25	72.021129	lactic acid	"{'C': 3, 'H': 4, 'O': 2}"	reaction
-37.9555	25	37.955768	addition of Phosphate and Deacetylation. Reaction: (+HPO3) and (-C2H2O)	"{'C': -2, 'H': -1, 'O': 2, 'P': 1}"	reaction
-58.0415	24	58.041865	PPG repeat unit	"{'C': 3, 'H': 6, 'O': 1}"	reaction
-1.9795	24	1.979265	demethylation + hydroxylation (on same or differing sites)	"{'O': 1, 'C': -1, 'H': -2}"	reaction
+17.9725	25	17.974179	malonylation and loss of crotonyl. Reaction: (+C3H2O3) and (-C4H4O)	"{'C': -1, 'H': -2, 'O': 2}"	modification
+41.026	25	41.026549	Acetonitrile	"{'C': 2, 'H': 3, 'N': 1}"	modification
+0.9845	25	0.98402	"OH <-> NH2, e.g. de-amidiation, CHNO compounds"	"{'O': 1, 'H': -1, 'N': -1}"	modification
+30.0465	25	30.04695	addition of C2H4 and hydrogenation. Reaction: (+C2H4) and (+H2)	"{'C': 2, 'H': 6}"	modification
+72.0205	25	72.021129	lactic acid	"{'C': 3, 'H': 4, 'O': 2}"	modification
+37.9555	25	37.955768	addition of Phosphate and Deacetylation. Reaction: (+HPO3) and (-C2H2O)	"{'C': -2, 'H': -1, 'O': 2, 'P': 1}"	modification
+58.0415	24	58.041865	PPG repeat unit	"{'C': 3, 'H': 6, 'O': 1}"	modification
+1.9795	24	1.979265	demethylation + hydroxylation (on same or differing sites)	"{'O': 1, 'C': -1, 'H': -2}"	modification
 18.0305	24				
-36.0205	23	36.021129	2x water	"{'H': 4, 'O': 2}"	reaction
-3.0005	23	2.9997	hydrolysis	"{'N': -1, 'O': 1, 'H': 1}"	reaction
-55.989	22	55.989829	addition of acetic acid and dehydrogenation. Reaction: (+C2H2O2) and (-H2)	"{'C': 2, 'O': 2}"	reaction
-3.01	22	3.010899	addition of ammonia and demethylation. Reaction: (+NH3) and (-CH2)	"{'C': -1, 'H': 1, 'N': 1}"	reaction
+36.0205	23	36.021129	2x water	"{'H': 4, 'O': 2}"	modification
+3.0005	23	2.9997	hydrolysis	"{'N': -1, 'O': 1, 'H': 1}"	modification
+55.989	22	55.989829	addition of acetic acid and dehydrogenation. Reaction: (+C2H2O2) and (-H2)	"{'C': 2, 'O': 2}"	modification
+3.01	22	3.010899	addition of ammonia and demethylation. Reaction: (+NH3) and (-CH2)	"{'C': -1, 'H': 1, 'N': 1}"	modification
 8.9865	22				
 13.012	21				
-35.037	21	35.037114	addition of water and addition of ammonia. Reaction: (+H2O) and (+NH3)	"{'H': 5, 'N': 1, 'O': 1}"	reaction
-56.025	21	56.024872		"{'C': 1, 'H': 2, 'N': 3}"	reaction
+35.037	21	35.037114	addition of water and addition of ammonia. Reaction: (+H2O) and (+NH3)	"{'H': 5, 'N': 1, 'O': 1}"	modification
+56.025	21	56.024872		"{'C': 1, 'H': 2, 'N': 3}"	modification
 17.0305	21				
-15.0185	21	15.017424	addition of glucuronic acid and loss of N-acetyl-S-cysteine. Reaction: (+C6H8O6) and (-C5H7NO3S)	"{'C': 1, 'H': 1, 'N': -1, 'O': 3, 'S': -1}"	reaction
-72.0575	21	72.057515	butyrylation and hydrogenation. Reaction: (+C4H6O) and (+H2)	"{'C': 4, 'H': 8, 'O': 1}"	reaction
+15.0185	21	15.017424	addition of glucuronic acid and loss of N-acetyl-S-cysteine. Reaction: (+C6H8O6) and (-C5H7NO3S)	"{'C': 1, 'H': 1, 'N': -1, 'O': 3, 'S': -1}"	modification
+72.0575	21	72.057515	butyrylation and hydrogenation. Reaction: (+C4H6O) and (+H2)	"{'C': 4, 'H': 8, 'O': 1}"	modification
 20.979	20				
 47.008	20				
-54.046	20	54.04695	butyrylation and loss of oxygen. Reaction: (+C4H6O) and (-O)	"{'C': 4, 'H': 6}"	reaction
-58.004	20	58.004137		"{'N': 3, 'O': 1}"	reaction
+54.046	20	54.04695	butyrylation and loss of oxygen. Reaction: (+C4H6O) and (-O)	"{'C': 4, 'H': 6}"	modification
+58.004	20	58.004137		"{'N': 3, 'O': 1}"	modification
 1.019	20				
 21.9735	20				
-29.034	20	29.033074	addition of D-ribose and loss of cysteine. Reaction: (+C5H8O4) and (-C3H5NOS)	"{'C': 2, 'H': 3, 'N': -1, 'O': 3, 'S': -1}"	reaction
+29.034	20	29.033074	addition of D-ribose and loss of cysteine. Reaction: (+C5H8O4) and (-C3H5NOS)	"{'C': 2, 'H': 3, 'N': -1, 'O': 3, 'S': -1}"	modification

@@ -54,12 +54,12 @@ def retrieve_frequent_deltas(instrument, mode):
     instrument, mode = harmonize_instrument_mode(instrument, mode)
     frag_lists_by_instrument_by_mode = {
         "orbi": {
-            "pos": pkg_resources.resource_filename('mass2chem', 'source_data/S2_top_frequent_delta_mz_orbi_pos.tsv'),
-            "neg": pkg_resources.resource_filename('mass2chem', 'source_data/S3_top_frequent_delta_mz_orbi_neg.tsv')
+            "pos": pkg_resources.resource_filename('mass2chem', 'source_data/top_frequent_delta_mz_orbi_pos.tsv'),
+            "neg": pkg_resources.resource_filename('mass2chem', 'source_data/top_frequent_delta_mz_orbi_neg.tsv')
         },
         "tof": {
-            "pos": pkg_resources.resource_filename('mass2chem', 'source_data/S4_top_frequent_delta_mz_tof_pos.tsv'),
-            "neg": pkg_resources.resource_filename('mass2chem', 'source_data/S5_top_frequent_delta_mz_tof_neg.tsv')
+            "pos": pkg_resources.resource_filename('mass2chem', 'source_data/top_frequent_delta_mz_tof_pos.tsv'),
+            "neg": pkg_resources.resource_filename('mass2chem', 'source_data/top_frequent_delta_mz_tof_neg.tsv')
         }
     }
     if frag_lists_by_instrument_by_mode.get(instrument, {}).get(mode, None) is None:
@@ -92,13 +92,13 @@ def top_N_modication_mz_deltas_for_instrument_and_mode(instrument, ionization_mo
     """
     This is a utility function for retrieving the top N modification mz_deltas from the source data
     """
-    return top_N_mz_deltas_for_instrument_and_mode(instrument, ionization_mode, N, "modification")
+    return top_N_mz_deltas_for_instrument_and_mode(instrument, ionization_mode, N=N, filter_type="modification")
 
 def top_N_isotope_mz_deltas_for_instrument_and_mode(instrument, ionization_mode, N=20):
     """
     This is a utility function for retrieving the top N isotope mz_deltas from the source data
     """
-    return top_N_mz_deltas_for_instrument_and_mode(instrument, ionization_mode, N, "isotope")
+    return top_N_mz_deltas_for_instrument_and_mode(instrument, ionization_mode, N=N, filter_type="isotope")
 
 def known_biological_modifications():
     """

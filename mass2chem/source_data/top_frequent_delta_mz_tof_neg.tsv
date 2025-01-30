@@ -1,34 +1,34 @@
 delta_mz	count_estimate	mass_signature	note	dict	type
 1.003	595	1.00335	C isotope	"{'(C12)': -1, '(C13)': 1}"	isotope
-67.9875	140	67.987424	NaCOOH	"{'C': 1, 'O': 2, 'Na': 1, 'H': 1}"	reaction
-2.015	70	2.014552	2H	{'H': 2}	reaction
-135.974	49	135.974848	2X NaCOOH	"{'C': 2, 'O': 4, 'H': 2, 'Na': 2}"	reaction
-82.002	48	82.003073	sodiumÐacetate adduct (ÒNa + CH_COOÓ)	"{'C': 2, 'H': 3, 'O': 2, 'Na': 1}"	reaction
+67.9875	140	67.987424	NaCOOH	"{'C': 1, 'O': 2, 'Na': 1, 'H': 1}"	modification
+2.015	70	2.014552	2H	{'H': 2}	modification
+135.974	49	135.974848	2X NaCOOH	"{'C': 2, 'O': 4, 'H': 2, 'Na': 2}"	modification
+82.002	48	82.003073	sodiumÐacetate adduct (ÒNa + CH_COOÓ)	"{'C': 2, 'H': 3, 'O': 2, 'Na': 1}"	modification
 2.006	47	2.00425	O isotope	"{'(O16)': -1, '(O18)': 1}"	isotope
 66.984	43				
 1.9985	42	1.99795	Br isotope	"{'(Br79)': -1, '(Br81)': 1}"	isotope
 1.011	41				
-0.996	39	0.996585	addition of Guanine and loss of D-ribose. Reaction: (+C5H3N5) and (-C5H8O4)	"{'H': -5, 'N': 5, 'O': -4}"	reaction
-21.982	36	21.981943	Sodium adduct	"{'H': -1, 'Na': 1}"	reaction
-43.989	35	43.9898	addition of CO2. Reaction: (+CO2)	"{'C': 1, 'O': 2}"	reaction
-14.015	32	14.015649	addition of acetic acid and loss of CO2. Reaction: (+C2H2O2) and (-CO2)	"{'C': 1, 'H': 2}"	reaction
+0.996	39	0.996585	addition of Guanine and loss of D-ribose. Reaction: (+C5H3N5) and (-C5H8O4)	"{'H': -5, 'N': 5, 'O': -4}"	modification
+21.982	36	21.981943	Sodium adduct	"{'H': -1, 'Na': 1}"	modification
+43.989	35	43.9898	addition of CO2. Reaction: (+CO2)	"{'C': 1, 'O': 2}"	modification
+14.015	32	14.015649	addition of acetic acid and loss of CO2. Reaction: (+C2H2O2) and (-CO2)	"{'C': 1, 'H': 2}"	modification
 68.991	32				
-46.005	31	46.005305	addition of Phosphate and dechlorination. Reaction: (+HPO3) and (-Cl+H)	"{'H': 2, 'O': 3, 'P': 1, 'Cl': -1}"	reaction
-26.015	29	26.01565	acetylation and loss of oxygen. Reaction: (+C2H2O) and (-O)	"{'C': 2, 'H': 2}"	reaction
+46.005	31	46.005305	addition of Phosphate and dechlorination. Reaction: (+HPO3) and (-Cl+H)	"{'H': 2, 'O': 3, 'P': 1, 'Cl': -1}"	modification
+26.015	29	26.01565	acetylation and loss of oxygen. Reaction: (+C2H2O) and (-O)	"{'C': 2, 'H': 2}"	modification
 61.97	29				
-129.957	29	129.958482	addition of di-phosphate and denitrification. Reaction: (+H2P2O6) and (NO2 -> NH2)	"{'H': 4, 'O': 4, 'P': 2}"	reaction
-60.021	29	-60.0211	desmolysis	"{'C': -2, 'H': -4, 'O': -2}"	reaction
-74.0365	28	74.036779		"{'C': 3, 'H': 6, 'O': 2}"	reaction
-23.9995	27	24	acetylation and loss of water. Reaction: (+C2H2O) and (-H2O)	{'C': 2}	reaction
-10.029	27	10.028802	addition of CO2 and dechlorination. Reaction: (+CO2) and (-Cl+H)	"{'C': 1, 'H': 1, 'O': 2, 'Cl': -1}"	reaction
-44.026	26	44.0262	hydroxyethylation	"{'C': 2, 'H': 4, 'O': 1}"	reaction
-18.0105	26	18.010565	water	"{'H': 2, 'O': 1}"	reaction
+129.957	29	129.958482	addition of di-phosphate and denitrification. Reaction: (+H2P2O6) and (NO2 -> NH2)	"{'H': 4, 'O': 4, 'P': 2}"	modification
+60.021	29	-60.0211	desmolysis	"{'C': -2, 'H': -4, 'O': -2}"	modification
+74.0365	28	74.036779		"{'C': 3, 'H': 6, 'O': 2}"	modification
+23.9995	27	24	acetylation and loss of water. Reaction: (+C2H2O) and (-H2O)	{'C': 2}	modification
+10.029	27	10.028802	addition of CO2 and dechlorination. Reaction: (+CO2) and (-Cl+H)	"{'C': 1, 'H': 1, 'O': 2, 'Cl': -1}"	modification
+44.026	26	44.0262	hydroxyethylation	"{'C': 2, 'H': 4, 'O': 1}"	modification
+18.0105	26	18.010565	water	"{'H': 2, 'O': 1}"	modification
 6.0165	24				
 3.0185	23	3.019	C isotope and reduction	"{'H': 2, '(C12)': -1, '(C13)': 1}"	isotope&reaction
-15.994	23	15.9949	oxidation	{'O': 1}	reaction
-24.044	22	24.044451	addition of acetic acid and dechlorination. Reaction: (+C2H2O2) and (-Cl+H)	"{'C': 2, 'H': 3, 'O': 2, 'Cl': -1}"	reaction
-28.0305	22	28.0313	"Â± C2H4, natural alkane chains such as fatty acids"	"{'C': 2, 'H': 4}"	reaction
-42.01	20	42.010564	malonylation and loss of CO2. Reaction: (+C3H2O3) and (-CO2)	"{'C': 2, 'H': 2, 'O': 1}"	reaction
-12	20	12	methylation and reduction	{'C': 1}	reaction
-27.995	20	27.99492	Â± CO	"{'C': 1, 'O': 1}"	reaction
-57.9585	20	57.958622	NaCl	"{'Na': 1, 'Cl': 1}"	reaction
+15.994	23	15.9949	oxidation	{'O': 1}	modification
+24.044	22	24.044451	addition of acetic acid and dechlorination. Reaction: (+C2H2O2) and (-Cl+H)	"{'C': 2, 'H': 3, 'O': 2, 'Cl': -1}"	modification
+28.0305	22	28.0313	"Â± C2H4, natural alkane chains such as fatty acids"	"{'C': 2, 'H': 4}"	modification
+42.01	20	42.010564	malonylation and loss of CO2. Reaction: (+C3H2O3) and (-CO2)	"{'C': 2, 'H': 2, 'O': 1}"	modification
+12	20	12	methylation and reduction	{'C': 1}	modification
+27.995	20	27.99492	Â± CO	"{'C': 1, 'O': 1}"	modification
+57.9585	20	57.958622	NaCl	"{'Na': 1, 'Cl': 1}"	modification
