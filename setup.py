@@ -39,6 +39,9 @@ setup(
     include=['*', '']
   ),
   include_package_data=True,
+  package_data={
+    "your_package": ["sourcedata/*.tsv"],
+  },
   install_requires=[
     'numpy',
     'scipy',
