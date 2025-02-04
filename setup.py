@@ -39,6 +39,9 @@ setup(
     include=['*', '']
   ),
   include_package_data=True,
+  package_data={
+    "mass2chem": ["source_data/*.tsv"],
+  },
   install_requires=[
     'numpy',
     'scipy',

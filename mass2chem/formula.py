@@ -16,7 +16,6 @@ from collections import namedtuple
 import warnings
 
 from .source_data import NIST_isotope_data
-
 """
 Isotope information sourced from:
 

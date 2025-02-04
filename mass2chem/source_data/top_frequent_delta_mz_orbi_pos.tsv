@@ -1,0 +1,170 @@
+delta_mz	count_estimate	mass_signature	note	dict	type
+1.0033	4155	1.00335	C isotope	"{'(C12)': -1, '(C13)': 1}"	isotope
+14.0155	900	14.015649	addition of acetic acid and loss of CO2. Reaction: (+C2H2O2) and (-CO2)	"{'C': 1, 'H': 2}"	modification
+18.0104	885	18.010565	water	"{'H': 2, 'O': 1}"	modification
+2.0155	717	2.01565	"± 2H, opening or forming of double bond"	{'H': 2}	modification
+21.9818	657	21.98194	"Na+<-> H+, salt adduct"	"{'Na': 1, 'H': -1}"	modification
+44.0261	652	44.0262	hydroxyethylation	"{'C': 2, 'H': 4, 'O': 1}"	modification
+28.0312	621	28.0313	"± C2H4, natural alkane chains such as fatty acids"	"{'C': 2, 'H': 4}"	modification
+15.9948	479	15.9949	oxidation	{'O': 1}	modification
+17.0264	451	17.0265	addition of ammonia. Reaction: (+NH3)	"{'N': 1, 'H': 3}"	modification
+0.5015	450	0.5017	double charged with C13	"{'C': -1, '(C13)': 1}"	isotope
+26.0155	440	26.01565	acetylation and loss of oxygen. Reaction: (+C2H2O) and (-O)	"{'C': 2, 'H': 2}"	modification
+27.9947	433	27.9949	addition of CO. Reaction: (+CO)	"{'C': 1, 'O': 1}"	modification
+11.9999	426	12	methylation and reduction	{'C': 1}	modification
+30.0104	369	30.010564	addition of acetic acid and loss of CO. Reaction: (+C2H2O2) and (-CO)	"{'C': 1, 'H': 2, 'O': 1}"	modification
+32.026	349	32.026215	MeOH	"{'C': 1, 'H': 4, 'O': 1}"	modification
+42.0104	340	42.010564	malonylation and loss of CO2. Reaction: (+C3H2O3) and (-CO2)	"{'C': 2, 'H': 2, 'O': 1}"	modification
+67.9872	325	67.987424	NaCOOH	"{'C': 1, 'O': 2, 'Na': 1, 'H': 1}"	modification
+13.9791	321	13.979264	nitrification and loss of oxygen. Reaction: (NH2 -> NO2) and (-O)	"{'H': -2, 'O': 1}"	modification
+23.9998	317	24	acetylation and loss of water. Reaction: (+C2H2O) and (-H2O)	{'C': 2}	modification
+16.0312	314	16.0313	Methylation + reduction	"{'C': 1, 'H': 4}"	modification
+42.0468	314	42.04695	"± C3H6, propylation"	"{'C': 3, 'H': 6}"	modification
+46.0053	313	46.00548	� CO+H2O (carboxylic acid)	"{ 'C':1 ,'O':2, 'H':2}"	modification
+88.0522	304	88.052429	butanoic acid	"{'C': 4, 'H': 8, 'O': 2}"	modification
+41.0263	295	41.026549	Acetonitrile	"{'C': 2, 'H': 3, 'N': 1}"	modification
+15.9738	289	15.9738	lithium to sodium adduct	"{'Li': -1, 'Na': 1}"	modification
+22.9852	281	22.9898	Na	{'Na': 1}	modification
+30.0468	267	30.04695	addition of C2H4 and hydrogenation. Reaction: (+C2H4) and (+H2)	"{'C': 2, 'H': 6}"	modification
+4.0312	257	4.0313	x2 reduction	{'H': 4}	modification
+56.0624	257	56.0626	"± C4H8, butylation"	"{'C': 4, 'H': 8}"	modification
+60.0209	256	60.021129	hydrogenation and addition of acetic acid. Reaction: (+H2) and (+C2H2O2)	"{'C': 2, 'H': 4, 'O': 2}"	modification
+9.9842	256	9.98435	addition of CO and loss of water. Reaction: (+CO) and (-H2O)	"{'C': 1, 'H': -2}"	modification
+3.9948	245	3.994915	oxidative cleavage	"{'O': 1, 'C': -1}"	modification
+1.9792	244	1.979264	nitrification and loss of CO. Reaction: (NH2 -> NO2) and (-CO)	"{'C': -1, 'H': -2, 'O': 1}"	modification
+58.0417	241	58.041865	PPG repeat unit	"{'C': 3, 'H': 6, 'O': 1}"	modification
+4.9553	237	4.9554	"Na+<-> NH4+, salt adduct"	"{'Na': 1, 'N': -1, 'H': -4}"	modification
+36.0209	226	36.021129	2x water	"{'H': 4, 'O': 2}"	modification
+19.0138	226				
+46.0417	224	46.041865	addition of C2H4 and addition of water. Reaction: (+C2H4) and (+H2O)	"{'C': 2, 'H': 6, 'O': 1}"	modification
+15.0189	220				
+40.0311	216	40.0313	"(C3H6O - H2O), acetone condensation after dehydration"	"{'H': 4, 'C': 3}"	modification
+2.0064	213	2.0067	C isotope * 2	"{'(C12)': -2, '(C13)': 2}"	isotope
+17.007	210				
+13.0122	210				
+20.0261	206	20.026215	hydration + hydrogenation	"{'H': 4, 'O': 1}"	modification
+1.9968	206	1.99705	Cl isotope	"{'(Cl35)': -1, '(Cl37)': 1}"	isotope
+3.0189	202	3.019	C isotope and reduction	"{'H': 2, '(C12)': -1, '(C13)': 1}"	isotope&reaction
+45.0577	196	45.057849	addition of C2H4 and addition of ammonia. Reaction: (+C2H4) and (+NH3)	"{'C': 2, 'H': 7, 'N': 1}"	modification
+58.0052	192	58.005479	acetic acid addition	"{'C': 2, 'H': 2, 'O': 2}"	modification
+72.0573	190	72.057515	butyrylation and hydrogenation. Reaction: (+C4H6O) and (+H2)	"{'C': 4, 'H': 8, 'O': 1}"	modification
+56.026	188	56.0262	propionylation. Reaction: (+C3H4O)	"{'C': 3, 'H': 4, 'O': 1}"	modification
+21.9841	188				
+31.9897	185	31.989829	(di)hydroxylation	{'O': 2}	modification
+10.0207	184	10.020734	addition of acetic acid and Sulfonic acid to Thiol. Reaction: (+C2H2O2) and (SO3H -> SH)	"{'C': 2, 'H': 2, 'O': -1}"	modification
+54.0467	181	54.04695	butyrylation and loss of oxygen. Reaction: (+C4H6O) and (-O)	"{'C': 4, 'H': 6}"	modification
+12.0363	180	12.036385	addition of C2H4 and loss of oxygen. Reaction: (+C2H4) and (-O)	"{'C': 2, 'H': 4, 'O': -1}"	modification
+43.9896	180	43.9898	addition of CO2. Reaction: (+CO2)	"{'C': 1, 'O': 2}"	modification
+43.0227	178				
+60.0573	173	60.057515		"{'C': 3, 'H': 8, 'O': 1}"	modification
+74.0365	171	74.036779		"{'C': 3, 'H': 6, 'O': 2}"	modification
+72.0209	171	72.021129	lactic acid	"{'C': 3, 'H': 4, 'O': 2}"	modification
+22.0131	170				
+15.0107	169	15.010899	amination	"{'N': 1, 'H': 1}"	modification
+1.0122	169				
+70.0781	164	70.07825	addition of choline and loss of NH. Reaction: (+C5NH11) and (-NH)	"{'C': 5, 'H': 10}"	modification
+2.0042	164	2.00425	O isotope	"{'(O16)': -1, '(O18)': 1}"	isotope
+39.9924	162	39.99248	Na+ <-> -H2O+H	"{'Na': 1, 'O': 1, 'H': 1}"	modification
+8.005	160	8.005085	addition of phenyl and loss of crotonyl. Reaction: (+C6H5-H) and (-C4H4O)	"{'C': 2, 'O': -1}"	modification
+70.0417	159	70.041864	glutaryllation and loss of CO2. Reaction: (+C5H6O3) and (-CO2)	"{'C': 4, 'H': 6, 'O': 1}"	modification
+39.9947	159	39.994914	addition of acetic acid and loss of water. Reaction: (+C2H2O2) and (-H2O)	"{'C': 2, 'O': 1}"	modification
+1.001	158				
+38.0154	158	38.015649	malonylation and Sulfonic acid to Thiol. Reaction: (+C3H2O3) and (SO3H -> SH)	"{'C': 3, 'H': 2}"	modification
+34.0053	158	34.005479	"hydroxylation, epoxidation"	"{'H': 2, 'O': 2}"	modification
+35.037	157	35.037114	addition of water and addition of ammonia. Reaction: (+H2O) and (+NH3)	"{'H': 5, 'N': 1, 'O': 1}"	modification
+45.0294	157				
+25.9791	156	25.979265	addition of CO and dehydrogenation. Reaction: (+CO) and (-H2)	"{'C': 1, 'H': -2, 'O': 1}"	modification
+27.0107	156	27.010899		"{'C': 1, 'H': 1, 'N': 1}"	modification
+74.073	156	74.073165		"{'C': 4, 'H': 10, 'O': 1}"	modification
+0.9839	155	0.984015	addition of acetic acid and loss of glycine. Reaction: (+C2H2O2) and (-C2H3NO)	"{'H': -1, 'N': -1, 'O': 1}"	modification
+48.0209	154	48.021131	addition of Hexose and loss of glutaryl. Reaction: (+C6H10O5) and (-C5H6O3)	"{'C': 1, 'H': 4, 'O': 2}"	modification
+0.997	153	0.99703	N isotope	"{'(N14)': -1, '(N15)': 1}"	isotope
+18.0468	152				
+1.9979	152	1.99795	Br isotope	"{'(Br79)': -1, '(Br81)': 1}"	isotope
+27.0278	150				
+6.0104	149	6.010565	addition of tiglyl and loss of phenyl. Reaction: (+C5H6O) and (-C6H5+H)	"{'C': -1, 'H': 2, 'O': 1}"	modification
+29.0345	148				
+52.0311	146	52.031299	succinylation and Sulfonic acid to Thiol. Reaction: (+C4H4O3) and (SO3H -> SH)	"{'C': 4, 'H': 4}"	modification
+132.0785	145	132.078644	L-rhodinose	"{'C': 6, 'H': 12, 'O': 3}"	modification
+44.0624	145	44.0626		"{'C': 3, 'H': 8}"	modification
+0.9951	143	0.995248	addition of nitro and loss of CO2. Reaction: (+NO2-H) and (-CO2)	"{'C': -1, 'H': -1, 'N': 1}"	modification
+29.974	141	29.974179	"methyl carboxylation, other oxidation"	"{'O': 2, 'H': -2}"	modification
+14.0519	140				
+54.0104	140	54.010565	propionylation and dehydrogenation. Reaction: (+C3H4O) and (-H2)	"{'C': 3, 'H': 2, 'O': 1}"	modification
+12.9951	139	12.995249	addition of NH and dehydrogenation. Reaction: (+NH) and (-H2)	"{'H': -1, 'N': 1}"	modification
+37.9557	139	37.955768	addition of Phosphate and Deacetylation. Reaction: (+HPO3) and (-C2H2O)	"{'C': -2, 'H': -1, 'O': 2, 'P': 1}"	modification
+62.0365	139	62.036779		"{'C': 2, 'H': 6, 'O': 2}"	modification
+84.0937	137				
+34.0417	132				
+82.0028	132				
+102.0679	131	102.06808	2-methyl-butanoic acid	"{'C': 5, 'H': 10, 'O': 2}"	modification
+11.9635	130	11.9636	oxidation	"{'H': -4, 'O': 1}"	modification
+57.9584	129	57.958622	NaCl	"{'Na': 1, 'Cl': 1}"	modification
+29.0264	128	29.026549	glycine conjugation and loss of CO. Reaction: (+C2H3NO) and (-CO)	"{'C': 1, 'H': 3, 'N': 1}"	modification
+3.0108	126	3.010899	addition of ammonia and demethylation. Reaction: (+NH3) and (-CH2)	"{'C': -1, 'H': 1, 'N': 1}"	modification
+23.0159	126				
+59.0369	125	59.03711	"± C2H5NO, N-acetyl or cut from side chain of Asn in peptides"	"{'C': 2, 'H': 5, 'N': 1, 'O': 1}"	modification
+50.0154	125	50.01565	crotonylation and loss of water. Reaction: (+C4H4O) and (-H2O)	"{'C': 4, 'H': 2}"	modification
+16.023	125				
+26.0519	124	26.052035	butyrylation and loss of CO2. Reaction: (+C4H6O) and (-CO2)	"{'C': 3, 'H': 6, 'O': -1}"	modification
+86.0365	124	86.036779	addition of C2H4 and addition of acetic acid. Reaction: (+C2H4) and (+C2H2O2)	"{'C': 4, 'H': 6, 'O': 2}"	modification
+17.9741	123	17.974179	malonylation and loss of crotonyl. Reaction: (+C3H2O3) and (-C4H4O)	"{'C': -1, 'H': -2, 'O': 2}"	modification
+7.9685	123				
+35.9998	123	36		{'C': 3}	modification
+50.0366	123				
+6.0468	122				
+24.0363	122	24.036385	crotonylation and loss of CO2. Reaction: (+C4H4O) and (-CO2)	"{'C': 3, 'H': 4, 'O': -1}"	modification
+43.042	122	43.042199	ethanolamine	"{'C': 2, 'H': 5, 'N': 1}"	modification
+1.9956	122	1.9958	S isotope	"{'(S32)': -1, '(S34)': 1}"	
+42.0297	122				
+32.0624	121				
+58.078	121	58.07825		"{'C': 4, 'H': 10}"	modification
+18.0298	120				
+86.073	119	86.073165	addition of Carnitine and loss of glycine. Reaction: (+C7H13NO2) and (-C2H3NO)	"{'C': 5, 'H': 10, 'O': 1}"	modification
+5.9893	118	5.989435	addition of phenyl and loss of butyryl. Reaction: (+C6H5-H) and (-C4H6O)	"{'C': 2, 'H': -2, 'O': -1}"	modification
+1.0077	118	1.007276467	+H[1+]	{'H': 1}	modification
+22.0418	118				
+14.9914	117				
+64.0522	117				
+68.0624	117	68.0626	addition of choline and loss of ammonia. Reaction: (+C5NH11) and (-NH3)	"{'C': 5, 'H': 8}"	modification
+27.0188	116				
+48.0573	116				
+13.0315	116	13.031634	glycine conjugation and loss of CO2. Reaction: (+C2H3NO) and (-CO2)	"{'C': 1, 'H': 3, 'N': 1, 'O': -1}"	modification
+8.0261	115				
+10.0287	115	10.028802	addition of CO2 and dechlorination. Reaction: (+CO2) and (-Cl+H)	"{'C': 1, 'H': 1, 'O': 2, 'Cl': -1}"	modification
+2.9995	115	2.999666	addition of water and loss of NH. Reaction: (+H2O) and (-NH)	"{'H': 1, 'N': -1, 'O': 1}"	modification
+45.0212	114	45.021464	addition of CO and addition of ammonia. Reaction: (+CO) and (+NH3)	"{'C': 1, 'H': 3, 'N': 1, 'O': 1}"	modification
+61.0525	114	61.052764	ethanolamine	"{'C': 2, 'H': 7, 'N': 1, 'O': 1}"	modification
+31.0421	113	31.042199	methylation and addition of ammonia. Reaction: (+CH2) and (+NH3)	"{'C': 1, 'H': 5, 'N': 1}"	modification
+55.9896	112	55.989829	addition of acetic acid and dehydrogenation. Reaction: (+C2H2O2) and (-H2)	"{'C': 2, 'O': 2}"	modification
+68.026	112	68.0262	crotonylation. Reaction: (+C4H4O)	"{'C': 4, 'H': 4, 'O': 1}"	modification
+76.0522	112	76.052429		"{'C': 3, 'H': 8, 'O': 2}"	modification
+22.0206	111				
+25.0122	111				
+19.9685	111				
+19.9897	109	19.98983	Thiol to Sulfonic acid and loss of CO. Reaction: (SH -> SO3H) and (-CO)	"{'C': -1, 'O': 2}"	modification
+39.0107	109	39.010899	glycine conjugation and loss of water. Reaction: (+C2H3NO) and (-H2O)	"{'C': 2, 'H': 1, 'N': 1}"	modification
+38.0519	107	38.052035	addition of tiglyl and loss of CO2. Reaction: (+C5H6O) and (-CO2)	"{'C': 4, 'H': 6, 'O': -1}"	modification
+135.9746	107	135.974848	2X NaCOOH	"{'C': 2, 'O': 4, 'H': 2, 'Na': 2}"	modification
+70.0052	107	70.005479	pyruvate	"{'C': 3, 'H': 2, 'O': 2}"	modification
+82.078	107	82.07825		"{'C': 6, 'H': 10}"	modification
+26.9995	106	26.999666	acetylation and loss of NH. Reaction: (+C2H2O) and (-NH)	"{'C': 2, 'H': 1, 'N': -1, 'O': 1}"	modification
+3.9584	105	3.958529	malonylation and loss of tiglyl. Reaction: (+C3H2O3) and (-C5H6O)	"{'C': -2, 'H': -4, 'O': 2}"	modification
+43.9638	105	43.96389	2Na-2H	"{'Na': 2, 'H': -2}"	modification
+66.0467	105	66.046949	glutaryllation and Sulfonic acid to Thiol. Reaction: (+C5H6O3) and (SO3H -> SH)	"{'C': 5, 'H': 6}"	modification
+1.0203	105				
+84.0572	104	84.057515	addition of C2H4 and propionylation. Reaction: (+C2H4) and (+C3H4O)	"{'C': 5, 'H': 8, 'O': 1}"	modification
+22.0053	104				
+31.0056	103	31.005814	addition of NH and oxidation. Reaction: (+NH) and (+O)	"{'H': 1, 'N': 1, 'O': 1}"	modification
+24.9951	103	24.995249	cyano	"{'H': -1, 'C': 1, 'N': 1}"	modification
+11.0158	103				
+14.9996	103	14.999666	Deamidation followed by a methylation	"{'N': -1, 'H': 1, 'C': 1, 'O': 1}"	modification
+10.9965	102				
+90.0678	102				
+1.0315	102	1.031634	addition of ammonia and loss of oxygen. Reaction: (+NH3) and (-O)	"{'H': 3, 'N': 1, 'O': -1}"	modification
+5.974	101	5.97418	Thiol to Sulfonic acid and Deacetylation. Reaction: (SH -> SO3H) and (-C2H2O)	"{'C': -2, 'H': -2, 'O': 2}"	modification
+1.0062	101				
+64.0158	101	64.016044		"{'C': 1, 'H': 4, 'O': 3}"	modification
+7.9897	100				
+5.9587	100				
+19.042	100	19.042199	hydrogenation and addition of ammonia. Reaction: (+H2) and (+NH3)	"{'H': 5, 'N': 1}"	modification
