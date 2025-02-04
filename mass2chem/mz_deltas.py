@@ -1,10 +1,19 @@
-#
-# This module provides functions to retrieve the top N mz_deltas for a given instrument and ionization mode
-# mz deltas can be fragments, isotopes, or modifications. Various filters are given to retrieve the desired mz_deltas
-#
+'''
+This module provides functions to retrieve the data from source data (immutable) and lib (ongoing lists).
+1. Source Data:
+  1. Top N mz_deltas for a given instrument and ionization mode.mz deltas can be fragments, isotopes, or modifications. Various filters are given to retrieve the desired mz_deltas. The functions are:
+      1. top_N_modication_mz_deltas_for_instrument_and_mode()
+      2. top_N_isotope_mz_deltas_for_instrument_and_mode()
+  2. known xenobiotic modifications as described in Zhao, Haoqi Nina, et al with function: zhao2024_drug_exposure()
+  3. known biotransformations as described in Xing, Shipei, et al with function: xing2020_hypothetical_neutral_losses()
+2. lib:
+  1. lib_mzdiff_bioreaction: List of common mass differences in bioreactions from difference sources. Function: lib_mzdiff_bioreaction()
+  2. lib_mzdiff_in_source: List of common mass differences in in-source fragmentation if different instruments/ion modes. Function: lib_mzdiff_in_source()
+'''
 
-import pkg_resources
 import os
+import json
+import pkg_resources
 import pandas as pd
 
 def harmonize_instrument_mode(instrument, mode):
@@ -54,12 +63,12 @@ def retrieve_frequent_deltas(instrument, mode):
     instrument, mode = harmonize_instrument_mode(instrument, mode)
     frag_lists_by_instrument_by_mode = {
         "orbi": {
-            "pos": pkg_resources.resource_filename('mass2chem', 'source_data/top_frequent_delta_mz_orbi_pos.tsv'),
-            "neg": pkg_resources.resource_filename('mass2chem', 'source_data/top_frequent_delta_mz_orbi_neg.tsv')
+            "pos": pkg_resources.resource_filename('mass2chem', 'source_data/chi2025_isf_orbi_neg.tsv'),
+            "neg": pkg_resources.resource_filename('mass2chem', 'source_data/chi2025_isf_orbi_pos.tsv')
         },
         "tof": {
-            "pos": pkg_resources.resource_filename('mass2chem', 'source_data/top_frequent_delta_mz_tof_pos.tsv'),
-            "neg": pkg_resources.resource_filename('mass2chem', 'source_data/top_frequent_delta_mz_tof_neg.tsv')
+            "pos": pkg_resources.resource_filename('mass2chem', 'source_data/chi2025_isf_tof_pos.tsv'),
+            "neg": pkg_resources.resource_filename('mass2chem', 'source_data/chi2025_isf_tof_neg.tsv')
         }
     }
     if frag_lists_by_instrument_by_mode.get(instrument, {}).get(mode, None) is None:
@@ -100,24 +109,24 @@ def top_N_isotope_mz_deltas_for_instrument_and_mode(instrument, ionization_mode,
     """
     return top_N_mz_deltas_for_instrument_and_mode(instrument, ionization_mode, N=N, filter_type="isotope")
 
-def known_biological_modifications():
+def xing2020_hypothetical_neutral_losses():
     """
-    This function returns a dataframe of known biotransformations as described in ___ref_to_preprint___, sourced
-    from Tau Huan's paper <reference to paper>. The data is saved in the source_data folder.
+    This function returns a dataframe of known biotransformations as described in Xing, Shipei, et al. "Retrieving and utilizing hypothetical neutral losses from tandem mass 
+    spectra for spectral similarity analysis and unknown metabolite annotation." Analytical Chemistry 92.21 (2020): 14476-14483. The data is saved in the source_data folder.
     """
-    assert os.path.exists(pkg_resources.resource_filename('mass2chem', 'source_data/known_biological_modifications.tsv')), "The file S1_known_biotransformations.tsv does not exist"
-    return pd.read_csv(pkg_resources.resource_filename('mass2chem', 'source_data/known_biological_modifications.tsv'), sep = "\t")
+    assert os.path.exists(pkg_resources.resource_filename('mass2chem', 'source_data/xing2020_hypothetical_neutral_losses.tsv')), "The file xing2020_hypothetical_neutral_losses.tsv does not exist"
+    return pd.read_csv(pkg_resources.resource_filename('mass2chem', 'source_data/xing2020_hypothetical_neutral_losses.tsv'), sep = "\t")
 
-def known_xenobiotic_modifications(skip_isotopologues=True):
+def zhao2024_drug_exposure(skip_isotopologues=True):
     """
-    This function returns a dataframe of known xenobiotic modifications as described in ___ref_to_preprint___, sourced
-    from _________.
+    This function returns a dataframe of known xenobiotic modifications as described in Zhao, Haoqi Nina, et al. 
+    "Empirically establishing drug exposure records directly from untargeted metabolomics data." bioRxiv (2024).
 
     The input list contains isotopologue differences, which are not modifications. 
     If you want to include them, set skip_isotopologues=False. 
     """
-    assert os.path.exists(pkg_resources.resource_filename('mass2chem', 'source_data/known_xenobiotic_modifications.tsv')), "The file S1_known_biotransformations.tsv does not exist"
-    xeno_mods = pd.read_csv(pkg_resources.resource_filename('mass2chem', 'source_data/known_xenobiotic_modifications.tsv'), sep = "\t")
+    assert os.path.exists(pkg_resources.resource_filename('mass2chem', 'source_data/zhao2024_drug_exposure.tsv')), "The file zhao2024_drug_exposure.tsv does not exist"
+    xeno_mods = pd.read_csv(pkg_resources.resource_filename('mass2chem', 'source_data/zhao2024_drug_exposure.tsv'), sep = "\t")
     
     if skip_isotopologues:
         # fix this more elegantly
@@ -132,3 +141,61 @@ def known_xenobiotic_modifications(skip_isotopologues=True):
                 filtered.append(xm)
         xeno_mods = pd.DataFrame(filtered)
     return xeno_mods
+
+def lib_mzdiff_bioreaction():
+    """Function used for retrieving mzdiff bioreactions under lib folder. 
+
+    Returns
+    -------
+    dict
+        A python dict containing mzdiff bioreactions deltas from different sources. 
+        E.g. {'zhao2024_drug_exposure': [[-212.0086, 'denucleotide (monophosphate)', "{'C': -5, 'H': -9, 'O': -7, 'P': -1}"], 
+        [-207.068414, 'de-3-phenoxyphenylacetonitrile', "{'C': -14, 'H': -9, 'N': -1, 'O': -1}"]]}
+        Three elements in the list are mass delta signatures, description and formula dict respectively. 
+
+    Examples
+    --------
+    >>> import mass2chem.mz_deltas
+    >>> mass2chem.mz_deltas.lib_mzdiff_bioreaction()
+    """
+    try:
+        with open(pkg_resources.resource_filename('mass2chem', 'lib/mzdiff_bioreaction.json'), 'r') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        print("Error: mzdiff_bioreaction.json file not found.")
+        return {}  
+    except json.JSONDecodeError:
+        print("Error: Failed to parse mzdiff_bioreaction.json (Invalid JSON format).")
+        return {}  
+    except Exception as e:
+        print(f"Unexpected error: {e}")
+        return {}
+    
+def lib_mzdiff_in_source():
+    """Function used for retrieving mzdiff of in-source fragments under lib folder. 
+
+    Returns
+    -------
+    dict
+        A python dict containing mzdiff of in-source fragments of different instruments and ion modes. 
+        E.g. {'orbi_pos': [[1.0033, 4155, 1.00335, 'C isotope', "{'(C12)': -1, '(C13)': 1}", 'isotope'], 
+        [14.0155, 900, 14.015649, 'addition of acetic acid and loss of CO2. Reaction: (+C2H2O2) and (-CO2)', "{'C': 1, 'H': 2}", 'modification']]}
+        Five elements in the list are experimental deltas, count estimate, mass delta signatures in database, description and formula dict respectively. 
+
+    Examples
+    --------
+    >>> import mass2chem.mz_deltas
+    >>> mass2chem.mz_deltas.lib_mzdiff_in_source()
+    """
+    try:
+        with open(pkg_resources.resource_filename('mass2chem', 'lib/mzdiff_in_source.json'), 'r') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        print("Error: mzdiff_in_source.json file not found.")
+        return {}  
+    except json.JSONDecodeError:
+        print("Error: Failed to parse mzdiff_in_source.json (Invalid JSON format).")
+        return {}  
+    except Exception as e:
+        print(f"Unexpected error: {e}")
+        return {}

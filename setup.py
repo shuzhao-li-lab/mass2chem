@@ -40,7 +40,9 @@ setup(
   ),
   include_package_data=True,
   package_data={
-    "mass2chem": ["source_data/*.tsv"],
+    "mass2chem": ["source_data/*.tsv", 
+                  "lib/mzdiff_bioreaction.json", 
+                  "lib/mzdiff_in_source.json"],
   },
   install_requires=[
     'numpy',

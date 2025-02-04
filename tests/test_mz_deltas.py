@@ -7,8 +7,10 @@ from mass2chem.mz_deltas import (
     top_N_mz_deltas_for_instrument_and_mode,
     top_N_modication_mz_deltas_for_instrument_and_mode,
     top_N_isotope_mz_deltas_for_instrument_and_mode,
-    known_biological_modifications,
-    known_xenobiotic_modifications
+    xing2020_hypothetical_neutral_losses,
+    zhao2024_drug_exposure,
+    lib_mzdiff_bioreaction,
+    lib_mzdiff_in_source
 )
 
 class TestMzDeltas(unittest.TestCase):
@@ -45,21 +47,37 @@ class TestMzDeltas(unittest.TestCase):
         self.assertEqual(len(df), 7)
         self.assertTrue((df['type'] == "isotope").all())
 
-    def test_known_biological_modifications(self):
-        df = known_biological_modifications()
+    def test_xing2020_hypothetical_neutral_losses(self):
+        df = xing2020_hypothetical_neutral_losses()
         self.assertIsInstance(df, pd.DataFrame)
         self.assertIn("Mass difference", df.columns)
         self.assertIn("Description", df.columns)
         self.assertIn("Formula Change", df.columns)
 
-    def test_known_xenobiotic_modifications(self):
-        df = known_xenobiotic_modifications()
+    def test_zhao2024_drug_exposure(self):
+        df = zhao2024_drug_exposure()
         self.assertIsInstance(df, pd.DataFrame)
         self.assertIn("Mass difference", df.columns)
         self.assertIn("Rationale", df.columns)
         self.assertIn("Formula Change", df.columns)
-        df_with_isotopologues = known_xenobiotic_modifications(skip_isotopologues=False)
+        df_with_isotopologues = zhao2024_drug_exposure(skip_isotopologues=False)
         self.assertGreater(len(df_with_isotopologues), len(df))
+    
+    def test_lib_mzdiff_bioreaction(self):
+        d = lib_mzdiff_bioreaction()
+        sources = d.keys()
+        self.assertIsInstance(d, dict)
+        self.assertIn('zhao2024_drug_exposure', sources)
+        self.assertIn('xing2020_hypothetical_neutral_losses', sources)
+        
+    def test_lib_mzdiff_in_source(self):
+        d = lib_mzdiff_in_source()
+        methods = d.keys()
+        self.assertIsInstance(d, dict)
+        self.assertIn('orbi_pos', methods)
+        self.assertIn('orbi_neg', methods)
+        self.assertIn('tof_pos', methods)
+        self.assertIn('tof_neg', methods)
 
 if __name__ == '__main__':
     unittest.main()
