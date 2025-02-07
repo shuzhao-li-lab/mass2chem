@@ -7,6 +7,8 @@ This package provides
 - libraries of common metabolites, contaminants, mass differences
 - [to-do] functions of chemical similary, dataset similarity
 
+The lists of mass patterns for isotopologues, adducts, and ISFs, as referenced in [Chi Y, Mitchell JM, Li S. A systematic analysis of in-source fragments in LC-MS metabolomics. bioRxiv. 2025. doi:10.1101/2025.02.04.636472.](https://www.biorxiv.org/content/10.1101/2025.02.04.636472v1), are located under `mass2chem/source_data`. Each list is specific to the instrument and ion mode.
+
 ## Related tools
 - Generalized computing of isotopes and adducts: khipu (https://github.com/shuzhao-li-lab/khipu, https://pubs.acs.org/doi/10.1021/acs.analchem.2c05810)
 
