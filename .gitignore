@@ -3,3 +3,5 @@
 
 # python
 *.pyc
+
+mass2chem.egg-info/*
