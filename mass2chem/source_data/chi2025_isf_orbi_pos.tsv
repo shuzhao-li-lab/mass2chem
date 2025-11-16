@@ -23,7 +23,7 @@ delta_mz	count_estimate	mass_signature	note	dict	type
 46.0053	313	46.00548	� CO+H2O (carboxylic acid)	"{ 'C':1 ,'O':2, 'H':2}"	modification
 88.0522	304	88.052429	butanoic acid	"{'C': 4, 'H': 8, 'O': 2}"	modification
 41.0263	295	41.026549	Acetonitrile	"{'C': 2, 'H': 3, 'N': 1}"	modification
-15.9738	289	15.9738	lithium to sodium adduct	"{'Li': -1, 'Na': 1}"	modification
+15.9738	289	15.9738	sodium to potassium adduct	"{'Na': -1, 'K': 1}"	modification
 22.9852	281	22.9898	Na	{'Na': 1}	modification
 30.0468	267	30.04695	addition of C2H4 and hydrogenation. Reaction: (+C2H4) and (+H2)	"{'C': 2, 'H': 6}"	modification
 4.0312	257	4.0313	x2 reduction	{'H': 4}	modification

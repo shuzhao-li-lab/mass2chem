@@ -18,7 +18,7 @@ delta_mz	count_estimate	mass_signature	note	dict	type
 21.9819	295	21.98194	"Na+<-> H+, salt adduct"	"{'Na': 1, 'H': -1}"	modification
 10.0287	277	10.028802	addition of CO2 and dechlorination. Reaction: (+CO2) and (-Cl+H)	"{'C': 1, 'H': 1, 'O': 2, 'Cl': -1}"	modification
 1.9957	270	1.9958	S isotope	"{'(S32)': -1, '(S34)': 1}"	isotope
-66.984	266				
+66.984	266	66.984074	Addition of NaCOOH on 13C isotope	"{'(C12)': 1, '(C13)': -1, 'C': 1, 'O': 2, 'Na': 1, 'H': 1}"	isotope&modification
 23.9999	265	24	acetylation and loss of water. Reaction: (+C2H2O) and (-H2O)	{'C': 2}	modification
 13.9792	256	13.979264	nitrification and loss of oxygen. Reaction: (NH2 -> NO2) and (-O)	"{'H': -2, 'O': 1}"	modification
 42.0105	250	42.010564	malonylation and loss of CO2. Reaction: (+C3H2O3) and (-CO2)	"{'C': 2, 'H': 2, 'O': 1}"	modification
