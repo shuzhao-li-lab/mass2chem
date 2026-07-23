@@ -59,7 +59,36 @@ def parse_chemformula_dict(x):  # return to its original form
     for pair in p: d[pair[0]] = int( pair[1] or 1 )
     return d
 
-
+def parse_chemformula_dict_signed(s):
+    """
+    Parse a chemical formula string with signed elements into a dictionary.
+    
+    Args:
+        s (str): A chemical formula string with signed elements, e.g., '+C2O-H'.
+        
+    Returns:
+        dict: A dictionary representation of the chemical formula, e.g., {'C': 2, 'O': 1, 'H': -1}.
+    """
+    import re
+    pattern = r'([+-]?)([A-Z][a-z]*)(\d*)'
+    matches = re.findall(pattern, s)
+    
+    formula_dict = {}
+    for sign, element, count in matches:
+        count = int(count) if count else 1
+        if sign == '-':
+            count = -count
+        elif sign == '+':
+            count = count
+        else:
+            count = count
+        
+        if element in formula_dict:
+            formula_dict[element] += count
+        else:
+            formula_dict[element] = count
+            
+    return formula_dict
 
 def parse_chemformula_dict_comprehensive(x, remove_additive_cpd = True, handle_negative_number = True):
     '''
@@ -74,6 +103,8 @@ def parse_chemformula_dict_comprehensive(x, remove_additive_cpd = True, handle_n
     -------
     parse_chemformula_dict_comprehensive('C-2H12O5H-4·H2O', remove_additive_cpd=True, handle_negative_number=True)
     {'C': -2, 'H': 8, 'O': 5}
+    
+    Bug: ValueError: invalid literal for int() with base 10: '-'
     '''
     if remove_additive_cpd == True: # remove additive compound is true
         if '·' in x:
